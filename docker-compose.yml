@@ -1,0 +1,19 @@
+version: "3.8"
+services: 
+  program:
+    build: .
+    working_dir: /usr/src/app
+    environment: 
+    - NODE_ENV=development
+    - CHOKIDAR_USEPOLLING=true
+    - MEMORY_LIMIT=8192
+    env_file:
+    - .env
+    volumes: 
+    - ./:/usr/src/app
+    - /usr/src/app/node_modules
+    ports:
+    - 8080:8080
+    stdin_open: true
+    tty: true
+    command: "npm run serve"
