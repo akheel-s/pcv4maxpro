@@ -11,7 +11,6 @@ COPY package*.json .
 RUN yarn install
 
 # Create and define the application's working directory.
-RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 COPY . .
 EXPOSE 8080
