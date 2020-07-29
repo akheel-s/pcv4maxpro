@@ -15,4 +15,4 @@ services:
     - 8080:8080
     stdin_open: true
     tty: true
-    command: "/usr/src/app/entrypoint.sh"
+    command: sh /usr/src/app/entrypoint.sh
