@@ -7,12 +7,11 @@ WORKDIR /usr/src/cache
 
 # Install the application's dependencies into the node_modules's cache directory.
 COPY package*.json .
-RUN yarn install
-
+RUN yarn global add @vue/cli
+RUN yarn 
 # Create and define the application's working directory.
 WORKDIR /usr/src/app
 COPY . .
-RUN yarn global add @vue/cli
 EXPOSE 8080
 
 CMD [ "yarn", "run", "serve" ]
