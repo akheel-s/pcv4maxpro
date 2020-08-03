@@ -19,6 +19,6 @@ export default Vue.extend({
 
   data: () => ({
     //
-  }),
-});
+  })
+})
 </script>
