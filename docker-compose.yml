@@ -6,8 +6,7 @@ services:
     environment: 
     - NODE_ENV=development
     - CHOKIDAR_USEPOLLING=true
-    - MEMORY_LIMIT=8192
-    # *Change threads depending on processing power/threads available
+    - MEMORY_LIMIT=2048
     - MAX_THREADS=4
     env_file:
     - .env

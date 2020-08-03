@@ -3,30 +3,30 @@
     <div class="login__navbar">
       <img src="@/assets/Pilotcity_logo.png" class="login__image" />
       <span class="text-h4 login__header font-weight-black">PilotCity</span>
-      <v-btn @click="callback" class="login__button">Login</v-btn>
-      <v-btn @click="callback" class="login__signup">Signup</v-btn>
+      <v-btn class="login__button" @click="callback">Login</v-btn>
+      <v-btn class="login__signup" @click="callback">Signup</v-btn>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Login'
 };
 </script>
 
 <style lang="scss">
-.login{
-  &__background{
-      height: 100%;
-      background-color: #4f4f4f;
+.login {
+  &__background {
+    height: 100%;
+    background-color: #4f4f4f;
   }
 }
 
-.login{
-  &__navbar{
+.login {
+  &__navbar {
   }
-  &__header{
+  &__header {
     color: #f2f2f2;
   }
 }
