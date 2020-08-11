@@ -3,13 +3,15 @@
     <div class="login__navbar">
       <img src="@/assets/Pilotcity_logo.png" class="login__image" />
       <span class="text-h4 login__header font-weight-black">PilotCity</span>
-      <v-btn class="login__button" @click="callback">Login</v-btn>
-      <v-btn class="login__signup" @click="callback">Signup</v-btn>
+      <v-btn class="login__button">Login</v-btn>
+      <v-btn class="login__signup">Signup</v-btn>
     </div>
   </div>
 </template>
 
 <script>
+import { ref, reactive } from '@vue/composition-api';
+
 export default {
   name: 'Login'
 };
