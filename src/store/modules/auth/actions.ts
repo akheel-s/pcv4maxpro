@@ -1,17 +1,19 @@
 import { ActionTree } from 'vuex';
 import { RootState } from '@/store/state';
+import * as Realm from 'realm-web';
 import { MutationTypes } from './mutations';
 import authState from './state';
 
-export const enum ActionTypes {
-  LOGIN_ANON = '🐱‍👤 Login Anonymous',
-  LOGIN_USER = '😎 Login User',
-  SIGNUP = '🔏📧 Sending Email Confirmation',
-  LOGOUT_USER = '👋 Logout'
+export enum ActionTypes {
+  loginAnon,
+  loginUser,
+  signup,
+  confirmUser,
+  logout
 }
 
 export const actions: ActionTree<typeof authState, RootState> = {
-  async [ActionTypes.LOGIN_ANON]({ commit, rootState }) {
+  async loginAnon({ commit, rootState }) {
     try {
       commit(
         MutationTypes.LOGIN_ANON,
@@ -21,7 +23,7 @@ export const actions: ActionTree<typeof authState, RootState> = {
       commit(MutationTypes.LOGIN_ERROR);
     }
   },
-  async [ActionTypes.LOGIN_USER]({ commit, rootState }, { email, password }) {
+  async loginUser({ commit, rootState }, { email, password }: { email: string; password: string }) {
     try {
       commit(
         MutationTypes.LOGIN_USER,
@@ -32,7 +34,7 @@ export const actions: ActionTree<typeof authState, RootState> = {
       commit(MutationTypes.LOGIN_ERROR, err);
     }
   },
-  async [ActionTypes.SIGNUP]({ commit, rootState }, { email, password }) {
+  async signup({ commit, rootState }, { email, password }: { email: string; password: string }) {
     try {
       await rootState.realmApp.app.emailPasswordAuth.registerUser(email, password);
     } catch (err) {
@@ -40,7 +42,15 @@ export const actions: ActionTree<typeof authState, RootState> = {
       commit(MutationTypes.SIGNUP_ERROR, err);
     }
   },
-  async [ActionTypes.LOGOUT_USER]({ commit, rootState }) {
+  async confirmUser({ commit, rootState }, { token, tokenId }) {
+    try {
+      await rootState.realmApp.app.emailPasswordAuth.confirmUser(token, tokenId);
+      commit(MutationTypes.CONFIRMED_USER);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async logout({ commit, rootState }) {
     try {
       await rootState.realmApp.app.currentUser?.logOut();
     } catch (err) {
