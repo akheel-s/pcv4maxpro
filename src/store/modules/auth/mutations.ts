@@ -8,7 +8,9 @@ export const enum MutationTypes {
   SIGNUP = '🔏📧✔ Confirmation Email Sent',
   SIGNUP_ERROR = '🔏❌ Signup Error',
   LOGOUT = '👋✔ Logged Out',
-  LOGOUT_ERROR = '👋❌Log Out failed'
+  LOGOUT_ERROR = '👋❌Log Out failed',
+  CONFIRMED_USER = '🔍👤 Confirmed User',
+  CONFIRMATION_ERROR = '🔍❌ User Confirmation Failed'
 }
 export const mutations: MutationTree<typeof authState> = {
   [MutationTypes.LOGIN_ANON](state, user: typeof authState.user) {
@@ -32,5 +34,10 @@ export const mutations: MutationTree<typeof authState> = {
   [MutationTypes.LOGOUT_ERROR](state, errorCode: string) {
     state.error = errorCode;
     console.error(errorCode);
+  },
+  [MutationTypes.CONFIRMED_USER]: () => {},
+  [MutationTypes.CONFIRMATION_ERROR](state, errorCode: string) {
+    state.error = errorCode;
+    console.error('Could not verify email');
   }
 };
