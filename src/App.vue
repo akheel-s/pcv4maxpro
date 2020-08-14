@@ -1,20 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <Login />
+      <Nav />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Login from './views/Login/Login.vue';
+import Nav from './views/ManageProgram/components/Nav.vue';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    Login
+    Nav
   },
 
   data: () => ({
