@@ -1,11 +1,20 @@
 <template>
   <div class="manage-program__entire-body">
-    <div class="manage-program__top-line"></div>
+    <div class="manage-program__top-part">
+      <div class="manage-program__top-line"></div>
+    </div>
     <div class="manage-program__title text-h5">Program name</div>
 
     <div class="manage-program__date text-caption">
-      <div class="manage-program__start-date font-weight-black">{{ startDate }}</div>
-      <div class="manage-program__end-date font-weight-black">{{ endDate }}</div>
+      <div class="manage-program__start-date font-weight-black">
+        {{ startDate }}
+      </div>
+
+      <div class="manage-program__dashed-line"><hr /></div>
+
+      <div class="manage-program__end-date font-weight-black">
+        {{ endDate }}
+      </div>
     </div>
     <div class="manage-program__body">
       <v-navigation-drawer class="manage-program__navigation" width="100%" permanent>
@@ -57,14 +66,17 @@ export default {
   &__entire-body {
   }
 
+  &__top-part {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
   &__top-line {
-    margin: auto;
+    width: 100%;
     border: 1px solid black;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: black;
-    border-top: transparent;
-    width: 225px;
     height: 7px;
   }
   &__title {
@@ -86,6 +98,19 @@ export default {
     padding: 8px 14px;
     margin-left: 12px;
   }
+
+  &__dashed-line {
+    width: 87%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 12px;
+    padding-left: 12px;
+
+    & hr {
+      border: 1.5px dashed #e0e0e0;
+    }
+  }
+
   &__end-date {
     border: 1px solid white;
     border-radius: 10px;
@@ -124,6 +149,13 @@ export default {
 
   &__titles {
     padding-left: 18px;
+  }
+}
+
+@media only screen and (max-width: 1904px) {
+  .manage-program {
+    &__date {
+    }
   }
 }
 </style>
