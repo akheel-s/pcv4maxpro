@@ -1,9 +1,12 @@
 <template>
   <div class="manage-program__entire-body">
     <div class="manage-program__top-part">
-      <div class="manage-program__top-line"></div>
+      <div
+        class="manage-program__top-line"
+        :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }"
+      ></div>
     </div>
-    <div class="manage-program__title text-h5">Program name</div>
+    <div class="manage-program__title text-h5 font-weight-black">Program name</div>
 
     <div class="manage-program__date text-caption">
       <div class="manage-program__start-date font-weight-black">
@@ -17,19 +20,24 @@
       </div>
     </div>
     <div class="manage-program__body">
-      <v-navigation-drawer class="manage-program__navigation" width="100%" permanent>
+      <v-list-item-group class="manage-program__navigation" width="100%" permanent color="accent">
         <div v-for="item in items" :key="item.title">
           <hr />
-          <v-list-item link :ripple="false">
+          <v-list-item
+            link
+            :ripple="false"
+            :active-class="`${item.color}`"
+            @click="setActive(item)"
+          >
             <v-list-item-content class="manage-program__items text-h5 font-weight-black">
               <v-list-item-title>
-                <div class="manage-program__titles">{{ item.title }}</div>
+                <div class="manage-program__titles secondary--text">{{ item.title }}</div>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </div>
         <hr />
-      </v-navigation-drawer>
+      </v-list-item-group>
     </div>
   </div>
 </template>
@@ -43,15 +51,21 @@ export default {
     const startDate = ref('DAY, MON 1');
     const endDate = ref('DAY, MON 1');
     const items = ref([
-      { title: 'Detail' },
-      { title: 'Manage' },
-      { title: 'Participant' },
-      { title: 'Stakeholder' }
+      { title: 'Detail', color: 'purple' },
+      { title: 'Manage', color: 'blue' },
+      { title: 'Participant', color: 'green' },
+      { title: 'Stakeholder', color: 'red' }
     ]);
+    const activeTab = ref({ title: 'Detail', color: 'purple' });
+    function setActive(item) {
+      activeTab.value = item;
+    }
     return {
       startDate,
       endDate,
-      items
+      items,
+      activeTab,
+      setActive
     };
   }
 };
@@ -63,9 +77,6 @@ export default {
   color: white;
 }
 .manage-program {
-  &__entire-body {
-  }
-
   &__top-part {
     padding-left: 13px;
     padding-right: 13px;
@@ -73,10 +84,8 @@ export default {
 
   &__top-line {
     width: 100%;
-    border: 1px solid black;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: black;
     height: 7px;
   }
   &__title {
@@ -100,11 +109,9 @@ export default {
   }
 
   &__dashed-line {
-    width: 87%;
+    width: 8vw;
     margin-top: auto;
     margin-bottom: auto;
-    padding-right: 12px;
-    padding-left: 12px;
 
     & hr {
       border: 1.5px dashed #e0e0e0;
@@ -122,7 +129,13 @@ export default {
     display: flex;
     justify-content: center;
   }
+
   &__navigation {
+    width: 100%;
+    &.v-list-item-group .v-list-item--active {
+      margin: 4px 10px;
+      border-radius: 5px;
+    }
     & hr {
       border: 1.5px solid #e0e0e0;
       margin-left: 13px;
@@ -136,26 +149,11 @@ export default {
       &__border {
         width: 0px;
       }
-      &__content {
-        background-color: #bdbdbd;
-        & .theme--light {
-          &.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-            color: white !important;
-          }
-        }
-      }
     }
   }
 
   &__titles {
     padding-left: 18px;
-  }
-}
-
-@media only screen and (max-width: 1904px) {
-  .manage-program {
-    &__date {
-    }
   }
 }
 </style>
