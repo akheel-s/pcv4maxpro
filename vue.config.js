@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const os = require('os');
 
 module.exports = {
-  transpileDependencies: ['vuetify'],
+  transpileDependencies: ['vuetify', 'vuex-composition-helpers'],
   pluginOptions: {
     apollo: {
       lintGQL: true

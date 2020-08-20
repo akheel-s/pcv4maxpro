@@ -7,7 +7,7 @@ import createMockStore from './store/store.spec';
 
 const [localVue, vuetify] = [createLocalVue(), new Vuetify()];
 localVue.use(Vuex);
-describe('Actions.vue', () => {
+describe('Login.vue', () => {
   let { store, authActions } = createMockStore();
 
   let wrapper = mount(Login, { store, localVue, vuetify });
@@ -15,11 +15,15 @@ describe('Actions.vue', () => {
     ({ store, authActions } = createMockStore());
     wrapper = mount(Login, { store, localVue, vuetify });
   });
-
+  afterEach(() => {
+    wrapper.destroy();
+  });
   it('dispatches "loginUser" when login button is clicked', async () => {
-    wrapper.setData({
-      email: 'test@email.com',
-      password: 'SuperSecretSecurePassword1000'
+    wrapper = mount(Login, {
+      data: () => ({ email: 'test@email.com', password: 'SuperSecretSecurePassword1000' }),
+      store,
+      localVue,
+      vuetify
     });
     await flushPromises();
     const btn = wrapper.findComponent({ ref: 'loginBtn' });
