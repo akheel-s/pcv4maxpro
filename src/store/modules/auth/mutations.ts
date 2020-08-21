@@ -10,16 +10,16 @@ export const enum MutationTypes {
   LOGOUT = '👋✔ Logged Out',
   LOGOUT_ERROR = '👋❌Log Out failed',
   CONFIRMED_USER = '🔍👤 Confirmed User',
-  CONFIRMATION_ERROR = '🔍❌ User Confirmation Failed'
+  CONFIRMATION_ERROR = '🔍❌ User Confirmation Failed',
+  PASSWORD_RESET = '🔃🔒 Password Reset',
+  PASSWORD_RESET_ERROR = '🔃🔒❌ Password Reset Error'
 }
 export const mutations: MutationTree<typeof authState> = {
   [MutationTypes.LOGIN_ANON](state, user: typeof authState.user) {
     state.user = user;
-    state.error = false;
   },
   [MutationTypes.LOGIN_USER](state, user: typeof authState.user) {
     state.user = user;
-    state.error = false;
   },
   [MutationTypes.LOGIN_ERROR](state, errorCode: string) {
     state.error = errorCode;
@@ -39,5 +39,10 @@ export const mutations: MutationTree<typeof authState> = {
   [MutationTypes.CONFIRMATION_ERROR](state, errorCode: string) {
     state.error = errorCode;
     console.error('Could not verify email');
+  },
+  [MutationTypes.PASSWORD_RESET]: () => {},
+  [MutationTypes.PASSWORD_RESET_ERROR](state, errorCode: string) {
+    state.error = errorCode;
+    console.error('Could not reset password');
   }
 };

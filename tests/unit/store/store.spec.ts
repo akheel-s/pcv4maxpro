@@ -1,5 +1,5 @@
 import { createLocalVue } from '@vue/test-utils';
-import Vuex, { StoreOptions, Store } from 'vuex';
+import Vuex, { StoreOptions } from 'vuex';
 import { ActionTypes } from '@/store/modules/auth/actions';
 import auth from '../../../src/store/modules/auth';
 import realmApp from '../../../src/store/modules/realmApp';
@@ -7,11 +7,9 @@ import { RootState } from '../../../src/store/state';
 
 function mockActions<T extends Record<string, any>>(actions: T): Record<keyof T, () => jest.Mock> {
   const mock = {};
-  Object.values(actions)
-    .filter(key => !Number.isNaN(Number(ActionTypes[key])))
-    .forEach(key => {
-      mock[key] = jest.fn();
-    });
+  Object.keys(actions).forEach(key => {
+    mock[key] = jest.fn();
+  });
   return mock as Record<keyof T, () => jest.Mock>;
 }
 
@@ -29,9 +27,9 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('RootStore', () => {
-  let store: Store<RootState>;
+  let { store } = createMockStore();
   beforeEach(() => {
-    store = createMockStore().store;
+    ({ store } = createMockStore());
   });
   it('contains two modules', () => {
     expect(store.hasModule('auth')).toBe(true);

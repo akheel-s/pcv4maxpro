@@ -20,9 +20,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'linebreak-style': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    "@typescript-eslint/no-empty-function": 'off',
-    '@typescript-eslint/no-explicit-any':'off',
-    'no-plusplus':'off'
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
   overrides: [
     {
