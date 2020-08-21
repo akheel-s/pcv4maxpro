@@ -7,9 +7,7 @@
       <div class="guide__locks guide__locks--left unlocked">
         <v-icon class="guide__lock">mdi-lock</v-icon>
       </div>
-      <div class="">
-        <component :is="currentUnit" />
-      </div>
+      <component :is="currentUnit" />
       <div class="guide__locks guide__locks--right locked">
         <v-icon class="guide__lock">mdi-lock-open</v-icon>
       </div>
@@ -64,20 +62,20 @@
 }
 </style>
 <script>
-import Home from '@/views/Home.vue';
+import Test from '@/components/Test.vue';
 import { ref } from '@vue/composition-api';
 import Bar from './Bar.vue';
 
 export default {
   setup() {
-    const currentUnit = ref(Home);
+    const currentUnit = ref(Test);
     return {
       currentUnit
     };
   },
   components: {
     'guide-bar': Bar,
-    Home
+    Test
   }
 };
 </script>
