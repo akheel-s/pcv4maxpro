@@ -12,11 +12,9 @@ import Nav from './views/ManageProgram/components/Nav.vue';
 
 export default Vue.extend({
   name: 'App',
-
   components: {
     Nav
   },
-
   data: () => ({
     //
   })
