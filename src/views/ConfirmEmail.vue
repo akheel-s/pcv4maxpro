@@ -1,7 +1,27 @@
 <template>
-  <div class="signup__body">
-    <div class="signup__title text-h4 font-weight-black">
-      <span>{{ displayMessage }}</span>
+  <div class="signup__background">
+    <div class="signup__body">
+      <div class="signup__buffer">
+        <v-card
+          class="signup__maincard mx-auto justify-center"
+          width="70%"
+          height="90%"
+          color="grey"
+          elevation="10"
+        >
+          <v-card-title class="signup__icon justify-center" height="150">
+            <div class="signup__icon1">
+              <v-icon x-large="500">
+                mdi-account-circle-outline
+              </v-icon>
+            </div>
+          </v-card-title>
+
+          <v-card-text class="signup__title text-h4 text-center font-weight-black">
+            {{ displayMessage }}
+          </v-card-text>
+        </v-card>
+      </div>
     </div>
   </div>
 </template>
@@ -52,3 +72,26 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.signup {
+  &__background {
+    padding-top: 30%;
+  }
+  &__maincard {
+    margin-top: 100;
+    padding-top: 100;
+  }
+
+  &__icon {
+    margin-top: 100;
+  }
+  &__title {
+    margin-top: 0;
+  }
+
+  &__icon1 {
+    height: 500;
+  }
+}
+</style>
