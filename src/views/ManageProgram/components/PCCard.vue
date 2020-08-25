@@ -51,7 +51,7 @@ export default {
   &__content {
     padding: 10px;
     background: #f2f2f2;
-    border: 1px solid #828282;
+    border: 1px solid #f2f2f2;
     border-radius: 10px;
   }
 
