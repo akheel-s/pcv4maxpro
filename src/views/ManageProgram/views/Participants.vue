@@ -17,17 +17,21 @@
       <v-chip class="participants__pills--outline"></v-chip>
     </div>
 
-    <div v-for="item in items" :key="item.name" class="participants__manage-bar">
-      <div class="participants__index-num blue rounded-circle align-center justify-center">
-        {{ item.number }}
-      </div>
-      <div class="participants__full-name text-h6 font-weight-bold">{{ item.name }}</div>
-      <V-btn class="participants__approve" depressed color="green" :ripple="false">
-        <v-icon large color="#F2F2F2">mdi-check</v-icon>
-      </V-btn>
-      <V-btn class="participants__deny" depressed color="red" :ripple="false">
-        <v-icon large color="#F2F2F2">mdi-close</v-icon>
-      </V-btn>
+    <div class="participants__manage-bar">
+      <v-data-table :headers="header" :items="items" sort-by="first">
+        <template v-slot:item.approve>
+          <v-btn class="participants__approve" depressed color="green" :ripple="false">
+            <v-icon large color="#F2F2F2">
+              mdi-check
+            </v-icon>
+          </v-btn>
+        </template>
+        <template v-slot:item.deny>
+          <v-btn class="participants__approve" depressed color="red" :ripple="false">
+            <v-icon large color="#F2F2F2">mdi-close</v-icon>
+          </v-btn>
+        </template>
+      </v-data-table>
     </div>
   </div>
 </template>
@@ -38,19 +42,37 @@ import { ref } from '@vue/composition-api';
 export default {
   name: 'Participants',
   setup() {
-    const items = ref([
-      { number: '1', name: 'Prajit saravanan' },
-      { number: '2', name: 'Akheel' },
-      { number: '3', name: 'Jerold' },
-      { number: '4', name: 'Eric' },
-      { number: '5', name: 'Derick' },
-      { number: '6', name: 'Monica' },
-      { number: '7', name: 'Stephanie' },
-      { number: '8', name: 'Kenneth' },
-      { number: '9', name: 'Kristen' },
-      { number: '10', name: 'Sean' }
+    const header = ref([
+      { text: 'Index', align: 'start', value: 'index', width: '10%' },
+      { text: 'First Name', value: 'first', width: '10%' },
+      { text: 'Last Name', value: 'last', width: '10%' },
+      { text: 'School', value: 'school', width: '10%' },
+      { text: 'Approve', value: 'approve', sortable: false, width: '1%' },
+      { text: 'Deny', value: 'deny', sortable: false, width: '10%' }
     ]);
-    return { items };
+    const items = ref([
+      { index: '1', first: 'Prajit', last: 'saravanan', school: 'IHS' },
+      { index: '2', first: 'Akheel', last: 'Shaik', school: 'IHS' },
+      { index: '3', first: 'Jerold', last: 'Inocencio', school: 'IHS' },
+      { index: '4', first: 'Eric', last: 'Reyes', school: 'IHS' },
+      { index: '5', first: 'Derick', last: 'Lee', school: 'IHS' },
+      { index: '6', first: 'Monica', last: 'Willemsz', school: 'IHS' },
+      { index: '7', first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
+      { index: '8', first: 'Kenneth', last: 'Thai', school: 'AHS' },
+      { index: '9', first: 'Kristen', last: 'Chan', school: 'AHS' },
+      { index: '10', first: 'Sean', last: 'Morgan', school: 'AHS' },
+      { index: '11', first: 'Prajit', last: 'saravanan', school: 'IHS' },
+      { index: '12', first: 'Akheel', last: 'Shaik', school: 'IHS' },
+      { index: '13', first: 'Jerold', last: 'Inocencio', school: 'IHS' },
+      { index: '14', first: 'Eric', last: 'Reyes', school: 'IHS' },
+      { index: '15', first: 'Derick', last: 'Lee', school: 'IHS' },
+      { index: '16', first: 'Monica', last: 'Willemsz', school: 'IHS' },
+      { index: '17', first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
+      { index: '18', first: 'Kenneth', last: 'Thai', school: 'AHS' },
+      { index: '19', first: 'Kristen', last: 'Chan', school: 'AHS' },
+      { index: '20', first: 'Sean', last: 'Morgan', school: 'AHS' }
+    ]);
+    return { items, header };
   }
 };
 </script>
@@ -115,8 +137,6 @@ export default {
   }
 
   &__manage-bar {
-    display: flex;
-    flex-basis: 1;
     margin-left: 56px;
     margin-bottom: 22px;
   }
@@ -137,9 +157,6 @@ export default {
   }
 
   &__approve {
-    display: flex;
-    flex-basis: 1;
-    margin-left: 288px;
     &.v-btn {
       width: 99px;
       border-radius: 10px;
@@ -147,9 +164,6 @@ export default {
   }
 
   &__deny {
-    display: flex;
-    flex-basis: 1;
-    margin-left: 27px;
     &.v-btn {
       width: 99px;
       border-radius: 10px;
