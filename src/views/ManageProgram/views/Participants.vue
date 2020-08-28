@@ -48,7 +48,7 @@ export default {
       { text: 'Last Name', value: 'last', width: '10%' },
       { text: 'School', value: 'school', width: '10%' },
       { text: 'Approve', value: 'approve', sortable: false, width: '1%' },
-      { text: 'Deny', value: 'deny', sortable: false, width: '10%' }
+      { text: 'Deny', value: 'deny', sortable: false, width: '1%' }
     ]);
     const items = ref([
       { index: '1', first: 'Prajit', last: 'saravanan', school: 'IHS' },
