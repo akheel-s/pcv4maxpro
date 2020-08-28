@@ -7,34 +7,6 @@
     </div>
     <div class="signup__inputs">
       <validation-observer v-slot="{ invalid }" class="signup__firstname">
-        <div class="signup__first text-subtitle-2">First Name</div>
-        <validation-provider v-slot="{ errors }" rules="required">
-          <v-text-field
-            v-model="firstName"
-            :error-messages="errors"
-            color="white"
-            label="First Name"
-            class="signup__input"
-            single-line
-            outlinedgi
-            full-width
-          ></v-text-field>
-        </validation-provider>
-
-        <div class="signup__lastname text-subtitle-2">Last Name</div>
-        <validation-provider v-slot="{ errors }" rules="required">
-          <v-text-field
-            v-model="lastName"
-            :error-messages="errors"
-            color="white"
-            label="Last Name"
-            class="signup__input"
-            single-line
-            outlined
-            full-width
-          ></v-text-field>
-        </validation-provider>
-
         <div class="signup__email text-subtitle-2">Email</div>
         <validation-provider v-slot="{ errors }" rules="required|email">
           <v-text-field
@@ -48,30 +20,14 @@
             full-width
           ></v-text-field>
         </validation-provider>
-
-        <div class="signup__password text-subtitle-2">Password</div>
-        <validation-provider v-slot="{ errors }" name="confirm" rules="required">
-          <Password
-            v-model="password"
-            color="white"
-            label="Password"
-            class="signup__input"
-            single-line
-            outlined
-            full-width
-            toggle
-          ></Password>
-          <span>{{ errors[0] }}</span>
-        </validation-provider>
-
-        <div class="signup__confirmpassword text-subtitle-2">Confirm Password</div>
-        <validation-provider v-slot="{ errors }" rules="required|password:@confirm">
+        <div class="signup__confirmpassword text-subtitle-2">Password</div>
+        <validation-provider v-slot="{ errors }" rules="required|min:6">
           <v-text-field
-            v-model="confirmPassword"
+            v-model="password"
             type="password"
             :error-messages="errors"
             color="white"
-            label="Confirm Password"
+            label="Password"
             class="signup__input"
             single-line
             outlined
@@ -102,46 +58,55 @@
           depressed
           color="green"
           :disabled="invalid || !terms"
+          :loading="loading"
           @click="submit"
         >
           Signup
         </v-btn>
+        <v-alert v-if="msg" :type="type">{{ msg }}</v-alert>
       </validation-observer>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Password from 'vue-password-strength-meter';
 import { reactive, toRefs } from '@vue/composition-api';
 import { useActions } from '@/store/modules/auth';
 
 export default {
   name: 'Signup',
-  components: {
-    Password
-  },
+  components: {},
 
   setup() {
     // * Signup main
     const state = reactive({
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
-      confirmPassword: '',
       terms: false
+    });
+    // * UI handling
+    const ui = reactive({
+      msg: '',
+      type: 'success',
+      loading: false
     });
     const { signup } = useActions(['signup']);
     async function submit() {
-      localStorage.setItem('firstName', state.firstName);
-      localStorage.setItem('lastName', state.lastName);
-      await signup({ email: state.email, password: state.password });
+      ui.loading = true;
+      try {
+        await signup({ email: state.email, password: state.password });
+        ui.type = 'success';
+        ui.msg = 'An email confirmation has been sent to your address';
+      } catch (err) {
+        ui.msg = (err as Error).message.includes('409')
+          ? 'Email already in use'
+          : 'Could not signup';
+        ui.type = 'error';
+      }
+      ui.loading = false;
     }
 
-    // Reset Password
-
-    return { ...toRefs(state), submit };
+    return { ...toRefs(state), submit, ...toRefs(ui) };
   },
   methods: {}
 };

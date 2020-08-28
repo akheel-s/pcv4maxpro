@@ -1,5 +1,5 @@
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
-import { required, email } from 'vee-validate/dist/rules';
+import { required, email, min } from 'vee-validate/dist/rules';
 
 extend('required', {
   ...required,
@@ -15,5 +15,11 @@ extend('password', {
     return value === params.target;
   },
   message: 'Password confirmation does not match'
+});
+extend('min', {
+  ...min,
+  message(value, args) {
+    return `Must have at least ${args.length} characters`;
+  }
 });
 export { ValidationObserver, ValidationProvider };

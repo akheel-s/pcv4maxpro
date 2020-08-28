@@ -57,8 +57,8 @@ export const actions: AuthActions = {
       await rootState.realmApp.app.emailPasswordAuth.registerUser(email, password);
       commit(MutationTypes.SIGNUP);
     } catch (err) {
-      if (typeof err !== 'string') console.error(err);
       commit(MutationTypes.SIGNUP_ERROR, err);
+      throw err;
     }
   },
   async confirmUser({ commit, rootState }, { token, tokenId }) {
