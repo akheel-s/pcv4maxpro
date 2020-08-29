@@ -1,20 +1,5 @@
 <template>
   <div class="login__background">
-    <div class="login__navbar">
-      <img src="@/assets/Pilotcity_logo.png" class="login__image" />
-      <div class="text-h5 login__header font-weight-black text-sm-h4">
-        <span>PilotCity</span>
-      </div>
-      <div class="login__actions d-none d-sm-flex">
-        <v-btn class="login__button rounded-lg" depressed color="white" outlined :ripple="false">
-          <span class="font-weight-black">Login</span>
-        </v-btn>
-        <v-btn class="login__signup rounded-lg" depressed color="#828282" :ripple="false">
-          <span class="font-weight-black">Signup</span>
-        </v-btn>
-      </div>
-      <v-icon class="login__hamburger d-sm-none" large color="white">mdi-menu</v-icon>
-    </div>
     <div class="login__body">
       <div class="login__title text-h4 font-weight-black">
         <span>Welcome back.</span>
@@ -37,7 +22,7 @@
 
         <div class="login__password text-subtitle-2">password</div>
         <validation-provider v-slot="{ errors }" rules="required">
-          <password ref="passwordInput" v-model="password" toggle></password>
+          <v-text-field ref="passwordInput" v-model="password" toggle></v-text-field>
           <span>{{ errors[0] }}</span>
         </validation-provider>
 
@@ -58,19 +43,20 @@
 
 <script lang="ts">
 import { createNamespacedHelpers } from 'vuex';
-import Password from 'vue-password-strength-meter';
+import { reactive, toRefs } from '@vue/composition-api';
+import { ActionTypes } from '@/store/modules/auth/actions';
 
 const { mapActions } = createNamespacedHelpers('auth');
 export default {
-  components: {
-    Password
+  setup() {
+    const state = reactive({
+      email: '',
+      password: ''
+    });
+    return { ...toRefs(state) };
   },
-  data: () => ({
-    email: '',
-    password: ''
-  }),
   methods: {
-    ...mapActions(['loginUser'])
+    ...mapActions([ActionTypes.loginUser])
   }
 };
 </script>
@@ -101,8 +87,8 @@ export default {
     display: flex;
     align-items: center;
   }
-  &__actions {
-  }
+  // &__actions {
+  // }
   &__button {
     margin-top: 11px;
     & .v-btn__content {
@@ -155,8 +141,8 @@ export default {
     margin-bottom: 4.5px;
     color: #ffffff;
   }
-  &__input {
-  }
+  // &__input {
+  // }
   &__passwordalign {
     width: 100%;
     max-width: 349.11px;
@@ -183,8 +169,8 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .login {
-    &__header {
-    }
+    // &__header {
+    // }
   }
 }
 </style>

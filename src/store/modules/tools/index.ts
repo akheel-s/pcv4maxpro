@@ -1,23 +1,22 @@
 import { Module } from 'vuex';
 import { createNamespacedHelpers } from 'vuex-composition-helpers';
-import { RootState } from '@/store/state';
-import { AuthGetters, getters } from './getters';
-import { actions, AuthActions } from './actions';
+import { getters, ToolGetters } from './getters';
+import { actions, ToolActions } from './actions';
 import { mutations } from './mutations';
+import { RootState } from '../../state';
 import state from './state';
 
-// Returns the shared instance of the Realm app.
-const auth: Module<typeof state, RootState> = {
+const tools: Module<typeof state, RootState> = {
   namespaced: true,
   state,
   mutations,
   actions,
   getters
 };
-export default auth;
+export default tools;
 export const { useState, useGetters, useMutations, useActions } = createNamespacedHelpers<
   typeof state,
-  AuthGetters,
-  AuthActions,
+  ToolGetters,
+  ToolActions,
   any
->('auth');
+>('tools');
