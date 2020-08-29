@@ -25,6 +25,7 @@ export default {
 <style lang="scss">
 .select {
   &__entire-body {
+    height: 100%;
   }
 }
 </style>
