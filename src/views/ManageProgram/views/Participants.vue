@@ -1,8 +1,6 @@
 <template>
   <div class="participants__entire-body">
-    <div class="participants__title text-h4 font-weight-black">
-      Manage Participants
-    </div>
+    <div class="participants__title text-h4 font-weight-black">Manage Participants</div>
     <div class="participants__profile-btn">
       <v-chip class="participants__pills" color="#bdbdbd">
         <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
@@ -18,12 +16,10 @@
     </div>
 
     <div class="participants__manage-bar">
-      <v-data-table :headers="header" :items="items" sort-by="first">
+      <v-data-table :headers="header" :items="items" sort-by="index" @current-items="indexHandler">
         <template v-slot:item.approve>
           <v-btn class="participants__approve" depressed color="green" :ripple="false">
-            <v-icon large color="#F2F2F2">
-              mdi-check
-            </v-icon>
+            <v-icon large color="#F2F2F2"> mdi-check </v-icon>
           </v-btn>
         </template>
         <template v-slot:item.deny>
@@ -37,42 +33,64 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { ref, Ref } from '@vue/composition-api';
+import shortid from 'shortid';
 
 export default {
   name: 'Participants',
   setup() {
     const header = ref([
-      { text: 'Index', align: 'start', value: 'index', width: '10%' },
+      { text: 'Index', align: 'start', value: 'index', sortable: false, width: '10%' },
       { text: 'First Name', value: 'first', width: '10%' },
       { text: 'Last Name', value: 'last', width: '10%' },
       { text: 'School', value: 'school', width: '10%' },
       { text: 'Approve', value: 'approve', sortable: false, width: '1%' },
       { text: 'Deny', value: 'deny', sortable: false, width: '1%' }
     ]);
-    const items = ref([
-      { index: '1', first: 'Prajit', last: 'saravanan', school: 'IHS' },
-      { index: '2', first: 'Akheel', last: 'Shaik', school: 'IHS' },
-      { index: '3', first: 'Jerold', last: 'Inocencio', school: 'IHS' },
-      { index: '4', first: 'Eric', last: 'Reyes', school: 'IHS' },
-      { index: '5', first: 'Derick', last: 'Lee', school: 'IHS' },
-      { index: '6', first: 'Monica', last: 'Willemsz', school: 'IHS' },
-      { index: '7', first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
-      { index: '8', first: 'Kenneth', last: 'Thai', school: 'AHS' },
-      { index: '9', first: 'Kristen', last: 'Chan', school: 'AHS' },
-      { index: '10', first: 'Sean', last: 'Morgan', school: 'AHS' },
-      { index: '11', first: 'Prajit', last: 'saravanan', school: 'IHS' },
-      { index: '12', first: 'Akheel', last: 'Shaik', school: 'IHS' },
-      { index: '13', first: 'Jerold', last: 'Inocencio', school: 'IHS' },
-      { index: '14', first: 'Eric', last: 'Reyes', school: 'IHS' },
-      { index: '15', first: 'Derick', last: 'Lee', school: 'IHS' },
-      { index: '16', first: 'Monica', last: 'Willemsz', school: 'IHS' },
-      { index: '17', first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
-      { index: '18', first: 'Kenneth', last: 'Thai', school: 'AHS' },
-      { index: '19', first: 'Kristen', last: 'Chan', school: 'AHS' },
-      { index: '20', first: 'Sean', last: 'Morgan', school: 'AHS' }
+    const items: Ref<
+      {
+        index: number;
+        first: string;
+        last: string;
+        school: string;
+        id?: string;
+      }[]
+    > = ref([
+      { index: 1, first: 'Prajit', last: 'saravanan', school: 'IHS' },
+      { index: 2, first: 'Akheel', last: 'Shaik', school: 'IHS' },
+      { index: 3, first: 'Jerold', last: 'Inocencio', school: 'IHS' },
+      { index: 4, first: 'Eric', last: 'Reyes', school: 'IHS' },
+      { index: 5, first: 'Derick', last: 'Lee', school: 'IHS' },
+      { index: 6, first: 'Monica', last: 'Willemsz', school: 'IHS' },
+      { index: 7, first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
+      { index: 8, first: 'Kenneth', last: 'Thai', school: 'AHS' },
+      { index: 9, first: 'Kristen', last: 'Chan', school: 'AHS' },
+      { index: 10, first: 'Sean', last: 'Morgan', school: 'AHS' },
+      { index: 11, first: 'Prajit', last: 'saravanan', school: 'IHS' },
+      { index: 12, first: 'Akheel', last: 'Shaik', school: 'IHS' },
+      { index: 13, first: 'Jerold', last: 'Inocencio', school: 'IHS' },
+      { index: 14, first: 'Eric', last: 'Reyes', school: 'IHS' },
+      { index: 15, first: 'Derick', last: 'Lee', school: 'IHS' },
+      { index: 16, first: 'Monica', last: 'Willemsz', school: 'IHS' },
+      { index: 17, first: 'Stephanie', last: 'Betancourt', school: 'AHS' },
+      { index: 18, first: 'Kenneth', last: 'Thai', school: 'AHS' },
+      { index: 19, first: 'Kristen', last: 'Chan', school: 'AHS' },
+      { index: 20, first: 'Sean', last: 'Morgan', school: 'AHS' }
     ]);
-    return { items, header };
+
+    items.value.forEach((item, index) => {
+      items.value[index].id = shortid();
+    });
+
+    function indexHandler(
+      arr: { index: number; first: string; last: string; school: string; id: string }[]
+    ) {
+      arr.forEach(({ id }, index) => {
+        const itemPos = items.value.findIndex(item => item.id === id);
+        items.value[itemPos].index = index + 1;
+      });
+    }
+    return { items, header, indexHandler };
   }
 };
 </script>
