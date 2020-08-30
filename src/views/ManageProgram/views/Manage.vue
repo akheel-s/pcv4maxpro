@@ -1,8 +1,6 @@
 <template>
   <div class="manage__entire-body">
-    <div class="manage__title text-h4 font-weight-black">
-      Manage Program
-    </div>
+    <div class="manage__title text-h4 font-weight-black">Manage Program</div>
     <div class="manage__profile-btn">
       <v-chip class="manage__pills" color="#bdbdbd">
         <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>

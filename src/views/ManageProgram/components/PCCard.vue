@@ -2,9 +2,7 @@
   <v-card class="pc-card__entire-body" rounded-lg>
     <div class="pc-card__title text-h6 font-weight-black">
       <div class="pc-card__main_title">
-        <slot name="title">
-          Data Card
-        </slot>
+        <slot name="title"> Data Card </slot>
       </div>
       <div class="pc-card__main_settings">
         <slot name="actions">
