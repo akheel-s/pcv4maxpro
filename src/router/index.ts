@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import { routes as ManageProgramRoutes } from '../views/ManageProgram';
+import { routes as MonitorProgramRoutes } from '../views/MonitorProgram';
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [...ManageProgramRoutes];
+const routes: Array<RouteConfig> = [...MonitorProgramRoutes];
 
 const router = new VueRouter({
   mode: 'history',

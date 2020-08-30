@@ -3,9 +3,9 @@ import * as Program from './views';
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/program/manage',
-    name: 'Manage',
-    component: Program.Manage
+    path: '/program/monitor',
+    name: 'Monitor',
+    component: Program.Monitor
   }
 ];
 

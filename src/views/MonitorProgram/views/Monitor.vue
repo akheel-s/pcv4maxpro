@@ -1,20 +1,20 @@
 <template>
-  <div class="manage__entire-body">
-    <div class="manage__title text-h4 font-weight-black">Manage Program</div>
-    <div class="manage__profile-btn">
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+  <div class="monitor__entire-body">
+    <div class="monitor__title text-h4 font-weight-black">Manage Program</div>
+    <div class="monitor__profile-btn">
+      <v-chip class="monitor__pills" color="#bdbdbd">
+        <v-icon class="monitor__close" x-small color="#F2F2F2">mdi-close</v-icon>
       </v-chip>
 
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+      <v-chip class="monitor__pills" color="#bdbdbd">
+        <v-icon class="monitor__close" x-small color="#F2F2F2">mdi-close</v-icon>
       </v-chip>
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+      <v-chip class="monitor__pills" color="#bdbdbd">
+        <v-icon class="monitor__close" x-small color="#F2F2F2">mdi-close</v-icon>
       </v-chip>
-      <v-chip class="manage__pills--outline"></v-chip>
+      <v-chip class="monitor__pills--outline"></v-chip>
     </div>
-    <div class="manage__graph">
+    <div class="monitor__graph">
       <pc-card v-for="item in items" :key="item.title">
         <template v-slot:title>{{ item.title }}</template>
         <template v-slot:actions> </template>
@@ -29,18 +29,18 @@ import { ref } from '@vue/composition-api';
 import { PCCard } from '../components';
 
 export default {
-  name: 'Manage',
+  name: 'Monitor',
   components: {
     'pc-card': PCCard
   },
   setup() {
     const items = ref([
-      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Participant', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Participant', image: 'https://picsum.photos/510/300?random' }
+      { title: 'Launch Day', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Cowork', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Research & Practice', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Ideate', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Hack', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Reflection', image: 'https://picsum.photos/510/300?random' }
     ]);
     return { items };
   }
@@ -52,7 +52,7 @@ export default {
   background: white;
   color: black;
 }
-.manage {
+.monitor {
   &__entire-body {
   }
 
@@ -129,7 +129,7 @@ export default {
 //to swich between the grid for diff width of the screen for 786px
 
 @media only screen and (max-width: 786px) {
-  .manage {
+  .monitor {
     &__graph {
       margin-left: 56px;
       margin-top: 76px;
@@ -144,7 +144,7 @@ export default {
 //to swich between the grid for diff width of the screen for min of 786px and max of 1024px
 
 @media only screen and (min-width: 786px) and (max-width: 1024px) {
-  .manage {
+  .monitor {
     &__graph {
       margin-left: 56px;
       margin-top: 76px;
