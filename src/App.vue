@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Nav from './views/ManageProgram/components/Nav.vue';
+import Nav from './views/MonitorProgram/components/Nav.vue';
 
 export default Vue.extend({
   name: 'App',

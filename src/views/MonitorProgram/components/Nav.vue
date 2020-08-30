@@ -51,10 +51,9 @@ export default {
     const startDate = ref('DAY, MON 1');
     const endDate = ref('DAY, MON 1');
     const items = ref([
-      { title: 'Detail', color: 'purple' },
-      { title: 'Manage', color: 'blue' },
-      { title: 'Participant', color: 'green' },
-      { title: 'Stakeholder', color: 'red' }
+      { title: 'View Program', color: 'purple' },
+      { title: 'Monitor', color: 'blue' },
+      { title: 'Participant', color: 'green' }
     ]);
     const activeTab = ref({ title: 'Detail', color: 'purple' });
     function setActive(item) {
@@ -140,6 +139,7 @@ export default {
       border: 1.5px solid #e0e0e0;
       margin-left: 13px;
       margin-right: 12px;
+      background: #e0e0e0;
     }
     & .v-list-item {
       padding-left: 13px;
