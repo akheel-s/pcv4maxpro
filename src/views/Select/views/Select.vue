@@ -1,20 +1,10 @@
 <template>
   <div class="select__entire-body">
-    <v-stepper class="select__header" alt-labels>
-      <v-stepper-header>
-        <v-stepper-step class="select__stepone" step="">Select</v-stepper-step>
-
-        <v-divider class="select__divone"></v-divider>
-
-        <v-stepper-step class="select__steptwo" step=""> Details </v-stepper-step>
-
-        <v-divider></v-divider>
-
-        <v-stepper-step class="select__stepthree" step="">Manage</v-stepper-step>
-      </v-stepper-header>
-    </v-stepper>
-
-    <pc-select-card></pc-select-card>
+    <div class="select__cards">
+      <pc-select-card v-for="item in items" :key="item.title">
+        <template v-slot:title>{{ item.title }}</template>
+      </pc-select-card>
+    </div>
   </div>
 </template>
 
@@ -26,6 +16,17 @@ export default {
   name: 'Select',
   components: {
     'pc-select-card': PCSelectCard
+  },
+  setup() {
+    const items = ref([
+      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Participant', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
+      { title: 'Participant', image: 'https://picsum.photos/510/300?random' }
+    ]);
+    return { items };
   }
 };
 </script>
@@ -34,6 +35,44 @@ export default {
 .select {
   &__entire-body {
     height: 100%;
+  }
+  &__cards {
+    margin-left: 220px;
+    margin-top: 286px;
+    display: grid;
+    grid-template-columns: repeat(3, 475px);
+    grid-template-rows: repeat(2, 375px);
+    grid-column-gap: 47px;
+    grid-row-gap: 43px;
+  }
+}
+
+//to swich between the grid for diff width of the screen for 786px
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  .select {
+    &__cards {
+      margin-top: 76px;
+      display: grid;
+      grid-template-columns: repeat(2, 475px);
+      grid-template-rows: repeat(2, 375px);
+      grid-column-gap: 47px;
+      grid-row-gap: 43px;
+    }
+  }
+}
+
+//to swich between the grid for diff width of the screen for min of 786px and max of 1024px
+@media only screen and (max-width: 1024px) {
+  .select {
+    &__cards {
+      margin-left: 10px;
+      margin-top: 76px;
+      display: grid;
+      grid-template-columns: repeat(1, 475px);
+      grid-template-rows: repeat(2, 375px);
+      grid-column-gap: 47px;
+      grid-row-gap: 43px;
+    }
   }
 }
 </style>
