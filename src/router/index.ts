@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
+import { routes as ExploreProgramRoutes } from '../views/Explore';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
+  ...ExploreProgramRoutes,
   {
     path: '/',
     name: 'Home',
