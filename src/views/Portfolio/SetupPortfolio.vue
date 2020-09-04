@@ -42,17 +42,529 @@
           </div>
         </div>
       </div>
-      <div class="setup-profile__content">
-        <div>
-          <v-text-field v-model="email" class="login__input" single-line outlined></v-text-field>
 
-          <v-text-field v-model="email" class="login__input" single-line outlined></v-text-field>
+      <!-- General Setup -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          General Setup
+          <v-text-field label="First Name" outlined></v-text-field>
+          <v-text-field label="Last Name" outlined></v-text-field>
+
+          <v-select
+            v-model="citizenValue"
+            :items="citizenItems"
+            chips
+            label="Citizen Type"
+            multiple
+            outlined
+          ></v-select>
+
+          <v-btn dark depressed>Save and Continue</v-btn>
         </div>
       </div>
+
+      <!-- Employer Portfolio -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          Employer Portfolio
+          <v-text-field label="Employer Name" outlined></v-text-field>
+          <v-text-field label="Job Title" outlined></v-text-field>
+          <v-text-field label="Industry" outlined></v-text-field>
+          <v-text-field label="Primary Product / Service" outlined></v-text-field>
+          <!-- Google Maps Integration / Find way to collect suite, apartment, etc number -->
+          <v-text-field label="Work Address" outlined></v-text-field>
+        </div>
+      </div>
+
+      <!-- Student Portfolio -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          Student Portfolio
+          <!-- Grade Level -->
+          <v-select :items="gradeLevel" label="Grade Level" outlined></v-select>
+          <!-- Google Maps Integration to find school name / district so data coming in across the board is consistent -->
+          <v-text-field label="School Name" outlined></v-text-field>
+          <!-- School District -->
+          <v-text-field label="School District" outlined></v-text-field>
+          <!-- Birthdate -->
+          <v-menu
+            ref="menu"
+            v-model="menu"
+            :close-on-content-click="false"
+            transition="scale-transition"
+            offset-y
+            min-width="290px"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-text-field
+                v-model="date"
+                label="Birthdate"
+                outlined
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker
+              ref="picker"
+              v-model="date"
+              :max="new Date().toISOString().substr(0, 10)"
+              min="1950-01-01"
+              @change="save"
+            ></v-date-picker>
+          </v-menu>
+
+          <!-- Supergender -->
+          <v-select :items="superGender" label="Supergender" outlined></v-select>
+
+          <!-- Ethnicity & Culture -->
+          <v-select
+            :items="ethnicityCulture"
+            multiple
+            label="Ethnicity & Culture"
+            outlined
+          ></v-select>
+
+          <!-- Guardian Email -->
+          <v-text-field label="Guardian Email" outlined></v-text-field
+          ><v-btn depressed outlined x-large>Invite</v-btn>
+
+          <!-- Relationship to Guardian -->
+          <v-select
+            :items="guardianRelationship"
+            label="Relationship to Guardian"
+            outlined
+          ></v-select>
+
+          <!-- Home Language -->
+          <v-select :items="homeLanguage" multiple label="Home Language" outlined></v-select>
+
+          <!-- Home Address -->
+          <v-text-field label="Home Address" outlined></v-text-field>
+        </div>
+      </div>
+
+      <!-- TEACHER PORTFOLIO -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          Teacher Portfolio
+          <!-- School District -->
+          <v-text-field label="School District" outlined></v-text-field>
+
+          <!-- School Name. Google Maps Integration to find school name / district so data coming in across the board is consistent -->
+          <v-text-field label="School Name" outlined></v-text-field>
+
+          <!-- School Address. Google Maps Integration from above-->
+          <v-text-field label="School Address" outlined></v-text-field>
+        </div>
+      </div>
+
+      <!-- SCHOOL PORTFOLIO -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          School Portfolio
+
+          <!-- Staff Type-->
+          <v-select :items="schoolStaffType" multiple label="Staff Type" outlined></v-select>
+
+          <!-- School District -->
+          <v-text-field label="School District" outlined></v-text-field>
+
+          <!-- School District Address. Google Maps Integration from above-->
+          <v-text-field label="School District Address" outlined></v-text-field>
+
+          <!-- Request Stakeholder Access -->
+          <v-text-field
+            label="Request Stakeholder Access"
+            placeholder="participant@email.com"
+            outlined
+          ></v-text-field
+          ><v-btn depressed outlined x-large>Request</v-btn>
+
+          <!-- Refer Stakeholder -->
+          <v-text-field
+            label="Request Stakeholder"
+            placeholder="skakeholder@email.com"
+            outlined
+          ></v-text-field
+          ><v-btn depressed outlined x-large>Refer</v-btn>
+        </div>
+      </div>
+
+      <!-- PARENT PORTFOLIO -->
+      <div class="setup-profile__content">
+        <div class="setup-profile__wrapper">
+          Parent Portfolio
+          <!-- Home Address -->
+          <v-text-field label="Home Address" outlined></v-text-field>
+
+          <!-- Request Stakeholder Access -->
+          <v-text-field
+            label="Request Stakeholder Access"
+            placeholder="participant@email.com"
+            outlined
+          ></v-text-field
+          ><v-btn depressed outlined x-large>Request</v-btn>
+
+          <!-- Refer Participant-->
+          <v-text-field
+            label="Refer Participant"
+            placeholder="participant@email.com"
+            outlined
+          ></v-text-field
+          ><v-btn depressed outlined x-large>Refer</v-btn>
+        </div>
+      </div>
+
+      <!-- END -->
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    // citizenItems: ['Student', 'Employer', 'Teacher', 'School', 'Parent']
+    // citizenValue: ['Student', 'Employer', 'Teacher', 'School', 'Parent']
+    citizenItems: [
+      {
+        text: 'Student',
+        value: 'Student'
+      },
+      {
+        text: 'Employer',
+        value: 'Employer'
+      },
+      {
+        text: 'Teacher',
+        value: 'Teacher'
+      },
+      {
+        text: 'School',
+        value: 'School'
+      },
+      {
+        text: 'Parent',
+        value: 'Parent'
+      }
+    ],
+
+    gradeLevel: [
+      {
+        text: '6th Grade',
+        value: '6'
+      },
+      {
+        text: '7th Grade',
+        value: '7'
+      },
+      {
+        text: '8th Grade',
+        value: '8'
+      },
+      {
+        text: '9th Grade',
+        value: '9'
+      },
+      {
+        text: '10th Grade',
+        value: '10'
+      },
+      {
+        text: '11th Grade',
+        value: '11'
+      },
+      {
+        text: '12th Grade',
+        value: '12'
+      },
+      {
+        text: 'College Freshmen',
+        value: '13'
+      },
+
+      {
+        text: 'College Sophomore',
+        value: '14'
+      },
+
+      {
+        text: 'College Junior',
+        value: '15'
+      },
+      {
+        text: 'College Senior',
+        value: '16'
+      },
+      {
+        text: 'Not Listed',
+        value: 'Not Listed'
+      }
+    ],
+
+    superGender: [
+      {
+        text: 'Female',
+        value: 'Female'
+      },
+      {
+        text: 'Male',
+        value: 'Male'
+      },
+      {
+        text: 'Transgender Female',
+        value: 'Transgender Female'
+      },
+      {
+        text: 'Transgender Male',
+        value: 'Transgender Male'
+      },
+      {
+        text: 'Gender Variant / Non-Conforming',
+        value: 'Gender Variant / Non-Conforming'
+      },
+
+      {
+        text: 'Not Listed',
+        value: 'Not Listed'
+      }
+    ],
+
+    ethnicityCulture: [
+      {
+        text: 'American Indian or Alaska Native',
+        value: 'American Indian or Alaska Native'
+      },
+      {
+        text: 'Asian',
+        value: 'Asian'
+      },
+      {
+        text: 'Black or African American',
+        value: 'Black or African American'
+      },
+      {
+        text: 'Hispanic',
+        value: 'Hispanic'
+      },
+      {
+        text: 'Pacific Islander or Native Hawaiian',
+        value: 'Pacific Islander or Native Hawaiian'
+      },
+
+      {
+        text: 'White / Caucasian',
+        value: 'White / Caucasian'
+      }
+    ],
+
+    guardianRelationship: [
+      {
+        text: 'Mother',
+        value: 'Mother'
+      },
+      {
+        text: 'Father',
+        value: 'Father'
+      },
+      {
+        text: 'Sister',
+        value: 'Sister'
+      },
+      {
+        text: 'Brother',
+        value: 'Brother'
+      },
+      {
+        text: 'Grandmother',
+        value: 'Grandfather'
+      },
+
+      {
+        text: 'Aunt',
+        value: 'Aunt'
+      },
+      {
+        text: 'Uncle',
+        value: 'Uncle'
+      },
+      {
+        text: 'Friend',
+        value: 'Friend'
+      },
+      {
+        text: 'None',
+        value: 'None'
+      }
+    ],
+
+    homeLanguage: [
+      {
+        text: 'Arabic',
+        value: 'Arabic'
+      },
+
+      {
+        text: 'Bengali',
+        value: 'Bengali'
+      },
+
+      {
+        text: 'Chinese',
+        value: 'Chinese'
+      },
+
+      {
+        text: 'English',
+        value: 'English'
+      },
+
+      {
+        text: 'French',
+        value: 'French'
+      },
+
+      {
+        text: 'German',
+        value: 'German'
+      },
+
+      {
+        text: 'Hindi',
+        value: 'Hindi'
+      },
+
+      {
+        text: 'Italian',
+        value: 'Italian'
+      },
+
+      {
+        text: 'Japanese',
+        value: 'Japanese'
+      },
+
+      {
+        text: 'Korean',
+        value: 'Korean'
+      },
+
+      {
+        text: 'Lahnda',
+        value: 'Lahnda'
+      },
+
+      {
+        text: 'Marathi',
+        value: 'Marathi'
+      },
+
+      {
+        text: 'Portuguese',
+        value: 'Portuguese'
+      },
+
+      {
+        text: 'Russian',
+        value: 'Russian'
+      },
+
+      {
+        text: 'Spanish',
+        value: 'Spanish'
+      },
+
+      {
+        text: 'Tagalog',
+        value: 'Tagalog'
+      },
+
+      {
+        text: 'Tamil',
+        value: 'Tamil'
+      },
+
+      {
+        text: 'Telugu',
+        value: 'Telugu'
+      },
+
+      {
+        text: 'Turkish',
+        value: 'Turkish'
+      },
+
+      {
+        text: 'Urdu',
+        value: 'Urdu'
+      },
+
+      {
+        text: 'Vietnamese',
+        value: 'Vietnamese'
+      },
+
+      {
+        text: 'Not Listed',
+        value: 'Not Listed'
+      }
+    ],
+
+    schoolStaffType: [
+      {
+        text: 'Principal',
+        value: 'Principal'
+      },
+      {
+        text: 'Assistant Principal',
+        value: 'Assistant Principal'
+      },
+      {
+        text: 'Teacher on Special Assignment (TOSA)',
+        value: 'Teacher on Special Assignment (TOSA)'
+      },
+      {
+        text: 'Director',
+        value: 'Director'
+      },
+      {
+        text: 'Manager',
+        value: 'Manager'
+      },
+      {
+        text: 'Coordinator',
+        value: 'Coordinator'
+      },
+      {
+        text: 'Specialist',
+        value: 'Specialist'
+      }
+    ],
+
+    date: null,
+    menu: false
+  }),
+
+  watch: {
+    menu(val) {
+      this.$refs.picker.activePicker = 'YEAR';
+      return val;
+    }
+  },
+  methods: {
+    save(date) {
+      this.$refs.menu.save(date);
+    }
+  }
+};
+</script>
+
 <style lang="scss">
+.setup-profile__wrapper {
+  width: 35%;
+  justify-content: center;
+}
+
 .pc-timeline__step {
   display: -webkit-box;
   display: -webkit-flex;
@@ -347,6 +859,7 @@
   margin-top: 70px;
   padding-right: 16%;
   padding-left: 16%;
+  margin-bottom: 70px;
 }
 .profile-pc-timeline {
   display: none;
@@ -376,6 +889,7 @@
   display: flex;
   padding-right: 16%;
   padding-left: 16%;
+  justify-content: center;
 }
 
 @media screen and (max-width: 479px) {

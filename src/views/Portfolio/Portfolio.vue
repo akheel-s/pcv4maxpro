@@ -102,7 +102,9 @@
     display: block;
     max-width: 93.5%;
     margin-top: 213px;
+    margin-bottom: 50px;
     border: 1px solid #000;
+    padding-bottom: 50px;
   }
   &__tabs {
     display: -webkit-box;
