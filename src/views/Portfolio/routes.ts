@@ -5,12 +5,12 @@ import Setup from './SetupPortfolio.vue';
 const routes: Array<RouteConfig> = [
   {
     path: '/portfolio',
-    name: 'Portfolio',
+    name: 'portfolio',
     component: Portfolio
   },
   {
     path: '/setup',
-    name: 'Setup',
+    name: 'setup',
     component: Setup
   }
 ];

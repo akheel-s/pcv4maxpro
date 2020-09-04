@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="signup__inputs">
-      <validation-observer v-slot="{ invalid, validate }" class="signup__firstname">
+      <validation-observer v-slot="{ invalid }" class="signup__firstname">
         <div class="signup__email text-subtitle-2">Email</div>
         <validation-provider v-slot="{ errors }" rules="required|email">
           <v-text-field
@@ -59,7 +59,7 @@
           color="green"
           :disabled="invalid || !terms"
           :loading="loading"
-          @click="submit, validate"
+          @click="submit"
         >
           Signup
         </v-btn>
