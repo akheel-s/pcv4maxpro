@@ -22,41 +22,58 @@
 
         <div class="login__password text-subtitle-2">password</div>
         <validation-provider v-slot="{ errors }" rules="required">
-          <v-text-field ref="passwordInput" v-model="password" toggle></v-text-field>
-          <span>{{ errors[0] }}</span>
+          <v-text-field
+            ref="passwordInput"
+            v-model="password"
+            class="login__input"
+            type="password"
+            toggle
+            single-line
+            outlined
+            full-width
+            :error-messagees="errors"
+          ></v-text-field>
         </validation-provider>
 
-        <v-btn
-          ref="loginBtn"
-          class="login__next text-h5 font-weight-black"
-          depressed
-          color="blue"
-          :ripple="false"
-          :disabled="invalid"
-          @click="loginUser({ email, password })"
-          >Login</v-btn
-        >
+        <Loading v-slot="{ loading, process }" :callback="login">
+          <v-btn
+            ref="loginBtn"
+            class="login__next text-h5 font-weight-black"
+            depressed
+            color="blue"
+            :ripple="false"
+            :disabled="invalid"
+            :loading="loading"
+            @click="process"
+            >Login</v-btn
+          >
+        </Loading>
       </validation-observer>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { createNamespacedHelpers } from 'vuex';
 import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
+import { useActions } from '@/store/modules/auth';
+import Loading from '@/components/Loading.vue';
 
-const { mapActions } = createNamespacedHelpers('auth');
 export default {
-  setup() {
+  components: {
+    Loading
+  },
+  setup(_props, ctx) {
     const state = reactive({
       email: '',
       password: ''
     });
-    return { ...toRefs(state) };
-  },
-  methods: {
-    ...mapActions([ActionTypes.loginUser])
+    const { loginUser } = useActions([ActionTypes.loginUser]);
+    async function login() {
+      await loginUser({ email: state.email, password: state.password });
+      ctx.root.$router.push({ name: 'portfolio' });
+    }
+    return { ...toRefs(state), login };
   }
 };
 </script>
