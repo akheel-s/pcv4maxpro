@@ -21,6 +21,7 @@
           <span class="text-h3 white--text font-weight-black">Jerold Inocencio</span>
         </div>
       </div> -->
+
       <div class="profile__timeline">
         <div class="pc-timeline horizontal profile-pc-timeline">
           <div class="horizontal-pc-timeline__step">
@@ -33,12 +34,12 @@
           <div class="horizontal-pc-timeline__content"></div>
           <div class="horizontal-pc-timeline__step">
             <div class="pc-timeline__step-icon"></div>
-            <div class="pc-timeline__step-text">step 2</div>
+            <div class="pc-timeline__step-text">Step 2</div>
           </div>
           <div class="horizontal-pc-timeline__content"></div>
           <div class="horizontal-pc-timeline__step">
             <div class="pc-timeline__step-icon"></div>
-            <div class="pc-timeline__step-text">step 3</div>
+            <div class="pc-timeline__step-text">Step 3</div>
           </div>
         </div>
       </div>
@@ -63,6 +64,9 @@
         </div>
       </div>
 
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
+
       <!-- Employer Portfolio -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
@@ -77,6 +81,9 @@
           <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
+
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
 
       <!-- Student Portfolio -->
       <div class="setup-profile__content">
@@ -148,6 +155,9 @@
         </div>
       </div>
 
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
+
       <!-- TEACHER PORTFOLIO -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
@@ -164,6 +174,9 @@
           <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
+
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
 
       <!-- SCHOOL PORTFOLIO -->
       <div class="setup-profile__content">
@@ -198,6 +211,9 @@
           <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
+
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
 
       <!-- PARENT PORTFOLIO -->
       <div class="setup-profile__content">

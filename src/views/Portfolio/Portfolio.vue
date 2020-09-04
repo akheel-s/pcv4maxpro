@@ -9,7 +9,7 @@
       <!-- Chip Tabs -->
       <div class="text-center mt-12">
         <div>
-          <v-badge bordered icon="mdi-check" color="orange" offset-x="32" offset-y="32">
+          <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
               <v-img
                 src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
@@ -151,10 +151,11 @@
     // margin-top: 213px;
     margin-top: 50px;
     margin-bottom: 50px;
-    border: 1px solid #dbdbdb;
+    border: 15px solid #f1f2f2;
     padding-bottom: 125px;
     border-radius: 50px;
   }
+
   &__tabs {
     display: -webkit-box;
     display: -webkit-flex;

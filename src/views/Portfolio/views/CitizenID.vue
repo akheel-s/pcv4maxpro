@@ -32,6 +32,9 @@
         </div>
       </div>
 
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
+
       <!-- Employer Portfolio -->
       <div class="my-id__content">
         <div class="my-id__wrapper">
@@ -44,6 +47,9 @@
           <v-text-field label="Work Address" outlined></v-text-field>
         </div>
       </div>
+
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
 
       <!-- Student Portfolio -->
       <div class="my-id__content">
@@ -113,6 +119,9 @@
         </div>
       </div>
 
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
+
       <!-- TEACHER PORTFOLIO -->
       <div class="my-id__content">
         <div class="my-id__wrapper">
@@ -127,6 +136,9 @@
           <v-text-field label="School Address" outlined></v-text-field>
         </div>
       </div>
+
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
 
       <!-- SCHOOL PORTFOLIO -->
       <div class="my-id__content">
@@ -160,6 +172,9 @@
         </div>
       </div>
 
+      <!-- TEMP SPACER -->
+      <div class="mt-12 mb-12"></div>
+
       <!-- PARENT PORTFOLIO -->
       <div class="my-id__content">
         <div class="my-id__wrapper">
@@ -183,7 +198,37 @@
           ></v-text-field
           ><v-btn class="mb-7" depressed outlined x-large>Refer</v-btn>
 
-          <div><v-btn class="red darken-1" dark flat x-large>Delete ID</v-btn></div>
+          <!-- DELETE BUTTON -->
+
+          <v-row class="mt-12" justify="center">
+            <v-btn class="red darken-1" dark depressed x-large @click.stop="dialog = true"
+              ><v-icon left>mdi-delete</v-icon>Delete ID</v-btn
+            >
+
+            <v-dialog v-model="dialog" max-width="290">
+              <v-card>
+                <v-card-title class="headline"
+                  >Are you sure you want to delete this ID?</v-card-title
+                >
+
+                <v-card-text>
+                  This ID, programs associated and all historic data will be deleted.
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+
+                  <v-btn color="light" text @click="dialog = false">
+                    Cancel
+                  </v-btn>
+
+                  <v-btn color="red darken-1" text @click="dialog = false">
+                    Delete
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
         </div>
       </div>
 
@@ -205,7 +250,8 @@ export default {
         { title: 'School', icon: 'question_answer' },
         { title: 'Parent', icon: 'question_answer' },
         { title: 'Add Citizen Type', icon: 'question_answer' }
-      ]
+      ],
+      dialog: false
     };
   }
 };
