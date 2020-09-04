@@ -2,33 +2,78 @@
   <!--  TODO: make the inputs into actual components -->
   <div>
     <div class="profile__container pc-container">
-      <div class="profile__namepate">
-        <div class="profile__image">
-          <img alt="Profile Picture" sizes="(max-width: 479px) 133px, 273px" class="image" />
+      <!-- <div class="profile__namepate"> -->
+      <!-- <div class="profile__image"></div> -->
+      <!-- </div> -->
+
+      <!-- Chip Tabs -->
+      <div class="text-center mt-12">
+        <div>
+          <v-badge bordered icon="mdi-check" color="orange" offset-x="32" offset-y="32">
+            <v-avatar color="orange" size="150">
+              <v-img
+                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+              ></v-img>
+            </v-avatar>
+          </v-badge>
+
+          <span class="profile__name">Jerold Inocencio</span>
         </div>
-        <div class="profile__name">
-          <span class="text-h3 white--text font-weight-black">Jerold Inocencio</span>
-        </div>
+        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+          <v-icon left>mdi-server-plus</v-icon>
+          Programs
+        </v-chip>
+
+        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+          <v-icon left>mdi-wrench</v-icon>
+          Settings
+        </v-chip>
+
+        <v-chip large class="pl-8 pr-8 ma-2" color="pink lighten-2" outlined
+          >>
+          <v-icon left>mdi-account-outline</v-icon>
+          Teacher
+        </v-chip>
+
+        <v-chip large class="pl-8 pr-8 ma-2" color="yellow darken-2" outlined
+          >>
+          <v-icon left>mdi-account-outline</v-icon>
+          Parent
+        </v-chip>
+
+        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+          <v-icon left>mdi-plus</v-icon>
+          Add Citizen Type
+        </v-chip>
       </div>
-      <div class="profile__tabs">
-        <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
-          <div class="pc-highlight"></div>
-          <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{ tab }}</span>
-        </div>
-      </div>
+
+      <!-- <v-divider class="mt-10"></v-divider> -->
+
       <component :is="getComponent" />
+    </div>
+
+    <div class="profile__tabs">
+      <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
+        <div class="pc-highlight"></div>
+        <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{ tab }}</span>
+      </div>
     </div>
   </div>
 </template>
 <style lang="scss">
 .profile {
+  &__name {
+    font-family: Raleway;
+    font-size: 40px;
+    font-weight: 800;
+  }
   &__namepate {
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 354px;
+    // height: 300px;
     margin-top: 0px;
     margin-bottom: 0px;
     -webkit-box-orient: vertical;
@@ -55,7 +100,8 @@
     display: flex;
     overflow: visible;
     margin-right: 20%;
-    margin-bottom: 60px;
+    margin-bottom: 15px;
+    margin-top: 15px;
     margin-left: 20%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -70,20 +116,20 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    border: 1px solid #828282;
+    // border: 1px solid #828282;
     border-radius: 5px;
     text-align: center;
     padding: 18px;
   }
   &__image {
-    position: absolute;
-    left: 0%;
-    top: -35%;
-    right: 0px;
-    bottom: auto;
-    display: block;
-    width: 275px;
-    height: 275px;
+    // position: absolute;
+    // left: 0%;
+    // top: -40%;
+    // right: 0px;
+    // bottom: auto;
+    // display: block;
+    width: 250px;
+    height: 250px;
     margin-right: auto;
     margin-left: auto;
     -webkit-box-orient: horizontal;
@@ -97,14 +143,17 @@
     justify-content: flex-start;
     border: 1px solid #000;
     border-radius: 50%;
+    background-color: #4f4f4f;
   }
   &__container {
     display: block;
-    max-width: 93.5%;
-    margin-top: 213px;
+    max-width: 80%;
+    // margin-top: 213px;
+    margin-top: 50px;
     margin-bottom: 50px;
-    border: 1px solid #000;
-    padding-bottom: 50px;
+    border: 1px solid #dbdbdb;
+    padding-bottom: 125px;
+    border-radius: 50px;
   }
   &__tabs {
     display: -webkit-box;

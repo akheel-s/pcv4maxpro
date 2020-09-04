@@ -3,11 +3,11 @@
     <div class="my-program">
       <div class="my-programs pc-container">
         <div class="my-programs__wrapper">
-          <h4 class="my-programs__programs-title text-h3 font-weight-black">
+          <h4 class="my-programs__programs-title">
             My Programs
           </h4>
           <program-card />
-          <program-card class="mt-5" />
+          <program-card class="mt-10" />
         </div>
         <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">Manage</h4>
@@ -18,7 +18,6 @@
           <div class="my-programs__wrapper-col">
             <program-card :tile="true" />
             <program-card :tile="true" />
-
             <program-card :tile="true" />
           </div>
         </div>
@@ -53,14 +52,16 @@
   }
   &__programs-title {
     width: 100%;
-    font-size: 35px;
+    font-size: 25px;
     line-height: 35px;
     margin-bottom: 33px;
+    font-family: Raleway;
+    font-weight: 800;
   }
   &__wrapper {
     width: 100%;
     max-width: 80%;
-    margin-top: 80px;
+    margin-top: 50px;
   }
   &__wrapper-col {
     display: -ms-grid;

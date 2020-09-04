@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="profile__container pc-container">
-      <div class="profile__namepate">
+      <!-- <div class="profile__namepate">
         <div class="profile__image">
           <img
             src="images/album-cover.jpg"
@@ -20,7 +20,7 @@
         <div class="profile__name">
           <span class="text-h3 white--text font-weight-black">Jerold Inocencio</span>
         </div>
-      </div>
+      </div> -->
       <div class="profile__timeline">
         <div class="pc-timeline horizontal profile-pc-timeline">
           <div class="horizontal-pc-timeline__step">
@@ -46,7 +46,7 @@
       <!-- General Setup -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          General Setup
+          <div class="setup-profile__title mb-3">General</div>
           <v-text-field label="First Name" outlined></v-text-field>
           <v-text-field label="Last Name" outlined></v-text-field>
 
@@ -59,27 +59,29 @@
             outlined
           ></v-select>
 
-          <v-btn dark depressed>Save and Continue</v-btn>
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
       <!-- Employer Portfolio -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          Employer Portfolio
+          <div class="setup-profile__title mb-3">Employer ID</div>
           <v-text-field label="Employer Name" outlined></v-text-field>
           <v-text-field label="Job Title" outlined></v-text-field>
           <v-text-field label="Industry" outlined></v-text-field>
           <v-text-field label="Primary Product / Service" outlined></v-text-field>
           <!-- Google Maps Integration / Find way to collect suite, apartment, etc number -->
           <v-text-field label="Work Address" outlined></v-text-field>
+
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
       <!-- Student Portfolio -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          Student Portfolio
+          <div class="setup-profile__title mb-3">Student ID</div>
           <!-- Grade Level -->
           <v-select :items="gradeLevel" label="Grade Level" outlined></v-select>
           <!-- Google Maps Integration to find school name / district so data coming in across the board is consistent -->
@@ -127,7 +129,7 @@
 
           <!-- Guardian Email -->
           <v-text-field label="Guardian Email" outlined></v-text-field
-          ><v-btn depressed outlined x-large>Invite</v-btn>
+          ><v-btn class="mb-7" depressed outlined x-large>Invite</v-btn>
 
           <!-- Relationship to Guardian -->
           <v-select
@@ -141,13 +143,15 @@
 
           <!-- Home Address -->
           <v-text-field label="Home Address" outlined></v-text-field>
+
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
       <!-- TEACHER PORTFOLIO -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          Teacher Portfolio
+          <div class="setup-profile__title mb-3">Teacher ID</div>
           <!-- School District -->
           <v-text-field label="School District" outlined></v-text-field>
 
@@ -156,13 +160,15 @@
 
           <!-- School Address. Google Maps Integration from above-->
           <v-text-field label="School Address" outlined></v-text-field>
+
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
       <!-- SCHOOL PORTFOLIO -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          School Portfolio
+          <div class="setup-profile__title mb-3">School ID</div>
 
           <!-- Staff Type-->
           <v-select :items="schoolStaffType" multiple label="Staff Type" outlined></v-select>
@@ -179,7 +185,7 @@
             placeholder="participant@email.com"
             outlined
           ></v-text-field
-          ><v-btn depressed outlined x-large>Request</v-btn>
+          ><v-btn class="mb-7" depressed outlined x-large>Request</v-btn>
 
           <!-- Refer Stakeholder -->
           <v-text-field
@@ -187,14 +193,16 @@
             placeholder="skakeholder@email.com"
             outlined
           ></v-text-field
-          ><v-btn depressed outlined x-large>Refer</v-btn>
+          ><v-btn class="mb-7" depressed outlined x-large>Refer</v-btn>
+
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
       <!-- PARENT PORTFOLIO -->
       <div class="setup-profile__content">
         <div class="setup-profile__wrapper">
-          Parent Portfolio
+          <div class="setup-profile__title mb-3">Parent ID</div>
           <!-- Home Address -->
           <v-text-field label="Home Address" outlined></v-text-field>
 
@@ -204,7 +212,7 @@
             placeholder="participant@email.com"
             outlined
           ></v-text-field
-          ><v-btn depressed outlined x-large>Request</v-btn>
+          ><v-btn class="mb-7" depressed outlined x-large>Request</v-btn>
 
           <!-- Refer Participant-->
           <v-text-field
@@ -212,7 +220,9 @@
             placeholder="participant@email.com"
             outlined
           ></v-text-field
-          ><v-btn depressed outlined x-large>Refer</v-btn>
+          ><v-btn class="mb-7" depressed outlined x-large>Refer</v-btn>
+
+          <v-btn large dark depressed>Save and Continue</v-btn>
         </div>
       </div>
 
@@ -560,6 +570,13 @@ export default {
 </script>
 
 <style lang="scss">
+.setup-profile__title {
+  font-family: Raleway;
+  font-weight: 800;
+  color: black;
+  font-size: 25px;
+}
+
 .setup-profile__wrapper {
   width: 35%;
   justify-content: center;
