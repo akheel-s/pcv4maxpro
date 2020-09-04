@@ -2,7 +2,7 @@ import { Stitch, RemoteMongoClient, RemoteMongoDatabase } from 'mongodb-stitch-b
 import Database from '@/@types/database';
 import { User } from '../../../@types/user.d';
 
-const client = Stitch.initializeDefaultAppClient('');
+const client = Stitch.initializeDefaultAppClient(process.env.VUE_APP_REALM_ID);
 
 const state: {
   user: User | null;
