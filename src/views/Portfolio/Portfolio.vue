@@ -46,6 +46,7 @@
     width: 100%;
     font-size: 35px;
     line-height: 35px;
+    margin-bottom: 33px;
   }
   &__name {
     display: -webkit-box;
@@ -72,6 +73,7 @@
     border: 1px solid #828282;
     border-radius: 5px;
     text-align: center;
+    padding: 18px;
   }
   &__image {
     position: absolute;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="profile__container w-container">
+    <div class="profile__container pc-container">
       <div class="profile__namepate">
         <div class="profile__image">
           <img
@@ -18,7 +18,7 @@
           />
         </div>
         <div class="profile__name">
-          <h3 class="heading">Jerold Inocencio</h3>
+          <span class="text-h3 white--text font-weight-black">Jerold Inocencio</span>
         </div>
       </div>
       <div class="profile__timeline">
@@ -41,27 +41,14 @@
             <div class="pc-timeline__step-text">step 3</div>
           </div>
         </div>
-        <div class="profile-pc-timeline">
-          <div class="pc-timeline__step">
-            <div class="pc-timeline__step-icon"></div>
-            <div class="pc-timeline__step-icon active">
-              <div class="pc-timeline__step__active"></div>
-            </div>
-            <div class="pc-timeline__step-text">Step 1</div>
-          </div>
-          <div class="pc-timeline__content"></div>
-          <div class="pc-timeline__step">
-            <div class="pc-timeline__step-icon"></div>
-            <div class="pc-timeline__step-text">step 2</div>
-          </div>
-          <div class="pc-timeline__content"></div>
-          <div class="pc-timeline__step">
-            <div class="pc-timeline__step-icon"></div>
-            <div class="pc-timeline__step-text">step 3</div>
-          </div>
+      </div>
+      <div class="setup-profile__content">
+        <div>
+          <v-text-field v-model="email" class="login__input" single-line outlined></v-text-field>
+
+          <v-text-field v-model="email" class="login__input" single-line outlined></v-text-field>
         </div>
       </div>
-      <div class="setup-profile__content"></div>
     </div>
   </div>
 </template>
@@ -92,17 +79,6 @@
   padding-left: 8px;
 }
 
-.pc-timeline__content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin: -3px 24px -11px 23px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-left: 1px solid #828282;
-}
-
 .pc-timeline {
   display: -webkit-box;
   display: -webkit-flex;
@@ -113,6 +89,72 @@
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  &__content {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: -3px 24px -11px 23px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-left: 1px solid #828282;
+  }
+  &__step-icon {
+    position: static;
+    display: block;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    margin-right: 20px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #828282;
+    border-radius: 50%;
+    -o-object-fit: fill;
+    object-fit: fill;
+  }
+  &__step-icon.active {
+    display: none;
+  }
+  &__step-text {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    font-family: Roboto, sans-serif;
+    color: #bdbdbd;
+    font-size: 9.75px;
+    line-height: 11px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
 }
 
 .pc-timeline.horizontal {
@@ -125,72 +167,15 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  &.profile-pc-timeline {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
-.pc-timeline.horizontal.profile-pc-timeline {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.pc-timeline__step-icon {
-  position: static;
-  display: block;
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  margin-right: 20px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 1px solid #828282;
-  border-radius: 50%;
-  -o-object-fit: fill;
-  object-fit: fill;
-}
-
-.pc-timeline__step-icon.active {
-  display: none;
-}
-
-.pc-timeline__step-text {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  font-family: Roboto, sans-serif;
-  color: #bdbdbd;
-  font-size: 9.75px;
-  line-height: 11px;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.pc-timeline__step__active {
+.pc-timeline .pc-timeline .pc-timeline__step__active {
   width: 10px;
   height: 10px;
   border-radius: 50%;

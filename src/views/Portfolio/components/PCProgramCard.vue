@@ -49,6 +49,7 @@
     line-height: 30px;
     font-weight: 700;
     text-align: left;
+    margin-bottom: 22px;
   }
 
   &__progress {

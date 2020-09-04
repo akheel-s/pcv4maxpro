@@ -3,7 +3,9 @@
     <div class="my-program">
       <div class="my-programs pc-container">
         <div class="my-programs__wrapper">
-          <h4 class="my-programs__programs-title">My Programs</h4>
+          <h4 class="my-programs__programs-title text-h3 font-weight-black">
+            My Programs
+          </h4>
           <program-card />
           <program-card class="mt-5" />
         </div>
@@ -48,6 +50,12 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+  }
+  &__programs-title {
+    width: 100%;
+    font-size: 35px;
+    line-height: 35px;
+    margin-bottom: 33px;
   }
   &__wrapper {
     width: 100%;
