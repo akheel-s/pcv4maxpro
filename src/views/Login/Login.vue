@@ -35,7 +35,7 @@
           ></v-text-field>
         </validation-provider>
 
-        <Loading v-slot="{ loading, process }" :callback="login">
+        <Loading v-slot="{ loading, process }" :callback="login" linear-loader>
           <v-btn
             ref="loginBtn"
             class="login__next text-h5 font-weight-black"
@@ -48,6 +48,7 @@
             >Login</v-btn
           >
         </Loading>
+        <v-alert v-if="error" type="error">{{ error }}</v-alert>
       </validation-observer>
     </div>
   </div>
@@ -66,12 +67,19 @@ export default {
   setup(_props, ctx) {
     const state = reactive({
       email: '',
-      password: ''
+      password: '',
+      error: ''
     });
     const { loginUser } = useActions([ActionTypes.loginUser]);
     async function login() {
-      await loginUser({ email: state.email, password: state.password });
-      ctx.root.$router.push({ name: 'portfolio' });
+      try {
+        await loginUser({ email: state.email, password: state.password });
+        ctx.root.$router.push({ name: 'portfolio' });
+      } catch (err) {
+        if (err.statusCode === 401)
+          state.error = 'That email and password combination does not exist';
+        else state.error = err;
+      }
     }
     return { ...toRefs(state), login };
   }
