@@ -1,14 +1,10 @@
 <template>
-  <v-toolbar class="">
-    <v-btn icon depressed>
-      <img src="@/assets/Pilotcity_logo.png" class="signup__image" />
-    </v-btn>
+  <v-toolbar depressed flat color="#404142" height="75">
+    <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
 
     <v-toolbar-title
-      ><span class="text-h5 signup__header font-weight-black text-sm-h4"
-        >PilotCity</span
-      ></v-toolbar-title
-    >
+      ><span class="text-h5 signup__header font-weight-black text-sm-h4"></span
+    ></v-toolbar-title>
 
     <v-progress-linear
       v-if="loading"
@@ -21,39 +17,153 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn v-if="!getUser" depressed color="white" outlined :to="{ name: 'login' }" :ripple="false">
-      <span class="font-weight-black">Login</span>
-    </v-btn>
-    <v-btn
-      v-if="!getUser"
-      class="signup__signupbutton rounded-lg"
-      depressed
-      color="#828282"
-      :ripple="false"
-      :to="{ name: 'signup' }"
-    >
-      <span class="font-weight-black">Signup</span>
-    </v-btn>
-    <v-btn v-if="getUser" depressed color="#828282" :ripple="false" @click="logout">
-      <span class="font-weight-black">Logout</span>
-    </v-btn>
+    <div class="nav__actions">
+      <v-btn v-if="!user" depressed color="white" outlined :to="{ name: 'login' }" :ripple="false">
+        <span class="font-weight-black">Login</span>
+      </v-btn>
+      <v-btn
+        v-if="!user"
+        class="signup__signupbutton rounded-lg"
+        depressed
+        color="#828282"
+        :ripple="false"
+        :to="{ name: 'signup' }"
+      >
+        <span class="font-weight-black">Signup</span>
+      </v-btn>
+
+      <v-btn color="#404142" text rounded large
+        ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
+      >
+
+      <v-btn
+        v-if="user"
+        class="mr-3 ml-3 pr-10 pl-10"
+        large
+        depressed
+        rounded
+        outlined
+        color="white"
+        :ripple="false"
+        @click="logout"
+      >
+        <span class="font-weight-black">Explore</span>
+      </v-btn>
+
+      <v-btn
+        v-if="user"
+        class="mr-3 ml-3"
+        large
+        depressed
+        rounded
+        outlined
+        color="white"
+        :ripple="false"
+        @click="logout"
+      >
+        <span class="font-weight-black">My Portfolio</span>
+      </v-btn>
+
+      <v-btn color="#404142" rounded text
+        ><v-badge
+          class="ml-1 mr-1"
+          :content="10"
+          :value="10"
+          color="purple lighten-2"
+          overlap
+          offset-x="15"
+          offset-y="20"
+          ><v-icon color="white" large>mdi-bell</v-icon>
+        </v-badge></v-btn
+      >
+
+      <!-- <v-btn
+        v-if="getUser"
+        class="mr-3 ml-3"
+        large
+        depressed
+        rounded
+        outlined
+        color="white"
+        :ripple="false"
+        @click="logout"
+      >
+        <span class="font-weight-black">Logout</span>
+      </v-btn> -->
+
+      <v-btn text color="#404142"
+        ><v-avatar color="#404142" size="45" outlined>
+          <v-img
+            src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+          ></v-img> </v-avatar
+      ></v-btn>
+    </div>
   </v-toolbar>
 </template>
+<style lang="scss">
+.nav__logo {
+  width: 40px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.nav__profile {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 0px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #828282;
+}
+
+.nav__actions {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  .signup__signupbutton {
+    margin-left: 20px;
+    margin-right: 25px;
+  }
+}
+</style>
 <script lang="ts">
-import { useGetters as useAuthGetters, useActions as useAuthActions } from '@/store/modules/auth';
-import { useGetters as useToolGetters } from '@/store/modules/tools';
+import { useActions as useAuthActions } from '@/store/modules/auth';
 
 export default {
-  setup() {
+  props: {
+    user: {
+      type: Object,
+      default: null
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(_props, ctx) {
     // Auth configuration
-    const { getUser } = useAuthGetters(['getUser']);
-    const { logout } = useAuthActions(['logout']);
+    const { logout: logoutProcess } = useAuthActions(['logout']);
+    async function logout() {
+      await logoutProcess();
+      ctx.root.$router.push({ name: 'login' });
+    }
     // Global Tooling for linear progression
-    const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
     return {
-      getUser,
-      logout,
-      loading
+      logout
     };
   }
 };
