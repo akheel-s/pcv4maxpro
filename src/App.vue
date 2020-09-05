@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <Nav />
+      <editprogram />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Nav from './views/ManageProgram/components/Nav.vue';
+import editprogram from './views/ManageProgram/Views/editprogram.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    Nav
+    editprogram
   },
   data: () => ({
     //
