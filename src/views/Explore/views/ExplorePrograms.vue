@@ -1,6 +1,6 @@
 <template>
   <div class="explore-program__entire-body">
-    <div class="explore-program__title text-h3 font-weight-black">Explore Programs</div>
+    <!-- <div class="explore-program__title text-h3 font-weight-black">Explore Programs</div> -->
     <div class="explore-program__image-card">
       <ImageCard> </ImageCard>
     </div>
@@ -49,19 +49,32 @@ export default {
   }
 
   &__image-card {
-    margin-left: 145px;
-    margin-right: 145px;
+    // margin-left: 145px;
+    // margin-right: 145px;
   }
 
   &__explore-card {
-    margin-top: 44px;
-    margin-left: 185px;
-    margin-bottom: 43px;
+    margin-top: 100px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
     display: grid;
-    grid-template-columns: repeat(2, 475px);
-    grid-template-rows: repeat(2, 375px);
-    grid-column-gap: 120px;
-    grid-row-gap: 43px;
+    grid-template-columns: repeat(3, 375px);
+    // grid-template-rows: repeat(10, 375px);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    justify-content: center;
   }
+
+  // &__explore-card {
+  //   margin-top: 50px;
+  //   margin-left: 50px;
+  //   margin-bottom: 42px;
+  //   display: grid;
+  //   grid-template-columns: repeat(3, 375px);
+  //   grid-template-rows: repeat(3, 275px);
+  //   grid-column-gap: 42px;
+  //   grid-row-gap: 42px;
+  // }
 }
 </style>
