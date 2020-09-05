@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <Navbar></Navbar>
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -8,12 +9,15 @@
 
 <script lang="ts">
 import Vue from 'vue';
-// import Manage from './views/ManageProgram/views/Manage.vue';
-// import Card from './views/ManageProgram/components/PCCard.vue';
+import Navbar from '@/components/Navbar.vue';
 
 export default Vue.extend({
   name: 'App',
-  components: {},
+
+  components: {
+    Navbar
+  },
+
   data: () => ({
     //
   })
