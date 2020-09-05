@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <Nav />
+      <managestakeholder />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Nav from './views/ManageProgram/components/Nav.vue';
+import managestakeholder from './views/ManageProgram/views/managestakeholder.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    Nav
+    managestakeholder
   },
   data: () => ({
     //
