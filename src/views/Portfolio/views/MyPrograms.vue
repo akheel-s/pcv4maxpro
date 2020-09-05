@@ -3,9 +3,7 @@
     <div class="my-program">
       <div class="my-programs pc-container">
         <div class="my-programs__wrapper">
-          <h4 class="my-programs__programs-title">
-            My Programs
-          </h4>
+          <h4 class="my-programs__programs-title">My Programs</h4>
           <program-card />
           <program-card class="mt-10" />
         </div>
