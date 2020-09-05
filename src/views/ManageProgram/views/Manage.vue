@@ -53,9 +53,6 @@ export default {
   color: black;
 }
 .manage {
-  &__entire-body {
-  }
-
   &__title {
     margin-left: 56px;
     margin-top: 44px;
