@@ -72,8 +72,6 @@
 </template>
 
 <script>
-import { ref, reactive } from '@vue/composition-api';
-
 export default {
   name: 'Editprogram'
 };

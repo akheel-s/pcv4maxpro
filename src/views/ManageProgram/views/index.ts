@@ -1,11 +1,5 @@
-import M from './Manage.vue';
-import P from './Participants.vue';
-import E from './editprogram.vue';
+export { default as Participants } from './Participants.vue';
 
-function test(): void {
-  console.log();
-}
-export default test;
-export { M as Manage };
-export { P as Participants };
-export { E as Editprogram };
+export { default as Manage } from './Manage.vue';
+export { default as EditProgram } from './EditProgram.vue';
+export { default as Nav } from '../components/Nav.vue';

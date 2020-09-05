@@ -1,10 +1,8 @@
 <template>
   <div class="manage-program__entire-body">
     <div class="manage-program__top-part">
-      <div
-        class="manage-program__top-line"
-        :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }"
-      ></div>
+      <div class="manage-program__top-line"></div>
+      <!-- :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }" -->
     </div>
     <div class="manage-program__title text-h5 font-weight-black">Program name</div>
 
@@ -47,8 +45,13 @@ import { ref } from '@vue/composition-api';
 
 export default {
   name: 'Nav',
+  props: {
+    startDate: {
+      type: String,
+      default: 'DAY, MON 1'
+    }
+  },
   setup() {
-    const startDate = ref('DAY, MON 1');
     const endDate = ref('DAY, MON 1');
     const items = ref([
       { title: 'Detail', color: 'purple' },
@@ -61,7 +64,6 @@ export default {
       activeTab.value = item;
     }
     return {
-      startDate,
       endDate,
       items,
       activeTab,
