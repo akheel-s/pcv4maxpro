@@ -1,8 +1,10 @@
 <template>
   <div class="manage-program__entire-body">
     <div class="manage-program__top-part">
-      <div class="manage-program__top-line"></div>
-      <!-- :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }" -->
+      <div
+        class="manage-program__top-line"
+        :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }"
+      ></div>
     </div>
     <div class="manage-program__title text-h5 font-weight-black">Program name</div>
 
