@@ -18,7 +18,7 @@ export default Vue.extend({
   name: 'App',
 
   components: {
-    Navbar,
+    Navbar
   },
 
   setup() {

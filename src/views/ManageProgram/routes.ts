@@ -11,6 +11,11 @@ const routes: Array<RouteConfig> = [
     path: '/program/participants',
     name: 'Participants',
     component: Program.Participants
+  },
+  {
+    path: '/program/editprogram',
+    name: 'Editprogram',
+    component: Program.Editprogram
   }
 ];
 

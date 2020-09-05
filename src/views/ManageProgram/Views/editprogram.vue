@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="editprogram__title text-h4 font-weight-black">
-      Edit Program
-    </div>
+    <div class="editprogram__title text-h4 font-weight-black">Edit Program</div>
     <div class="editprogram__body">
       <div class="editprogram__uploadbox text-center" color="gray">
         <v-btn class="editprogram__icon" size="large" text icon color="gray lighten-2">
