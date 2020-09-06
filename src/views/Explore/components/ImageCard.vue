@@ -11,6 +11,15 @@
           <div class="image-card__subtitle">
             Build projects for employers. If they dig it, you get an internship.
           </div>
+
+          <div class="image-card__instructions">
+            Explore employer projects and start program to begin building.
+          </div>
+          <div class="image-card__cta">
+            <v-btn color="#eda1bf" x-large depressed rounded class="font-weight-bold white--text"
+              >Get Started Video</v-btn
+            >
+          </div>
         </v-img>
       </slot>
       <!-- <v-icon x-large>mdi-chevron-right</v-icon> -->
@@ -35,12 +44,13 @@ export default {
   }
 
   &__image {
-    height: 450px;
     // border: 1px solid black;
+    max-height: 550px;
+    min-height: 450px;
   }
 
   &__title {
-    color: #6fba7f;
+    color: #3c9dcd;
     // font-family: Montserrat;
     font-family: Raleway;
     font-size: 70px;
@@ -53,10 +63,26 @@ export default {
     color: #ffffff;
     // font-family: Montserrat;
     font-family: Raleway;
-    font-size: 27px;
+    font-size: 26px;
     font-weight: 800;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
+  }
+
+  &__instructions {
+    color: #ffffff;
+    // font-family: Montserrat;
+    font-family: Raleway;
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  &__cta {
+    padding-top: 50px;
+    padding-bottom: 75px;
+    text-align: center;
   }
 }
 </style>
