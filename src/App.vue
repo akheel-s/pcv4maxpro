@@ -3,7 +3,6 @@
     <v-main>
       <Navbar :user="getUser" :loading="loading"></Navbar>
       <router-view />
-      <managestakeholder />
     </v-main>
   </v-app>
 </template>
@@ -14,14 +13,12 @@ import Navbar from '@/components/Navbar.vue';
 import '@/styles/main.scss';
 import { useGetters as useToolGetters } from '@/store/modules/tools';
 import { useGetters } from './store/modules/auth';
-import managestakeholder from './views/ManageProgram/Views/managestakeholder.vue';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    Navbar,
-    managestakeholder
+    Navbar
   },
 
   setup() {

@@ -1,5 +1,8 @@
 <template>
   <div class="manage__entire-body">
+    <div class="manga__first-part">
+      <Nav></Nav>
+    </div>
     <div class="manage__second-body">
       <div class="manage__title text-h4 font-weight-black">Manage Program</div>
       <div class="manage__profile-btn">
@@ -35,7 +38,8 @@ import { PCCard, Nav } from '../components';
 export default {
   name: 'Manage',
   components: {
-    'pc-card': PCCard
+    'pc-card': PCCard,
+    Nav
   },
   setup() {
     const items = ref([
@@ -57,6 +61,10 @@ export default {
   color: black;
 }
 .manage {
+  &__entire-body {
+    display: flex;
+    height: 100%;
+  }
   &__title {
     margin-left: 56px;
     margin-top: 44px;

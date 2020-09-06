@@ -103,6 +103,7 @@ export default {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 30px;
+    color: white;
   }
   &__start-date {
     border: 1px solid white;
@@ -119,8 +120,9 @@ export default {
 
     & hr {
       border: 1.5px dashed #e0e0e0;
-      color: #e0e0e0;
-      border-color: #e0e0e0;
+      background: #e0e0e0;
+      margin-left: 5px;
+      margin-right: 5px;
     }
   }
 
@@ -146,7 +148,7 @@ export default {
       border: 1.5px solid #e0e0e0;
       margin-left: 13px;
       margin-right: 12px;
-      border-color: #e0e0e0;
+      background: #e0e0e0;
     }
     & .v-list-item {
       padding-left: 13px;
