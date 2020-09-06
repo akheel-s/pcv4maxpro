@@ -5,15 +5,15 @@ import state from './state';
 import { actions, DbActions } from './actions';
 
 // Returns the shared instance of the Realm app.
-const realmApp: Module<typeof state, RootState> = {
+const db: Module<typeof state, RootState> = {
   namespaced: true,
   actions,
   state
 };
-export default realmApp;
+export default db;
 export const { useState, useGetters, useMutations, useActions } = createNamespacedHelpers<
   typeof state,
   any,
   DbActions,
   any
->('realmApp');
+>('db');

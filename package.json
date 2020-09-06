@@ -24,6 +24,7 @@
     "@types/react": "^16.9.49",
     "@vue/composition-api": "^1.0.0-beta.7",
     "@vue/test-utils": "^1.0.3",
+    "aws-sdk": "^2.747.0",
     "babel-jest": "26.3.0",
     "bson": "^4.1.0",
     "core-js": "^3.6.5",
