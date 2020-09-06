@@ -1,32 +1,36 @@
 <template>
   <div class="manage__entire-body">
-    <div class="manage__title text-h4 font-weight-black">Manage Program</div>
-    <div class="manage__profile-btn">
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
+    <div class="manage__second-body">
+      <div class="manage__title text-h4 font-weight-black">Manage Program</div>
+      <div class="manage__profile-btn">
+        <v-chip class="manage__pills" color="#bdbdbd">
+          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
 
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
-      <v-chip class="manage__pills" color="#bdbdbd">
-        <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
-      <v-chip class="manage__pills--outline"></v-chip>
-    </div>
-    <div class="manage__graph">
-      <pc-card v-for="item in items" :key="item.title">
-        <template v-slot:title>{{ item.title }}</template>
-        <template v-slot:actions> </template>
-        <template v-slot:graph> <v-img :src="item.image" class="pc-card__image"></v-img> </template>
-      </pc-card>
+        <v-chip class="manage__pills" color="#bdbdbd">
+          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
+        <v-chip class="manage__pills" color="#bdbdbd">
+          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
+        <v-chip class="manage__pills--outline"></v-chip>
+      </div>
+      <div class="manage__graph">
+        <pc-card v-for="item in items" :key="item.title">
+          <template v-slot:title>{{ item.title }}</template>
+          <template v-slot:actions> </template>
+          <template v-slot:graph>
+            <v-img :src="item.image" class="pc-card__image"></v-img>
+          </template>
+        </pc-card>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { PCCard } from '../components';
+import { PCCard, Nav } from '../components';
 
 export default {
   name: 'Manage',

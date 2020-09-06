@@ -19,6 +19,11 @@ const routes: Array<RouteConfig> = [
     component: Program.EditProgram
   },
   {
+    path: '/program/managestakeholder',
+    name: 'ManageStakeholder',
+    component: Program.ManageStakeholder
+  },
+  {
     path: '/nav',
     name: 'nav',
     component: Nav

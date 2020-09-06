@@ -76,11 +76,11 @@ export default {
 </script>
 
 <style lang="scss">
-.v-main__wrap {
-  background-color: #bdbdbd;
-  color: white;
-}
 .manage-program {
+  &__entire-body {
+    background-color: #bdbdbd;
+    height: 100%;
+  }
   &__top-part {
     padding-left: 13px;
     padding-right: 13px;
@@ -119,6 +119,8 @@ export default {
 
     & hr {
       border: 1.5px dashed #e0e0e0;
+      color: #e0e0e0;
+      border-color: #e0e0e0;
     }
   }
 
@@ -144,6 +146,7 @@ export default {
       border: 1.5px solid #e0e0e0;
       margin-left: 13px;
       margin-right: 12px;
+      border-color: #e0e0e0;
     }
     & .v-list-item {
       padding-left: 13px;
