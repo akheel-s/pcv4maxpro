@@ -71,8 +71,7 @@
             class="editprogram__button text-h5 text-center font-weight-black"
             depressed
             outlined
-          >
-            Complete
+            >Complete
           </v-btn>
         </div>
       </div>
