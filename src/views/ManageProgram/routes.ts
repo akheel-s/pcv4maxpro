@@ -23,11 +23,11 @@ const routes: Array<RouteConfig> = [
     name: 'ManageStakeholder',
     component: Program.ManageStakeholder
   },
-  {
-    path: '/nav',
-    name: 'nav',
-    component: Nav
-  }
 ];
-
+if(process.env.node_env === "development)
+routes.push({
+  path: '/nav',
+  name: 'nav',
+  component: Nav
+})
 export default routes;
