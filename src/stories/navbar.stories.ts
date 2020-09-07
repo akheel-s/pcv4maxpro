@@ -1,25 +1,28 @@
 import Navbar from '@/components/Navbar.vue';
-import { withKnobs, object, boolean } from '@storybook/addon-knobs';
+import { Meta, Story } from '@/@types/storybook.d';
 
 export default {
   component: Navbar,
-  title: 'Navbar',
-  decorators: [withKnobs]
-};
-export const asDefault = () => ({
+  title: 'Navbar'
+} as Meta;
+
+const Template = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { Navbar },
-  template: '<Navbar></Navbar>'
+  template: '<Navbar :loading="loading" :user="user"></Navbar>'
 });
 
-export const whileLoading = () => ({
-  components: { Navbar },
-  template: '<Navbar :loading="loading"></Navbar>',
-  props: {
-    loading: {
-      default: boolean('loading', true)
-    }
-  }
-});
+export const asDefault: Story = Template.bind({});
+asDefault.args = {
+  loading: false,
+  user: undefined
+};
+
+export const whileLoading: Story = Template.bind({});
+whileLoading.args = {
+  loading: true,
+  user: undefined
+};
 const mockUser = {
   _accessToken: 'testToken',
   _id: 'secretId',
@@ -27,12 +30,8 @@ const mockUser = {
     email: 'poopmonster@flex.com'
   }
 };
-export const loggedIn = () => ({
-  components: { Navbar },
-  props: {
-    user: {
-      default: object('mockUser', mockUser)
-    }
-  },
-  template: '<Navbar :user="user"></Navbar>'
-});
+export const loggedIn: Story = Template.bind({});
+loggedIn.args = {
+  loading: false,
+  user: mockUser
+};

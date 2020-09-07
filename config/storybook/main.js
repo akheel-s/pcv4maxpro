@@ -14,7 +14,8 @@ module.exports = {
       options: {
         configureJSX: true
       }
-    }
+    },
+    '@storybook/addon-controls'
   ],
 
   webpackFinal: async config => {

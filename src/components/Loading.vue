@@ -22,20 +22,29 @@ export default {
     const { setLinearLoader } = useActions(['setLinearLoader']);
 
     const loading = ref(false);
-    const process = () =>
-      setLinearLoader({
-        func: async () => {
-          loading.value = true;
-          try {
-            await (props.callback as Function)();
-          } catch (err) {
-            console.error(err);
-          }
-          loading.value = false;
+    const process =
+      // setLinearLoader({
+      async () => {
+        console.log('processing');
+        loading.value = true;
+        try {
+          await (props.callback as Function)();
+        } catch (err) {
+          console.error(err);
         }
-      });
+        loading.value = false;
+      };
+    // });
 
-    return { loading, process };
+    return {
+      loading,
+      process: props.linearLoader
+        ? () =>
+            setLinearLoader({
+              func: process
+            })
+        : process
+    };
   }
 };
 </script>
