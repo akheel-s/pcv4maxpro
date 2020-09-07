@@ -1,6 +1,6 @@
 import Nav from '@/views/ManageProgram/components/Nav.vue';
 import { RouteConfig } from 'vue-router';
-import * as Program from './Views';
+import * as Program from './views';
 
 const routes: Array<RouteConfig> = [
   {

@@ -1,4 +1,4 @@
-import * as views from './Views';
+import * as views from './views';
 
 export { default as routes } from './routes';
 

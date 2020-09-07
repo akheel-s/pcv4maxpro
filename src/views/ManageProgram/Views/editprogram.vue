@@ -105,8 +105,6 @@ export default {
     height: 100%;
   }
 
-  &__second-part {
-  }
   &__body {
     display: flex;
     flex-direction: column;
