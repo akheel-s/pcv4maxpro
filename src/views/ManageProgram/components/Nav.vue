@@ -97,6 +97,7 @@ export default {
     justify-content: center;
     margin-top: 42px;
     padding-bottom: 50px;
+    color: white;
   }
   &__date {
     display: flex;

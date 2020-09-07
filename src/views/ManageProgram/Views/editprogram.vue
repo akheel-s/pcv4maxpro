@@ -1,79 +1,93 @@
 <template>
-  <div>
-    <div class="editprogram__title text-h4 font-weight-black">Edit Program</div>
-    <div class="editprogram__body">
-      <div class="editprogram__uploadbox text-center" color="gray">
-        <v-btn class="editprogram__icon" size="large" text icon color="gray lighten-2">
-          <v-icon x-large="5">mdi-arrow-up-bold-circle</v-icon>
-        </v-btn>
-      </div>
-      <div class="editprogram__pname font-weight-black">Program Name</div>
-      <div class="editprogram__pinput">
-        <v-text-field label="Program Name" single-line outlined dense></v-text-field>
-      </div>
-      <div class="editprogram__description font-weight-black">Description</div>
-      <div class="editprogram__dinput">
-        <v-textarea label="Description" full-width single-line outlined></v-textarea>
-      </div>
-      <div class="editprogram__calendartitles">
-        <div class="editprogram__frequency font-weight-black">Frequency</div>
-        <div class="editprogram__startdate font-weight-black">Start Date</div>
-        <div class="editprogram__enddate font-weight-black">End Date</div>
-      </div>
-      <div class="editprogram__calendarinputs">
-        <div class="editprogram__finput">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+  <div class="editprogram__entire-body">
+    <div class="editprogram__first-part">
+      <Nav></Nav>
+    </div>
+    <div class="editprogram__second-part">
+      <div class="editprogram__title text-h4 font-weight-black">Edit Program</div>
+      <div class="editprogram__body">
+        <div class="editprogram__uploadbox text-center" color="gray">
+          <v-btn class="editprogram__icon" size="large" text icon color="gray lighten-2">
+            <v-icon x-large="5">mdi-arrow-up-bold-circle</v-icon>
+          </v-btn>
         </div>
-        <div class="editprogram__cinput">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+        <div class="editprogram__pname font-weight-black">Program Name</div>
+        <div class="editprogram__pinput">
+          <v-text-field label="Program Name" single-line outlined dense></v-text-field>
         </div>
-        <div class="editprogram__cinput1">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+        <div class="editprogram__description font-weight-black">Description</div>
+        <div class="editprogram__dinput">
+          <v-textarea label="Description" full-width single-line outlined></v-textarea>
         </div>
-      </div>
+        <div class="editprogram__calendartitles">
+          <div class="editprogram__frequency font-weight-black">Frequency</div>
+          <div class="editprogram__startdate font-weight-black">Start Date</div>
+          <div class="editprogram__enddate font-weight-black">End Date</div>
+        </div>
+        <div class="editprogram__calendarinputs">
+          <div class="editprogram__finput">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
+          <div class="editprogram__cinput">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
+          <div class="editprogram__cinput1">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
+        </div>
 
-      <div class="editprogram__oname font-weight-black">Organizer Name</div>
-      <div class="editprogram__oinput">
-        <v-text-field label="Organizer Name" single-line outlined dense></v-text-field>
-      </div>
-      <div class="editprogram__olocation font-weight-black">Organizer Location</div>
-      <div class="editprogram__olinput">
-        <v-text-field label="Organizer Location" single-line outlined dense></v-text-field>
-      </div>
-
-      <div class="editprogram__qualification">
-        <div class="editprogram__q1 font-weight-black">Qualification #1</div>
-        <div class="editprogram__q1input">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+        <div class="editprogram__oname font-weight-black">Organizer Name</div>
+        <div class="editprogram__oinput">
+          <v-text-field label="Organizer Name" single-line outlined dense></v-text-field>
         </div>
-      </div>
-
-      <div class="editprogram__qualification2">
-        <div class="editprogram__q2 font-weight-black">Qualification #2</div>
-        <div class="editprogram__q2input">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+        <div class="editprogram__olocation font-weight-black">Organizer Location</div>
+        <div class="editprogram__olinput">
+          <v-text-field label="Organizer Location" single-line outlined dense></v-text-field>
         </div>
-      </div>
 
-      <div class="editprogram__qualification3">
-        <div class="editprogram__q3 font-weight-black">Qualification #3</div>
-        <div class="editprogram__q3input">
-          <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+        <div class="editprogram__qualification">
+          <div class="editprogram__q1 font-weight-black">Qualification #1</div>
+          <div class="editprogram__q1input">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
         </div>
-      </div>
 
-      <div class="editprogram__complete">
-        <v-btn class="editprogram__button text-h5 text-center font-weight-black" depressed outlined>
-          Complete
-        </v-btn>
+        <div class="editprogram__qualification2">
+          <div class="editprogram__q2 font-weight-black">Qualification #2</div>
+          <div class="editprogram__q2input">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
+        </div>
+
+        <div class="editprogram__qualification3">
+          <div class="editprogram__q3 font-weight-black">Qualification #3</div>
+          <div class="editprogram__q3input">
+            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+          </div>
+        </div>
+
+        <div class="editprogram__complete">
+          <v-btn
+            class="editprogram__button text-h5 text-center font-weight-black"
+            depressed
+            outlined
+          >
+            Complete
+          </v-btn>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Nav } from '../components';
+
 export default {
-  name: 'Editprogram'
+  name: 'Editprogram',
+  components: {
+    Nav
+  }
 };
 </script>
 
@@ -86,6 +100,13 @@ export default {
 }
 
 .editprogram {
+  &__entire-body {
+    display: flex;
+    height: 100%;
+  }
+
+  &__second-part {
+  }
   &__body {
     display: flex;
     flex-direction: column;

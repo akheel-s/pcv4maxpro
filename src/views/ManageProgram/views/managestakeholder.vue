@@ -1,26 +1,36 @@
 <template>
   <div class="participants__entire-body">
-    <div class="participants__title text-h4 font-weight-black">Manage Stakeholders</div>
-    <div class="participants__profile-btn">
-      <v-chip class="participants__pills" color="#bdbdbd">
-        <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
-
-      <v-chip class="participants__pills" color="#bdbdbd">
-        <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
-      <v-chip class="participants__pills" color="#bdbdbd">
-        <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-      </v-chip>
-      <v-chip class="participants__pills--outline"></v-chip>
+    <div class="participants__first-part">
+      <Nav></Nav>
     </div>
+    <div class="participants__second-part">
+      <div class="participants__title text-h4 font-weight-black">Manage Stakeholders</div>
+      <div class="participants__profile-btn">
+        <v-chip class="participants__pills" color="#bdbdbd">
+          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
 
-    <div class="participants__manage-bar">
-      <v-data-table :headers="header" :items="items" sort-by="index" @current-items="indexHandler">
-        <template v-slot:item.role>
-          <v-select label="Role" dense outlined></v-select>
-        </template>
-      </v-data-table>
+        <v-chip class="participants__pills" color="#bdbdbd">
+          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
+        <v-chip class="participants__pills" color="#bdbdbd">
+          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
+        </v-chip>
+        <v-chip class="participants__pills--outline"></v-chip>
+      </div>
+
+      <div class="participants__manage-bar">
+        <v-data-table
+          :headers="header"
+          :items="items"
+          sort-by="index"
+          @current-items="indexHandler"
+        >
+          <template v-slot:item.role>
+            <v-select label="Role" dense outlined></v-select>
+          </template>
+        </v-data-table>
+      </div>
     </div>
   </div>
 </template>
@@ -28,9 +38,13 @@
 <script lang="ts">
 import { ref, Ref } from '@vue/composition-api';
 import shortid from 'shortid';
+import { Nav } from '../components';
 
 export default {
   name: 'Managestakeholder',
+  components: {
+    Nav
+  },
   setup() {
     const header = ref([
       { text: 'Index', align: 'start', value: 'index', sortable: false, width: '10%' },
@@ -92,7 +106,11 @@ export default {
 }
 .participants {
   &__entire-body {
+    display: flex;
     height: 100%;
+  }
+  &__second-part {
+    width: 100%;
   }
   &__title {
     margin-left: 56px;

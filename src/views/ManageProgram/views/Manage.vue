@@ -1,6 +1,6 @@
 <template>
   <div class="manage__entire-body">
-    <div class="manga__first-part">
+    <div class="manage__first-part">
       <Nav></Nav>
     </div>
     <div class="manage__second-body">
