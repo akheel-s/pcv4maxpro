@@ -2,7 +2,7 @@
   <!--  TODO: make the inputs into actual components -->
   <div>
     <div class="profile__container pc-container">
-      <div class="profile__namepate">
+      <div class="profile__nameplate">
         <div class="profile__image">
           <img alt="Profile Picture" sizes="(max-width: 479px) 133px, 273px" class="image" />
         </div>
@@ -22,7 +22,7 @@
 </template>
 <style lang="scss">
 .profile {
-  &__namepate {
+  &__nameplate {
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -41,12 +41,6 @@
     -ms-flex-pack: end;
     justify-content: flex-end;
     background-color: #4f4f4f;
-  }
-  &__programs-title {
-    width: 100%;
-    font-size: 35px;
-    line-height: 35px;
-    margin-bottom: 33px;
   }
   &__name {
     display: -webkit-box;

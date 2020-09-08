@@ -18,6 +18,7 @@ describe('Login.vue', () => {
   afterEach(() => {
     wrapper.destroy();
   });
+
   it('dispatches "loginUser" when login button is clicked', async () => {
     wrapper = mount(Login, {
       data: () => ({ email: 'test@email.com', password: 'SuperSecretSecurePassword1000' }),
