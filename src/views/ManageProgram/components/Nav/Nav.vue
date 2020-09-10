@@ -44,6 +44,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import items from './const';
 
 export default {
   name: 'Nav',
@@ -51,23 +52,20 @@ export default {
     startDate: {
       type: String,
       default: 'DAY, MON 1'
+    },
+    endDate: {
+      type: String,
+      default: 'DAY, MON 1'
     }
   },
   setup() {
-    const endDate = ref('DAY, MON 1');
-    const items = ref([
-      { title: 'Detail', color: 'purple' },
-      { title: 'Manage', color: 'blue' },
-      { title: 'Participant', color: 'green' },
-      { title: 'Stakeholder', color: 'red' }
-    ]);
-    const activeTab = ref({ title: 'Detail', color: 'purple' });
+    const activeTab = ref(items[0]);
     function setActive(item) {
       activeTab.value = item;
     }
     return {
-      endDate,
-      items,
+      items: ref(items),
+
       activeTab,
       setActive
     };

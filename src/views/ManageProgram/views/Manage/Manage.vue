@@ -33,7 +33,8 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { PCCard, Nav } from '../components';
+import { PCCard, Nav } from '../../components';
+import items from './const';
 
 export default {
   name: 'Manage',
@@ -42,15 +43,7 @@ export default {
     Nav
   },
   setup() {
-    const items = ref([
-      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Participant', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Detail', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
-      { title: 'Participant', image: 'https://picsum.photos/510/300?random' }
-    ]);
-    return { items };
+    return { items: ref(items) };
   }
 };
 </script>
