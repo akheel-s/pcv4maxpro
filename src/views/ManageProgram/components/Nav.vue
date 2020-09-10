@@ -51,10 +51,13 @@ export default {
     startDate: {
       type: String,
       default: 'DAY, MON 1'
+    },
+    endDate: {
+      type: String,
+      default: 'DAY, MON 1'
     }
   },
   setup() {
-    const endDate = ref('DAY, MON 1');
     const items = ref([
       { title: 'Detail', color: 'purple' },
       { title: 'Manage', color: 'blue' },
@@ -66,7 +69,6 @@ export default {
       activeTab.value = item;
     }
     return {
-      endDate,
       items,
       activeTab,
       setActive

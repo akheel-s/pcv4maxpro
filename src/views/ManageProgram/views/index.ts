@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-export { default as Participants } from './Participants.vue';
-export { default as Manage } from './Manage.vue';
+export { default as Participants } from './Participants';
+export { default as Manage } from './Manage';
 export { default as EditProgram } from './EditProgram.vue';
 export { default as Nav } from '../components/Nav.vue';
-export { default as ManageStakeholder } from './ManageStakeholder.vue';
+export { default as ManageStakeholder } from './ManageStakeholders';

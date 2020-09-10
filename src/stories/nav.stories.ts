@@ -15,10 +15,15 @@ export const asDefault = () => ({
   components: {
     Nav
   },
-  template: '<Nav :startDate="startDate"></Nav>',
+  template: '<Nav :startDate="startDate" :endDate="endDate"></Nav>',
   props: {
     startDate: {
-      default: text('startDate', 'DAY, MON 1')
+      default: text('startDate', 'DAY, MON 1'),
+       
+    },
+    endDate: {
+      default: text('endDate', 'DAY, MON 1'),
+       
     }
   }
 });
