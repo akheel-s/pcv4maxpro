@@ -59,12 +59,13 @@ export default {
     }
   },
   setup() {
-    const activeTab = ref({ title: 'Detail', color: 'purple' });
+    const activeTab = ref(items[0]);
     function setActive(item) {
       activeTab.value = item;
     }
     return {
       items: ref(items),
+
       activeTab,
       setActive
     };
