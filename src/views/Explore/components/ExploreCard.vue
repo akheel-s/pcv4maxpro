@@ -101,9 +101,9 @@
         </v-stepper-step>
 
         <v-stepper-content step="1">
-          <!-- <v-card elevation="0" color="grey lighten-3" class="mb-3" height="50px"></v-card>
+          <v-card elevation="0" color="grey lighten-3" class="mb-3" height="50px"></v-card>
           <v-btn x-small outlined text @click="e6 = 2">Preview</v-btn>
-          <v-btn x-small text>Cancel</v-btn> -->
+          <v-btn x-small text>Cancel</v-btn>
         </v-stepper-content>
 
         <v-stepper-step
@@ -214,7 +214,7 @@ export default {
   }
   &__card {
     &.v-sheet.v-card {
-      border: 1px solid #dedede;
+      border: 1px solid #d1d3d4;
       padding-bottom: 12px;
       // border-radius: 0px;
       // min-height: 375px;
