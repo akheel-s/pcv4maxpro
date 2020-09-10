@@ -1,5 +1,5 @@
 import VueCompositionAPI from '@vue/composition-api';
-import Nav from '@/views/ManageProgram/components/Nav.vue';
+import Nav from '@/views/ManageProgram/components/Nav/Nav.vue';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { Meta, Story } from '@/@types/storybook.d';
 import Vue from 'vue';

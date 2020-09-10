@@ -44,6 +44,7 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import items from './const';
 
 export default {
   name: 'Nav',
@@ -58,18 +59,12 @@ export default {
     }
   },
   setup() {
-    const items = ref([
-      { title: 'Detail', color: 'purple' },
-      { title: 'Manage', color: 'blue' },
-      { title: 'Participant', color: 'green' },
-      { title: 'Stakeholder', color: 'red' }
-    ]);
     const activeTab = ref({ title: 'Detail', color: 'purple' });
     function setActive(item) {
       activeTab.value = item;
     }
     return {
-      items,
+      items: ref(items),
       activeTab,
       setActive
     };

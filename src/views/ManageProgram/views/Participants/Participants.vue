@@ -47,7 +47,7 @@
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import IndexTable from '@/components/IndexTable.vue';
-import { Nav } from '../../components';
+import Nav from '../../components/Nav/Nav.vue';
 import { items, HEADER } from './const';
 
 export default {
