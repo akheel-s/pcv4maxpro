@@ -1,11 +1,13 @@
 <template>
-  <div style="width: 100%;">
+  <div style="width: 100%">
     <div v-if="tile" class="tile">
       <div class="pc-program-card">
         <div class="pc-program-card__image"></div>
         <div class="pc-program-card__content">
           <h5 class="pc-program-card__title">Program Name</h5>
-          <a href="#" class="pc-program-card__button w-button">Results</a>
+          <!-- <a href="#" class="pc-program-card__button w-button">Results</a> -->
+
+          <v-btn outlined light class="pc-program-card__button w-button">Results</v-btn>
         </div>
       </div>
     </div>
@@ -17,8 +19,12 @@
         <h5 class="pc-program-card__title">Program Name</h5>
         <h4 class="pc-program-card__progress">75%</h4>
         <div class="pc-program-card__actions">
-          <div class="pc-pgroram-card__progress-bar"></div>
-          <a href="#" class="pc-program-card__button w-button">View Details</a>
+          <!-- <div class="pc-program-card__progress-bar"> -->
+
+          <v-progress-linear class="green lighten-1" rounded green height="9"></v-progress-linear>
+          <!-- </div> -->
+          <v-btn outlined light class="pc-program-card__button w-button">Checkout</v-btn>
+          <!-- <a href="#" class="pc-program-card__button w-button">Checkout</a> -->
         </div>
       </div>
     </div>
@@ -31,7 +37,7 @@
   &__content {
     width: 100%;
     margin-top: 0px;
-    padding: 19px 29px 29px 23px;
+    padding: 19px 29px 0px 23px;
     -webkit-box-ordinal-group: 1;
     -webkit-order: 0;
     -ms-flex-order: 0;
@@ -43,25 +49,31 @@
     max-width: 300px;
     min-width: 0px;
     background-color: #dbdbdb;
+    // border-right: 1px solid black;
   }
   &__title {
-    font-size: 30px;
+    font-size: 22px;
     line-height: 30px;
-    font-weight: 700;
+    font-weight: 800;
     text-align: left;
     margin-bottom: 22px;
+    font-family: 'Raleway';
   }
 
   &__progress {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 15px;
+    font-family: 'Raleway';
+    font-weight: 800;
+    color: #6fba7f;
   }
   &__actions {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 18px;
+    // margin-top: 18px;
+    padding-top: 28px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
@@ -80,19 +92,21 @@
     align-items: center;
   }
   &__button {
-    max-width: 200px;
+    width: 200px;
     min-height: 40px;
-    margin-top: 37px;
+    margin-top: 18px;
     padding-right: 40px;
     padding-left: 40px;
     border: 1px solid #000;
     border-radius: 10px;
     background-color: #fff;
-    color: #000;
+    color: #000000;
     font-size: 20px;
     font-weight: 700;
     text-align: center;
     text-decoration: none;
+    font-family: Raleway;
+    font-weight: 900;
   }
   &__progress-bar {
     height: 10px;
@@ -108,9 +122,10 @@
     flex-direction: column;
     width: 100%;
     min-height: 200px;
-    margin-top: 33px;
+    // margin-top: 33px;
     border: 1px solid #000;
     border-radius: 1px;
+
     &__image {
       max-width: 100%;
       width: 100%;
@@ -125,7 +140,7 @@
       width: 100%;
       height: 100%;
       max-height: 175px;
-      min-height: 175px;
+      min-height: 150px;
       padding-bottom: 25px;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -138,11 +153,16 @@
       align-items: center;
     }
     &__title {
-      margin-top: 40px;
-      font-size: 30px;
-      line-height: 30px;
-      font-weight: 700;
+      // margin-top: 40px;
+      // font-size: 30px;
+      // line-height: 30px;
+      // font-weight: 700;
       text-align: center;
+
+      font-size: 22px;
+      line-height: 30px;
+      font-weight: 800;
+      font-family: 'Raleway';
     }
   }
 }
