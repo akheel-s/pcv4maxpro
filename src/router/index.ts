@@ -5,11 +5,17 @@ import { routes as PortfolioRoutes } from '@/views/Portfolio';
 import Signup from '@/views/Signup';
 import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
+import Timeline from '@/components/Timeline.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   ...PortfolioRoutes,
+  {
+    path: '/timeline',
+    name: 'timeline',
+    component: Timeline
+  },
   {
     path: '/',
     name: 'login',
