@@ -81,7 +81,6 @@ export default {
         else state.error = err;
       }
     }
-    console.log(login);
     return { ...toRefs(state), login };
   }
 };
