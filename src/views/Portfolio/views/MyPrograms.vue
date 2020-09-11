@@ -23,6 +23,7 @@
     </div>
   </div>
 </template>
+
 <style lang="scss">
 .my-programs {
   & {
