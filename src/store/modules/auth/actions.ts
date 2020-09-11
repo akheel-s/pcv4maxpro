@@ -48,8 +48,8 @@ export const actions: AuthActions = {
         await rootState.realmApp.app.logIn(Realm.Credentials.emailPassword(email, password))
       );
     } catch (err) {
-      if (typeof err !== 'string') console.error(err);
       commit(MutationTypes.LOGIN_ERROR, err);
+      throw err;
     }
   },
   async signup({ commit, rootState }, { email, password }: { email: string; password: string }) {
