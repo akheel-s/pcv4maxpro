@@ -6,18 +6,30 @@
         :style="{ 'background-color': `var(--v-${activeTab.color}-base)` }"
       ></div>
     </div>
-    <div class="manage-program__title text-h5 font-weight-black">Program name</div>
+    <div class="manage-program__title">Program name</div>
 
     <div class="manage-program__date text-caption">
-      <div class="manage-program__start-date font-weight-black">
+      <v-chip
+        outlined
+        color="white"
+        small
+        text-color="white"
+        class="manage-program__start-date font-weight-black"
+      >
         {{ startDate }}
-      </div>
+      </v-chip>
 
       <div class="manage-program__dashed-line"><hr /></div>
 
-      <div class="manage-program__end-date font-weight-black">
+      <v-chip
+        outlined
+        color="white"
+        small
+        text-color="white"
+        class="manage-program__end-date font-weight-black"
+      >
         {{ endDate }}
-      </div>
+      </v-chip>
     </div>
     <div class="manage-program__body">
       <v-list-item-group class="manage-program__navigation" width="100%" permanent color="accent">
@@ -29,7 +41,7 @@
             :active-class="`${item.color}`"
             @click="setActive(item)"
           >
-            <v-list-item-content class="manage-program__items text-h5 font-weight-black">
+            <v-list-item-content class="manage-program__items text-h5 font-weight-bold">
               <v-list-item-title>
                 <div class="manage-program__titles secondary--text">{{ item.title }}</div>
               </v-list-item-title>
@@ -77,10 +89,13 @@ export default {
   &__entire-body {
     background-color: #bdbdbd;
     height: 100%;
+    // padding: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   &__top-part {
-    padding-left: 13px;
-    padding-right: 13px;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   &__top-line {
@@ -91,10 +106,15 @@ export default {
   }
   &__title {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 25px;
+    // letter-spacing: 1px;
     margin-top: 42px;
-    padding-bottom: 50px;
+    padding-bottom: 42px;
     color: white;
+    font-family: Raleway;
+    font-size: 25px;
+    font-weight: 800;
   }
   &__date {
     display: flex;
@@ -104,32 +124,38 @@ export default {
     color: white;
   }
   &__start-date {
-    border: 1px solid white;
-    border-radius: 10px;
-    text-align: center;
+    // border: 1px solid white;
+    // border-radius: 10px;
+    // text-align: center;
     padding: 8px 14px;
     margin-left: 12px;
+    font-family: Raleway;
+    font-size: 10px;
+    letter-spacing: 1px;
   }
 
   &__dashed-line {
-    width: 8vw;
+    width: 1.25vw;
     margin-top: auto;
     margin-bottom: auto;
 
     & hr {
-      border: 1.5px dashed #e0e0e0;
-      background: #e0e0e0;
+      border: 1px dashed #ffffff;
+      // background: #e0e0e0;
       margin-left: 5px;
       margin-right: 5px;
     }
   }
 
   &__end-date {
-    border: 1px solid white;
-    border-radius: 10px;
-    text-align: center;
+    // border: 1px solid white;
+    // border-radius: 10px;
+    // text-align: center;
     padding: 8px 14px;
     margin-right: 12px;
+    font-family: Raleway;
+    font-size: 10px;
+    letter-spacing: 1px;
   }
   &__body {
     display: flex;
@@ -139,14 +165,16 @@ export default {
   &__navigation {
     width: 100%;
     &.v-list-item-group .v-list-item--active {
-      margin: 4px 10px;
+      // margin: 4px 10px;
       border-radius: 5px;
     }
     & hr {
-      border: 1.5px solid #e0e0e0;
-      margin-left: 13px;
-      margin-right: 12px;
+      border: 1px solid #e0e0e0;
+      // margin-left: 13px;
+      // margin-right: 12px;
       background: #e0e0e0;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
     & .v-list-item {
       padding-left: 13px;
@@ -161,6 +189,9 @@ export default {
 
   &__titles {
     padding-left: 18px;
+    font-family: Raleway;
+    font-weight: 800;
+    // margin: 4px 10px;
   }
 }
 </style>
