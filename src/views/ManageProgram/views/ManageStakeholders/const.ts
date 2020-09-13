@@ -1,9 +1,9 @@
 export const HEADER = [
-  { text: 'Index', align: 'start', value: 'index', sortable: false, width: '10%' },
-  { text: 'First Name', value: 'first', width: '10%' },
-  { text: 'Last Name', value: 'last', width: '10%' },
-  { text: 'Organization', value: 'organization', width: '10%' },
-  { text: 'Role', value: 'role', sortable: false, width: '10%' }
+  { text: 'Index', align: 'start', value: 'index', sortable: false, width: '5%' },
+  { text: 'First Name', value: 'first', width: '20%' },
+  { text: 'Last Name', value: 'last', width: '20%' },
+  { text: 'Organization', value: 'organization', width: '25%' },
+  { text: 'Role', value: 'role', sortable: false, width: '25%' }
 ];
 
 export const items = [

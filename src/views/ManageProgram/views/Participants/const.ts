@@ -4,7 +4,7 @@ export const HEADER = [
   { text: 'Last Name', value: 'last', width: '20%' },
   { text: 'School', value: 'school', width: '25%' },
   { text: 'Approve', value: 'approve', sortable: false, width: '15%' },
-  { text: 'Deny', value: 'deny', sortable: false, width: '15%' }
+  { text: 'Deny', value: 'deny', sortable: false, width: '10%' }
 ];
 
 export const items = [

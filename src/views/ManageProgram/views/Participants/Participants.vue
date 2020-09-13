@@ -7,7 +7,7 @@
       <div class="participants__title">Manage Participants</div>
 
       <!-- FILTER START -->
-      <div class="participants__profile-btn">
+      <div class="participants__profile-btn2">
         <!-- <v-btn outlined icon><v-icon>mdi-filter-variant</v-icon>Filter</v-btn> -->
         <template>
           <v-dialog v-model="dialog" scrollable max-width="300px">
@@ -103,12 +103,23 @@
       <div class="participants__manage-bar">
         <!-- Auto-Join Switch -->
 
-        <v-switch
+        <v-row class="participants__auto-join"
+          ><v-icon class="ma-3" large color="yellow">mdi-lightning-bolt</v-icon
+          ><v-switch v-model="switch1" color="grey" inset :label="`Auto-Join`"></v-switch>
+        </v-row>
+
+        <!-- <v-switch
           v-model="switch1"
           blue
           inset
           :label="`Switch 1: ${switch1.toString()}`"
-        ></v-switch>
+        ></v-switch> -->
+
+        <v-row class="participants__toggle"
+          ><v-btn class="ma-1" x-small color="grey" depressed outlined>Approved</v-btn
+          ><v-btn class="ma-1" x-small color="grey" depressed outlined>Unapproved</v-btn
+          ><v-btn class="ma-1" x-small color="grey" depressed outlined>Denied</v-btn></v-row
+        >
 
         <IndexTable v-slot="{ indexedItems, indexHandler }" :items="items">
           <v-data-table
@@ -123,8 +134,15 @@
               </v-btn>
             </template>
             <template v-slot:item.deny>
-              <v-btn small class="participants__approve" depressed color="red" :ripple="false">
-                <v-icon color="#F2F2F2">mdi-close</v-icon>
+              <v-btn
+                small
+                outlined
+                class="participants__approve"
+                depressed
+                color="red"
+                :ripple="false"
+              >
+                <v-icon color="red">mdi-close</v-icon>
               </v-btn>
             </template>
           </v-data-table>
@@ -176,11 +194,11 @@ export default {
     width: 100%;
   }
 
-  &__profile-btn {
+  &__profile-btn2 {
     // display: flex;
     // margin-top: 44px;
     // padding-left: 56px;
-    // margin-bottom: 83px;
+    margin-bottom: 50px;
     display: flex;
     margin-top: 28px;
     padding-left: 56px;
@@ -188,10 +206,20 @@ export default {
 
   &__title {
     margin-left: 56px;
-    // margin-top: 28px;
+    margin-top: 44px;
     font-family: Raleway;
     font-size: 33px;
     font-weight: 800;
+  }
+
+  &__auto-join {
+    // margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  &__toggle {
+    margin-left: 0px;
+    margin-bottom: 10px;
   }
 
   &__pills {
