@@ -80,6 +80,8 @@
           <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
         </v-chip>
         <v-chip class="manage__pills--outline"></v-chip> -->
+
+        <!-- Auto-Join Switch -->
       </div>
 
       <!-- FILTER END -->
@@ -99,6 +101,15 @@
       </div> -->
 
       <div class="participants__manage-bar">
+        <!-- Auto-Join Switch -->
+
+        <v-switch
+          v-model="switch1"
+          blue
+          inset
+          :label="`Switch 1: ${switch1.toString()}`"
+        ></v-switch>
+
         <IndexTable v-slot="{ indexedItems, indexHandler }" :items="items">
           <v-data-table
             :headers="header"
@@ -107,13 +118,13 @@
             @current-items="indexHandler"
           >
             <template v-slot:item.approve>
-              <v-btn class="participants__approve" depressed color="green" :ripple="false">
-                <v-icon large color="#F2F2F2"> mdi-check </v-icon>
+              <v-btn small class="participants__approve" depressed color="green" :ripple="false">
+                <v-icon color="#F2F2F2"> mdi-check </v-icon>
               </v-btn>
             </template>
             <template v-slot:item.deny>
-              <v-btn class="participants__approve" depressed color="red" :ripple="false">
-                <v-icon large color="#F2F2F2">mdi-close</v-icon>
+              <v-btn small class="participants__approve" depressed color="red" :ripple="false">
+                <v-icon color="#F2F2F2">mdi-close</v-icon>
               </v-btn>
             </template>
           </v-data-table>
@@ -138,7 +149,9 @@ export default {
   data() {
     return {
       dialogm1: '',
-      dialog: false
+      dialog: false,
+      switch1: true,
+      switch2: false
     };
   },
   setup() {
@@ -163,14 +176,6 @@ export default {
     width: 100%;
   }
 
-  &__title {
-    margin-left: 56px;
-    margin-top: 44px;
-    font-family: Raleway;
-    font-size: 33px;
-    font-weight: 800;
-  }
-
   &__profile-btn {
     // display: flex;
     // margin-top: 44px;
@@ -179,6 +184,14 @@ export default {
     display: flex;
     margin-top: 28px;
     padding-left: 56px;
+  }
+
+  &__title {
+    margin-left: 56px;
+    // margin-top: 28px;
+    font-family: Raleway;
+    font-size: 33px;
+    font-weight: 800;
   }
 
   &__pills {
@@ -220,6 +233,7 @@ export default {
   &__manage-bar {
     margin-left: 56px;
     margin-bottom: 22px;
+    margin-right: 56px;
   }
 
   &__index-num {
@@ -239,14 +253,14 @@ export default {
 
   &__approve {
     &.v-btn {
-      width: 99px;
+      width: 100%;
       border-radius: 10px;
     }
   }
 
   &__deny {
     &.v-btn {
-      width: 99px;
+      width: 100%;
       border-radius: 10px;
     }
   }

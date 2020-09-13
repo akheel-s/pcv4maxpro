@@ -144,6 +144,7 @@ export default {
     margin-top: 28px;
     padding-left: 56px;
   }
+
   &__pills {
     margin-right: 9px;
     display: flex;
