@@ -47,7 +47,8 @@
       </div>
 
       <div class="manage__graph">
-        <pc-card v-for="{ title, image } in tableItems" :key="title">
+        <!-- <IdGen v-slot="{ keyedCollection }" v-model="tableItems"> -->
+        <pc-card v-for="{ title, image, id } in tableItems" :key="id">
           <template v-slot:title>{{ title }}</template>
           <template v-slot:actions> </template>
           <template v-slot:graph>
@@ -55,11 +56,13 @@
           </template>
         </pc-card>
       </div>
+      <!-- </IdGen> -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import IdGen from '@/components/IdGen.vue';
 import { PCCard, Nav } from '../../components';
 import { tableItems, filterChips } from './const';
 
@@ -68,6 +71,7 @@ export default {
   components: {
     'pc-card': PCCard,
     Nav
+    // IdGen
   },
 
   data() {
