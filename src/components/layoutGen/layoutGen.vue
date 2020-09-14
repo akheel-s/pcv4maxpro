@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { PropType } from 'vue';
-import idGen from '@/components/IdGen.vue';
+import idGen from '@/components/IdGen';
 import { computed, onMounted } from '@vue/composition-api';
 import generateLayout from './methods';
 

@@ -18,7 +18,8 @@ const generateLayout = (
     h,
     w,
     x: index % ColumnBreakpoints[size],
-    y: Math.trunc(index / ColumnBreakpoints[size])
+    y: Math.trunc(index / ColumnBreakpoints[size]),
+    i: `${index}`
   }));
 };
 export default generateLayout;

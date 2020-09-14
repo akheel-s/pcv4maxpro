@@ -1,6 +1,6 @@
 <script lang="ts">
 import { PropType } from 'vue';
-import shortid from 'shortid';
+import generateId from '@/components/IdGen/methods';
 
 export default {
   props: {
@@ -10,12 +10,6 @@ export default {
     }
   },
   setup(props, ctx) {
-    function generateId(collection: Record<any, any>[]) {
-      return collection.map(item => ({
-        ...item,
-        id: shortid()
-      }));
-    }
     return () =>
       ctx.slots!.default({
         keyedCollection: generateId(props.value as Record<any, any>[])
