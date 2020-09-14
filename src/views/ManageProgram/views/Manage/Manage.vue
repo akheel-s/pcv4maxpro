@@ -63,26 +63,7 @@
         <v-btn class="ma-1" color="red" rounded outlined
           ><v-icon left>mdi-close</v-icon>Projects</v-btn
         >
-
-        <!-- <v-btn class="ma-2" color="green" outlined>
-          <v-icon left>mdi-close</v-icon>
-          Location
-        </v-btn> -->
-
-        <!-- <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-
-        <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="manage__pills--outline"></v-chip> -->
       </div>
-
-      <!-- FILTER END -->
 
       <div class="manage__graph">
         <pc-card v-for="item in items" :key="item.title">
