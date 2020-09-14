@@ -46,8 +46,7 @@
         >
       </div>
 
-      <idGen v-slot="{ keyedCollection }" v-model="tableItems">
-        <div class="manage__graph">
+      <!-- <div class="manage__graph">
           <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
             <template v-slot:title>{{ title }}</template>
             <template v-slot:actions> </template>
@@ -55,23 +54,69 @@
               <v-img :src="image" class="pc-card__image"></v-img>
             </template>
           </pc-card>
-        </div>
-      </idGen>
+        </div> -->
+      <layoutGen v-slot="{ layout }" v-model="tableItems" :h="510" :w="300">
+        <!-- <GridLayout :layout.sync="layout" is-draggable is-resizable>
+          <GridItem
+            v-for="{ title, image, id, x, y, h, w } in layout"
+            :key="id"
+            :i="id"
+            :x="x"
+            :y="y"
+            :h="h"
+            :w="w"
+          >
+            <pc-card>
+              <template v-slot:title>{{ title }}</template>
+              <template v-slot:actions> </template>
+              <template v-slot:graph>
+                <v-img :src="image" class="pc-card__image"></v-img>
+              </template>
+            </pc-card>
+          </GridItem>
+        </GridLayout> -->
+        <grid-layout
+          :layout.sync="layout"
+          :col-num="12"
+          :row-height="30"
+          :is-draggable="true"
+          :is-resizable="true"
+          :is-mirrored="false"
+          :vertical-compact="true"
+          :margin="[10, 10]"
+          :use-css-transforms="true"
+        >
+          <grid-item
+            v-for="item in layout"
+            :key="item.i"
+            :x="item.x"
+            :y="item.y"
+            :w="item.w"
+            :h="item.h"
+            :i="item.i"
+          >
+            {{ item.i }}
+          </grid-item>
+        </grid-layout>
+      </layoutGen>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import idGen from '@/components/IdGen.vue';
+import VueGridLayout from 'vue-grid-layout';
+import layoutGen, { generateLayout } from '@/components/layoutGen';
 import { PCCard, Nav } from '../../components';
 import { tableItems, filterChips } from './const';
-
+/* eslint-disable vue/no-unused-components */
 export default {
   name: 'Manage',
   components: {
     'pc-card': PCCard,
     Nav,
-    idGen
+    GridLayout: VueGridLayout.GridLayout,
+    GridItem: VueGridLayout.GridItem,
+    layoutGen
   },
 
   data() {

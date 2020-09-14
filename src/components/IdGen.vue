@@ -16,9 +16,6 @@ export default {
         id: shortid()
       }));
     }
-    // return {
-    //   keyedCollection: generateId(props.value as Record<any, any>[])
-    // };
     return () =>
       ctx.slots!.default({
         keyedCollection: generateId(props.value as Record<any, any>[])
