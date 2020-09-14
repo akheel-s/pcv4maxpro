@@ -18,28 +18,11 @@
             </template>
 
             <v-card>
-              <v-card-title>Select Country</v-card-title>
+              <v-card-title>Select Filters</v-card-title>
               <v-divider></v-divider>
               <v-card-text style="height: 300px">
-                <v-radio-group v-model="dialogm1" column>
-                  <v-radio label="Bahamas, The" value="bahamas"></v-radio>
-                  <v-radio label="Bahrain" value="bahrain"></v-radio>
-                  <v-radio label="Bangladesh" value="bangladesh"></v-radio>
-                  <v-radio label="Barbados" value="barbados"></v-radio>
-                  <v-radio label="Belarus" value="belarus"></v-radio>
-                  <v-radio label="Belgium" value="belgium"></v-radio>
-                  <v-radio label="Belize" value="belize"></v-radio>
-                  <v-radio label="Benin" value="benin"></v-radio>
-                  <v-radio label="Bhutan" value="bhutan"></v-radio>
-                  <v-radio label="Bolivia" value="bolivia"></v-radio>
-                  <v-radio label="Bosnia and Herzegovina" value="bosnia"></v-radio>
-                  <v-radio label="Botswana" value="botswana"></v-radio>
-                  <v-radio label="Brazil" value="brazil"></v-radio>
-                  <v-radio label="Brunei" value="brunei"></v-radio>
-                  <v-radio label="Bulgaria" value="bulgaria"></v-radio>
-                  <v-radio label="Burkina Faso" value="burkina"></v-radio>
-                  <v-radio label="Burma" value="burma"></v-radio>
-                  <v-radio label="Burundi" value="burundi"></v-radio>
+                <v-radio-group v-model="selectedFilters" column>
+                  <v-radio v-for="{ label } in filterChips" :key="label" :label="label"></v-radio>
                 </v-radio-group>
               </v-card-text>
               <v-divider></v-divider>
@@ -52,25 +35,23 @@
         </template>
 
         <!-- Filtered Chips in the form of a button -->
-        <v-btn class="ma-1" color="green" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Outcomes</v-btn
-        >
-
-        <v-btn class="ma-1" color="blue" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Participants</v-btn
-        >
-
-        <v-btn class="ma-1" color="red" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Projects</v-btn
+        <v-btn
+          v-for="{ label, color } in filterChips"
+          :key="label"
+          class="ma-1"
+          :color="color"
+          rounded
+          outlined
+          ><v-icon left>mdi-close</v-icon>{{ label }}</v-btn
         >
       </div>
 
       <div class="manage__graph">
-        <pc-card v-for="item in items" :key="item.title">
-          <template v-slot:title>{{ item.title }}</template>
+        <pc-card v-for="{ title, image } in tableItems" :key="title">
+          <template v-slot:title>{{ title }}</template>
           <template v-slot:actions> </template>
           <template v-slot:graph>
-            <v-img :src="item.image" class="pc-card__image"></v-img>
+            <v-img :src="image" class="pc-card__image"></v-img>
           </template>
         </pc-card>
       </div>
@@ -79,9 +60,8 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
 import { PCCard, Nav } from '../../components';
-import items from './const';
+import { tableItems, filterChips } from './const';
 
 export default {
   name: 'Manage',
@@ -92,12 +72,12 @@ export default {
 
   data() {
     return {
-      dialogm1: '',
+      selectedFilters: [],
       dialog: false
     };
   },
   setup() {
-    return { items: ref(items) };
+    return { tableItems, filterChips };
   }
 };
 </script>
