@@ -19,15 +19,8 @@ const Template = (_args, { argTypes }) => ({
 });
 
 export const asDefault: Story = Template.bind({});
-  
-asDefault.args = {      
- startDate: text('startDate', 'DAY, MON 1'),
- endDate:  text('startDate', 'DAY, MON 1'),
-}
-       
 
-
-
-
-
-
+asDefault.args = {
+  startDate: text('startDate', 'DAY, MON 1'),
+  endDate: text('startDate', 'DAY, MON 1'),
+};

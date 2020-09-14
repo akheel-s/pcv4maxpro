@@ -16,7 +16,5 @@ export interface AuthGetters extends GetterTree<typeof authState, RootState> {
   getUser: AuthGetterCtx<User<Realm.DefaultFunctionsFactory, any> | null>;
 }
 export const getters: GetterTree<typeof authState, RootState> = {
-  getUser: (_state, _gets, rootState) => {
-    return rootState.realmApp.app.currentUser;
-  }
+  getUser: (_state, _gets, rootState) => rootState.realmApp.app.currentUser
 };

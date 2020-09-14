@@ -15,9 +15,6 @@ export interface RealmAppGetters extends GetterTree<typeof realmAppState, RootSt
   mongo: realmAppGetterCtx<globalThis.Realm.Services.MongoDB | null>;
 }
 export const getters: GetterTree<typeof realmAppState, RootState> = {
-  mongo: (state, _gets, rootState, rootGetters) => {
-    return rootGetters.getUser
-      ? state.app.services.mongodb(process.env.VUE_APP_ATLAS_SERVICE_NAME)
-      : null;
-  }
+  mongo: (state, _gets, rootState, rootGetters) =>
+    rootGetters.getUser ? state.app.services.mongodb(process.env.VUE_APP_ATLAS_SERVICE_NAME) : null
 };

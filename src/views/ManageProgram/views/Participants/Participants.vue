@@ -89,7 +89,7 @@
       <!-- <div class="participants__profile-btn">
         <v-chip class="participants__pills" color="#bdbdbd">
           <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip> 
+        </v-chip>
 
         <v-chip class="participants__pills" color="#bdbdbd">
           <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>

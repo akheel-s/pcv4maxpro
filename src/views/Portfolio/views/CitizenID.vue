@@ -2,7 +2,7 @@
   <div class="my-id__container">
     <div class="pc-container">
       <!-- random content -->
-      <!-- 
+      <!--
       <v-card class="pa-12" color="" flat> -->
 
       <!-- </v-card> -->

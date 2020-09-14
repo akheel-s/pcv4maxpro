@@ -1,10 +1,26 @@
 export const HEADER = [
-  { text: 'Order', align: 'start', value: 'index', sortable: false, width: '5%' },
+  {
+    text: 'Order',
+    align: 'start',
+    value: 'index',
+    sortable: false,
+    width: '5%'
+  },
   { text: 'First Name', value: 'first', width: '20%' },
   { text: 'Last Name', value: 'last', width: '20%' },
   { text: 'School', value: 'school', width: '25%' },
-  { text: 'Approve', value: 'approve', sortable: false, width: '15%' },
-  { text: 'Deny', value: 'deny', sortable: false, width: '10%' }
+  {
+    text: 'Approve',
+    value: 'approve',
+    sortable: false,
+    width: '15%'
+  },
+  {
+    text: 'Deny',
+    value: 'deny',
+    sortable: false,
+    width: '10%'
+  }
 ];
 
 export const items = [
