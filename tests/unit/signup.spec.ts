@@ -1,18 +1,17 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import Login from '@/views/Login';
+import Signup from '@/views/Signup';
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import flushPromises from 'flush-promises';
 import createMockStore from './store/store.spec';
 
 const [localVue, vuetify] = [createLocalVue(), new Vuetify()];
 localVue.use(Vuex);
 describe('Signup.vue', () => {
-  let { store, authActions } = createMockStore();
-  let wrapper = mount(Login, { store, localVue, vuetify });
+  let { store } = createMockStore();
+  let wrapper = mount(Signup, { store, localVue, vuetify });
   beforeEach(() => {
-    ({ store, authActions } = createMockStore());
-    wrapper = mount(Login, { store, localVue, vuetify });
+    ({ store } = createMockStore());
+    wrapper = mount(Signup, { store, localVue, vuetify });
   });
   afterEach(() => {
     wrapper.destroy();

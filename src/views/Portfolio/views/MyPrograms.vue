@@ -74,8 +74,8 @@
     -ms-flex-align: center;
     align-items: center;
     grid-auto-columns: 1fr;
-    grid-column-gap: 54px;
-    grid-row-gap: 16px;
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
     grid-template-areas: 'Area Area-2' 'Area-3 Area-4';
     -ms-grid-columns: 1fr 0vw 1fr;
     grid-template-columns: 1fr 1fr;

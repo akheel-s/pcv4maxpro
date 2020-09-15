@@ -1,31 +1,45 @@
 <template>
   <div>
     <div class="profile__container pc-container">
-      <div class="my-id__content flex-column">
-        <v-stepper :value="currentID" alt-labels class="setup-profile__timeline" non-linear>
-          <v-stepper-header>
-            <template v-for="(val, index) in idSteps">
-              <v-stepper-step :key="val" :step="index + 1">
-                {{ val }}
-              </v-stepper-step>
-              <v-divider v-if="index != idSteps.length - 1" :key="`${val}-content`" />
-            </template>
-          </v-stepper-header>
-          <v-stepper-items>
-            <v-stepper-content :step="currentID">
-              <v-slide-x-transition hide-on-leave>
-                <component :is="getComponent" @SaveID="stepID" />
-              </v-slide-x-transition>
-            </v-stepper-content>
-          </v-stepper-items>
-        </v-stepper>
-      </div>
+      <validation-observer v-slot="{ invalid }">
+        <div class="my-id__content flex-column">
+          <v-stepper
+            :vertical="false"
+            :value="currentID"
+            alt-labels
+            class="setup-profile__timeline"
+            non-linear
+          >
+            <v-stepper-header>
+              <template v-for="(val, index) in idSteps">
+                <v-stepper-step :key="val" :step="index + 1">
+                  {{ val }}
+                </v-stepper-step>
+                <v-divider v-if="index != idSteps.length - 1" :key="`${val}-content`" />
+              </template>
+            </v-stepper-header>
+            <v-stepper-items>
+              <v-stepper-content :step="currentID">
+                <v-slide-x-transition hide-on-leave>
+                  <component
+                    :is="getComponent"
+                    :invalid="invalid"
+                    @SaveID="stepID"
+                    @update:idSteps="handleSteps"
+                  />
+                </v-slide-x-transition>
+              </v-stepper-content>
+            </v-stepper-items>
+          </v-stepper>
+        </div>
+      </validation-observer>
     </div>
   </div>
 </template>
 
 <script>
 import { ref, watch, computed } from '@vue/composition-api';
+import _ from 'lodash';
 import {
   GeneralID,
   EmployerID,
@@ -56,7 +70,7 @@ export default {
   },
   setup() {
     const currentID = ref(1);
-    const idSteps = ref(['General', 'Employer', 'Student', 'Teacher', 'School', 'Parent']);
+    const idSteps = ref(['General']);
     const picker = ref(null);
     const date = ref(null);
     const menu = ref(false);
@@ -65,12 +79,16 @@ export default {
       ID = ID.split(' ').join('-');
       return ID;
     });
+    function handleSteps(e) {
+      idSteps.value = _.union(idSteps.value, e);
+    }
     function stepID(event) {
       if (currentID.value - 1 === idSteps.value.length - 1) {
         currentID.value = 1;
       } else {
         currentID.value += 1;
       }
+      console.log(event);
     }
     function save(time) {
       this.$refs.menu.save(time);
@@ -78,7 +96,7 @@ export default {
     watch(menu, () => {
       picker.activePicker = 'YEAR';
     });
-    return { picker, date, menu, save, idSteps, stepID, currentID, getComponent };
+    return { picker, date, menu, save, idSteps, stepID, currentID, getComponent, handleSteps };
   }
 };
 </script>
@@ -118,6 +136,7 @@ export default {
     }
     &__header {
       box-shadow: none;
+      justify-content: center;
     }
     &__content {
       display: block !important;

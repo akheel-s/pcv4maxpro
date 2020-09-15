@@ -4,6 +4,7 @@ import auth from './modules/auth';
 import realmApp from './modules/realmApp';
 import { RootState } from './state';
 import tools from './modules/tools';
+import fileStorage from './modules/fileStorage';
 import db from './modules/db';
 
 Vue.use(Vuex);
@@ -15,6 +16,7 @@ const store: StoreOptions<RootState> = {
     auth,
     realmApp,
     tools,
+    fileStorage,
     db
   }
 };
