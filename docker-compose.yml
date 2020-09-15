@@ -19,7 +19,7 @@ services:
     command: sh /usr/src/app/entrypoint.sh
   service:
     build: .
-    container_name: program
+    container_name: storybook
     environment: 
     - NODE_ENV=development
     - CHOKIDAR_USEPOLLING=true
@@ -30,7 +30,7 @@ services:
     volumes: 
     - ./:/usr/src/app:cached
     ports:
-    - 8080:8080
+    - 6006:6006
     stdin_open: true
     tty: true
     command: yarn storybook:serve
