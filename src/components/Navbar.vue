@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar depressed flat color="#404142" height="75">
+  <v-toolbar depressed flat color="primary" height="75">
     <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
 
     <v-toolbar-title

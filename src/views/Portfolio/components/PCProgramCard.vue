@@ -107,6 +107,10 @@
     text-decoration: none;
     font-family: Raleway;
     font-weight: 900;
+    &:hover {
+      color: #fff;
+      background-color: #404142;
+    }
   }
   &__progress-bar {
     height: 10px;
