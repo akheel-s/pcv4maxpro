@@ -1,5 +1,6 @@
 <template>
   <!--  TODO: make the inputs into actual components -->
+  <div><v-btn>Private Mode</v-btn></div>
   <div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
