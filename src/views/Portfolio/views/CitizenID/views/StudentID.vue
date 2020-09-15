@@ -19,7 +19,6 @@
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
           v-model="schoolName"
-          :error="errors.length"
           :error-messages="errors"
           label="School Name"
           outlined
@@ -30,7 +29,6 @@
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
           v-model="schoolDistrict"
-          :error="errors.length"
           :error-messages="errors"
           label="School District"
           outlined
@@ -51,7 +49,6 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="date"
-              :error="errors.length"
               :error-messages="errors"
               label="Birthdate"
               outlined
@@ -101,7 +98,6 @@
         <validation-provider v-slot="{ errors }" rules="required">
           <v-text-field
             v-model="guardianEmail"
-            :error="errors.length"
             :error-messages="errors"
             label="Guardian Email"
             outlined
@@ -140,7 +136,6 @@
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
           v-model="homeAddress"
-          :error="errors.length"
           :error-messages="errors"
           label="Home Address"
           outlined
