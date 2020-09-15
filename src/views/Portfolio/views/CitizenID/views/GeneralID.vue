@@ -2,7 +2,7 @@
   <div class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">General</div>
-      <v-text-field label="First Name" outlined></v-text-field>
+      <v-text-field class="my-id__first-name" label="First Name" outlined></v-text-field>
       <v-text-field label="Last Name" outlined></v-text-field>
 
       <v-select

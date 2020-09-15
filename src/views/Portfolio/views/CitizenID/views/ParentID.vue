@@ -6,20 +6,24 @@
       <v-text-field label="Home Address" outlined></v-text-field>
 
       <!-- Request Stakeholder Access -->
-      <v-text-field
-        label="Request Stakeholder Access"
-        placeholder="participant@email.com"
-        outlined
-      ></v-text-field
-      ><v-btn class="mb-7" depressed outlined x-large>Request</v-btn>
+      <div class="d-flex flex-row">
+        <v-text-field
+          label="Request Stakeholder Access"
+          placeholder="participant@email.com"
+          outlined
+        ></v-text-field
+        ><v-btn class="mb-7 my-id__button--append" depressed outlined x-large>Request</v-btn>
+      </div>
 
       <!-- Refer Participant-->
-      <v-text-field
-        label="Refer Participant"
-        placeholder="participant@email.com"
-        outlined
-      ></v-text-field
-      ><v-btn class="mb-7" depressed outlined x-large>Refer</v-btn>
+      <div class="d-flex flex-row">
+        <v-text-field
+          label="Refer Participant"
+          placeholder="participant@email.com"
+          outlined
+        ></v-text-field
+        ><v-btn class="mb-7 my-id__button--append" depressed outlined x-large>Refer</v-btn>
+      </div>
       <v-btn large dark depressed @click="emitSaveID">Save and Continue</v-btn>
       <!-- DELETE BUTTON -->
     </div>

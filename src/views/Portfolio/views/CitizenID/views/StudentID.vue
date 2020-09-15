@@ -43,7 +43,7 @@
       <v-select :items="ethnicityCulture" multiple label="Ethnicity & Culture" outlined></v-select>
 
       <!-- Guardian Email -->
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row my-id--position">
         <v-text-field label="Guardian Email" outlined> </v-text-field>
         <v-btn class="my-id__button--append" depressed outlined x-large>Invite</v-btn>
       </div>

@@ -161,4 +161,21 @@ export default {
   margin-left: 9px;
   min-height: 56px;
 }
+
+@media screen and (max-width: 1024px) {
+  .my-id--position {
+    display: flex;
+    flex-direction: column;
+  }
+  .my-id__content {
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 100%;
+  }
+  .my-id__wrapper {
+    width: 100%;
+    padding-right: 1%;
+    padding-left: 1%;
+  }
+}
 </style>

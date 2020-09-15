@@ -124,6 +124,12 @@ export default {
     }
   }
 }
+@media screen and (max-width: 1024px) {
+  .profile__container .my-id__content {
+    .v-stepper {
+    }
+  }
+}
 @media screen and (max-width: 479px) {
   .setup-profile__timeline {
     margin-top: 25px;
