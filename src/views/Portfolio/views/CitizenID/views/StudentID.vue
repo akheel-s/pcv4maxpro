@@ -1,5 +1,5 @@
 <template>
-  <div class="my-id__content">
+  <ValidationObserver v-slot="{ invalid }" class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">Student ID</div>
 
@@ -7,7 +7,6 @@
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
           v-model="grade"
-          :error="errors.length"
           :error-messages="errors"
           :items="gradeLevel"
           label="Grade Level"
@@ -39,9 +38,9 @@
 
       <v-menu
         ref="menu"
-        v-model="menu"
-        :close-on-content-click="false"
+        :value="false"
         transition="scale-transition"
+        :close-on-content-click="false"
         offset-y
         min-width="290px"
       >
@@ -63,6 +62,7 @@
           v-model="date"
           :max="new Date().toISOString().substr(0, 10)"
           min="1950-01-01"
+          @input="menu = false"
           @change="save"
         ></v-date-picker>
       </v-menu>
@@ -72,7 +72,6 @@
         <v-select
           v-model="gender"
           :items="superGender"
-          :error="errors.length"
           :error-messages="errors"
           label="Supergender"
           outlined
@@ -84,7 +83,6 @@
         <v-select
           v-model="ethnicity"
           :items="ethnicityCulture"
-          :error="errors.length"
           :error-messages="errors"
           multiple
           label="Ethnicity & Culture"
@@ -112,7 +110,6 @@
         <v-select
           v-model="relationship"
           :items="guardianRelationship"
-          :error="errors.length"
           :error-messages="errors"
           label="Relationship to Guardian"
           outlined
@@ -122,10 +119,9 @@
       <!-- Home Language -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
-          v-model="homlang"
-          :error="errors.length"
+          v-model="homeLanguage"
           :error-messages="errors"
-          :items="homeLanguage"
+          :items="homeLanguageOpts"
           multiple
           label="Home Language"
           outlined
@@ -142,50 +138,48 @@
         ></v-text-field>
       </validation-provider>
 
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emitSaveID"
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
         >Save and Continue</v-btn
       >
     </div>
-  </div>
+  </ValidationObserver>
 </template>
 
 <script lang="ts">
-import { reactive, ref, toRefs } from '@vue/composition-api';
+import { reactive, toRefs, ref } from '@vue/composition-api';
 import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
 
 export default {
   name: 'StudentID',
-  props: {
-    invalid: {
-      type: Boolean,
-      default: false
-    }
-  },
   setup(props, { emit }) {
-    const gradeLevel = ref(GRADE_LEVEL);
-    const superGender = ref(SUPER_GENDER);
-    const ethnicityCulture = ref(ETHNICITY);
-    const guardianRelationship = ref(GUARDIAN);
-    const homeLanguage = ref(HOME_LANG);
+    const formInput = reactive({
+      gradeLevel: GRADE_LEVEL,
+      superGender: SUPER_GENDER,
+      ethnicityCulture: ETHNICITY,
+      guardianRelationship: GUARDIAN,
+      homeLanguageOpts: HOME_LANG
+    });
 
-    const details = reactive({
+    // Interactions
+    const menu = ref(false);
+    // to be labeled
+    const responses = reactive({
       schoolName: '',
       schoolDistrict: '',
       guardianEmail: '',
-      homeAddress: ''
+      homeAddress: '',
+      date: '',
+      ethnicity: '',
+      relationship: '',
+      gender: '',
+      grade: '',
+      homeLanguage: []
     });
-
-    function emitSaveID() {
-      emit('SaveID', 'ID Saved');
-    }
     return {
-      emitSaveID,
-      gradeLevel,
-      superGender,
-      ethnicityCulture,
-      guardianRelationship,
-      homeLanguage,
-      ...toRefs(details)
+      ...toRefs(formInput),
+      ...toRefs(responses),
+      menu,
+      emit
     };
   }
 };

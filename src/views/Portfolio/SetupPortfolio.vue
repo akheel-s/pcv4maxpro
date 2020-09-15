@@ -1,45 +1,43 @@
 <template>
-  <div>
-    <div class="profile__container pc-container">
-      <validation-observer v-slot="{ invalid }">
-        <div class="my-id__content flex-column">
-          <v-stepper
-            :vertical="false"
-            :value="currentID"
-            alt-labels
-            class="setup-profile__timeline"
-            non-linear
-          >
-            <v-stepper-header>
-              <template v-for="(val, index) in idSteps">
-                <v-stepper-step :key="val" :step="index + 1">
-                  {{ val }}
-                </v-stepper-step>
-                <v-divider v-if="index != idSteps.length - 1" :key="`${val}-content`" />
-              </template>
-            </v-stepper-header>
-            <v-stepper-items>
-              <v-stepper-content :step="currentID">
-                <v-slide-x-transition hide-on-leave>
-                  <component
-                    :is="getComponent"
-                    :invalid="invalid"
-                    @SaveID="stepID"
-                    @update:idSteps="handleSteps"
-                  />
-                </v-slide-x-transition>
-              </v-stepper-content>
-            </v-stepper-items>
-          </v-stepper>
-        </div>
-      </validation-observer>
-    </div>
-  </div>
+  <validation-observer :class="computedClasses" slim>
+    <v-stepper v-model="step" class="my-id__content" vertical>
+      <v-stepper-step step="1" :complete="step > 1" :editable="step > 1">
+        General Information
+      </v-stepper-step>
+      <v-divider></v-divider>
+      <template v-for="(type, index) in selectedTypes">
+        <v-stepper-step
+          :key="'step' + index"
+          :step="index + 2"
+          :complete="step - 2 > index"
+          :editable="step - 2 > index"
+          >{{ `${type} Information` }}
+        </v-stepper-step>
+        <v-divider :key="'divider' + index"></v-divider>
+      </template>
+
+      <v-stepper-items>
+        <v-stepper-content step="1">
+          <v-slide-x-transition hide-on-leave>
+            <general-id v-model="selectedTypes" @SaveID="step++"></general-id>
+          </v-slide-x-transition>
+        </v-stepper-content>
+        <v-stepper-content
+          v-for="(componentId, index) in idSections"
+          :key="componentId + 'Section'"
+          :step="index + 2"
+        >
+          <v-slide-x-transition hide-on-leave>
+            <component :is="componentId" @SaveID="step++" />
+          </v-slide-x-transition>
+        </v-stepper-content>
+      </v-stepper-items>
+    </v-stepper>
+  </validation-observer>
 </template>
 
-<script>
-import { ref, watch, computed } from '@vue/composition-api';
-import _ from 'lodash';
+<script lang="ts">
+import { ref, Ref, computed } from '@vue/composition-api';
 import {
   GeneralID,
   EmployerID,
@@ -48,16 +46,14 @@ import {
   ParentID,
   TeacherID
 } from './views/CitizenID/views';
-// import {
-//   CITIZEN_TYPES,
-//   GRADE_LEVEL,
-//   SUPER_GENDER,
-//   ETHNICITY,
-//   GUARDIAN,
-//   HOME_LANG,
-//   SCHOOL_ROLE
-// } from './const';
 
+enum breakpoints {
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl'
+}
 export default {
   name: 'SetupPortfolio',
   components: {
@@ -68,35 +64,18 @@ export default {
     'school-id': SchoolID,
     'parent-id': ParentID
   },
-  setup() {
-    const currentID = ref(1);
-    const idSteps = ref(['General']);
-    const picker = ref(null);
-    const date = ref(null);
-    const menu = ref(false);
-    const getComponent = computed(() => {
-      let ID = `${idSteps.value[currentID.value - 1].toLowerCase()} id`;
-      ID = ID.split(' ').join('-');
-      return ID;
-    });
-    function handleSteps(e) {
-      idSteps.value = _.union(idSteps.value, e);
-    }
-    function stepID(event) {
-      if (currentID.value - 1 === idSteps.value.length - 1) {
-        currentID.value = 1;
-      } else {
-        currentID.value += 1;
-      }
-      console.log(event);
-    }
-    function save(time) {
-      this.$refs.menu.save(time);
-    }
-    watch(menu, () => {
-      picker.activePicker = 'YEAR';
-    });
-    return { picker, date, menu, save, idSteps, stepID, currentID, getComponent, handleSteps };
+  setup(_props, ctx) {
+    // stepper setup
+    const step = ref(1);
+    // component switcher
+    const selectedTypes: Ref<string[]> = ref([]);
+    const idSections = computed(() => selectedTypes.value.map(type => `${type.toLowerCase()}-id`));
+    // Size Breakpoint
+    const screenSize = computed(() => ctx.root.$vuetify.breakpoint.name);
+    const computedClasses = computed(() =>
+      breakpoints[screenSize.value] > breakpoints.md ? ['profile__container', 'pc-container'] : []
+    );
+    return { step, selectedTypes, idSections, screenSize, computedClasses };
   }
 };
 </script>

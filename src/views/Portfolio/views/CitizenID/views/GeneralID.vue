@@ -1,5 +1,5 @@
 <template>
-  <div class="my-id__content">
+  <ValidationObserver v-slot="{ invalid }" class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">General</div>
 
@@ -24,7 +24,6 @@
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
           v-model="selectedIDs"
-          :error="errors.length"
           :error-messages="errors"
           :items="AVAILABLE_IDS"
           chips
@@ -34,15 +33,16 @@
         ></v-select>
       </validation-provider>
 
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emitHandler"
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
         >Save and Continue</v-btn
       >
     </div>
-  </div>
+  </ValidationObserver>
 </template>
 <script lang="ts">
 import _ from 'lodash';
-import { reactive, ref, Ref, toRefs } from '@vue/composition-api';
+import { reactive, ref, toRefs, computed } from '@vue/composition-api';
+import { PropType } from 'vue';
 import { CITIZEN_TYPES } from '../../../const';
 
 interface TypeItem {
@@ -53,39 +53,28 @@ interface TypeItem {
 export default {
   name: 'GeneralID',
   props: {
-    invalid: {
-      type: Boolean,
-      default: false
+    value: {
+      type: Array as PropType<TypeItem[]>,
+      default: () => []
     }
   },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
-    const selectedIDs: Ref<TypeItem[]> = ref([]); // Record<'text' | 'value', string>[]
+    const selectedIDs = computed({
+      get: () => props.value,
+      set: newIds => {
+        emit('input', newIds);
+      }
+    });
     const user = reactive({
       firstName: '',
       lastName: ''
     });
-    function addID(ID: TypeItem): void {
-      selectedIDs.value.push(ID);
-    }
-    function emitSaveID() {
-      emit('SaveID', 'ID Saved');
-    }
-    function emitSteps() {
-      if (!_.isEmpty(selectedIDs.value)) emit('update:idSteps', selectedIDs.value);
-    }
-    function emitHandler() {
-      emitSteps();
-      emitSaveID();
-    }
     return {
-      emitSaveID,
       AVAILABLE_IDS,
       selectedIDs,
-      addID,
-      emitSteps,
-      emitHandler,
-      ...toRefs(user)
+      ...toRefs(user),
+      emit
     };
   }
 };
