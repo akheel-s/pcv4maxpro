@@ -1,7 +1,11 @@
 <template>
   <!--  TODO: make the inputs into actual components -->
-  <div><v-btn>Private Mode</v-btn></div>
+
   <div>
+    <div class="profile__mode">
+      <v-btn class="profile__mode" depressed outlined color="grey" small>Public View</v-btn>
+      <!-- <v-btn class="profile__mode" depressed outlined color="red" small>Private Mode</v-btn> -->
+    </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
       <!-- <div class="profile__image"></div> -->
@@ -67,6 +71,13 @@
     font-family: Raleway;
     font-size: 40px;
     font-weight: 800;
+  }
+
+  &__mode {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 25px;
   }
   &__namepate {
     position: relative;
@@ -144,9 +155,11 @@
     display: block;
     max-width: 80%;
     // margin-top: 213px;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 50px;
     border: 15px solid #f1f2f2;
+    // border: 15px solid #6fba7f;
+    // border: 15px solid #ea6764;
     padding-bottom: 125px;
     border-radius: 50px;
   }
