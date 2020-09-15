@@ -1,6 +1,6 @@
 import { RouteConfig } from 'vue-router';
 import * as Program from './views';
-import { Nav } from './components';
+import layoutTest from './views/Manage/layoutTest.vue';
 
 const routes: Array<RouteConfig> = [
   {
@@ -22,13 +22,18 @@ const routes: Array<RouteConfig> = [
     path: '/program/managestakeholder',
     name: 'ManageStakeholder',
     component: Program.ManageStakeholder
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: layoutTest
   }
 ];
 if (process.env.node_env === 'development') {
   routes.push({
-    path: '/nav',
-    name: 'nav',
-    component: Nav
+    path: '/test',
+    name: 'test',
+    component: layoutTest
   });
 }
 export default routes;

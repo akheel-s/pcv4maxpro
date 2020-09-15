@@ -7,7 +7,7 @@
 import { PropType } from 'vue';
 import idGen from '@/components/IdGen';
 import { computed, onMounted } from '@vue/composition-api';
-import generateLayout from './methods';
+import { generateLayout } from './methods';
 
 export default {
   components: {

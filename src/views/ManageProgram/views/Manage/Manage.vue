@@ -47,16 +47,26 @@
       </div>
 
       <!-- <div class="manage__graph">
-          <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
-            <template v-slot:title>{{ title }}</template>
-            <template v-slot:actions> </template>
-            <template v-slot:graph>
-              <v-img :src="image" class="pc-card__image"></v-img>
-            </template>
-          </pc-card>
-        </div> -->
-      <layoutGen v-slot="{ layout }" v-model="tableItems" :h="510" :w="300">
-        <GridLayout :layout.sync="layout" is-draggable is-resizable>
+        <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
+          <template v-slot:title>{{ title }}</template>
+          <template v-slot:actions> </template>
+          <template v-slot:graph>
+            <v-img :src="image" class="pc-card__image"></v-img>
+          </template>
+        </pc-card>
+      </div> -->
+      <layout-gen v-slot="{ layout }" v-model="tableItems">
+        <GridLayout
+          :layout.sync="layout"
+          :col-num="12"
+          :row-height="30"
+          :is-draggable="true"
+          :is-resizable="true"
+          :is-mirrored="false"
+          :vertical-compact="true"
+          :margin="[10, 10]"
+          :use-css-transforms="true"
+        >
           <GridItem
             v-for="{ title, image, id, x, y, h, w } in layout"
             :key="id"
@@ -66,6 +76,7 @@
             :h="h"
             :w="w"
           >
+            {{ id }}
             <pc-card>
               <template v-slot:title>{{ title }}</template>
               <template v-slot:actions> </template>
@@ -75,15 +86,15 @@
             </pc-card>
           </GridItem>
         </GridLayout>
-      </layoutGen>
+      </layout-gen>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import VueGridLayout from 'vue-grid-layout';
-import layoutGen, { generateLayout } from '@/components/layoutGen';
-import { reactive, ref, toRefs } from '@vue/composition-api';
+import layoutGen from '@/components/layoutGen';
+import { reactive, toRefs } from '@vue/composition-api';
 import { PCCard, Nav } from '../../components';
 import { tableItems, filterChips } from './const';
 
@@ -104,9 +115,7 @@ export default {
       selectedFilters: [],
       dialog: false
     });
-    // Grid layout
-    const layout = ref(generateLayout(tableItems.value, 510, 300, 'xl'));
-    return { tableItems, filterChips, ...toRefs(dialog), layout };
+    return { tableItems, filterChips, ...toRefs(dialog) };
   }
 };
 </script>
