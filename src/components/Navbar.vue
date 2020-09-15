@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar depressed flat color="#404142" height="75">
+  <v-toolbar depressed flat color="primary" height="75">
     <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
 
     <v-toolbar-title
@@ -18,18 +18,11 @@
     <v-spacer></v-spacer>
 
     <div class="nav__actions">
-      <v-btn
-        v-if="!getUser"
-        depressed
-        color="white"
-        outlined
-        :to="{ name: 'login' }"
-        :ripple="false"
-      >
+      <v-btn v-if="!user" depressed color="white" outlined :to="{ name: 'login' }" :ripple="false">
         <span class="font-weight-black">Login</span>
       </v-btn>
       <v-btn
-        v-if="!getUser"
+        v-if="!user"
         class="signup__signupbutton rounded-lg"
         depressed
         color="#828282"
@@ -44,7 +37,7 @@
       >
 
       <v-btn
-        v-if="getUser"
+        v-if="user"
         class="mr-3 ml-3 pr-10 pl-10"
         large
         depressed
@@ -58,7 +51,7 @@
       </v-btn>
 
       <v-btn
-        v-if="getUser"
+        v-if="user"
         class="mr-3 ml-3"
         large
         depressed
@@ -74,8 +67,8 @@
       <v-btn color="#404142" rounded text
         ><v-badge
           class="ml-1 mr-1"
-          :content="messages"
-          :value="messages"
+          :content="10"
+          :value="10"
           color="purple lighten-2"
           overlap
           offset-x="15"
@@ -129,7 +122,7 @@
   -ms-flex-align: center;
   align-items: center;
   border-radius: 50%;
-  // background-color: #828282;
+  background-color: #828282;
 }
 
 .nav__actions {
@@ -148,22 +141,29 @@
 }
 </style>
 <script lang="ts">
-import { useGetters as useAuthGetters, useActions as useAuthActions } from '@/store/modules/auth';
-import { useGetters as useToolGetters } from '@/store/modules/tools';
+import { useActions as useAuthActions } from '@/store/modules/auth';
 
 export default {
-  setup() {
+  props: {
+    user: {
+      type: Object,
+      default: null
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(_props, ctx) {
     // Auth configuration
-    const { getUser } = useAuthGetters(['getUser']);
-    const { logout } = useAuthActions(['logout']);
+    const { logout: logoutProcess } = useAuthActions(['logout']);
+    async function logout() {
+      await logoutProcess();
+      ctx.root.$router.push({ name: 'login' });
+    }
     // Global Tooling for linear progression
-    const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
     return {
-      getUser,
-      logout,
-      loading,
-      messages: 10,
-      show: false
+      logout
     };
   }
 };

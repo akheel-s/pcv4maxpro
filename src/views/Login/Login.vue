@@ -81,6 +81,7 @@ export default {
         else state.error = err;
       }
     }
+    console.log(login);
     return { ...toRefs(state), login };
   }
 };
@@ -193,9 +194,5 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-  .login {
-    // &__header {
-    // }
-  }
 }
 </style>

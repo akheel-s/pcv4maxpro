@@ -1,70 +1,28 @@
 <template>
   <div class="my-id__container">
-    <div class="my-id__left-wrapper">
-      <v-card height="100%">
-        <v-navigation-drawer tag="aside" color="primary" :permanent="true" absolute dark>
-          <v-list dense nav class="py-0">
-            <v-list-item two-line>
-              <v-list-item-content>
-                <v-list-item-title>Application</v-list-item-title>
-                <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+    <component :is="getComponent" />
 
-            <v-divider></v-divider>
+    <v-row class="mt-12" justify="center">
+      <v-btn class="red darken-1" dark depressed x-large @click.stop="dialog = true"
+        ><v-icon left>mdi-delete</v-icon>Delete ID</v-btn
+      >
+      <v-dialog v-model="dialog" max-width="290">
+        <v-card>
+          <v-card-title class="headline">Are you sure you want to delete this ID?</v-card-title>
 
-            <v-list-item
-              v-for="item in idItems"
-              :key="item.title"
-              link
-              @click="currentID = item.title"
-            >
-              <v-list-item-icon>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>
+          <v-card-text>
+            This ID, programs associated and all historic data will be deleted.
+          </v-card-text>
 
-              <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-icon>
-                <v-icon>{{ 'mdi-add' }}</v-icon>
-              </v-list-item-icon>
+          <v-card-actions>
+            <v-spacer></v-spacer>
 
-              <v-list-item-content>
-                <v-list-item-title> Add Citizen Type</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-navigation-drawer>
-      </v-card>
-    </div>
-    <div class="my-id__right-wrapper">
-      <component :is="getComponent" />
-
-      <v-row class="mt-12" justify="center">
-        <v-btn class="red darken-1" dark depressed x-large @click.stop="dialog = true"
-          ><v-icon left>mdi-delete</v-icon>Delete ID</v-btn
-        >
-        <v-dialog v-model="dialog" max-width="290">
-          <v-card>
-            <v-card-title class="headline">Are you sure you want to delete this ID?</v-card-title>
-
-            <v-card-text>
-              This ID, programs associated and all historic data will be deleted.
-            </v-card-text>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn color="light" text @click="dialog = false">Cancel</v-btn>
-              <v-btn color="red darken-1" text @click="dialog = false">Delete</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-row>
-    </div>
+            <v-btn color="light" text @click="dialog = false">Cancel</v-btn>
+            <v-btn color="red darken-1" text @click="dialog = false">Delete</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
   </div>
 </template>
 
@@ -145,6 +103,7 @@ export default {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   max-width: 93.5%;
   margin-top: 100px;
   margin-right: auto;

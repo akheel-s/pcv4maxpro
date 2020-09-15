@@ -19,29 +19,29 @@
 
           <span class="profile__name">Jerold Inocencio</span>
         </div>
-        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
           <v-icon left>mdi-server-plus</v-icon>
           Programs
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
           <v-icon left>mdi-wrench</v-icon>
           Settings
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="pink lighten-2" outlined
-          >>
+        <v-chip
+          v-for="(color, id) in IDs"
+          :key="id"
+          large
+          class="pl-8 pr-8 ma-2"
+          :color="color"
+          outlined
+        >
           <v-icon left>mdi-account-outline</v-icon>
-          Teacher
+          {{ id }}
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="yellow darken-2" outlined
-          >>
-          <v-icon left>mdi-account-outline</v-icon>
-          Parent
-        </v-chip>
-
-        <v-chip large class="pl-8 pr-8 ma-2" color="dark" outlined>
+        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
           <v-icon left>mdi-plus</v-icon>
           Add Citizen Type
         </v-chip>
@@ -235,12 +235,19 @@ export default {
   setup() {
     const tabs = ref(['My Programs', 'Settings', 'ID']);
     const currentTab = ref('My Programs');
+    const IDs = ref({
+      Employer: 'purple',
+      Student: 'green',
+      Teacher: 'pink',
+      School: 'blue',
+      Parent: 'yellow'
+    });
     const getComponent = computed(() => {
       let tab = currentTab.value.toLowerCase();
       tab = tab.split(' ').join('-');
       return tab;
     });
-    return { tabs, currentTab, getComponent };
+    return { tabs, currentTab, getComponent, IDs };
   }
 };
 </script>

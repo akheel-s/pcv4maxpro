@@ -7,6 +7,7 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import { createProvider } from './vue-apollo';
+import '@mdi/font/css/materialdesignicons.css';
 
 Vue.use(VueCompositionAPI);
 
