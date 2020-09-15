@@ -2,15 +2,16 @@
   <div class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">General</div>
+
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
           v-model="firstName"
           :error-messages="errors"
-          labe
-          l="First Name"
+          label="First Name"
           outlined
         ></v-text-field>
       </validation-provider>
+
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
           v-model="lastName"
@@ -19,6 +20,7 @@
           outlined
         ></v-text-field>
       </validation-provider>
+
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
           v-model="selectedIDs"

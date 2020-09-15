@@ -2,13 +2,43 @@
   <div class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">Student ID</div>
+
       <!-- Grade Level -->
-      <v-select :items="gradeLevel" label="Grade Level" outlined></v-select>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-select
+          v-model="grade"
+          :error="errors.length"
+          :error-messages="errors"
+          :items="gradeLevel"
+          label="Grade Level"
+          outlined
+        ></v-select>
+      </validation-provider>
+
       <!-- Google Maps Integration to find school name / district so data coming in across the board is consistent -->
-      <v-text-field label="School Name" outlined></v-text-field>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-text-field
+          v-model="schoolName"
+          :error="errors.length"
+          :error-messages="errors"
+          label="School Name"
+          outlined
+        ></v-text-field>
+      </validation-provider>
+
       <!-- School District -->
-      <v-text-field label="School District" outlined></v-text-field>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-text-field
+          v-model="schoolDistrict"
+          :error="errors.length"
+          :error-messages="errors"
+          label="School District"
+          outlined
+        ></v-text-field>
+      </validation-provider>
+
       <!-- Birthdate -->
+
       <v-menu
         ref="menu"
         v-model="menu"
@@ -18,14 +48,18 @@
         min-width="290px"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-text-field
-            v-model="date"
-            label="Birthdate"
-            outlined
-            readonly
-            v-bind="attrs"
-            v-on="on"
-          ></v-text-field>
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="date"
+              :error="errors.length"
+              :error-messages="errors"
+              label="Birthdate"
+              outlined
+              readonly
+              v-bind="attrs"
+              v-on="on"
+            ></v-text-field>
+          </validation-provider>
         </template>
         <v-date-picker
           ref="picker"
@@ -37,37 +71,127 @@
       </v-menu>
 
       <!-- Supergender -->
-      <v-select :items="superGender" label="Supergender" outlined></v-select>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-select
+          v-model="gender"
+          :items="superGender"
+          :error="errors.length"
+          :error-messages="errors"
+          label="Supergender"
+          outlined
+        ></v-select>
+      </validation-provider>
 
       <!-- Ethnicity & Culture -->
-      <v-select :items="ethnicityCulture" multiple label="Ethnicity & Culture" outlined></v-select>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-select
+          v-model="ethnicity"
+          :items="ethnicityCulture"
+          :error="errors.length"
+          :error-messages="errors"
+          multiple
+          label="Ethnicity & Culture"
+          outlined
+        ></v-select>
+      </validation-provider>
 
       <!-- Guardian Email -->
+
       <div class="d-flex flex-row my-id--position">
-        <v-text-field label="Guardian Email" outlined> </v-text-field>
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field
+            v-model="guardianEmail"
+            :error="errors.length"
+            :error-messages="errors"
+            label="Guardian Email"
+            outlined
+          >
+          </v-text-field>
+        </validation-provider>
         <v-btn class="my-id__button--append" depressed outlined x-large>Invite</v-btn>
       </div>
+
       <!-- Relationship to Guardian -->
-      <v-select :items="guardianRelationship" label="Relationship to Guardian" outlined></v-select>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-select
+          v-model="relationship"
+          :items="guardianRelationship"
+          :error="errors.length"
+          :error-messages="errors"
+          label="Relationship to Guardian"
+          outlined
+        ></v-select>
+      </validation-provider>
 
       <!-- Home Language -->
-      <v-select :items="homeLanguage" multiple label="Home Language" outlined></v-select>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-select
+          v-model="homlang"
+          :error="errors.length"
+          :error-messages="errors"
+          :items="homeLanguage"
+          multiple
+          label="Home Language"
+          outlined
+        ></v-select>
+      </validation-provider>
 
       <!-- Home Address -->
-      <v-text-field label="Home Address" outlined></v-text-field>
-      <v-btn large dark depressed @click="emitSaveID">Save and Continue</v-btn>
+      <validation-provider v-slot="{ errors }" rules="required">
+        <v-text-field
+          v-model="homeAddress"
+          :error="errors.length"
+          :error-messages="errors"
+          label="Home Address"
+          outlined
+        ></v-text-field>
+      </validation-provider>
+
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emitSaveID"
+        >Save and Continue</v-btn
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { reactive, ref, toRefs } from '@vue/composition-api';
+import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
+
 export default {
   name: 'StudentID',
+  props: {
+    invalid: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup(props, { emit }) {
+    const gradeLevel = ref(GRADE_LEVEL);
+    const superGender = ref(SUPER_GENDER);
+    const ethnicityCulture = ref(ETHNICITY);
+    const guardianRelationship = ref(GUARDIAN);
+    const homeLanguage = ref(HOME_LANG);
+
+    const details = reactive({
+      schoolName: '',
+      schoolDistrict: '',
+      guardianEmail: '',
+      homeAddress: ''
+    });
+
     function emitSaveID() {
       emit('SaveID', 'ID Saved');
     }
-    return { emitSaveID };
+    return {
+      emitSaveID,
+      gradeLevel,
+      superGender,
+      ethnicityCulture,
+      guardianRelationship,
+      homeLanguage,
+      ...toRefs(details)
+    };
   }
 };
 </script>
