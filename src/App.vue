@@ -1,21 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <Navbar></Navbar>
-      <router-view></router-view>
+      <setupprogram />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Navbar from '@/components/Navbar.vue';
+import setupprogram from './views/SetupProgram/setupprogram.vue';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    Navbar
+    setupprogram
   },
 
   data: () => ({
