@@ -46,14 +46,27 @@
         >
       </div>
 
-      <draggable v-model="keyedCollection" class="manage__graph">
-        <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
-          <template v-slot:title>{{ id }}</template>
-          <template v-slot:actions> </template>
-          <template v-slot:graph>
-            <v-img :src="image" class="pc-card__image"></v-img>
-          </template>
-        </pc-card>
+      <draggable
+        v-model="keyedCollection"
+        class="manage__graph"
+        v-bind="dragOptions"
+        @start="isDragging = true"
+        @end="isDragging = false"
+      >
+        <transition-group
+          v-for="{ title, image, id } in keyedCollection"
+          :key="id"
+          type="transition"
+          name="flip-list"
+        >
+          <pc-card :key="`pc+${id}`" class="list-group-item">
+            <template v-slot:title>{{ id }}</template>
+            <template v-slot:actions> </template>
+            <template v-slot:graph>
+              <v-img :src="image" class="pc-card__image"></v-img>
+            </template>
+          </pc-card>
+        </transition-group>
       </draggable>
     </div>
   </div>
@@ -73,12 +86,21 @@ export default {
     Nav,
     draggable
   },
-
   data() {
     return {
       selectedFilters: [],
       dialog: false
     };
+  },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 0,
+        group: 'description',
+        disabled: false,
+        ghostClass: 'ghost'
+      };
+    }
   },
   setup() {
     return { keyedCollection: ref(generateId(tableItems.value, 'simple')), filterChips };
@@ -87,6 +109,25 @@ export default {
 </script>
 
 <style lang="scss">
+.flip-list-move {
+  transition: transform 0.5s;
+}
+.no-move {
+  transition: transform 0s;
+}
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+.list-group {
+  min-height: 20px;
+}
+.list-group-item {
+  cursor: move;
+}
+.list-group-item i {
+  cursor: pointer;
+}
 .v-main__wrap {
   background: white;
   color: black;
