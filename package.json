@@ -33,6 +33,7 @@
     "eslint-plugin-graphql": "^4.0.0",
     "fork-ts-checker-webpack-plugin": "^5.0.7",
     "jest": "^26.4.1",
+    "lodash": "^4.17.20",
     "mongodb-stitch-browser-sdk": "4.6.0",
     "realm-web": "^0.8.0",
     "register-service-worker": "^1.7.1",
