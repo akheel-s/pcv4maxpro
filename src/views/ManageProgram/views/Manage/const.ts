@@ -8,6 +8,7 @@ export const tableItems = ref([
   { title: 'Manage', image: 'https://picsum.photos/510/300?random' },
   { title: 'Participant', image: 'https://picsum.photos/510/300?random' }
 ]);
+
 export const filterChips = ref([
   {
     label: 'Outcomes',

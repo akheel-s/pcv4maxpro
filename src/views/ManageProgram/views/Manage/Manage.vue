@@ -46,23 +46,23 @@
         >
       </div>
 
-      <idGen v-slot="{ keyedCollection }" v-model="tableItems">
-        <div class="manage__graph">
-          <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
-            <template v-slot:title>{{ title }}</template>
-            <template v-slot:actions> </template>
-            <template v-slot:graph>
-              <v-img :src="image" class="pc-card__image"></v-img>
-            </template>
-          </pc-card>
-        </div>
-      </idGen>
+      <draggable v-model="keyedCollection" class="manage__graph">
+        <pc-card v-for="{ title, image, id } in keyedCollection" :key="id">
+          <template v-slot:title>{{ id }}</template>
+          <template v-slot:actions> </template>
+          <template v-slot:graph>
+            <v-img :src="image" class="pc-card__image"></v-img>
+          </template>
+        </pc-card>
+      </draggable>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import idGen from '@/components/IdGen.vue';
+import { generateId } from '@/components/IdGen';
+import draggable from 'vuedraggable';
+import { ref } from '@vue/composition-api';
 import { PCCard, Nav } from '../../components';
 import { tableItems, filterChips } from './const';
 
@@ -71,7 +71,7 @@ export default {
   components: {
     'pc-card': PCCard,
     Nav,
-    idGen
+    draggable
   },
 
   data() {
@@ -81,7 +81,7 @@ export default {
     };
   },
   setup() {
-    return { tableItems, filterChips };
+    return { keyedCollection: ref(generateId(tableItems.value, 'simple')), filterChips };
   }
 };
 </script>
