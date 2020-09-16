@@ -57,7 +57,7 @@
           v-for="{ title, image, id } in keyedCollection"
           :key="id"
           type="transition"
-          name="flip-list"
+          name="bounce"
         >
           <pc-card :key="`pc+${id}`" class="list-group-item">
             <template v-slot:title>{{ id }}</template>
@@ -95,7 +95,7 @@ export default {
   computed: {
     dragOptions() {
       return {
-        animation: 0,
+        animation: 150,
         group: 'description',
         disabled: false,
         ghostClass: 'ghost'
@@ -117,7 +117,7 @@ export default {
 }
 .ghost {
   opacity: 0.5;
-  background: #c8ebfb;
+  background: #95a6ad;
 }
 .list-group {
   min-height: 20px;
