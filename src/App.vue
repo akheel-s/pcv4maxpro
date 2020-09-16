@@ -11,8 +11,7 @@
 import Vue from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import '@/styles/main.scss';
-import { useGetters as useToolGetters } from '@/store/modules/tools';
-import { useGetters } from './store/modules/auth';
+import { useToolGetters, useAuthGetters } from '@/store';
 
 export default Vue.extend({
   name: 'App',
@@ -25,7 +24,7 @@ export default Vue.extend({
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
 
     return {
-      getUser: useGetters(['getUser']).getUser,
+      getUser: useAuthGetters(['getUser']).getUser,
       loading
     };
   }

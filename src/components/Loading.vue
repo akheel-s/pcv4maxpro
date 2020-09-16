@@ -6,7 +6,7 @@
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import { PropType } from 'vue';
-import { useActions } from '@/store/modules/tools';
+import { useToolActions } from '@/store';
 
 export default {
   props: {
@@ -19,7 +19,7 @@ export default {
     }
   },
   setup(props) {
-    const { setLinearLoader } = useActions(['setLinearLoader']);
+    const { setLinearLoader } = useToolActions(['setLinearLoader']);
 
     const loading = ref(false);
     const process =

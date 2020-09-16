@@ -141,7 +141,7 @@
 }
 </style>
 <script lang="ts">
-import { useActions as useAuthActions } from '@/store/modules/auth';
+import { useAuthActions } from '@/store';
 
 export default {
   props: {
