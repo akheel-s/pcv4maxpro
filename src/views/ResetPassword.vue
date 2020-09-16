@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
-import { useActions } from '@/store/modules/auth';
+import { useAuthActions } from '@/store';
 
 export default {
   props: {
@@ -53,7 +53,7 @@ export default {
       type: 'success',
       loading: false
     });
-    const { resetPassword } = useActions(['resetPassword']);
+    const { resetPassword } = useAuthActions(['resetPassword']);
     async function submit() {
       state.loading = true;
       try {

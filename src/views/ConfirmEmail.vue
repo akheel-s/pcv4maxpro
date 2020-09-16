@@ -7,8 +7,7 @@
 </template>
 <script lang="ts">
 import { ref, onMounted } from '@vue/composition-api';
-import { useActions as useAuthActions } from '@/store/modules/auth';
-import { useActions as useToolActions } from '@/store/modules/tools';
+import { useAuthActions, useToolActions } from '@/store';
 
 export default {
   name: 'ConfirmEmail',
