@@ -1,7 +1,7 @@
 import Login from '@/views/Login';
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-
+import { routes as PortfolioRoutes } from '@/views/Portfolio';
 import Signup from '@/views/Signup';
 import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   ...SelectRoutes,
+  ...PortfolioRoutes,
   {
     path: '/',
     name: 'login',
