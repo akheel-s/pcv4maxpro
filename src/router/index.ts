@@ -7,6 +7,7 @@ import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
 import { routes as SelectRoutes } from '../views/Select';
 
+const t = [];
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
