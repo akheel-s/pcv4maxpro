@@ -75,12 +75,6 @@ import { SCHOOL_ROLE } from '../../../const';
 
 export default {
   name: 'SchoolID',
-  props: {
-    invalid: {
-      type: Boolean,
-      default: false
-    }
-  },
   setup(props, { emit }) {
     const schoolStaffType = ref(SCHOOL_ROLE);
     const details = reactive({

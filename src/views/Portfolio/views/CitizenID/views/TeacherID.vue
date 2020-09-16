@@ -43,12 +43,7 @@ import { reactive, toRefs } from '@vue/composition-api';
 
 export default {
   name: 'TeacherID',
-  props: {
-    invalid: {
-      type: Boolean,
-      default: false
-    }
-  },
+  props: {},
   setup(props, { emit }) {
     const details = reactive({
       schoolDistrict: '',
