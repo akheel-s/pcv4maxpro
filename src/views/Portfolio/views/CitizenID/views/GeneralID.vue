@@ -40,7 +40,6 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import _ from 'lodash';
 import { reactive, ref, toRefs, computed } from '@vue/composition-api';
 import { PropType } from 'vue';
 import { CITIZEN_TYPES } from '../../../const';

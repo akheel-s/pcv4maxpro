@@ -6,6 +6,7 @@ import Signup from '@/views/Signup';
 import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
 import Timeline from '@/components/Timeline.vue';
+import Error404 from '@/views/Error404.vue';
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,10 @@ const routes: Array<RouteConfig> = [
       token: route.query.token,
       tokenId: route.query.tokenId
     })
+  },
+  {
+    path: '*',
+    component: Error404
   }
 ];
 
@@ -51,5 +56,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
-
+router.beforeEach((to, from, next) => {});
 export default router;

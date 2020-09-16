@@ -11,7 +11,10 @@ const routes: Array<RouteConfig> = [
   {
     path: '/setup',
     name: 'setup',
-    component: Setup
+    component: Setup,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 export default routes;
