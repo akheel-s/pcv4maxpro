@@ -1,5 +1,5 @@
 <template>
-  <div class="my-id__content">
+  <ValidationObserver v-slot="{ invalid }" class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">Employer ID</div>
 
@@ -53,7 +53,7 @@
         >Save and Continue</v-btn
       >
     </div>
-  </div>
+  </ValidationObserver>
 </template>
 
 <script lang="ts">
