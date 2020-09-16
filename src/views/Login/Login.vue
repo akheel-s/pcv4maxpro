@@ -57,7 +57,7 @@
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
-import { useActions } from '@/store/modules/auth';
+import { useAuthActions } from '@/store';
 import Loading from '@/components/Loading.vue';
 
 export default {
@@ -70,7 +70,7 @@ export default {
       password: '',
       error: ''
     });
-    const { loginUser } = useActions([ActionTypes.loginUser]);
+    const { loginUser } = useAuthActions([ActionTypes.loginUser]);
     async function login() {
       try {
         await loginUser({ email: state.email, password: state.password });

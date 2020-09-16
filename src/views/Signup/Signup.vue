@@ -71,7 +71,7 @@
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
-import { useActions } from '@/store/modules/auth';
+import { useAuthActions } from '@/store';
 
 export default {
   name: 'Signup',
@@ -90,7 +90,7 @@ export default {
       type: 'success',
       loading: false
     });
-    const { signup } = useActions(['signup']);
+    const { signup } = useAuthActions(['signup']);
     async function submit() {
       ui.loading = true;
       try {
