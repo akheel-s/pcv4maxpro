@@ -17,7 +17,9 @@ import { useToolGetters, useAuthGetters } from '@/store';
 export default Vue.extend({
   name: 'App',
 
-  components: {},
+  components: {
+    Navbar
+  },
 
   setup() {
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
