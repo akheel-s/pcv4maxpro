@@ -7,7 +7,7 @@
       </div>
       <div class="pc-card__main_settings">
         <slot name="actions">
-          <v-btn icon><v-icon>mdi-cog</v-icon></v-btn>
+          <v-btn small icon><v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn>
         </slot>
       </div>
     </div>
@@ -40,7 +40,6 @@ export default {
   &__title {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 5px;
   }
   &__main_title {
     display: flex;
@@ -50,13 +49,17 @@ export default {
   }
   &__main_settings {
     display: flex;
-    padding-right: 7px;
+    padding-right: 3px;
   }
   &__content {
     padding: 10px;
     background: #f2f2f2;
     border: 1px solid #f2f2f2;
     border-radius: 10px;
+  }
+
+  &__image {
+    // height: 100%;
   }
 
   &__graph {

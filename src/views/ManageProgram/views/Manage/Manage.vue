@@ -6,6 +6,25 @@
     <div class="manage__second-body">
       <div class="manage__title">Manage Program</div>
       <manage-filter class="manage__profile-btn"></manage-filter>
+
+      <v-row class="manage__order-button">
+        <!-- Turn "Grid View" on when user clicks on "List View" -->
+        <v-btn class="ma-1" dark x-small color="grey" depressed
+          ><v-icon left>mdi-view-grid</v-icon>Grid View</v-btn
+        >
+        <v-btn class="ma-1" x-small color="grey" depressed outlined
+          ><v-icon left>mdi-format-list-bulleted</v-icon>List View</v-btn
+        >
+
+        <v-btn class="ma-1" x-small color="grey" depressed outlined
+          ><v-icon left>mdi-drag-variant</v-icon>Edit Order</v-btn
+        >
+        <!-- Turn "Save Order" on when user clicks on "Edit ORder" -->
+        <v-btn class="ma-1" dark x-small color="green" depressed
+          ><v-icon left>mdi-check-bold</v-icon>Save Order</v-btn
+        >
+      </v-row>
+
       <draggable
         v-model="keyedCollection"
         class="manage__graph"
@@ -54,9 +73,9 @@ export default {
         animation: 150,
         group: 'description',
         disabled: false,
-        ghostClass: 'ghost', // Class name for the drop placeholder
-        chosenClass: 'sortable-chosen', // Class name for the chosen item
-        dragClass: 'sortable-drag' // Class name for the dragging item
+        ghostClass: 'ghost',
+        chosenClass: 'sortable-chosen',
+        dragClass: 'sortable-drag'
       };
     }
   },
@@ -74,9 +93,25 @@ export default {
   transition: transform 0s;
 }
 .ghost {
-  opacity: 0.5;
-  background: #204d61;
+  opacity: 0%;
+  // border: 1px dashed #404142;
+  // this doesnt do anything as of now
 }
+
+.sortable-chosen {
+  opacity: 20%;
+  // border: 1px dashed #404142;
+}
+
+.sortable-drag {
+  // opacity: 15%;
+  // border: 1px dashed #404142;
+  // z-index: 1;
+  // opacity: 0;
+  // opacity: 0;
+  // background: #204d61;
+}
+
 .list-group {
   min-height: 20px;
 }
@@ -107,6 +142,14 @@ export default {
     display: flex;
     margin-top: 28px;
     padding-left: 56px;
+  }
+
+  &__order-button {
+    // align-items: right !important;
+    // display: flex;
+    // text-align: right !important;
+    margin-left: 56px;
+    margin-top: 65px;
   }
 
   &__pills {
@@ -150,7 +193,7 @@ export default {
 
   &__graph {
     margin-left: 56px;
-    margin-top: 76px;
+    margin-top: 25px;
     display: grid;
     grid-template-columns: repeat(3, 350px);
     grid-template-rows: repeat(2, 250px);
