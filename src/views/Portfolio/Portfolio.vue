@@ -3,8 +3,8 @@
 
   <div>
     <div class="profile__mode">
-      <v-btn class="profile__mode" depressed outlined color="grey" small>Public View</v-btn>
-      <!-- <v-btn class="profile__mode" depressed outlined color="red" small>Private Mode</v-btn> -->
+      <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
+      <v-btn class="profile__mode" depressed outlined color="red" small>Edit</v-btn>
     </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
@@ -157,9 +157,9 @@
     // margin-top: 213px;
     margin-top: 25px;
     margin-bottom: 50px;
-    border: 15px solid #f1f2f2;
+    // border: 15px solid #f1f2f2;
     // border: 15px solid #6fba7f;
-    // border: 15px solid #ea6764;
+    border: 15px solid #ea6764;
     padding-bottom: 125px;
     border-radius: 50px;
   }
