@@ -33,15 +33,19 @@
         ></v-select>
       </validation-provider>
 
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
-        >Save and Continue</v-btn
-      >
+      <Loading>
+        <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
+          >Save and Continue</v-btn
+        >
+      </Loading>
     </div>
   </ValidationObserver>
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, computed } from '@vue/composition-api';
 import { PropType } from 'vue';
+import Loading from '@/components/Loading.vue';
+import { useDbActions } from '@/store';
 import { CITIZEN_TYPES } from '../../../const';
 
 interface TypeItem {
@@ -51,6 +55,9 @@ interface TypeItem {
 
 export default {
   name: 'GeneralID',
+  components: {
+    Loading
+  },
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
@@ -69,6 +76,7 @@ export default {
       firstName: '',
       lastName: ''
     });
+    const submit = () => {};
     return {
       AVAILABLE_IDS,
       selectedIDs,

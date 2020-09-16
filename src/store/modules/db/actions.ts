@@ -5,7 +5,8 @@ import { Collection, getCollectionType } from '../../../@types/collections.d';
 import dbState from './state';
 
 export enum ActionTypes {
-  create = 'create'
+  create = 'create',
+  update = 'update'
 }
 type AuthActionCtx = ActionContext<typeof dbState, RootState>;
 export interface DbActions extends ActionTree<typeof dbState, RootState> {

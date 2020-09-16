@@ -57,7 +57,7 @@
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
-import { useAuthActions } from '@/store';
+import { useAuthActions, useDbActions } from '@/store';
 import Loading from '@/components/Loading.vue';
 
 export default {
@@ -71,17 +71,20 @@ export default {
       error: ''
     });
     const { loginUser } = useAuthActions([ActionTypes.loginUser]);
+    const { create } = useDbActions(['create']);
     async function login() {
       try {
         await loginUser({ email: state.email, password: state.password });
-        ctx.root.$router.push({ name: 'portfolio' });
+        // create({collection:"User",{
+
+        // }})
+        ctx.root.$router.push({ name: 'setup' });
       } catch (err) {
         if (err.statusCode === 401)
           state.error = 'That email and password combination does not exist';
         else state.error = err;
       }
     }
-    console.log(login);
     return { ...toRefs(state), login };
   }
 };
