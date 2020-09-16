@@ -54,7 +54,9 @@ export default {
         animation: 150,
         group: 'description',
         disabled: false,
-        ghostClass: 'ghost'
+        ghostClass: 'ghost', // Class name for the drop placeholder
+        chosenClass: 'sortable-chosen', // Class name for the chosen item
+        dragClass: 'sortable-drag' // Class name for the dragging item
       };
     }
   },
@@ -73,7 +75,7 @@ export default {
 }
 .ghost {
   opacity: 0.5;
-  background: #95a6ad;
+  background: #204d61;
 }
 .list-group {
   min-height: 20px;
