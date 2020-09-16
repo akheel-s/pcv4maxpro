@@ -61,12 +61,6 @@ import { reactive, toRefs } from '@vue/composition-api';
 
 export default {
   name: 'EmployerID',
-  props: {
-    invalid: {
-      type: Boolean,
-      default: false
-    }
-  },
   setup(props, { emit }) {
     const empolyer = reactive({
       employerName: '',

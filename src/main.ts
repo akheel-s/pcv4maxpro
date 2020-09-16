@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueCompositionAPI from '@vue/composition-api';
+import './installCompositionApi';
 import { ValidationObserver, ValidationProvider } from '@/validation';
 import App from './App.vue';
 import './registerServiceWorker';
@@ -8,8 +8,6 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import { createProvider } from './vue-apollo';
 import '@mdi/font/css/materialdesignicons.css';
-
-Vue.use(VueCompositionAPI);
 
 Vue.config.productionTip = false;
 Vue.component('ValidationProvider', ValidationProvider);

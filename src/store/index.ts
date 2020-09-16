@@ -34,7 +34,7 @@ const store: StoreOptions<RootState> = {
   }
 };
 const vuexStore = new Vuex.Store<RootState>(store);
-export default vuexStore;
+
 export const {
   useState: useToolState,
   useGetters: useToolGetters,
@@ -68,3 +68,4 @@ export const {
   useMutations: useDbMutations,
   useActions: useDbActions
 } = createNamespacedHelpers<typeof dbState, any, DbActions, any>(vuexStore, 'db');
+export default vuexStore;

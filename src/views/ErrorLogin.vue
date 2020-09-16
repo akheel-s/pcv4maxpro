@@ -5,12 +5,12 @@
   </div>
 </template>
 <script lang="ts">
-import { useActions as useToolActions } from '@/store/modules/tools';
+import { useToolActions } from '@/store';
 import { onMounted } from '@vue/composition-api';
 
+const { setLinearLoader } = useToolActions(['setLinearLoader']);
 export default {
   setup(_props, ctx) {
-    const { setLinearLoader } = useToolActions(['setinearLoader']);
     onMounted(() => {
       setLinearLoader({
         func: () =>
@@ -22,6 +22,7 @@ export default {
           })
       });
     });
+    return {};
   }
 };
 </script>
