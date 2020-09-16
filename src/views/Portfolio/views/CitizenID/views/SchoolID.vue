@@ -1,5 +1,5 @@
 <template>
-  <div class="my-id__content">
+  <ValidationObserver v-slot="{ invalid }" class="my-id__content">
     <div class="my-id__wrapper">
       <div class="my-id__title mb-3">School ID</div>
 
@@ -8,7 +8,6 @@
         <v-select
           v-model="staffType"
           :items="schoolStaffType"
-          :error="errors.length"
           :error-messages="errors"
           multiple
           label="Staff Type"
@@ -68,7 +67,7 @@
         >Save and Continue</v-btn
       >
     </div>
-  </div>
+  </ValidationObserver>
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from '@vue/composition-api';
