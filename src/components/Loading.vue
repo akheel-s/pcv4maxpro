@@ -29,6 +29,7 @@ export default {
         try {
           await (props.callback as Function)();
         } catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
         loading.value = false;

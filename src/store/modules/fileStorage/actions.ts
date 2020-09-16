@@ -26,7 +26,6 @@ export interface FileStorageActions extends ActionTree<typeof fileStorageState, 
 }
 export const actions: FileStorageActions = {
   uploadItem({ state, commit }, { folder, fileName, item }) {
-    console.log('uploading item');
     return new Promise((resolve, reject) => {
       state.bucket.upload(
         {

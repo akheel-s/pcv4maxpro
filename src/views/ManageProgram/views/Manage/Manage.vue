@@ -5,47 +5,7 @@
     </div>
     <div class="manage__second-body">
       <div class="manage__title">Manage Program</div>
-
-      <!-- FILTER START -->
-      <div class="manage__profile-btn">
-        <!-- <v-btn outlined icon><v-icon>mdi-filter-variant</v-icon>Filter</v-btn> -->
-        <template>
-          <v-dialog v-model="dialog" scrollable max-width="300px">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn class="ma-1" color="grey" v-bind="attrs" rounded outlined v-on="on">
-                <v-icon left>mdi-filter-variant</v-icon> Filter
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title>Select Filters</v-card-title>
-              <v-divider></v-divider>
-              <v-card-text style="height: 300px">
-                <v-radio-group v-model="selectedFilters" column>
-                  <v-radio v-for="{ label } in filterChips" :key="label" :label="label"></v-radio>
-                </v-radio-group>
-              </v-card-text>
-              <v-divider></v-divider>
-              <v-card-actions>
-                <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </template>
-
-        <!-- Filtered Chips in the form of a button -->
-        <v-btn
-          v-for="{ label, color } in filterChips"
-          :key="label"
-          class="ma-1"
-          :color="color"
-          rounded
-          outlined
-          ><v-icon left>mdi-close</v-icon>{{ label }}</v-btn
-        >
-      </div>
-
+      <manage-filter class="manage__profile-btn"></manage-filter>
       <draggable
         v-model="keyedCollection"
         class="manage__graph"
@@ -76,22 +36,18 @@
 import { generateId } from '@/components/IdGen';
 import draggable from 'vuedraggable';
 import { ref } from '@vue/composition-api';
-import { PCCard, Nav } from '../../components';
-import { tableItems, filterChips } from './const';
+import { PCCard, Nav, ManageFilter } from '../../components';
+import tableItems from './const';
 
 export default {
   name: 'Manage',
   components: {
     'pc-card': PCCard,
     Nav,
-    draggable
+    draggable,
+    ManageFilter
   },
-  data() {
-    return {
-      selectedFilters: [],
-      dialog: false
-    };
-  },
+
   computed: {
     dragOptions() {
       return {
@@ -103,7 +59,7 @@ export default {
     }
   },
   setup() {
-    return { keyedCollection: ref(generateId(tableItems.value, 'simple')), filterChips };
+    return { keyedCollection: ref(generateId(tableItems.value, 'simple')) };
   }
 };
 </script>

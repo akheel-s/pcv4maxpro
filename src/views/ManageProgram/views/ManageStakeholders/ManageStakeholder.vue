@@ -5,98 +5,7 @@
     </div>
     <div class="participants__second-part">
       <div class="participants__title">Manage Stakeholders</div>
-      <!-- <div class="participants__profile-btn">
-        <v-chip class="participants__pills" color="#bdbdbd">
-          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-
-        <v-chip class="participants__pills" color="#bdbdbd">
-          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="participants__pills" color="#bdbdbd">
-          <v-icon class="participants__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="participants__pills--outline"></v-chip>
-      </div> -->
-
-      <!-- FILTER START -->
-      <div class="participants__profile-btn2">
-        <!-- <v-btn outlined icon><v-icon>mdi-filter-variant</v-icon>Filter</v-btn> -->
-        <template>
-          <v-dialog v-model="dialog" scrollable max-width="300px">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn class="ma-1" color="grey" v-bind="attrs" rounded outlined v-on="on">
-                <v-icon left>mdi-filter-variant</v-icon> Filter
-              </v-btn>
-            </template>
-
-            <v-card>
-              <v-card-title>Select Country</v-card-title>
-              <v-divider></v-divider>
-              <v-card-text style="height: 300px">
-                <v-radio-group v-model="dialogm1" column>
-                  <v-radio label="Bahamas, The" value="bahamas"></v-radio>
-                  <v-radio label="Bahrain" value="bahrain"></v-radio>
-                  <v-radio label="Bangladesh" value="bangladesh"></v-radio>
-                  <v-radio label="Barbados" value="barbados"></v-radio>
-                  <v-radio label="Belarus" value="belarus"></v-radio>
-                  <v-radio label="Belgium" value="belgium"></v-radio>
-                  <v-radio label="Belize" value="belize"></v-radio>
-                  <v-radio label="Benin" value="benin"></v-radio>
-                  <v-radio label="Bhutan" value="bhutan"></v-radio>
-                  <v-radio label="Bolivia" value="bolivia"></v-radio>
-                  <v-radio label="Bosnia and Herzegovina" value="bosnia"></v-radio>
-                  <v-radio label="Botswana" value="botswana"></v-radio>
-                  <v-radio label="Brazil" value="brazil"></v-radio>
-                  <v-radio label="Brunei" value="brunei"></v-radio>
-                  <v-radio label="Bulgaria" value="bulgaria"></v-radio>
-                  <v-radio label="Burkina Faso" value="burkina"></v-radio>
-                  <v-radio label="Burma" value="burma"></v-radio>
-                  <v-radio label="Burundi" value="burundi"></v-radio>
-                </v-radio-group>
-              </v-card-text>
-              <v-divider></v-divider>
-              <v-card-actions>
-                <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </template>
-
-        <!-- Filtered Chips in the form of a button -->
-        <v-btn class="ma-1" color="green" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Outcomes</v-btn
-        >
-
-        <v-btn class="ma-1" color="blue" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Participants</v-btn
-        >
-
-        <v-btn class="ma-1" color="red" rounded outlined
-          ><v-icon left>mdi-close</v-icon>Projects</v-btn
-        >
-
-        <!-- <v-btn class="ma-2" color="green" outlined>
-          <v-icon left>mdi-close</v-icon>
-          Location
-        </v-btn> -->
-
-        <!-- <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-
-        <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="manage__pills" color="#bdbdbd">
-          <v-icon class="manage__close" x-small color="#F2F2F2">mdi-close</v-icon>
-        </v-chip>
-        <v-chip class="manage__pills--outline"></v-chip> -->
-
-        <!-- Auto-Join Switch -->
-      </div>
-
+      <manage-filter class="participants__profile-btn2"></manage-filter>
       <!-- FILTER END -->
 
       <div class="participants__manage-bar">
@@ -126,20 +35,18 @@
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import IndexTable from '@/components/IndexTable.vue';
-import { Nav } from '../../components';
+import { Nav, ManageFilter } from '../../components';
 import { items, HEADER } from './const';
 
 export default {
   name: 'Managestakeholder',
   components: {
     Nav,
-    IndexTable
+    IndexTable,
+    ManageFilter
   },
   data() {
-    return {
-      dialogm1: '',
-      dialog: false
-    };
+    return {};
   },
   setup() {
     return { header: ref(HEADER), items: ref(items) };
