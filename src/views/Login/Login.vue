@@ -7,7 +7,7 @@
     </div>
     <div class="login__inputs">
       <validation-observer v-slot="{ invalid }" ref="observer" slim class="login__emailalign">
-        <div class="login__email text-subtitle-2">email</div>
+        <div class="login__email text-subtitle-2">Email</div>
         <validation-provider v-slot="{ errors }" ref="provider" rules="required|email">
           <v-text-field
             ref="emailInput"
@@ -16,21 +16,26 @@
             single-line
             outlined
             full-width
+            label="Email"
+            color="white"
+            dark
             :error-messages="errors"
           ></v-text-field>
         </validation-provider>
 
-        <div class="login__password text-subtitle-2">password</div>
+        <div class="login__password text-subtitle-2">Password</div>
         <validation-provider v-slot="{ errors }" rules="required">
           <v-text-field
             ref="passwordInput"
             v-model="password"
             class="login__input"
             type="password"
+            label="Password"
             toggle
             single-line
             outlined
             full-width
+            dark
             :error-messagees="errors"
           ></v-text-field>
         </validation-provider>
@@ -41,6 +46,7 @@
             class="login__next text-h5 font-weight-black"
             depressed
             color="blue"
+            x-large
             :ripple="false"
             :disabled="invalid"
             :loading="loading"
@@ -48,7 +54,7 @@
             >Login</v-btn
           >
         </Loading>
-        <v-alert v-if="error" type="error">{{ error }}</v-alert>
+        <v-alert v-if="error" class="login__alert" type="error">{{ error }}</v-alert>
       </validation-observer>
     </div>
   </div>
@@ -144,7 +150,9 @@ export default {
   }
   &__title {
     color: #3c9ccc;
-    margin-top: 265px;
+    margin-top: 165px;
+    margin-bottom: 30px;
+    font-family: Raleway;
   }
 }
 
@@ -167,8 +175,9 @@ export default {
     margin-bottom: 4.5px;
     color: #ffffff;
   }
-  // &__input {
-  // }
+  &__input {
+    // color: #d4d4d4;
+  }
   &__passwordalign {
     width: 100%;
     max-width: 349.11px;
@@ -190,7 +199,17 @@ export default {
     }
     width: 100%;
     max-width: 349.11px;
+    margin-top: 20px;
   }
+
+  &__alert {
+    margin-top: 25px;
+    font-size: 11.5px !important;
+  }
+}
+
+.login__inputs .v-text-field--outlined > .v-input__control > .v-input__slot {
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {
