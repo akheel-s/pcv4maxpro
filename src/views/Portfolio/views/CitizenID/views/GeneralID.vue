@@ -33,14 +33,14 @@
         ></v-select>
       </validation-provider>
 
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emitSaveID"
         >Save and Continue</v-btn
       >
     </div>
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, computed } from '@vue/composition-api';
+import { Ref, reactive, ref, toRefs, computed } from '@vue/composition-api';
 import { PropType } from 'vue';
 import { CITIZEN_TYPES } from '../../../const';
 
@@ -59,21 +59,21 @@ export default {
   },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
-    const selectedIDs = computed({
-      get: () => props.value,
-      set: newIds => {
-        emit('input', newIds);
-      }
-    });
+    const selectedIDs: Ref<string[]> = ref([]);
+    function emitSaveID() {
+      console.log('emitting');
+      emit('SaveID');
+      emit('input', selectedIDs.value);
+    }
     const user = reactive({
       firstName: '',
       lastName: ''
     });
     return {
+      emitSaveID,
       AVAILABLE_IDS,
       selectedIDs,
-      ...toRefs(user),
-      emit
+      ...toRefs(user)
     };
   }
 };

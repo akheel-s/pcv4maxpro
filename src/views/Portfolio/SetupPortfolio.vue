@@ -1,43 +1,43 @@
 <template>
-  <validation-observer :class="computedClasses" slim>
-    <v-stepper v-model="step" class="my-id__content" vertical>
-      <v-stepper-step step="1" :complete="step > 1" :editable="step > 1">
-        General Information
-      </v-stepper-step>
-      <v-divider></v-divider>
-      <template v-for="(type, index) in selectedTypes">
-        <v-stepper-step
-          :key="'step' + index"
-          :step="index + 2"
-          :complete="step - 2 > index"
-          :editable="step - 2 > index"
-          >{{ `${type} Information` }}
-        </v-stepper-step>
-        <v-divider :key="'divider' + index"></v-divider>
-      </template>
+  <validation-observer :class="computedClasses" slim class="setup-profile__content">
+    <v-slide-x-transition hide-on-leave>
+      <general-id
+        v-if="step < 1 && (selectedTypes === undefined || selectedTypes.length == 0)"
+        v-model="selectedTypes"
+        style="margin-top: 70px"
+        @SaveID="step++"
+      ></general-id>
+    </v-slide-x-transition>
 
-      <v-stepper-items>
-        <v-stepper-content step="1">
-          <v-slide-x-transition hide-on-leave>
-            <general-id v-model="selectedTypes" @SaveID="step++"></general-id>
-          </v-slide-x-transition>
-        </v-stepper-content>
-        <v-stepper-content
-          v-for="(componentId, index) in idSections"
-          :key="componentId + 'Section'"
-          :step="index + 2"
-        >
-          <v-slide-x-transition hide-on-leave>
-            <component :is="componentId" @SaveID="step++" />
-          </v-slide-x-transition>
-        </v-stepper-content>
-      </v-stepper-items>
-    </v-stepper>
+    <v-slide-x-transition>
+      <v-stepper v-if="step > 0" v-model="step">
+        <v-stepper-header>
+          <template v-for="(type, index) in selectedTypes">
+            <v-stepper-step
+              :key="'step' + index"
+              :step="index + 1"
+              :complete="step - 1 > index"
+              :editable="step - 1 > index"
+              >{{ `${type}` }}
+            </v-stepper-step>
+            <v-divider :key="'divider' + index" />
+          </template>
+        </v-stepper-header>
+
+        <v-stepper-items>
+          <v-stepper-content :step="step">
+            <v-slide-x-transition hide-on-leave>
+              <component :is="idSections[step - 1]" @SaveID="step++" />
+            </v-slide-x-transition>
+          </v-stepper-content>
+        </v-stepper-items>
+      </v-stepper>
+    </v-slide-x-transition>
   </validation-observer>
 </template>
 
 <script lang="ts">
-import { ref, Ref, computed } from '@vue/composition-api';
+import { ref, Ref, computed, watch } from '@vue/composition-api';
 import {
   GeneralID,
   EmployerID,
@@ -66,7 +66,7 @@ export default {
   },
   setup(_props, ctx) {
     // stepper setup
-    const step = ref(1);
+    const step = ref(0);
     // component switcher
     const selectedTypes: Ref<string[]> = ref([]);
     const idSections = computed(() => selectedTypes.value.map(type => `${type.toLowerCase()}-id`));
@@ -75,6 +75,15 @@ export default {
     const computedClasses = computed(() =>
       breakpoints[screenSize.value] > breakpoints.md ? ['profile__container', 'pc-container'] : []
     );
+    function finish() {
+      console.log('I am finished onboarding myself');
+    }
+    watch(step, currentStep => {
+      if (currentStep > selectedTypes.value.length) {
+        step.value = 0;
+        finish();
+      }
+    });
     return { step, selectedTypes, idSections, screenSize, computedClasses };
   }
 };
@@ -96,26 +105,34 @@ export default {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
+    padding-top: 70px;
+    padding-right: 8%;
+    padding-left: 8%;
     display: flex;
-    padding-right: 16%;
-    padding-left: 16%;
+    flex-direction: column;
     justify-content: center;
   }
-  &__timeline {
-    margin-top: 70px;
-  }
 }
-.profile__container .my-id__content {
+.setup-profile__content {
   .v-stepper {
     border-radius: 0px;
     box-shadow: none;
     &__step {
       padding-left: 0px;
       padding-right: 0px;
+      margin-left: 12px;
+      margin-right: 12px;
     }
     &__header {
       box-shadow: none;
       justify-content: center;
+      flex-direction: row;
+      .v-divider {
+        margin: 0 -8px;
+        &:last-child {
+          display: none;
+        }
+      }
     }
     &__content {
       display: block !important;
@@ -123,7 +140,7 @@ export default {
   }
 }
 @media screen and (max-width: 1024px) {
-  .profile__container .my-id__content {
+  .my-id__content {
     .v-stepper {
     }
   }

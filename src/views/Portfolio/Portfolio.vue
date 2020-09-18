@@ -159,9 +159,13 @@
     margin-bottom: 50px;
     // border: 15px solid #f1f2f2;
     // border: 15px solid #6fba7f;
-    border: 15px solid #ea6764;
+    border: 15px solid var(--v-secondary-darken4);
+    // box-shadow: none;
     padding-bottom: 125px;
     border-radius: 50px;
+    &.edit {
+      border: 15px solid var(--v-error-base);
+    }
   }
 
   &__tabs {
