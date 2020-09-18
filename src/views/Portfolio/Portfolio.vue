@@ -2,9 +2,18 @@
   <!--  TODO: make the inputs into actual components -->
 
   <div>
-    <div class="profile__mode">
-      <v-btn class="profile__mode" depressed outlined color="grey" small>Public View</v-btn>
-      <!-- <v-btn class="profile__mode" depressed outlined color="red" small>Private Mode</v-btn> -->
+    <div class="profile__mode-container pc-container">
+      <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
+      <v-btn class="profile__mode font-weight-bold" text color="purple" small>0 Credit</v-btn>
+      <v-btn class="profile__mode white--text font-weight-bold" depressed color="purple" small
+        ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+      >
+      <!-- <v-btn class="profile__mode" depressed outlined color="green" small
+        ><v-icon left>mdi-cash-usd</v-icon>Sponsor</v-btn
+      > -->
+
+      <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+      <v-btn class="profile__mode" depressed color="grey" dark small>Edit</v-btn>
     </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
@@ -74,11 +83,18 @@
   }
 
   &__mode {
-    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  &__mode-container {
+    justify-content: flex-end;
     align-items: center;
     display: flex;
-    margin-top: 25px;
+    margin-top: 50px;
+    max-width: 80%;
   }
+
   &__namepate {
     position: relative;
     display: -webkit-box;
@@ -157,11 +173,15 @@
     // margin-top: 213px;
     margin-top: 25px;
     margin-bottom: 50px;
-    border: 15px solid #f1f2f2;
+    // border: 15px solid #f1f2f2;
     // border: 15px solid #6fba7f;
-    // border: 15px solid #ea6764;
+    border: 15px solid var(--v-secondary-darken4);
+    // box-shadow: none;
     padding-bottom: 125px;
     border-radius: 50px;
+    &.edit {
+      border: 15px solid var(--v-error-base);
+    }
   }
 
   &__tabs {

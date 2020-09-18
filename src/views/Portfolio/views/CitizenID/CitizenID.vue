@@ -67,7 +67,7 @@ export default {
   display: -ms-flexbox;
   display: flex;
   flex-grow: 1;
-  flex-direction: column;
+  flex-direction: row;
   padding-right: 12%;
   padding-left: 12%;
   justify-content: center;

@@ -18,6 +18,7 @@
             single-line
             outlined
             full-width
+            dark
           ></v-text-field>
         </validation-provider>
         <div class="signup__confirmpassword text-subtitle-2">Password</div>
@@ -32,19 +33,21 @@
             single-line
             outlined
             full-width
+            dark
           ></v-text-field>
         </validation-provider>
 
         <v-checkbox
           v-model="terms"
           class="signup__conditions"
-          color="green"
+          color="white"
           single-line
           outlined
           full-width
+          dark
         >
           <template v-slot:label>
-            <div>
+            <div class="signup__conditions-text">
               I agree to the following
               <a href="https://www.iubenda.com/terms-and-conditions/32542296">Terms & Conditions</a>
               and
@@ -57,13 +60,14 @@
           class="signup__signupbuttons text-h6 font-weight-black"
           depressed
           color="green"
+          x-large
           :disabled="invalid || !terms"
           :loading="loading"
           @click="submit"
         >
           Signup
         </v-btn>
-        <v-alert v-if="msg" :type="type">{{ msg }}</v-alert>
+        <v-alert v-if="msg" class="signup__alert" :type="type">{{ msg }}</v-alert>
       </validation-observer>
     </div>
   </div>
@@ -166,11 +170,13 @@ export default {
   &__body {
     display: flex;
     justify-content: center;
+    font-family: Raleway;
   }
   &__title {
     color: #6eba7f;
     margin-top: 144px;
     margin-bottom: 56.5px;
+    font-family: Raleway;
   }
 }
 
@@ -191,9 +197,6 @@ export default {
     margin-top: 10px;
     margin-bottom: 4.5px;
     color: #ffffff;
-  }
-  &__input {
-    color: #d4d4d4;
   }
   &__lastname {
     margin-bottom: 4.5px;
@@ -217,6 +220,11 @@ export default {
     }
   }
 
+  &__conditions-text {
+    font-size: 11px;
+    color: #ffffff;
+  }
+
   &__signupbuttons {
     width: 100%;
     &.theme--light.v-btn {
@@ -225,6 +233,11 @@ export default {
     & .v-btn__content {
       margin-bottom: 0px 0px, 100px;
     }
+  }
+
+  &__alert {
+    margin-top: 25px;
+    font-size: 11.5px !important;
   }
 }
 

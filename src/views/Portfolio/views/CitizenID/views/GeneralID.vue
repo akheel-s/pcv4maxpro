@@ -42,7 +42,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, computed } from '@vue/composition-api';
+import { Ref, reactive, ref, toRefs, computed } from '@vue/composition-api';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
 import { useDbActions } from '@/store';
@@ -66,22 +66,22 @@ export default {
   },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
-    const selectedIDs = computed({
-      get: () => props.value,
-      set: newIds => {
-        emit('input', newIds);
-      }
-    });
+    const selectedIDs: Ref<string[]> = ref([]);
+    function emitSaveID() {
+      console.log('emitting');
+      emit('SaveID');
+      emit('input', selectedIDs.value);
+    }
     const user = reactive({
       firstName: '',
       lastName: ''
     });
     const submit = () => {};
     return {
+      emitSaveID,
       AVAILABLE_IDS,
       selectedIDs,
-      ...toRefs(user),
-      emit
+      ...toRefs(user)
     };
   }
 };

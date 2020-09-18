@@ -13,7 +13,7 @@ const routes: Array<RouteConfig> = [
     name: 'setup',
     component: Setup,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   }
 ];
