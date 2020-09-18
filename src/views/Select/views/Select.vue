@@ -1,20 +1,6 @@
 <template>
   <div class="select__entire-body">
-    <div class="select__toplabels" stepper-elevation="0">
-      <v-stepper value="1" alt-labels>
-        <v-stepper-header>
-          <v-stepper-step step="1" complete>Select</v-stepper-step>
-
-          <v-divider></v-divider>
-
-          <v-stepper-step step="2">Details</v-stepper-step>
-
-          <v-divider></v-divider>
-
-          <v-stepper-step step="3">Manage</v-stepper-step>
-        </v-stepper-header>
-      </v-stepper>
-    </div>
+    <div class="select__toplabels" stepper-elevation="0"></div>
     <div class="select__title">Select Program Template</div>
     <div class="select__cards">
       <pc-select-card v-for="item in items" :key="item.title">
