@@ -1,5 +1,21 @@
 <template>
   <div class="select__entire-body">
+    <div class="select__toplabels" stepper-elevation="0">
+      <v-stepper value="1" alt-labels>
+        <v-stepper-header>
+          <v-stepper-step step="1" complete>Select</v-stepper-step>
+
+          <v-divider></v-divider>
+
+          <v-stepper-step step="2">Details</v-stepper-step>
+
+          <v-divider></v-divider>
+
+          <v-stepper-step step="3">Manage</v-stepper-step>
+        </v-stepper-header>
+      </v-stepper>
+    </div>
+    <div class="select__title">Select Program Template</div>
     <div class="select__cards">
       <pc-select-card v-for="item in items" :key="item.title">
         <template v-slot:title>{{ item.title }}</template>
@@ -36,9 +52,20 @@ export default {
   &__entire-body {
     height: 100%;
   }
+
+  &__title {
+    font-family: Raleway;
+    font-weight: 800;
+    color: black;
+    font-size: 35px;
+    margin-top: 162px;
+    margin-left: 220px;
+    max-width: 170px;
+  }
+
   &__cards {
     margin-left: 220px;
-    margin-top: 286px;
+    margin-top: 11px;
     display: grid;
     grid-template-columns: repeat(3, 475px);
     grid-template-rows: repeat(2, 375px);
