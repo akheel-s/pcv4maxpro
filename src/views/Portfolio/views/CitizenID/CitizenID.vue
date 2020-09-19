@@ -1,6 +1,6 @@
 <template>
   <div class="my-id__container">
-    <component :is="getComponent" />
+    <component :is="expComponent ? expComponent : getComponent" />
 
     <v-row class="mt-12" justify="center">
       <v-btn class="red darken-1" dark depressed x-large @click.stop="dialog = true"
@@ -39,6 +39,12 @@ export default {
     'teacher-id': TeacherID,
     'school-id': SchoolID,
     'parent-id': ParentID
+  },
+  props: {
+    expComponent: {
+      type: String,
+      default: ''
+    }
   },
   setup() {
     const currentID = ref('General');

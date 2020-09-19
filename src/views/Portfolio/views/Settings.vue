@@ -77,10 +77,7 @@ export default {
   setup() {
     const idItems = ref([
       { title: 'Password', icon: 'mdi-key' },
-      { title: 'Notifications', icon: 'mdi-bell' },
-      { title: 'Teacher', icon: 'mdi-account' },
-      { title: 'School', icon: 'mdi-account' },
-      { title: 'Parent', icon: 'mdi-account' }
+      { title: 'Notifications', icon: 'mdi-bell' }
     ]);
     return { idItems };
   }

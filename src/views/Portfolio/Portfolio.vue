@@ -4,13 +4,30 @@
   <div>
     <div class="profile__mode-container pc-container">
       <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-      <v-btn class="profile__mode font-weight-bold" text color="purple" small>0 Credit</v-btn>
-      <v-btn class="profile__mode white--text font-weight-bold" depressed color="purple" small
+      <v-btn
+        class="profile__mode font-weight-bold"
+        text
+        color="purple"
+        small
+        @click="currentTab = 'balance'"
+        >0 Credit</v-btn
+      >
+      <v-btn
+        class="profile__mode white--text font-weight-bold"
+        depressed
+        color="purple"
+        small
+        @click="currentTab = 'payment'"
         ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
       >
-      <!-- <v-btn class="profile__mode" depressed outlined color="green" small
-        ><v-icon left>mdi-cash-usd</v-icon>Sponsor</v-btn
-      > -->
+      <v-btn
+        class="profile__mode white--text font-weight-bold"
+        depressed
+        color="green"
+        small
+        @click="currentTab = 'referral'"
+        ><v-icon left>mdi-shield-star</v-icon>Refer</v-btn
+      >
 
       <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
       <v-btn class="profile__mode" depressed color="grey" dark small>Edit</v-btn>
@@ -33,12 +50,24 @@
 
           <span class="profile__name">Jerold Inocencio</span>
         </div>
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip
+          large
+          class="pl-8 pr-8 ma-2"
+          color="black"
+          outlined
+          @click="currentTab = 'my programs'"
+        >
           <v-icon left>mdi-server-plus</v-icon>
           Programs
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip
+          large
+          class="pl-8 pr-8 ma-2"
+          color="black"
+          outlined
+          @click="currentTab = 'settings'"
+        >
           <v-icon left>mdi-wrench</v-icon>
           Settings
         </v-chip>
@@ -264,7 +293,10 @@ export default {
   components: {
     'my-programs': Portfolio.MyPrograms,
     id: Portfolio.CitizenID,
-    settings: Portfolio.Settings
+    settings: Portfolio.Settings,
+    balance: Portfolio.Balance,
+    payment: Portfolio.Payment,
+    referral: Portfolio.Referral
   },
   setup() {
     const tabs = ref(['My Programs', 'Settings', 'ID']);
