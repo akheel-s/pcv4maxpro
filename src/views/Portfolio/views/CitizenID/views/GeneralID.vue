@@ -33,20 +33,22 @@
         ></v-select>
       </validation-provider>
 
-      <Loading>
-        <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
-          >Save and Continue</v-btn
-        >
-      </Loading>
+      <!-- <Loading> -->
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="save"
+        >Save and Continue</v-btn
+      >
+      <!-- </Loading> -->
     </div>
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { Ref, reactive, ref, toRefs, computed } from '@vue/composition-api';
-import { PropType } from 'vue';
-import Loading from '@/components/Loading.vue';
+import { Ref, reactive, ref, toRefs } from '@vue/composition-api';
 import { useDbActions } from '@/store';
+import { PropType } from 'vue';
+// import Loading from '@/components/Loading.vue';
+import { ActionTypes } from '@/store/modules/db/actions';
 import { CITIZEN_TYPES } from '../../../const';
+// import gql from 'graphql-tag';
 
 interface TypeItem {
   text: string;
@@ -56,7 +58,7 @@ interface TypeItem {
 export default {
   name: 'GeneralID',
   components: {
-    Loading
+    // Loading
   },
   props: {
     value: {
@@ -64,23 +66,41 @@ export default {
       default: () => []
     }
   },
+  // apollo: {
+  //   firstName: gql`
+  //     query {
+  //       User {
+  //         firstName
+  //       }
+  //     }
+  //   `
+  // },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const selectedIDs: Ref<string[]> = ref([]);
-    function emitSaveID() {
+
+    const user = reactive({
+      firstName: '',
+      lastName: '',
+      selectedIDs: []
+    });
+    const { create } = useDbActions([ActionTypes.create]);
+    async function save() {
+      await create({
+        collection: 'User',
+        payload: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          userTypes: selectedIDs
+        }
+      });
       console.log('emitting');
       emit('SaveID');
       emit('input', selectedIDs.value);
     }
-    const user = reactive({
-      firstName: '',
-      lastName: ''
-    });
-    const submit = () => {};
     return {
-      emitSaveID,
+      save,
       AVAILABLE_IDS,
-      selectedIDs,
       ...toRefs(user)
     };
   }
