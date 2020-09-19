@@ -10,7 +10,7 @@
         color="purple"
         small
         @click="currentTab = 'balance'"
-        >0 Credit</v-btn
+        >0 Tickets</v-btn
       >
       <v-btn
         class="profile__mode white--text font-weight-bold"
@@ -26,11 +26,11 @@
         color="green"
         small
         @click="currentTab = 'referral'"
-        ><v-icon left>mdi-shield-star</v-icon>Refer</v-btn
+        ><v-icon left>mdi-telegram</v-icon>Refer</v-btn
       >
 
       <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
-      <v-btn class="profile__mode" depressed color="grey" dark small>Edit</v-btn>
+      <v-btn class="profile__mode" depressed color="grey" dark small>Manage</v-btn>
     </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
@@ -38,7 +38,8 @@
       <!-- </div> -->
 
       <!-- Chip Tabs -->
-      <div class="text-center mt-12">
+
+      <!-- <div class="text-center mt-12">
         <div>
           <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
@@ -88,7 +89,7 @@
           <v-icon left>mdi-plus</v-icon>
           Add Citizen Type
         </v-chip>
-      </div>
+      </div> -->
 
       <!-- <v-divider class="mt-10"></v-divider> -->
 
@@ -206,7 +207,8 @@
     // border: 15px solid #6fba7f;
     border: 15px solid var(--v-secondary-darken4);
     // box-shadow: none;
-    padding-bottom: 125px;
+    // padding-bottom: 125px;
+    padding-bottom: 75px;
     border-radius: 50px;
     &.edit {
       border: 15px solid var(--v-error-base);
