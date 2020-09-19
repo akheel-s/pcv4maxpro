@@ -9,12 +9,15 @@
 
       <v-row class="manage__order-button">
         <!-- Turn "Grid View" on when user clicks on "List View" -->
-        <v-btn class="ma-1" dark x-small color="grey" depressed
-          ><v-icon left>mdi-view-grid</v-icon>Grid View</v-btn
-        >
-        <v-btn class="ma-1" x-small color="grey" depressed outlined
-          ><v-icon left>mdi-format-list-bulleted</v-icon>List View</v-btn
-        >
+        <v-btn class="ma-1" dark x-small color="grey" depressed @click="gridList = !gridList">
+          <v-icon left>mdi-view-grid</v-icon>
+          Grid View
+        </v-btn>
+
+        <v-btn class="ma-1" x-small color="grey" depressed outlined @click="gridList = !gridList">
+          <v-icon left>mdi-format-list-bulleted</v-icon>
+          List View
+        </v-btn>
 
         <v-btn class="ma-1" x-small color="grey" depressed outlined
           ><v-icon left>mdi-drag-variant</v-icon>Edit Order</v-btn
@@ -25,28 +28,34 @@
         >
       </v-row>
 
-      <draggable
-        v-model="keyedCollection"
-        class="manage__graph"
-        v-bind="dragOptions"
-        @start="isDragging = true"
-        @end="isDragging = false"
-      >
-        <transition-group
-          v-for="{ title, image, id } in keyedCollection"
-          :key="id"
-          type="transition"
-          name="bounce"
+      <div v-if="gridList" class="manage__list--view">
+        <ListView />
+      </div>
+
+      <div v-else>
+        <draggable
+          v-model="keyedCollection"
+          class="manage__graph"
+          v-bind="dragOptions"
+          @start="isDragging = true"
+          @end="isDragging = false"
         >
-          <pc-card :key="`pc+${id}`" class="list-group-item">
-            <template v-slot:title>{{ id }}</template>
-            <template v-slot:actions> </template>
-            <template v-slot:graph>
-              <v-img :src="image" class="pc-card__image"></v-img>
-            </template>
-          </pc-card>
-        </transition-group>
-      </draggable>
+          <transition-group
+            v-for="{ title, image, id } in keyedCollection"
+            :key="id"
+            type="transition"
+            name="bounce"
+          >
+            <pc-card :key="`pc+${id}`" class="list-group-item">
+              <template v-slot:title>{{ id + 1 }}</template>
+              <template v-slot:actions> </template>
+              <template v-slot:graph>
+                <v-img :src="image" class="pc-card__image"></v-img>
+              </template>
+            </pc-card>
+          </transition-group>
+        </draggable>
+      </div>
     </div>
   </div>
 </template>
@@ -55,7 +64,7 @@
 import { generateId } from '@/components/IdGen';
 import draggable from 'vuedraggable';
 import { ref } from '@vue/composition-api';
-import { PCCard, Nav, ManageFilter } from '../../components';
+import { PCCard, Nav, ManageFilter, ListView } from '../../components';
 import tableItems from './const';
 
 export default {
@@ -64,7 +73,8 @@ export default {
     'pc-card': PCCard,
     Nav,
     draggable,
-    ManageFilter
+    ManageFilter,
+    ListView
   },
 
   computed: {
@@ -80,7 +90,8 @@ export default {
     }
   },
   setup() {
-    return { keyedCollection: ref(generateId(tableItems.value, 'simple')) };
+    const gridList = ref(false);
+    return { keyedCollection: ref(generateId(tableItems.value, 'simple')), gridList };
   }
 };
 </script>
@@ -130,6 +141,10 @@ export default {
     display: flex;
     height: 100%;
   }
+  &__second-body {
+    width: 100%;
+    padding-right: 56px;
+  }
   &__title {
     margin-left: 56px;
     margin-top: 44px;
@@ -145,9 +160,6 @@ export default {
   }
 
   &__order-button {
-    // align-items: right !important;
-    // display: flex;
-    // text-align: right !important;
     margin-left: 56px;
     margin-top: 65px;
   }
@@ -199,6 +211,11 @@ export default {
     grid-template-rows: repeat(2, 250px);
     grid-column-gap: 17px;
     grid-row-gap: 42px;
+  }
+
+  &__list--view {
+    width: 100%;
+    margin-left: 56px;
   }
 }
 .pc-card {
