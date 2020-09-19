@@ -15,10 +15,34 @@
           <!-- <small>Summarize if needed</small> -->
         </v-stepper-step>
 
-        <v-stepper-content step="1">
-          <v-card elevation="0" color="grey lighten-3" class="mb-3" height="50px"></v-card>
-          <v-btn x-small outlined text @click="e6 = 2">Enter Payment Information</v-btn>
-          <v-btn x-small text>Cancel</v-btn>
+        <v-stepper-content class="sponsor__program-menu" step="1">
+          <v-card
+            elevation="0"
+            color="grey lighten-3"
+            class="mb-3 sponsor__program-menu-card"
+            width="200px"
+            height="200px"
+          >
+            <!-- <v-radio class="sponsor__program-menu-card-radio"></v-radio> -->
+          </v-card>
+          <v-card
+            elevation="0"
+            color="grey lighten-3"
+            class="mb-3"
+            width="200px"
+            height="200px"
+          ></v-card>
+
+          <v-card
+            elevation="0"
+            color="grey lighten-3"
+            class="mb-3"
+            width="200px"
+            height="200px"
+          ></v-card>
+
+          <v-btn small outlined text @click="e6 = 2">Enter Payment Information</v-btn>
+          <v-btn small text>Cancel</v-btn>
         </v-stepper-content>
 
         <v-stepper-step
@@ -32,8 +56,8 @@
 
         <v-stepper-content step="2">
           <v-card elevation="0" color="grey lighten-3" class="mb-3" height="50px"></v-card>
-          <v-btn x-small outlined text @click="e6 = 3">Confirm and Complete</v-btn>
-          <v-btn x-small text>Cancel</v-btn>
+          <v-btn small outlined text @click="e6 = 3">Confirm and Complete</v-btn>
+          <v-btn small text>Cancel</v-btn>
         </v-stepper-content>
 
         <v-stepper-step
@@ -47,8 +71,8 @@
 
         <v-stepper-content step="3">
           <v-card elevation="0" color="grey lighten-3" class="mb-3" height="50px"></v-card>
-          <v-btn x-small outlined text @click="e6 = 4">Complete Transaction</v-btn>
-          <v-btn x-small text>Cancel</v-btn>
+          <v-btn small outlined text @click="e6 = 4">Complete Transaction</v-btn>
+          <v-btn small text>Cancel</v-btn>
         </v-stepper-content>
 
         <!-- <v-stepper-step step="4">View setup instructions</v-stepper-step>
@@ -91,5 +115,17 @@ export default {
   //   font-family: Raleway;
   //   font-weight: 800;
   // }
+
+  &__program-menu {
+    // flex-direction: column;
+    // display: flex;
+    // flex-shrink: 1;
+    display: grid;
+  }
+
+  &__program-menu-card-radio {
+    justify-content: center;
+    // align-items: flex-end;
+  }
 }
 </style>
