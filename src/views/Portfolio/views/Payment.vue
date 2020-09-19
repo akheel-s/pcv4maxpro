@@ -117,10 +117,16 @@ export default {
   // }
 
   &__program-menu {
-    // flex-direction: column;
-    // display: flex;
-    // flex-shrink: 1;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
     display: grid;
+    grid-template-columns: repeat(3, 375px);
+    // grid-template-rows: repeat(10, 375px);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    justify-content: center;
   }
 
   &__program-menu-card-radio {
