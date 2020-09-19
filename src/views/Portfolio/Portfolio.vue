@@ -4,6 +4,17 @@
   <div>
     <div class="profile__mode-container pc-container">
       <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
+      <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+      <v-btn
+        class="profile__mode"
+        depressed
+        color="grey"
+        dark
+        small
+        @click="currentTab = 'my-programs'"
+        >Manage</v-btn
+      >
+      <div class="profile__spacer"></div>
       <v-btn
         class="profile__mode font-weight-bold"
         text
@@ -28,9 +39,6 @@
         @click="currentTab = 'referral'"
         ><v-icon left>mdi-telegram</v-icon>Refer</v-btn
       >
-
-      <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
-      <v-btn class="profile__mode" depressed color="grey" dark small>Manage</v-btn>
     </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
@@ -38,8 +46,8 @@
       <!-- </div> -->
 
       <!-- Chip Tabs -->
-
-      <!-- <div class="text-center mt-12">
+      <!-- 
+      <div class="text-center mt-12">
         <div>
           <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
@@ -106,6 +114,10 @@
 </template>
 <style lang="scss">
 .profile {
+  &__spacer {
+    // justify-content: space-between;
+    width: 100%;
+  }
   &__name {
     font-family: Raleway;
     font-size: 40px;
