@@ -1,4 +1,4 @@
-FROM node:12.18.2
+FROM node:12.18.4
 RUN apt-get update -y && apt-get upgrade -y 
 RUN apt-get install rsync -y
 # Create and define the node_modules's cache directory.
@@ -8,10 +8,12 @@ WORKDIR /usr/src/cache
 # Install the application's dependencies into the node_modules's cache directory.
 COPY package*.json ./
 # RUN yarn global add @vue/cli
-RUN yarn 
+RUN npm install -g pnpm 
+RUN pnpm install
+RUN pnpm install -g @vue/cli
 # Create and define the application's working directory.
 WORKDIR /usr/src/app
 COPY . .
 EXPOSE 8080
 
-CMD [ "yarn", "run", "serve" ]
+CMD [ "pnpm","serve" ]

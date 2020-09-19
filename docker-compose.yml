@@ -17,7 +17,7 @@ services:
     stdin_open: true
     tty: true
     command: sh /usr/src/app/entrypoint.sh
-  service:
+  storybook:
     build: .
     container_name: storybook
     environment: 
@@ -33,4 +33,4 @@ services:
     - 6006:6006
     stdin_open: true
     tty: true
-    command: yarn storybook:serve
+    command: pnpm storybook:serve
