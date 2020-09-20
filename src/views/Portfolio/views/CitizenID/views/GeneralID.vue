@@ -33,20 +33,28 @@
         ></v-select>
       </validation-provider>
 
-      <!-- <Loading> -->
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="save"
-        >Save and Continue</v-btn
-      >
-      <!-- </Loading> -->
+      <Loading v-slot="{ loading, process }" :callback="save">
+        <v-btn
+          :disabled="invalid"
+          :loading="loading"
+          :dark="!invalid"
+          large
+          depressed
+          @click="process"
+          >Save and Continue</v-btn
+        >
+      </Loading>
     </div>
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { Ref, reactive, ref, toRefs } from '@vue/composition-api';
-import { useDbActions } from '@/store';
+import { reactive, ref, toRefs } from '@vue/composition-api';
+import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
-// import Loading from '@/components/Loading.vue';
+import Loading from '@/components/Loading.vue';
 import { ActionTypes } from '@/store/modules/db/actions';
+import { GetterTypes } from '@/store/modules/auth/getters';
+import { ObjectId } from 'bson';
 import { CITIZEN_TYPES } from '../../../const';
 // import gql from 'graphql-tag';
 
@@ -58,7 +66,7 @@ interface TypeItem {
 export default {
   name: 'GeneralID',
   components: {
-    // Loading
+    Loading
   },
   props: {
     value: {
@@ -77,26 +85,27 @@ export default {
   // },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
-    const selectedIDs: Ref<string[]> = ref([]);
 
     const user = reactive({
       firstName: '',
       lastName: '',
       selectedIDs: []
     });
-    const { create } = useDbActions([ActionTypes.create]);
+    const { update } = useDbActions([ActionTypes.update]);
+    const { getUser } = useAuthGetters([GetterTypes.getUser]);
     async function save() {
-      await create({
+      await update({
         collection: 'User',
         payload: {
           firstName: user.firstName,
           lastName: user.lastName,
-          userTypes: selectedIDs
-        }
+          email: getUser.value?.profile.email,
+          userTypes: user.selectedIDs
+        },
+        filter: { owner_id: '%%user.id' },
+        options: { upsert: true }
       });
-      console.log('emitting');
-      emit('SaveID');
-      emit('input', selectedIDs.value);
+      emit('input', user.selectedIDs);
     }
     return {
       save,

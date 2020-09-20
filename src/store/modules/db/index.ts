@@ -1,5 +1,6 @@
 import { Module } from 'vuex';
 import { RootState } from '@/store/state';
+import { getters } from './getters';
 import state from './state';
 import { actions } from './actions';
 
@@ -7,6 +8,7 @@ import { actions } from './actions';
 const db: Module<typeof state, RootState> = {
   namespaced: true,
   actions,
-  state
+  state,
+  getters
 };
 export default db;
