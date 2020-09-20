@@ -37,7 +37,7 @@
         color="green"
         small
         @click="currentTab = 'referral'"
-        ><v-icon left>mdi-telegram</v-icon>Refer</v-btn
+        ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
       >
     </div>
     <div class="profile__container pc-container">
@@ -217,7 +217,7 @@
     margin-bottom: 50px;
     // border: 15px solid #f1f2f2;
     // border: 15px solid #6fba7f;
-    border: 15px solid var(--v-secondary-darken4);
+    border: 15px solid var(--v-secondary-darken1);
     // box-shadow: none;
     // padding-bottom: 125px;
     padding-bottom: 75px;
