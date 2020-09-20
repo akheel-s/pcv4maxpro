@@ -56,6 +56,7 @@
     <!-- <div>next</div> -->
   </div>
 </template>
+
 <style lang="scss">
 .balance {
   &__container {

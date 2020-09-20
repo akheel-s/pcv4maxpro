@@ -18,7 +18,7 @@
       <v-btn
         class="profile__mode font-weight-bold"
         text
-        color="purple"
+        color="grey"
         small
         @click="currentTab = 'balance'"
         >0 Tickets</v-btn
