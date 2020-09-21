@@ -46,8 +46,8 @@
       <!-- </div> -->
 
       <!-- Chip Tabs -->
-      <!-- 
-      <div class="text-center mt-12">
+
+      <div class="profile__sub-container text-center mt-12">
         <div>
           <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
@@ -59,45 +59,26 @@
 
           <span class="profile__name">Jerold Inocencio</span>
         </div>
-        <v-chip
-          large
-          class="pl-8 pr-8 ma-2"
-          color="black"
-          outlined
-          @click="currentTab = 'my programs'"
-        >
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'my programs'">
           <v-icon left>mdi-server-plus</v-icon>
           Programs
         </v-chip>
 
-        <v-chip
-          large
-          class="pl-8 pr-8 ma-2"
-          color="black"
-          outlined
-          @click="currentTab = 'settings'"
-        >
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
           <v-icon left>mdi-wrench</v-icon>
           Settings
         </v-chip>
 
-        <v-chip
-          v-for="(color, id) in IDs"
-          :key="id"
-          large
-          class="pl-8 pr-8 ma-2"
-          :color="color"
-          outlined
-        >
+        <v-chip v-for="(color, id) in IDs" :key="id" class="pl-8 pr-8 ma-2" dark :color="color">
           <v-icon left>mdi-account-outline</v-icon>
           {{ id }}
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
           <v-icon left>mdi-plus</v-icon>
           Add Citizen Type
         </v-chip>
-      </div> -->
+      </div>
 
       <!-- <v-divider class="mt-10"></v-divider> -->
 
@@ -222,9 +203,17 @@
     // padding-bottom: 125px;
     padding-bottom: 75px;
     border-radius: 50px;
+
     &.edit {
       border: 15px solid var(--v-error-base);
     }
+  }
+
+  &__sub-container {
+    // max-width: 80%;
+    //     align-items: center !important;
+    // justify-content: center !important;
+    //     justify-content: center;
   }
 
   &__tabs {

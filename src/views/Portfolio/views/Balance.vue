@@ -2,6 +2,11 @@
   <div class="balance__container">
     <div class="balance__main">
       <div class="balance__main-left">
+        <v-avatar size="70">
+          <v-img
+            src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+          ></v-img>
+        </v-avatar>
         <div class="balance__main-left-title">BALANCE</div>
         <div class="balance__main-left-header">0 Tickets</div>
         <div>
@@ -60,7 +65,8 @@
 <style lang="scss">
 .balance {
   &__container {
-    margin-top: 75px !important;
+    margin-top: 70px !important;
+    // margin-bottom: 50px !important;
     display: flex;
     flex-direction: row !important;
     // padding-left: 12%;
@@ -119,22 +125,23 @@
     letter-spacing: 2px;
     font-family: Raleway;
     font-weight: 900;
-    color: #dedede;
-    margin-top: 50px;
-    margin-bottom: 5px;
+    color: #9e9e9e;
+    margin-top: 25px;
+    // margin-bottom: 5px;
   }
 
   &__main-left-header {
     font-family: Raleway;
-    font-size: 50px;
+    font-size: 55px;
     font-weight: 800;
-    color: #dedede;
-    margin-top: 20px;
+    // color: #dedede;
+    color: #d5d5d5;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
   &__main-left-chippers {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
 
   &__main-left-chips {
