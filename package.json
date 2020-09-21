@@ -24,6 +24,8 @@
     "@types/react": "^16.9.49",
     "@vue/composition-api": "^1.0.0-beta.7",
     "@vue/test-utils": "^1.0.3",
+    "apollo-boost": "^0.4.9",
+    "apollo-link-context": "^1.0.20",
     "aws-sdk": "^2.747.0",
     "babel-jest": "26.3.0",
     "bson": "^4.1.0",

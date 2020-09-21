@@ -74,15 +74,19 @@ export default {
       default: () => []
     }
   },
-  // apollo: {
-  //   firstName: gql`
-  //     query {
-  //       User {
-  //         firstName
-  //       }
-  //     }
-  //   `
-  // },
+  apollo: {
+    test: `
+      query {
+        user(query: { _id: "%%user.id" }) {
+          _id
+          email
+          firstName
+          lastName
+          userTypes
+        }
+      }
+    `
+  },
   setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
 
