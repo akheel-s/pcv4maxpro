@@ -17,6 +17,6 @@ new Vue({
   router,
   store,
   vuetify,
-  provide: createProvider(),
+  apolloProvider: createProvider(),
   render: h => h(App)
 }).$mount('#app');

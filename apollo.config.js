@@ -1,22 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
-
-// Load .env files
-const { loadEnv } = require('vue-cli-plugin-apollo/utils/load-env');
-
-const env = loadEnv([path.resolve(__dirname, '.env'), path.resolve(__dirname, '.env.local')]);
-
 module.exports = {
-  client: {
-    service: env.VUE_APP_APOLLO_ENGINE_SERVICE,
-    includes: ['src/**/*.{js,jsx,ts,tsx,vue,gql}']
-  },
+  // client: {
   service: {
-    name: env.VUE_APP_APOLLO_ENGINE_SERVICE,
-    localSchemaFile: path.resolve(__dirname, './node_modules/.temp/graphql/schema.json')
+    // name: 'Program',
+    // URL to the GraphQL API
+    endpoint: {
+      url: 'https://us-west-2.aws.realm.mongodb.com/api/client/v2.0/app/program-otolc/graphql',
+      headers: {
+        apiKey: ''
+      }
+    }
   },
-  engine: {
-    endpoint: process.env.APOLLO_ENGINE_API_ENDPOINT,
-    apiKey: env.VUE_APP_APOLLO_ENGINE_KEY
-  }
+  // Files processed by the extension
+  includes: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.js']
+  // }
 };

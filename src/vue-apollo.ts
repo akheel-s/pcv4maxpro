@@ -54,7 +54,6 @@ export const filesRoot =
 Vue.prototype.$filesRoot = filesRoot;
 
 // Config
-console.log(authorizationHeaderLink.concat(httpLink));
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
   httpEndpoint,
@@ -74,6 +73,7 @@ const defaultOptions = {
   // Override default apollo link
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
+
   link: authorizationHeaderLink.concat(httpLink),
 
   // Override default cache
@@ -88,7 +88,6 @@ const defaultOptions = {
   // Client local data (see apollo-link-state)
   // clientState: { resolvers: { ... }, defaults: { ... } }
 };
-
 // Call this in the Vue app file
 export function createProvider(options = {}) {
   // Create apollo client
@@ -115,7 +114,6 @@ export function createProvider(options = {}) {
       );
     }
   });
-  console.log('appo', apolloProvider);
   return apolloProvider;
 }
 

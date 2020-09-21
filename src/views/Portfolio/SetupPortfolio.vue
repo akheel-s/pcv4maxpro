@@ -4,7 +4,7 @@
       <general-id
         v-if="step < 1 && (selectedTypes === undefined || selectedTypes.length == 0)"
         v-model="selectedTypes"
-        style="margin-top: 70px;"
+        style="margin-top: 70px"
         @input="selectedTypes.length == step ? finish() : step++"
       ></general-id>
     </v-slide-x-transition>

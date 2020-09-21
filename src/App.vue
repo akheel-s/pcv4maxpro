@@ -12,6 +12,8 @@ import Vue from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import '@/styles/main.scss';
 import { useToolGetters, useAuthGetters } from '@/store';
+import { provide } from '@vue/composition-api';
+import { DefaultApolloClient } from '@vue/apollo-composable';
 
 export default Vue.extend({
   name: 'App',
@@ -20,9 +22,9 @@ export default Vue.extend({
     Navbar
   },
 
-  setup() {
+  setup(_props, { root: { $apolloProvider } }) {
+    provide(DefaultApolloClient, $apolloProvider.defaultClient);
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
-
     return {
       getUser: useAuthGetters(['getUser']).getUser,
       loading
