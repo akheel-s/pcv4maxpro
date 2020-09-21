@@ -55,9 +55,14 @@ import Loading from '@/components/Loading.vue';
 import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { ObjectId } from 'bson';
+import gql from 'graphql-tag';
 import { CITIZEN_TYPES } from '../../../const';
 // import gql from 'graphql-tag';
-
+const {
+  getUser: { value: getUser },
+  getObjectId: { value: getObjectId },
+  getId: { value: getId }
+} = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
 interface TypeItem {
   text: string;
   value: string;
@@ -75,19 +80,25 @@ export default {
     }
   },
   apollo: {
-    test: `
-      query {
-        user(query: { _id: "%%user.id" }) {
-          _id
-          email
-          firstName
-          lastName
-          userTypes
+    user: {
+      query: gql`
+        query {
+          user(query: { _id: "5f49ba44a20e956b2efda792" }) {
+            _id
+            email
+            firstName
+            lastName
+            userTypes
+          }
         }
+      `,
+      update: data => {
+        console.log(data);
+        return data;
       }
-    `
+    }
   },
-  setup(props, { emit }) {
+  setup(props, { emit, root: { $apollo } }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
 
     const user = reactive({
@@ -96,17 +107,32 @@ export default {
       selectedIDs: []
     });
     const { update } = useDbActions([ActionTypes.update]);
-    const { getUser } = useAuthGetters([GetterTypes.getUser]);
+    console.log(
+      $apollo.query({
+        query: gql`
+          query {
+            user(query: { _id: "5f49ba44a20e956b2efda792" }) {
+              _id
+              email
+              firstName
+              lastName
+              userTypes
+            }
+          }
+        `
+      })
+    );
     async function save() {
       await update({
         collection: 'User',
         payload: {
+          _id: new ObjectId(getUser!.id),
           firstName: user.firstName,
           lastName: user.lastName,
-          email: getUser.value?.profile.email,
+          email: getUser?.profile.email,
           userTypes: user.selectedIDs
         },
-        filter: { owner_id: '%%user.id' },
+        filter: { _id: getObjectId },
         options: { upsert: true }
       });
       emit('input', user.selectedIDs);

@@ -35,10 +35,6 @@ const authorizationHeaderLink = setContext(async (_, { headers }) => {
   }
   // Get a valid access token for the current user
   const accessToken = app.value.currentUser?.accessToken;
-  if (accessToken) {
-    console.log('I HAVE ACCESS');
-  }
-  console.log('currentUser', accessToken, app.value.currentUser);
 
   // Set the Authorization header, preserving any other headers
   return {
@@ -58,6 +54,7 @@ export const filesRoot =
 Vue.prototype.$filesRoot = filesRoot;
 
 // Config
+console.log(authorizationHeaderLink.concat(httpLink));
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
   httpEndpoint,
@@ -118,7 +115,7 @@ export function createProvider(options = {}) {
       );
     }
   });
-
+  console.log('appo', apolloProvider);
   return apolloProvider;
 }
 

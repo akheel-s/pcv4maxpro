@@ -42,7 +42,7 @@ export const actions: AuthActions = {
     { email, password }: { email: string; password: string }
   ) {
     try {
-      // await dispatch('logout');
+      await dispatch('logout');
       commit(
         MutationTypes.LOGIN_USER,
         await rootState.realmApp.app.logIn(Realm.Credentials.emailPassword(email, password))

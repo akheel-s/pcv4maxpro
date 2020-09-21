@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import './installCompositionApi';
+import './store/watchers';
 import { ValidationObserver, ValidationProvider } from '@/validation';
 import App from './App.vue';
 import './registerServiceWorker';

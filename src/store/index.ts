@@ -19,6 +19,7 @@ import realmAppState from './modules/realmApp/state';
 import fileStorageState from './modules/fileStorage/state';
 import authState from './modules/auth/state';
 import dbState from './modules/db/state';
+import { mutations as dbMutations } from './modules/db/mutations';
 
 Vue.use(Vuex);
 // * Declare a vuex store w/out a root state
@@ -67,5 +68,8 @@ export const {
   useGetters: useDbGetters,
   useMutations: useDbMutations,
   useActions: useDbActions
-} = createNamespacedHelpers<typeof dbState, DbGetters, DbActions, any>(vuexStore, 'db');
+} = createNamespacedHelpers<typeof dbState, DbGetters, DbActions, typeof dbMutations>(
+  vuexStore,
+  'db'
+);
 export default vuexStore;

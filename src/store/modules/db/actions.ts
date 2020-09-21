@@ -24,7 +24,7 @@ export interface DbActions extends ActionTree<typeof dbState, RootState> {
     payload: {
       collection: T;
       payload: getCollectionType<T>;
-      filter: { [x: string]: string };
+      filter: { [x: string]: any };
       options?: { upsert: boolean };
     }
   ) => Promise<Realm.Services.MongoDB.UpdateResult<getCollectionType<T>['_id']>>;
