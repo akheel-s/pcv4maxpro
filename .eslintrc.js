@@ -5,10 +5,11 @@ module.exports = {
   },
   extends: [
     'plugin:vue/recommended',
-    'prettier/vue',
     '@vue/airbnb',
     '@vue/typescript/recommended',
-    'plugin:prettier/recommended' // add prettier-eslint plugin which will uses the `.prettierrc.js` config
+    'plugin:prettier/recommended', // add prettier-eslint plugin which will uses the `.prettierrc.js` config
+    'prettier/vue',
+
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser', // the typescript-parser for eslint, instead of tslint
