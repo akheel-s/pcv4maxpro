@@ -14,4 +14,4 @@ export enum Collection {
 }
 export type getCollectionType<T extends keyof typeof Collection> = T extends 'User'
   ? UserType
-  : object;
+  : any;

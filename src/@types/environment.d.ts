@@ -11,6 +11,7 @@ declare global {
       VUE_APP_S3_SECRET_ACCESS_KEY: string;
       VUE_APP_S3_REGION: string;
       VUE_APP_S3_BUCKET_NAME: string;
+      VUE_APP_DB: string;
     }
   }
 }
