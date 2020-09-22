@@ -1,5 +1,23 @@
 <template>
   <div class="select__entire-body">
+    <div class="select__stepper">
+      <v-stepper class="select__timeline" alt-labels>
+        <v-stepper-header>
+          <v-stepper-step color="#FDD35A" step="1" non-linear style="border-color: black"
+            >Select</v-stepper-step
+          >
+
+          <v-divider></v-divider>
+
+          <v-stepper-step color="#F79960" step="2" non-linear>Ad sizes</v-stepper-step>
+
+          <v-divider></v-divider>
+
+          <v-stepper-step step="">Ad templates</v-stepper-step>
+        </v-stepper-header>
+      </v-stepper>
+    </div>
+
     <div class="select__toplabels" stepper-elevation="0"></div>
     <div class="select__title">Select Program Template</div>
     <div class="select__cards">
@@ -34,6 +52,30 @@ export default {
 </script>
 
 <style lang="scss">
+.v-stepper--alt-labels .v-stepper__header .v-divider {
+  margin-top: 75px !important;
+  margin-left: 12px !important;
+  margin-right: 12px !important;
+}
+
+.v-divider {
+  border: 3px solid #e0e0e0;
+}
+
+//need to figure out how to change from imp
+.theme--light.v-stepper
+  .v-stepper__step:not(.v-stepper__step--active):not(.v-stepper__step--complete):not(.v-stepper__step--error)
+  .v-stepper__step__step {
+  background: transparent !important;
+}
+
+.v-stepper__step.v-stepper__step {
+  .v-stepper__step__step {
+    border: 3px dashed #e0e0e0;
+    width: 100px;
+    height: 100px;
+  }
+}
 .select {
   &__entire-body {
     height: 100%;
@@ -47,6 +89,17 @@ export default {
     margin-top: 162px;
     margin-left: 220px;
     max-width: 170px;
+  }
+
+  &__timeline {
+    &.v-stepper {
+      box-shadow: none;
+    }
+  }
+
+  &__stepper {
+    margin-left: 180px;
+    margin-right: 130px;
   }
 
   &__cards {
