@@ -48,7 +48,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs, watch } from '@vue/composition-api';
+import { reactive, ref, toRefs } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
@@ -56,7 +56,6 @@ import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { ObjectId } from 'bson';
 import gql from 'graphql-tag';
-import { useQuery } from '@vue/apollo-composable';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
 // import gql from 'graphql-tag';
@@ -75,36 +74,26 @@ export default {
   components: {
     Loading
   },
-
+  // apollo: {
+  //   user: {
+  //     query:
+  //   }
+  // },
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
       default: () => []
     }
   },
-  setup(props, { emit }) {
-    const { result, loading, error } = useQuery<User>(gql`
-      query thisUser {
-        user {
-          firstName
-          lastName
-          userTypes
-        }
-      }
-    `);
+  setup(props, { emit, root: { $apolloProvider } }) {
+    // Page Setup
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
       firstName: '',
       lastName: '',
       userTypes: []
     });
-    console.log(result);
-    watch(result, loadedUser => {
-      console.log(loadedUser);
-      Object.keys(user).forEach(key => {
-        user[key] = loadedUser[key];
-      });
-    });
+    // Upload Functionality
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
@@ -121,12 +110,29 @@ export default {
       });
       emit('input', user.userTypes);
     }
+    // Query Functionality
+    const query = gql`
+      query thisGeneralUser {
+        user {
+          firstName
+          lastName
+          userTypes
+        }
+      }
+    `;
+    $apolloProvider.defaultClient
+      .query<{ user: User }>({
+        query
+      })
+      .then(userRes => {
+        Object.keys(user).forEach(key => {
+          user[key] = userRes.data.user[key];
+        });
+      });
     return {
       save,
       AVAILABLE_IDS,
-      ...toRefs(user),
-      loading,
-      error
+      ...toRefs(user)
     };
   }
 };
