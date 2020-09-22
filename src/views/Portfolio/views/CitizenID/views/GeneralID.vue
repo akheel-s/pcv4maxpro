@@ -99,24 +99,6 @@ export default {
       lastName: '',
       userTypes: []
     });
-    // Upload Functionality
-    const { update } = useDbActions([ActionTypes.update]);
-    async function save() {
-      await update({
-        collection: 'User',
-        payload: {
-          _id: new ObjectId(getUser!.id),
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: getUser?.profile.email,
-          userTypes: user.userTypes
-        } as User,
-        filter: { _id: getObjectId },
-        options: { upsert: true }
-      });
-      emit('input', user.userTypes);
-    }
-    // Query Functionality
     // GraphQL Query
     const GENERALIDQUERY = gql`
       query thisGeneralUser {
@@ -136,6 +118,24 @@ export default {
         if (userRes[key]) user[key] = userRes[key];
       });
     });
+    // Upload Functionality
+    const { update } = useDbActions([ActionTypes.update]);
+    async function save() {
+      await update({
+        collection: 'User',
+        payload: {
+          _id: new ObjectId(getUser!.id),
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: getUser?.profile.email,
+          userTypes: user.userTypes
+        } as User,
+        filter: { _id: getObjectId },
+        options: { upsert: true }
+      });
+      emit('input', user.userTypes);
+    }
+
     return {
       save,
       AVAILABLE_IDS,
