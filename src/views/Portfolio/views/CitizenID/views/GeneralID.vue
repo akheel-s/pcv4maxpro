@@ -48,7 +48,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { onMounted, reactive, ref, toRefs } from '@vue/composition-api';
+import { reactive, ref, toRefs, watch } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
@@ -82,8 +82,8 @@ export default {
   },
   setup(props, { emit }) {
     const { result } = useQuery(gql`
-      query {
-        user {
+      query thisUser {
+        user(query: { _id: getId }) {
           _id
           email
           firstName
@@ -92,7 +92,9 @@ export default {
         }
       }
     `);
-    console.log(result);
+    watch(result, res => {
+      console.log(res);
+    });
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
       firstName: '',
