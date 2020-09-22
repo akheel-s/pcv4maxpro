@@ -6,7 +6,11 @@ name: Manually Publish Graphql Schema to Apollo Studio
 # or API.
 on:
   workflow_dispatch:
-
+    inputs:
+        version:
+          description: Bump Version
+          default: v1.0.0
+          required: true
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Publish:
