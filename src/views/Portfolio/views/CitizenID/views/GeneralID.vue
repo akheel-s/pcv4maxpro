@@ -23,7 +23,7 @@
 
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
-          v-model="selectedIDs"
+          v-model="userTypes"
           :error-messages="errors"
           :items="AVAILABLE_IDS"
           chips
@@ -57,12 +57,13 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import { ObjectId } from 'bson';
 import gql from 'graphql-tag';
 import { useQuery } from '@vue/apollo-composable';
+import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
 // import gql from 'graphql-tag';
 const {
   getUser: { value: getUser },
-  getObjectId: { value: getObjectId },
-  getId: { value: getId }
+  getObjectId: { value: getObjectId }
+  // getId: { value: getId }
 } = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
 interface TypeItem {
   text: string;
@@ -74,6 +75,7 @@ export default {
   components: {
     Loading
   },
+
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
@@ -81,25 +83,27 @@ export default {
     }
   },
   setup(props, { emit }) {
-    const { result } = useQuery(gql`
+    const { result, loading, error } = useQuery<User>(gql`
       query thisUser {
-        user(query: { _id: getId }) {
-          _id
-          email
+        user {
           firstName
           lastName
           userTypes
         }
       }
     `);
-    watch(result, res => {
-      console.log(res);
-    });
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
       firstName: '',
       lastName: '',
-      selectedIDs: []
+      userTypes: []
+    });
+    console.log(result);
+    watch(result, loadedUser => {
+      console.log(loadedUser);
+      Object.keys(user).forEach(key => {
+        user[key] = loadedUser[key];
+      });
     });
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
@@ -110,17 +114,19 @@ export default {
           firstName: user.firstName,
           lastName: user.lastName,
           email: getUser?.profile.email,
-          userTypes: user.selectedIDs
+          userTypes: user.userTypes
         },
         filter: { _id: getObjectId },
         options: { upsert: true }
       });
-      emit('input', user.selectedIDs);
+      emit('input', user.userTypes);
     }
     return {
       save,
       AVAILABLE_IDS,
-      ...toRefs(user)
+      ...toRefs(user),
+      loading,
+      error
     };
   }
 };
