@@ -15,4 +15,4 @@ jobs:
       - name: Install modules
         run: yarn
       - name: Publish Schema
-        run: npx apollo service:push --graph=microapp --key=service:program:{{secrets.APOLLO_PROGRAM_SERVICE_KEY}} --variant=current --endpoint=https://us-west-2.aws.realm.mongodb.com/api/client/v2.0/app/program-otolc/graphql --header='apiKey:${{secrets.GRAPHQL_API_KEY}}'
+        run: npx apollo service:push graph=program --key={{secrets.APOLLO_PROGRAM_API_KEY}} --variant=current --endpoint=https://us-west-2.aws.realm.mongodb.com/api/client/v2.0/app/program-otolc/graphql --header='apiKey:${{secrets.GRAPHQL_API_KEY}}'
