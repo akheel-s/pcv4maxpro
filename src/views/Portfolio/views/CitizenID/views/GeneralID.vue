@@ -74,18 +74,24 @@ export default {
   components: {
     Loading
   },
-  // apollo: {
-  //   user: {
-  //     query:
-  //   }
-  // },
+
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
       default: () => []
     }
   },
-  setup(props, { emit, root: { $apolloProvider } }) {
+  setup(
+    props,
+    {
+      emit,
+      root: {
+        $apolloProvider: {
+          defaultClient: { query }
+        }
+      }
+    }
+  ) {
     // Page Setup
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
@@ -104,14 +110,15 @@ export default {
           lastName: user.lastName,
           email: getUser?.profile.email,
           userTypes: user.userTypes
-        },
+        } as User,
         filter: { _id: getObjectId },
         options: { upsert: true }
       });
       emit('input', user.userTypes);
     }
     // Query Functionality
-    const query = gql`
+    // GraphQL Query
+    const GENERALIDQUERY = gql`
       query thisGeneralUser {
         user {
           firstName
@@ -120,15 +127,15 @@ export default {
         }
       }
     `;
-    $apolloProvider.defaultClient
-      .query<{ user: User }>({
-        query
-      })
-      .then(userRes => {
-        Object.keys(user).forEach(key => {
-          user[key] = userRes.data.user[key];
-        });
+    // Invoke Query
+    query<{ user: User }>({
+      query: GENERALIDQUERY
+    }).then(({ data: { user: userRes } }) => {
+      // Set Query result when loaded
+      Object.keys(user).forEach(key => {
+        if (userRes[key]) user[key] = userRes[key];
       });
+    });
     return {
       save,
       AVAILABLE_IDS,
