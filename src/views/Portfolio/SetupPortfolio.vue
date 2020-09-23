@@ -5,7 +5,7 @@
         v-if="step < 1 && (selectedTypes === undefined || selectedTypes.length == 0)"
         v-model="selectedTypes"
         style="margin-top: 70px"
-        @SaveID="step++"
+        @input="selectedTypes.length == step ? finish() : step++"
       ></general-id>
     </v-slide-x-transition>
 
@@ -37,7 +37,8 @@
 </template>
 
 <script lang="ts">
-import { ref, Ref, computed, watch } from '@vue/composition-api';
+import { ref, Ref, computed } from '@vue/composition-api';
+import { breakpoints } from '@/utils';
 import {
   GeneralID,
   EmployerID,
@@ -47,13 +48,6 @@ import {
   TeacherID
 } from './views/CitizenID/views';
 
-enum breakpoints {
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl'
-}
 export default {
   name: 'SetupPortfolio',
   components: {
@@ -71,20 +65,16 @@ export default {
     const selectedTypes: Ref<string[]> = ref([]);
     const idSections = computed(() => selectedTypes.value.map(type => `${type.toLowerCase()}-id`));
     // Size Breakpoint
-    const screenSize = computed(() => ctx.root.$vuetify.breakpoint.name);
     const computedClasses = computed(() =>
-      breakpoints[screenSize.value] > breakpoints.md ? ['profile__container', 'pc-container'] : []
+      breakpoints[ctx.root.$vuetify.breakpoint.name] > breakpoints.md
+        ? ['profile__container', 'pc-container']
+        : []
     );
     function finish() {
+      step.value = 0;
       console.log('I am finished onboarding myself');
     }
-    watch(step, currentStep => {
-      if (currentStep > selectedTypes.value.length) {
-        step.value = 0;
-        finish();
-      }
-    });
-    return { step, selectedTypes, idSections, screenSize, computedClasses };
+    return { step, selectedTypes, idSections, computedClasses, finish };
   }
 };
 </script>

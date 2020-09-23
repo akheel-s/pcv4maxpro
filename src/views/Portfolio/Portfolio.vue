@@ -2,9 +2,43 @@
   <!--  TODO: make the inputs into actual components -->
 
   <div>
-    <div class="profile__mode">
+    <div class="profile__mode-container pc-container">
       <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-      <v-btn class="profile__mode" depressed outlined color="red" small>Edit</v-btn>
+      <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+      <v-btn
+        class="profile__mode"
+        depressed
+        color="grey"
+        dark
+        small
+        @click="currentTab = 'my-programs'"
+        >Manage</v-btn
+      >
+      <div class="profile__spacer"></div>
+      <v-btn
+        class="profile__mode font-weight-bold"
+        text
+        color="grey"
+        small
+        @click="currentTab = 'balance'"
+        >0 Tickets</v-btn
+      >
+      <v-btn
+        class="profile__mode white--text font-weight-bold"
+        depressed
+        color="purple"
+        small
+        @click="currentTab = 'payment'"
+        ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+      >
+      <v-btn
+        class="profile__mode white--text font-weight-bold"
+        depressed
+        color="green"
+        small
+        @click="currentTab = 'referral'"
+        ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
+      >
     </div>
     <div class="profile__container pc-container">
       <!-- <div class="profile__namepate"> -->
@@ -12,7 +46,8 @@
       <!-- </div> -->
 
       <!-- Chip Tabs -->
-      <div class="text-center mt-12">
+
+      <div class="profile__sub-container text-center mt-12">
         <div>
           <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
@@ -24,29 +59,22 @@
 
           <span class="profile__name">Jerold Inocencio</span>
         </div>
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'my programs'">
           <v-icon left>mdi-server-plus</v-icon>
           Programs
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
           <v-icon left>mdi-wrench</v-icon>
           Settings
         </v-chip>
 
-        <v-chip
-          v-for="(color, id) in IDs"
-          :key="id"
-          large
-          class="pl-8 pr-8 ma-2"
-          :color="color"
-          outlined
-        >
+        <v-chip v-for="(color, id) in IDs" :key="id" class="pl-8 pr-8 ma-2" dark :color="color">
           <v-icon left>mdi-account-outline</v-icon>
           {{ id }}
         </v-chip>
 
-        <v-chip large class="pl-8 pr-8 ma-2" color="black" outlined>
+        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
           <v-icon left>mdi-plus</v-icon>
           Add Citizen Type
         </v-chip>
@@ -67,6 +95,10 @@
 </template>
 <style lang="scss">
 .profile {
+  &__spacer {
+    // justify-content: space-between;
+    width: 100%;
+  }
   &__name {
     font-family: Raleway;
     font-size: 40px;
@@ -74,11 +106,18 @@
   }
 
   &__mode {
-    justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  &__mode-container {
+    justify-content: flex-end;
     align-items: center;
     display: flex;
-    margin-top: 25px;
+    margin-top: 50px;
+    max-width: 80%;
   }
+
   &__namepate {
     position: relative;
     display: -webkit-box;
@@ -159,13 +198,22 @@
     margin-bottom: 50px;
     // border: 15px solid #f1f2f2;
     // border: 15px solid #6fba7f;
-    border: 15px solid var(--v-secondary-darken4);
+    border: 15px solid var(--v-secondary-darken1);
     // box-shadow: none;
-    padding-bottom: 125px;
+    // padding-bottom: 125px;
+    padding-bottom: 75px;
     border-radius: 50px;
+
     &.edit {
       border: 15px solid var(--v-error-base);
     }
+  }
+
+  &__sub-container {
+    // max-width: 80%;
+    //     align-items: center !important;
+    // justify-content: center !important;
+    //     justify-content: center;
   }
 
   &__tabs {
@@ -248,7 +296,10 @@ export default {
   components: {
     'my-programs': Portfolio.MyPrograms,
     id: Portfolio.CitizenID,
-    settings: Portfolio.Settings
+    settings: Portfolio.Settings,
+    balance: Portfolio.Balance,
+    payment: Portfolio.Payment,
+    referral: Portfolio.Referral
   },
   setup() {
     const tabs = ref(['My Programs', 'Settings', 'ID']);

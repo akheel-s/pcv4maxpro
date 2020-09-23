@@ -1,33 +1,39 @@
 import { RootState } from '@/store/state';
 import { ActionTree, ActionContext } from 'vuex';
-import { RemoteInsertOneResult, RemoteUpdateResult } from 'mongodb-stitch-browser-sdk';
+import { DbGetters } from './getters';
 import { Collection, getCollectionType } from '../../../@types/collections.d';
 import dbState from './state';
 
 export enum ActionTypes {
-  create = 'create'
+  create = 'create',
+  update = 'update'
 }
-type AuthActionCtx = ActionContext<typeof dbState, RootState>;
+// type DbActionsCtx = { getters: DbGetters } & ActionContext<typeof dbState, RootState>;
+interface DbActionsCtx extends ActionContext<typeof dbState, RootState> {
+  getters: {
+    collection: ReturnType<DbGetters['collection']>;
+  };
+}
 export interface DbActions extends ActionTree<typeof dbState, RootState> {
   create: <T extends keyof typeof Collection>(
-    ctx: AuthActionCtx,
+    ctx: DbActionsCtx,
     payload: { collection: T; payload: getCollectionType<T> }
-  ) => Promise<RemoteInsertOneResult>;
+  ) => Promise<Realm.Services.MongoDB.InsertOneResult<getCollectionType<T>['_id']>>;
   update: <T extends keyof typeof Collection>(
-    ctx: AuthActionCtx,
+    ctx: DbActionsCtx,
     payload: {
       collection: T;
       payload: getCollectionType<T>;
-      query: { id: string } | object;
+      filter: { [x: string]: any };
       options?: { upsert: boolean };
     }
-  ) => Promise<RemoteUpdateResult>;
+  ) => Promise<Realm.Services.MongoDB.UpdateResult<getCollectionType<T>['_id']>>;
 }
 export const actions: DbActions = {
-  async create({ state }, { collection, payload }) {
-    return state.db.collection(collection).insertOne(payload);
+  async create({ getters }, { collection, payload }) {
+    return getters.collection!<typeof payload>(collection).insertOne(payload);
   },
-  async update({ state }, { collection, payload, query, options }) {
-    return state.db.collection(collection).updateOne(query, payload, options);
+  async update({ getters }, { collection, payload, filter, options }) {
+    return getters.collection!<typeof payload>(collection).updateOne(filter, payload, options);
   }
 };

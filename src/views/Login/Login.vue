@@ -65,12 +65,13 @@ import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
 import { useAuthActions } from '@/store';
 import Loading from '@/components/Loading.vue';
+import { redirectIfLoggedIn } from '@/utils/guards';
 
 export default {
   components: {
     Loading
   },
-  setup(_props, ctx) {
+  setup(_props, { root: { $router } }) {
     const state = reactive({
       email: '',
       password: '',
@@ -80,14 +81,17 @@ export default {
     async function login() {
       try {
         await loginUser({ email: state.email, password: state.password });
-        ctx.root.$router.push({ name: 'portfolio' });
+        // create({collection:"User",{
+
+        // }})
+        $router.push({ name: 'setup' });
       } catch (err) {
         if (err.statusCode === 401)
           state.error = 'That email and password combination does not exist';
         else state.error = err;
       }
     }
-    console.log(login);
+    redirectIfLoggedIn($router);
     return { ...toRefs(state), login };
   }
 };
