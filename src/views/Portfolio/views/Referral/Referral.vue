@@ -73,15 +73,20 @@
           ><v-icon left>mdi-emoticon-excited-outline</v-icon>Accepted</v-btn
         >
       </div>
+      <div class="refer__all_invite">
+        <AllInvites />
+      </div>
     </div>
   </ValidationObserver>
 </template>
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
+import { AllInvites } from '../../components';
 
 export default {
   name: 'Referral',
+  components: { AllInvites },
   setup(props) {
     const details = reactive({
       email: '',
@@ -156,12 +161,15 @@ export default {
     margin-right: 10px;
   }
 
-  &__manage2 {
-  }
-
   &__divider {
     width: 100%;
     margin-bottom: 50px;
+  }
+
+  &__all_invite {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 </style>
