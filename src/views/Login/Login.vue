@@ -63,34 +63,35 @@
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
-import { useAuthActions, useDbActions } from '@/store';
+import { useAuthActions } from '@/store';
 import Loading from '@/components/Loading.vue';
+import { redirectIfLoggedIn } from '@/utils/guards';
 
 export default {
   components: {
     Loading
   },
-  setup(_props, ctx) {
+  setup(_props, { root: { $router } }) {
     const state = reactive({
       email: '',
       password: '',
       error: ''
     });
     const { loginUser } = useAuthActions([ActionTypes.loginUser]);
-    const { create } = useDbActions(['create']);
     async function login() {
       try {
         await loginUser({ email: state.email, password: state.password });
         // create({collection:"User",{
 
         // }})
-        ctx.root.$router.push({ name: 'setup' });
+        $router.push({ name: 'setup' });
       } catch (err) {
         if (err.statusCode === 401)
           state.error = 'That email and password combination does not exist';
         else state.error = err;
       }
     }
+    redirectIfLoggedIn($router);
     return { ...toRefs(state), login };
   }
 };

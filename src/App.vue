@@ -22,7 +22,6 @@ export default Vue.extend({
 
   setup() {
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
-
     return {
       getUser: useAuthGetters(['getUser']).getUser,
       loading

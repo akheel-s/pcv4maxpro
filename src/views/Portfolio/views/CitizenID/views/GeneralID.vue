@@ -23,7 +23,7 @@
 
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
-          v-model="selectedIDs"
+          v-model="userTypes"
           :error-messages="errors"
           :items="AVAILABLE_IDS"
           chips
@@ -33,8 +33,14 @@
         ></v-select>
       </validation-provider>
 
-      <Loading>
-        <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
+      <Loading v-slot="{ loading, process }" :callback="save">
+        <v-btn
+          :disabled="invalid"
+          :loading="loading"
+          :dark="!invalid"
+          large
+          depressed
+          @click="process"
           >Save and Continue</v-btn
         >
       </Loading>
@@ -42,12 +48,22 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { Ref, reactive, ref, toRefs, computed } from '@vue/composition-api';
+import { reactive, ref, toRefs } from '@vue/composition-api';
+import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
-import { useDbActions } from '@/store';
+import { ActionTypes } from '@/store/modules/db/actions';
+import { GetterTypes } from '@/store/modules/auth/getters';
+import { ObjectId } from 'bson';
+import gql from 'graphql-tag';
+import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
-
+// import gql from 'graphql-tag';
+const {
+  getUser: { value: getUser },
+  getObjectId: { value: getObjectId }
+  // getId: { value: getId }
+} = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
 interface TypeItem {
   text: string;
   value: string;
@@ -58,29 +74,71 @@ export default {
   components: {
     Loading
   },
+
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
       default: () => []
     }
   },
-  setup(props, { emit }) {
-    const AVAILABLE_IDS = ref(CITIZEN_TYPES);
-    const selectedIDs: Ref<string[]> = ref([]);
-    function emitSaveID() {
-      console.log('emitting');
-      emit('SaveID');
-      emit('input', selectedIDs.value);
+  setup(
+    props,
+    {
+      emit,
+      root: {
+        $apolloProvider: {
+          defaultClient: { query }
+        }
+      }
     }
+  ) {
+    // Page Setup
+    const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
       firstName: '',
-      lastName: ''
+      lastName: '',
+      userTypes: []
     });
-    const submit = () => {};
+    // GraphQL Query
+    const GENERALIDQUERY = gql`
+      query thisGeneralUser {
+        user {
+          firstName
+          lastName
+          userTypes
+        }
+      }
+    `;
+    // Invoke Query
+    query<{ user: User }>({
+      query: GENERALIDQUERY
+    }).then(({ data: { user: userRes } }) => {
+      // Set Query result when loaded
+      Object.keys(user).forEach(key => {
+        if (userRes[key]) user[key] = userRes[key];
+      });
+    });
+    // Upload Functionality
+    const { update } = useDbActions([ActionTypes.update]);
+    async function save() {
+      await update({
+        collection: 'User',
+        payload: {
+          _id: new ObjectId(getUser!.id),
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: getUser?.profile.email,
+          userTypes: user.userTypes
+        } as User,
+        filter: { _id: getObjectId },
+        options: { upsert: true }
+      });
+      emit('input', user.userTypes);
+    }
+
     return {
-      emitSaveID,
+      save,
       AVAILABLE_IDS,
-      selectedIDs,
       ...toRefs(user)
     };
   }
