@@ -7,6 +7,7 @@
             src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
           ></v-img>
         </v-avatar>
+
         <div class="balance__main-left-title">BALANCE</div>
         <div class="balance__main-left-header">0 Tickets</div>
         <div>
@@ -25,16 +26,8 @@
           <v-chip dark color="yellow" class="balance__main-left-chips">Microsoft</v-chip>
         </div>
       </div>
+
       <div class="balance__main-right">
-        <!-- <div class="balance__header">
-          <v-badge bordered color="orange" offset-x="32" offset-y="32">
-          <v-avatar color="grey" size="50">
-            <v-img
-              src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-            ></v-img>
-          </v-avatar>
-          </v-badge>
-        </div> -->
         <div>
           <v-btn
             class="balance__main-right-button white--text font-weight-bold"
@@ -45,6 +38,7 @@
             ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
           >
         </div>
+
         <div>
           <v-btn
             class="balance__main-right-button white--text font-weight-bold"
@@ -58,7 +52,6 @@
         </div>
       </div>
     </div>
-    <!-- <div>next</div> -->
   </div>
 </template>
 
