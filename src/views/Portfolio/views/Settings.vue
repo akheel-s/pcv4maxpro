@@ -39,6 +39,7 @@
             </v-list-item> -->
         </v-list>
       </v-navigation-drawer>
+
       <!-- </v-card> -->
     </div>
 
@@ -58,11 +59,15 @@
           multiple
           outlined
         ></v-select>
+        <v-btn class="my-settings__save" outlined depressed x-large>Save</v-btn>
+
         <v-divider class="my-settings__divider"></v-divider>
+
         <div class="my-settings__subtitle">Password</div>
         <v-text-field outlined label="Current Password"> </v-text-field>
         <v-text-field outlined label="New Password"> </v-text-field>
         <v-btn outlined depressed x-large>Change Password</v-btn>
+
         <v-divider class="my-settings__divider"></v-divider>
         <div class="my-settings__subtitle">Email</div>
         <v-text-field outlined label="Current Email"> </v-text-field>
@@ -101,10 +106,6 @@
     padding-right: 12%;
   }
   &__wrapper {
-    &-left {
-      // height: 375px;
-      // width: 256px;
-    }
     &-right {
       flex-grow: 1;
       display: flex;
@@ -135,6 +136,10 @@
   &__divider {
     margin-top: 50px;
     margin-bottom: 50px;
+  }
+
+  &__save {
+    margin-top: 30px;
   }
 }
 </style>
