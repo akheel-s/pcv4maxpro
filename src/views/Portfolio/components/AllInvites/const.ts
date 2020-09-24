@@ -6,36 +6,36 @@ export const HEADER = [
     sortable: false,
     width: '5%'
   },
-  { text: 'First Name', value: 'first', width: '20%' },
-  { text: 'Last Name', value: 'last', width: '20%' },
-  { text: 'Organization', value: 'organization', width: '25%' },
+  { text: 'Contact Info', value: 'contact', width: '20%' },
+  { text: 'Date', value: 'date', width: '20%' },
+  { text: 'Status', value: 'status', width: '20%' },
   {
-    text: 'Role',
-    value: 'role',
+    text: 'Pending',
+    value: 'pending',
     sortable: false,
-    width: '25%'
+    width: '15%'
   }
 ];
 
 export const items = [
-  { first: 'Prajit', last: 'saravanan', organization: 'IHS' },
-  { first: 'Akheel', last: 'Shaik', organization: 'IHS' },
-  { first: 'Jerold', last: 'Inocencio', organization: 'IHS' },
-  { first: 'Eric', last: 'Reyes', organization: 'IHS' },
-  { first: 'Derick', last: 'Lee', organization: 'IHS' },
-  { first: 'Monica', last: 'Willemsz', organization: 'IHS' },
-  { first: 'Stephanie', last: 'Betancourt', organization: 'AHS' },
-  { first: 'Kenneth', last: 'Thai', organization: 'AHS' },
-  { first: 'Kristen', last: 'Chan', organization: 'AHS' },
-  { first: 'Sean', last: 'Morgan', organization: 'AHS' },
-  { first: 'Prajit', last: 'saravanan', organization: 'IHS' },
-  { first: 'Akheel', last: 'Shaik', organization: 'IHS' },
-  { first: 'Jerold', last: 'Inocencio', organization: 'IHS' },
-  { first: 'Eric', last: 'Reyes', organization: 'IHS' },
-  { first: 'Derick', last: 'Lee', organization: 'IHS' },
-  { first: 'Monica', last: 'Willemsz', organization: 'IHS' },
-  { first: 'Stephanie', last: 'Betancourt', organization: 'AHS' },
-  { first: 'Kenneth', last: 'Thai', organization: 'AHS' },
-  { first: 'Kristen', last: 'Chan', organization: 'AHS' },
-  { first: 'Sean', last: 'Morgan', organization: 'AHS' }
+  { contact: 'friends1@email.com', date: 'sept 21', status: 'accepted' },
+  { contact: 'friends2@email.com', date: 'sept 22', status: 'pending' },
+  { contact: 'friends3@email.com', date: 'sept 23', status: 'accepted' },
+  { contact: 'friends4@email.com', date: 'sept 24', status: 'pending' },
+  { contact: 'friends5@email.com', date: 'sept 25', status: 'accepted' },
+  { contact: 'friends6@email.com', date: 'sept 26', status: 'pending' },
+  { contact: 'friends7@email.com', date: 'sept 27', status: 'accepted' },
+  { contact: 'friends8@email.com', date: 'sept 28', status: 'pending' },
+  { contact: 'friends9@email.com', date: 'sept 29', status: 'accepted' },
+  { contact: 'friends10@email.com', date: 'sept 30', status: 'pending' },
+  { contact: 'friends1@email.com', date: 'sept 21', status: 'accepted' },
+  { contact: 'friends2@email.com', date: 'sept 22', status: 'pending' },
+  { contact: 'friends3@email.com', date: 'sept 23', status: 'accepted' },
+  { contact: 'friends4@email.com', date: 'sept 24', status: 'pending' },
+  { contact: 'friends5@email.com', date: 'sept 25', status: 'accepted' },
+  { contact: 'friends6@email.com', date: 'sept 26', status: 'pending' },
+  { contact: 'friends7@email.com', date: 'sept 27', status: 'accepted' },
+  { contact: 'friends8@email.com', date: 'sept 28', status: 'pending' },
+  { contact: 'friends9@email.com', date: 'sept 29', status: 'accepted' },
+  { contact: 'friends10@email.com', date: 'sept 30', status: 'pending' }
 ];

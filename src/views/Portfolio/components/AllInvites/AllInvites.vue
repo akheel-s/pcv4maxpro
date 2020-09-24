@@ -7,8 +7,10 @@
         sort-by="index"
         @current-items="indexHandler"
       >
-        <template v-slot:item.role>
-          <v-select label="Role" dense outlined></v-select>
+        <template v-slot:item.pending>
+          <v-btn small class="all-invites__pending" depressed color="green" :ripple="false">
+            pending
+          </v-btn>
         </template>
       </v-data-table>
     </IndexTable>
@@ -32,4 +34,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.all-invites {
+  &__entire-body {
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+  }
+  &__pending {
+    .v-btn__content {
+      color: white;
+    }
+    &.v-btn {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+}
+</style>
