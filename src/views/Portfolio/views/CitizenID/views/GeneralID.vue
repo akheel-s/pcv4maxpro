@@ -101,7 +101,7 @@ export default {
     });
     // GraphQL Query
     const GENERALIDQUERY = gql`
-      query thisGeneralUser {
+      query GeneralId {
         user {
           firstName
           lastName
@@ -110,17 +110,14 @@ export default {
       }
     `;
     // Invoke Query
-    query<{ user: User }>({
-      query: GENERALIDQUERY
-    }).then(({ data: { user: userRes } }) => {
-      // Set Query result when loaded
+    query<{ user: User }>({ query: GENERALIDQUERY }).then(queryRes => {
       Object.keys(user).forEach(key => {
-        if (userRes[key]) user[key] = userRes[key];
+        if (queryRes.data.user[key]) user[key] = queryRes.data.user[key];
       });
     });
 
     // Upload Functionality
-    const { update } = useDbActions([ActionTypes.update]);
+    const { update } = useDbActions(['update']);
     async function save() {
       await update({
         collection: 'User',

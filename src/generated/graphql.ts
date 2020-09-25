@@ -11,6 +11,92 @@ export type Scalars = {
   ObjectId: any;
 };
 
+export type DeleteManyPayload = {
+  __typename?: 'DeleteManyPayload';
+  /** @deprecated  */
+  deletedCount: Scalars['Int'];
+};
+
+export type UserUpdateInput = {
+  email?: Maybe<Scalars['String']>;
+  email_unset?: Maybe<Scalars['Boolean']>;
+  lastName?: Maybe<Scalars['String']>;
+  lastName_unset?: Maybe<Scalars['Boolean']>;
+  firstName_unset?: Maybe<Scalars['Boolean']>;
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  userTypes_unset?: Maybe<Scalars['Boolean']>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  firstName?: Maybe<Scalars['String']>;
+};
+
+export type User = {
+  __typename?: 'User';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  email?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  firstName?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  lastName?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type UserInsertInput = {
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  email?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+};
+
+export type UserQueryInput = {
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  email_lte?: Maybe<Scalars['String']>;
+  firstName_exists?: Maybe<Scalars['Boolean']>;
+  OR?: Maybe<Array<UserQueryInput>>;
+  email_exists?: Maybe<Scalars['Boolean']>;
+  lastName_gt?: Maybe<Scalars['String']>;
+  userTypes_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  firstName_lt?: Maybe<Scalars['String']>;
+  firstName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  AND?: Maybe<Array<UserQueryInput>>;
+  firstName_ne?: Maybe<Scalars['String']>;
+  email_lt?: Maybe<Scalars['String']>;
+  firstName_gt?: Maybe<Scalars['String']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_gt?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  lastName_lte?: Maybe<Scalars['String']>;
+  lastName_gte?: Maybe<Scalars['String']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  firstName_lte?: Maybe<Scalars['String']>;
+  email_ne?: Maybe<Scalars['String']>;
+  email_gte?: Maybe<Scalars['String']>;
+  firstName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  userTypes_exists?: Maybe<Scalars['Boolean']>;
+  lastName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  userTypes_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  lastName_ne?: Maybe<Scalars['String']>;
+  lastName_exists?: Maybe<Scalars['Boolean']>;
+  lastName_lt?: Maybe<Scalars['String']>;
+  firstName_gte?: Maybe<Scalars['String']>;
+  lastName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** @deprecated  */
@@ -71,59 +157,22 @@ export type MutationUpdateOneUserArgs = {
 
 
 export type MutationUpsertOneUserArgs = {
-  data: UserInsertInput;
   query?: Maybe<UserQueryInput>;
+  data: UserInsertInput;
 };
 
-export type DeleteManyPayload = {
-  __typename?: 'DeleteManyPayload';
+export type InsertManyPayload = {
+  __typename?: 'InsertManyPayload';
   /** @deprecated  */
-  deletedCount: Scalars['Int'];
+  insertedIds: Array<Maybe<Scalars['ObjectId']>>;
 };
 
-export type UserQueryInput = {
-  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_ne?: Maybe<Scalars['String']>;
-  lastName_lt?: Maybe<Scalars['String']>;
-  email_gte?: Maybe<Scalars['String']>;
-  email_ne?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  email_lte?: Maybe<Scalars['String']>;
-  lastName_gte?: Maybe<Scalars['String']>;
-  firstName_lt?: Maybe<Scalars['String']>;
-  email_gt?: Maybe<Scalars['String']>;
-  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_lte?: Maybe<Scalars['String']>;
-  userTypes_exists?: Maybe<Scalars['Boolean']>;
-  firstName_exists?: Maybe<Scalars['Boolean']>;
-  userTypes_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  email_lt?: Maybe<Scalars['String']>;
-  lastName_lte?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<UserQueryInput>>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  lastName_exists?: Maybe<Scalars['Boolean']>;
-  firstName?: Maybe<Scalars['String']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  lastName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  email_exists?: Maybe<Scalars['Boolean']>;
-  firstName_gt?: Maybe<Scalars['String']>;
-  userTypes_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  lastName_gt?: Maybe<Scalars['String']>;
-  firstName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_gte?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<UserQueryInput>>;
-  lastName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  lastName_ne?: Maybe<Scalars['String']>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
+export type UpdateManyPayload = {
+  __typename?: 'UpdateManyPayload';
+  /** @deprecated  */
+  matchedCount: Scalars['Int'];
+  /** @deprecated  */
+  modifiedCount: Scalars['Int'];
 };
 
 export type Query = {
@@ -141,71 +190,22 @@ export type QueryUserArgs = {
 
 
 export type QueryUsersArgs = {
+  sortBy?: Maybe<UserSortByInput>;
   query?: Maybe<UserQueryInput>;
   limit?: Maybe<Scalars['Int']>;
-  sortBy?: Maybe<UserSortByInput>;
-};
-
-export type UserInsertInput = {
-  _id?: Maybe<Scalars['ObjectId']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type UserUpdateInput = {
-  userTypes_unset?: Maybe<Scalars['Boolean']>;
-  firstName?: Maybe<Scalars['String']>;
-  firstName_unset?: Maybe<Scalars['Boolean']>;
-  lastName?: Maybe<Scalars['String']>;
-  lastName_unset?: Maybe<Scalars['Boolean']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  email?: Maybe<Scalars['String']>;
-  email_unset?: Maybe<Scalars['Boolean']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id?: Maybe<Scalars['ObjectId']>;
 };
 
 
 export enum UserSortByInput {
-  FirstnameDesc = 'FIRSTNAME_DESC',
   LastnameAsc = 'LASTNAME_ASC',
   LastnameDesc = 'LASTNAME_DESC',
   IdAsc = '_ID_ASC',
   IdDesc = '_ID_DESC',
   EmailAsc = 'EMAIL_ASC',
   EmailDesc = 'EMAIL_DESC',
-  FirstnameAsc = 'FIRSTNAME_ASC'
+  FirstnameAsc = 'FIRSTNAME_ASC',
+  FirstnameDesc = 'FIRSTNAME_DESC'
 }
-
-export type InsertManyPayload = {
-  __typename?: 'InsertManyPayload';
-  /** @deprecated  */
-  insertedIds: Array<Maybe<Scalars['ObjectId']>>;
-};
-
-export type User = {
-  __typename?: 'User';
-  /** @deprecated  */
-  _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
-  email?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  firstName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  lastName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type UpdateManyPayload = {
-  __typename?: 'UpdateManyPayload';
-  /** @deprecated  */
-  matchedCount: Scalars['Int'];
-  /** @deprecated  */
-  modifiedCount: Scalars['Int'];
-};
 
 
       export interface IntrospectionResultData {
