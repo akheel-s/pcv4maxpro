@@ -287,7 +287,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "firstName_unset",
+            "name": "Name_unset",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -297,7 +297,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName",
+            "name": "Name",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -448,13 +448,13 @@
             "deprecationReason": ""
           },
           {
-            "name": "FIRSTNAME_ASC",
+            "name": "NAME_ASC",
             "description": "",
             "isDeprecated": true,
             "deprecationReason": ""
           },
           {
-            "name": "FIRSTNAME_DESC",
+            "name": "NAME_DESC",
             "description": "",
             "isDeprecated": true,
             "deprecationReason": ""
@@ -481,7 +481,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "firstName_nin",
+            "name": "Name_nin",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -525,7 +525,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_gt",
+            "name": "Name_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -535,7 +535,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_in",
+            "name": "Name_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -683,7 +683,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_ne",
+            "name": "Name_ne",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -693,7 +693,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_gte",
+            "name": "Name_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -727,7 +727,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_lte",
+            "name": "Name_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -761,7 +761,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_lt",
+            "name": "Name_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -781,7 +781,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName_exists",
+            "name": "Name_exists",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -951,7 +951,7 @@
             "defaultValue": null
           },
           {
-            "name": "firstName",
+            "name": "Name",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1170,7 +1170,7 @@
             "deprecationReason": ""
           },
           {
-            "name": "firstName",
+            "name": "Name",
             "description": "",
             "args": [],
             "type": {
@@ -1222,7 +1222,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "firstName",
+            "name": "Name",
             "description": "",
             "type": {
               "kind": "SCALAR",
