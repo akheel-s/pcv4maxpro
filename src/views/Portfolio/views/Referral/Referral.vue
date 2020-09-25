@@ -77,21 +77,17 @@
       <div class="refer__all_invite">
         <AllInvites />
       </div>
-
-      <div class="refer__all_invite">
-        <BalanceView />
-      </div>
     </div>
   </ValidationObserver>
 </template>
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
-import { AllInvites, BalanceView } from '../../components';
+import { AllInvites } from '../../components';
 
 export default {
   name: 'Referral',
-  components: { AllInvites, BalanceView },
+  components: { AllInvites },
   setup(props) {
     const details = reactive({
       email: '',

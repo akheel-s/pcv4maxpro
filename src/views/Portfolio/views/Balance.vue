@@ -157,5 +157,10 @@ export default {
   &__main-left-icon {
     margin-bottom: 30px;
   }
+
+  &__table-view {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 </style>

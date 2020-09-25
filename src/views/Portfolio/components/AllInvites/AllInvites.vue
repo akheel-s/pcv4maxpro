@@ -9,7 +9,7 @@
       >
         <template v-slot:item.pending>
           <v-btn small class="all-invites__pending" depressed color="green" :ripple="false">
-            pending
+            Remind
           </v-btn>
         </template>
       </v-data-table>
