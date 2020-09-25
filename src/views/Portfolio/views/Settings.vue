@@ -1,18 +1,8 @@
 <template>
   <div class="my-settings__container">
     <div class="my-settings__wrapper-left">
-      <!-- <v-card height="100%"> -->
       <v-navigation-drawer floating tag="aside" :permanent="true">
         <v-list class="py-0">
-          <!-- <v-list-item two-line>
-              <v-list-item-content>
-                <v-list-item-title>Settings</v-list-item-title>
-                <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item> -->
-
-          <!-- <v-divider></v-divider> -->
-
           <v-list-item
             v-for="item in idItems"
             :key="item.title"
@@ -27,20 +17,8 @@
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-
-          <!-- <v-list-item link>
-              <v-list-item-icon>
-                <v-icon>mdi-add</v-icon>
-              </v-list-item-icon>
-
-              <v-list-item-content>
-                <v-list-item-title> Add Citizen Type</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item> -->
         </v-list>
       </v-navigation-drawer>
-
-      <!-- </v-card> -->
     </div>
 
     <div class="my-settings__wrapper-right">

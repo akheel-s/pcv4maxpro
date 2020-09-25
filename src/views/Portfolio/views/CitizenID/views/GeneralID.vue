@@ -118,6 +118,7 @@ export default {
         if (userRes[key]) user[key] = userRes[key];
       });
     });
+
     // Upload Functionality
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {

@@ -1,6 +1,7 @@
 import { RouteConfig } from 'vue-router';
 import Portfolio from './Portfolio.vue';
 import Setup from './SetupPortfolio.vue';
+import { BalanceView } from './components';
 
 const routes: Array<RouteConfig> = [
   {
@@ -15,6 +16,12 @@ const routes: Array<RouteConfig> = [
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: '/balanceview',
+    name: 'balanceview',
+    component: BalanceView
   }
 ];
+
 export default routes;
