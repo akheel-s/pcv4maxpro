@@ -13,7 +13,7 @@ export interface StripeActions extends ActionTree<typeof stripeState, RootState>
     ctx: StripeActionCtx,
     payload: {
       lineItems: { priceId: string; quantity: number }[];
-      successUrl: string;
+      successUrl?: string;
       cancelUrl: string;
     }
   ) => Promise<{
@@ -74,8 +74,7 @@ export const actions: StripeActions = {
           customerId: rootState.db.user?.stripeId
         })
       }
-    ).then(response => {
-      console.log(response);
+    ).then(async response => {
       return response.json();
     });
   }

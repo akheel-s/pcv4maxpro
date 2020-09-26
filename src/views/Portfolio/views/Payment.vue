@@ -201,8 +201,7 @@ export default {
       defer(() =>
         createCheckoutSession({
           lineItems: selectedProduct.value,
-          successUrl: 'http://test.com',
-          cancelUrl: 'http://test.com'
+          cancelUrl: 'http://pilotcity.com/sponsor'
         })
       )
         .pipe(retry(3))
