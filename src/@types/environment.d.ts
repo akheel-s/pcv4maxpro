@@ -20,7 +20,7 @@ declare global {
     }
   }
   namespace Realm {
-    type MongoFunctions = 'getProductInfo' | 'sendEmailConfirmation';
+    type MongoFunctions = 'getProductInfo';
     interface BaseFunctionsFactory {
       callFunction(
         name: 'getProductInfo',

@@ -124,7 +124,6 @@ export default {
           _id: new ObjectId(getUser!.id),
           firstName: user.firstName,
           lastName: user.lastName,
-          email: getUser?.profile.email,
           userTypes: user.userTypes
         } as User,
         filter: { _id: getObjectId },

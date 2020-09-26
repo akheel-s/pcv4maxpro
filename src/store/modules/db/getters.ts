@@ -24,7 +24,7 @@ export const getters: DbGetters = {
           .db(process.env.VUE_APP_DB).collection
       : null;
   },
-  functions: (_state, _gets, rootState, rootGetters) => {
+  functions: (_state, _gets, rootState) => {
     return rootState.realmApp.app.currentUser!.functions;
   }
 };
