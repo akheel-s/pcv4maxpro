@@ -30,7 +30,6 @@
           depressed
           rounded
           x-large
-          @click="emitSaveID"
         >
           <v-icon left>mdi-telegram</v-icon>Send</v-btn
         >
@@ -66,35 +65,73 @@
         <v-btn small class="refer__manage1-buttons" depressed dark color="grey3"
           ><v-icon left>mdi-email-outline</v-icon>All Invites</v-btn
         >
-        <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
-          ><v-icon left>mdi-clock-time-two-outline</v-icon>Pending</v-btn
+        <v-btn
+          small
+          class="refer__manage1-buttons"
+          depressed
+          color="grey"
+          outlined
+          @click="sortByPending()"
         >
-        <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
+          <v-icon left>mdi-clock-time-two-outline</v-icon>Pending
+        </v-btn>
+
+        <v-btn
+          small
+          class="refer__manage1-buttons"
+          depressed
+          color="grey"
+          outlined
+          @click="sortByAccepted()"
           ><v-icon left>mdi-emoticon-excited-outline</v-icon>Accepted</v-btn
         >
       </div>
 
       <div class="refer__all_invite">
-        <AllInvites />
+        <AllInvites :ref="count" :items="sortedData" />
       </div>
     </div>
   </ValidationObserver>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from '@vue/composition-api';
+import { reactive, toRefs, ref } from '@vue/composition-api';
+import _ from 'lodash';
 import { AllInvites } from '../../components';
+import { items } from './const';
 
 export default {
   name: 'Referral',
   components: { AllInvites },
-  setup(props) {
+  setup() {
+    const count = ref(1);
+    const data = ref(items);
+    const sortedData = ref(items);
     const details = reactive({
       email: '',
       phoneNumber: ''
     });
 
-    return { ...toRefs(details) };
+    function sortByPending() {
+      console.log(data.value);
+      sortedData.value = data.value.filter(el => el.status === 'pending');
+      count.value += 1;
+      console.log(sortedData.value);
+    }
+    function sortByAccepted() {
+      console.log(data.value);
+      sortedData.value = data.value.filter(el => el.status === 'accepted');
+      count.value += 1;
+      console.log(sortedData.value);
+    }
+
+    return {
+      ...toRefs(details),
+      sortByPending,
+      count,
+      sortByAccepted,
+      sortedData
+    };
   }
 };
 </script>

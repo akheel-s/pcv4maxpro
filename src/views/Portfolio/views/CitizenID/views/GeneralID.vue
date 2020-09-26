@@ -62,7 +62,6 @@ import { CITIZEN_TYPES } from '../../../const';
 const {
   getUser: { value: getUser },
   getObjectId: { value: getObjectId }
-  // getId: { value: getId }
 } = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
 interface TypeItem {
   text: string;
@@ -117,7 +116,7 @@ export default {
     });
 
     // Upload Functionality
-    const { update } = useDbActions(['update']);
+    const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'User',

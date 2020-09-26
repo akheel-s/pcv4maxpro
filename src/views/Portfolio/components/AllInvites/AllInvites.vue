@@ -1,12 +1,7 @@
 <template>
   <div class="all-invites__entire-body">
     <IndexTable v-slot="{ indexedItems, indexHandler }" :items="items">
-      <v-data-table
-        :headers="header"
-        :items="indexedItems"
-        sort-by="index"
-        @current-items="indexHandler"
-      >
+      <v-data-table :headers="header" :items="indexedItems" @current-items="indexHandler">
         <template v-slot:item.pending>
           <v-btn small class="all-invites__pending" depressed color="green" :ripple="false">
             Remind
@@ -17,19 +12,34 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { PropType } from 'vue';
 import { ref } from '@vue/composition-api';
 import IndexTable from '@/components/IndexTable.vue';
-import { items, HEADER } from './const';
+import { HEADER } from './const';
+
+interface InviteItem {
+  contact: string;
+  date: string;
+  status: string;
+}
 
 export default {
   name: 'AllInvites',
   components: {
     IndexTable
   },
+  props: {
+    items: {
+      type: Array as PropType<InviteItem[]>,
+      default: () => [],
+      required: true
+    }
+  },
 
-  setup() {
-    return { header: ref(HEADER), items: ref(items) };
+  setup(props) {
+    console.log(props.items);
+    return { header: ref(HEADER) };
   }
 };
 </script>
