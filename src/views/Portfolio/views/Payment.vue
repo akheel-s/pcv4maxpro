@@ -77,15 +77,25 @@
               >
                 <v-card-title>{{ option.title }}</v-card-title>
                 <v-card-subtitle>{{ option.desc }}</v-card-subtitle>
-                <v-text-field label="quantity"></v-text-field>
                 <v-card-actions>
-                  <v-radio-group v-model="selectedProduct" class="sponsor__menu-radio"
+                  <!-- <v-radio-group v-model="selectedProduct" multiple class="sponsor__menu-radio"
                     ><v-radio
-                      :value="option.priceId"
+                      :value="option"
                       class="sponsor__menu-radio"
                       :label="`$${option.price / 100}`"
-                    ></v-radio></v-radio-group
-                ></v-card-actions>
+                    ></v-radio
+                  ></v-radio-group> -->
+                  <v-checkbox
+                    v-model="selectedProduct"
+                    :value="option"
+                    :label="`$${option.price / 100}`"
+                  ></v-checkbox>
+                  <v-text-field
+                    v-model="option.quantity"
+                    label="quantity"
+                    type="number"
+                  ></v-text-field>
+                </v-card-actions>
               </v-card>
             </div>
             <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
@@ -147,7 +157,7 @@ export default {
     };
   },
   setup(props, { emit }) {
-    const selectedProduct = ref('');
+    const selectedProduct = ref([]);
     const sponsorName = ref('');
     const { getProductInfo } = useDbActions(['getProductInfo']);
     const PRICE_IDS = [
@@ -176,7 +186,8 @@ export default {
           desc: result.body?.product.description,
           priceId: result.body?.price.id,
           price: result.body?.price.unit_amount,
-          color: ColorCode[title]
+          color: ColorCode[title],
+          quantity: 0
         });
       });
     onBeforeUnmount(() => {
@@ -186,8 +197,7 @@ export default {
     const checkout = async () => {
       defer(() =>
         createCheckoutSession({
-          priceId: selectedProduct.value,
-          quantity: 1,
+          lineItems: selectedProduct.value,
           successUrl: 'http://test.com',
           cancelUrl: 'http://test.com'
         })

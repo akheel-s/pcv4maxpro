@@ -1,5 +1,6 @@
 import { ActionContext, ActionTree } from 'vuex';
 import { StripeError } from '@stripe/stripe-js';
+import { items } from '@/views/Portfolio/components/AllInvites/const';
 import { RootState } from '../../state';
 import stripeState from './state';
 
@@ -10,13 +11,17 @@ type StripeActionCtx = ActionContext<typeof stripeState, RootState>;
 export interface StripeActions extends ActionTree<typeof stripeState, RootState> {
   createCheckoutSession: (
     ctx: StripeActionCtx,
-    payload: { priceId: string; quantity: number; successUrl: string; cancelUrl: string }
+    payload: {
+      lineItems: { priceId: string; quantity: number }[];
+      successUrl: string;
+      cancelUrl: string;
+    }
   ) => Promise<{
     error: StripeError;
   }>;
 }
 export const actions: StripeActions = {
-  async createCheckoutSession({ state }, { priceId, quantity, successUrl, cancelUrl }) {
+  async createCheckoutSession({ state, rootState }, { lineItems, successUrl, cancelUrl }) {
     return fetch(
       process.env.NODE_ENV === 'production'
         ? process.env.VUE_APP_STRIPE_CHECKOUT_PROD
@@ -28,10 +33,13 @@ export const actions: StripeActions = {
         },
         body: JSON.stringify({
           // eslint-disable-next-line @typescript-eslint/camelcase
-          price_id: priceId,
-          quantity,
+          lineItems: lineItems.map(item => ({
+            price: item.priceId,
+            quantity: item.quantity
+          })),
           successUrl,
-          cancelUrl
+          cancelUrl,
+          customerId: rootState.db.user?.stripeId
         })
       }
     )
