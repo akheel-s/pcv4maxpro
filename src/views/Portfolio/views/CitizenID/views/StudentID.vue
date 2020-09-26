@@ -151,7 +151,7 @@ import { useAuthGetters, useDbActions } from '@/store';
 import gql from 'graphql-tag';
 import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
-import { length } from 'vee-validate/dist/rules';
+import { StudentPortfolio } from '@/generated/graphql';
 import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
 // import { EmployerPortfolio } from '@/generated/graphql';
 const {
@@ -194,58 +194,56 @@ export default {
         language: []
       },
       date: '',
-      ethnicity: '',
+      ethnicity: [],
       gender: '',
       grade: ''
     });
-    // const STUDENTIDQUERY = gql`
-    //   query thisStudent {
-    //     student {
-    //       school {
-    //         name
-    //         district
-    //       }
-    //       guardian {
-    //         email
-    //         relationship
-    //       }
-    //       home {
-    //         address
-    //         language
-    //       }
-    //       date
-    //       ethnicity
-    //       gender
-    //       grade
-    //     }
-    //   }
-    // `;
-    // query({ query: STUDENTIDQUERY }).then(({ data: { student: res }, loading: loc }) => {
-    //   console.log(loc);
-    //   Object.keys(responses).forEach(key => {
-    //     if (res[key]) responses[key] = res[key];
-    //   });
-    // });
+    const STUDENTIDQUERY = gql`
+      query thisStudent {
+        studentPortfolio {
+          school {
+            name
+            district
+          }
+          guardian {
+            email
+            relationship
+          }
+          home {
+            address
+            language
+          }
+          date
+          ethnicity
+          gender
+          grade
+        }
+      }
+    `;
+    query({ query: STUDENTIDQUERY }).then(({ data: { studentPortfolio: res } }) => {
+      console.log(res);
+      Object.keys(responses).forEach(key => {
+        console.log(key, res[key]);
+        if (res[key]) responses[key] = res[key];
+      });
+    });
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
-      console.log(
-        'update',
-        await update({
-          collection: 'StudentPortfolio',
-          payload: {
-            _id: getObjectId,
-            school: responses.school,
-            guardian: responses.guardian,
-            home: responses.home,
-            date: responses.date,
-            ethnicity: responses.ethnicity,
-            gender: responses.gender,
-            grade: responses.grade
-          }, // as User,
-          filter: { _id: getObjectId },
-          options: { upsert: true }
-        })
-      );
+      await update({
+        collection: 'StudentPortfolio',
+        payload: {
+          _id: getObjectId,
+          school: responses.school,
+          guardian: responses.guardian,
+          home: responses.home,
+          date: responses.date,
+          ethnicity: responses.ethnicity,
+          gender: responses.gender,
+          grade: responses.grade
+        } as StudentPortfolio,
+        filter: { _id: getObjectId },
+        options: { upsert: true }
+      });
       emit('input');
     }
     return {
