@@ -63,7 +63,6 @@
           :max="new Date().toISOString().substr(0, 10)"
           min="1950-01-01"
           @input="menu = false"
-          @change="save"
         ></v-date-picker>
       </v-menu>
 
@@ -199,34 +198,34 @@ export default {
       gender: '',
       grade: ''
     });
-    const STUDENTIDQUERY = gql`
-      query thisStudent {
-        student {
-          school {
-            name
-            district
-          }
-          guardian {
-            email
-            relationship
-          }
-          home {
-            address
-            language
-          }
-          date
-          ethnicity
-          gender
-          grade
-        }
-      }
-    `;
-    query({ query: STUDENTIDQUERY }).then(({ data: { student: res }, loading: loc }) => {
-      console.log(loc);
-      Object.keys(responses).forEach(key => {
-        if (res[key]) responses[key] = res[key];
-      });
-    });
+    // const STUDENTIDQUERY = gql`
+    //   query thisStudent {
+    //     student {
+    //       school {
+    //         name
+    //         district
+    //       }
+    //       guardian {
+    //         email
+    //         relationship
+    //       }
+    //       home {
+    //         address
+    //         language
+    //       }
+    //       date
+    //       ethnicity
+    //       gender
+    //       grade
+    //     }
+    //   }
+    // `;
+    // query({ query: STUDENTIDQUERY }).then(({ data: { student: res }, loading: loc }) => {
+    //   console.log(loc);
+    //   Object.keys(responses).forEach(key => {
+    //     if (res[key]) responses[key] = res[key];
+    //   });
+    // });
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       console.log(
