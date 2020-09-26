@@ -145,7 +145,6 @@ export default {
           _id: getObjectId,
           firstName: user.firstName,
           lastName: user.lastName,
-          email: getUser?.profile.email,
           userTypes: user.userTypes
         } as User,
         filter: { _id: getObjectId },

@@ -77,6 +77,7 @@
               >
                 <v-card-title>{{ option.title }}</v-card-title>
                 <v-card-subtitle>{{ option.desc }}</v-card-subtitle>
+                <v-text-field label="quantity"></v-text-field>
                 <v-card-actions>
                   <v-radio-group v-model="selectedProduct" class="sponsor__menu-radio"
                     ><v-radio
@@ -88,7 +89,10 @@
               </v-card>
             </div>
             <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
-              >Enter Payment Details</v-btn
+              >Pay by Card</v-btn
+            >
+            <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
+              >Pay by Invoice</v-btn
             >
             <v-btn small text>Cancel</v-btn>
           </v-stepper-content>
