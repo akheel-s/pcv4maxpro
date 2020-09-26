@@ -1,60 +1,75 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" class="my-id__content">
-    <div class="my-id__wrapper">
-      <div class="my-id__title mb-3">General</div>
-
-      <validation-provider v-slot="{ errors }" rules="required">
-        <v-text-field
-          v-model="firstName"
-          :error-messages="errors"
-          label="First Name"
-          outlined
-        ></v-text-field>
-      </validation-provider>
-
-      <validation-provider v-slot="{ errors }" rules="required">
-        <v-text-field
-          v-model="lastName"
-          :error-messages="errors"
-          label="Last Name"
-          outlined
-        ></v-text-field>
-      </validation-provider>
-
-      <validation-provider v-slot="{ errors }" rules="required">
-        <v-select
-          v-model="userTypes"
-          :error-messages="errors"
-          :items="AVAILABLE_IDS"
-          chips
-          label="Citizen Type"
-          multiple
-          outlined
-        ></v-select>
-      </validation-provider>
-
-      <Loading v-slot="{ loading, process }" :callback="save">
-        <v-btn
-          :disabled="invalid"
+  <ValidationObserver v-slot="{ invalid }" slim>
+    <Loading ref="loader" v-slot="{ loading }" class="my-id__content" :callback="processQuery">
+      <!-- <div v-if="loading" class="my-id__wrapper">
+        <b>
+          <v-skeleton-loader class="mb-3" type="card-heading" />
+          <v-skeleton-loader type="list-item" />
+          <v-skeleton-loader type="list-item" />
+          <v-skeleton-loader type="list-item-three-line" />
+        </b>
+      </div> -->
+      <div class="my-id__wrapper">
+        <v-skeleton-loader
           :loading="loading"
-          :dark="!invalid"
-          large
-          depressed
-          @click="process"
-          >Save and Continue</v-btn
+          type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
         >
-      </Loading>
-    </div>
+          <div class="my-id__title mb-3">General</div>
+
+          <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              v-model="firstName"
+              :error-messages="errors"
+              label="First Name"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              v-model="lastName"
+              :error-messages="errors"
+              label="Last Name"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-select
+              v-model="userTypes"
+              :error-messages="errors"
+              :items="AVAILABLE_IDS"
+              chips
+              label="Citizen Type"
+              multiple
+              outlined
+            ></v-select>
+          </validation-provider>
+        </v-skeleton-loader>
+
+        <Loading v-slot="{ loading: saving, process: save }" :callback="save">
+          <v-btn
+            :disabled="invalid"
+            :loading="saving"
+            :dark="!invalid"
+            large
+            depressed
+            @click="save"
+            >Save and Continue</v-btn
+          >
+        </Loading>
+      </div>
+    </Loading>
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from '@vue/composition-api';
+import { Ref, reactive, ref, toRefs, onMounted } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
 import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
-import { ObjectId } from 'bson';
+// import { ObjectId } from 'bson';
 import gql from 'graphql-tag';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
@@ -74,7 +89,6 @@ export default {
   components: {
     Loading
   },
-
   props: {
     value: {
       type: Array as PropType<TypeItem[]>,
@@ -99,10 +113,11 @@ export default {
       lastName: '',
       userTypes: []
     });
+    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
     // GraphQL Query
     const GENERALIDQUERY = gql`
-      query thisGeneralUser {
-        user {
+      query thisGeneralUser($id: ObjectId!) {
+        user(query: { _id: $id }) {
           firstName
           lastName
           userTypes
@@ -110,21 +125,25 @@ export default {
       }
     `;
     // Invoke Query
-    query<{ user: User }>({
-      query: GENERALIDQUERY
-    }).then(({ data: { user: userRes } }) => {
-      // Set Query result when loaded
-      Object.keys(user).forEach(key => {
-        if (userRes[key]) user[key] = userRes[key];
+    function processQuery() {
+      return query<{ user: User }>({
+        query: GENERALIDQUERY,
+        variables: { id: getObjectId }
+      }).then(({ data: { user: userRes } }) => {
+        // Set Query result when loaded
+        Object.keys(user).forEach(key => {
+          if (userRes[key]) user[key] = userRes[key];
+        });
       });
-    });
+    }
+
     // Upload Functionality
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'User',
         payload: {
-          _id: new ObjectId(getUser!.id),
+          _id: getObjectId,
           firstName: user.firstName,
           lastName: user.lastName,
           email: getUser?.profile.email,
@@ -135,11 +154,15 @@ export default {
       });
       emit('input', user.userTypes);
     }
-
+    onMounted(() => {
+      loader.value!.process();
+    });
     return {
-      save,
       AVAILABLE_IDS,
-      ...toRefs(user)
+      ...toRefs(user),
+      save,
+      processQuery,
+      loader
     };
   }
 };

@@ -82,6 +82,16 @@ export default {
 .my-id__wrapper {
   width: 50%;
   justify-content: center;
+  .v-skeleton-loader {
+    & > div.v-skeleton-loader__list-item,
+    div.v-skeleton-loader__list-item-two-line,
+    div.v-skeleton-loader__list-item-three-line {
+      padding: 0px;
+      height: 86px;
+      justify-content: center;
+      display: flex;
+    }
+  }
 }
 
 .my-id__title {
