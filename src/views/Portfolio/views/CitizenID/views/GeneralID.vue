@@ -67,7 +67,6 @@ import { Ref, reactive, ref, toRefs, onMounted } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
-import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
 // import { ObjectId } from 'bson';
 import gql from 'graphql-tag';
@@ -116,8 +115,8 @@ export default {
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
     // GraphQL Query
     const GENERALIDQUERY = gql`
-      query thisGeneralUser($id: ObjectId!) {
-        user(query: { _id: $id }) {
+      query GeneralId {
+        user {
           firstName
           lastName
           userTypes
@@ -138,7 +137,7 @@ export default {
     }
 
     // Upload Functionality
-    const { update } = useDbActions([ActionTypes.update]);
+    const { update } = useDbActions(['update']);
     async function save() {
       await update({
         collection: 'User',

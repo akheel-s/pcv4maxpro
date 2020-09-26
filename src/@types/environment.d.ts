@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Stripe } from 'stripe';
+
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -12,6 +15,23 @@ declare global {
       VUE_APP_S3_REGION: string;
       VUE_APP_S3_BUCKET_NAME: string;
       VUE_APP_DB: string;
+      VUE_APP_STRIPE_CHECKOUT_DEV: string;
+      VUE_APP_STRIPE_CHECKOUT_PROD: string;
+    }
+  }
+  namespace Realm {
+    type MongoFunctions = 'getProductInfo' | 'sendEmailConfirmation';
+    interface BaseFunctionsFactory {
+      callFunction(
+        name: 'getProductInfo',
+        priceId: string
+      ): Promise<{
+        statusCode: number;
+        body: {
+          price: Stripe.Response<Stripe.Price>;
+          product: Stripe.Response<Stripe.Product>;
+        };
+      }>;
     }
   }
 }

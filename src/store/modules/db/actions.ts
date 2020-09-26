@@ -1,17 +1,20 @@
 import { RootState } from '@/store/state';
 import { ActionTree, ActionContext } from 'vuex';
+import { Stripe } from 'stripe';
 import { DbGetters } from './getters';
 import { Collection, getCollectionType } from '../../../@types/collections.d';
 import dbState from './state';
 
 export enum ActionTypes {
   create = 'create',
-  update = 'update'
+  update = 'update',
+  getProductInfo = 'getProductInfo'
 }
 // type DbActionsCtx = { getters: DbGetters } & ActionContext<typeof dbState, RootState>;
 interface DbActionsCtx extends ActionContext<typeof dbState, RootState> {
   getters: {
     collection: ReturnType<DbGetters['collection']>;
+    functions: ReturnType<DbGetters['functions']>;
   };
 }
 export interface DbActions extends ActionTree<typeof dbState, RootState> {
@@ -28,6 +31,16 @@ export interface DbActions extends ActionTree<typeof dbState, RootState> {
       options?: { upsert: boolean };
     }
   ) => Promise<Realm.Services.MongoDB.UpdateResult<getCollectionType<T>['_id']>>;
+  getProductInfo: (
+    ctx: DbActionsCtx,
+    payload: { priceId: string }
+  ) => Promise<{
+    statusCode: number;
+    body: {
+      price: Stripe.Response<Stripe.Price>;
+      product: Stripe.Response<Stripe.Product>;
+    };
+  }>;
 }
 export const actions: DbActions = {
   async create({ getters }, { collection, payload }) {
@@ -35,5 +48,10 @@ export const actions: DbActions = {
   },
   async update({ getters }, { collection, payload, filter, options }) {
     return getters.collection!<typeof payload>(collection).updateOne(filter, payload, options);
+  },
+  async getProductInfo({ getters }, { priceId }) {
+    const res = await getters.functions.callFunction('getProductInfo', priceId);
+    if (res.statusCode === 500) throw res.body;
+    return res;
   }
 };

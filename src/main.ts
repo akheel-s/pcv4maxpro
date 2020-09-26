@@ -4,11 +4,14 @@ import './store/watchers';
 import { ValidationObserver, ValidationProvider } from '@/validation';
 import apolloClient from '@/vue-apollo';
 import VueApollo from 'vue-apollo';
+import VueRx from 'vue-rx';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import '@stripe/terminal-js';
+
 import '@mdi/font/css/materialdesignicons.css';
 
 Vue.config.productionTip = false;
@@ -16,6 +19,7 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
 Vue.use(VueApollo);
+Vue.use(VueRx);
 new Vue({
   apolloProvider: new VueApollo({
     defaultClient: apolloClient

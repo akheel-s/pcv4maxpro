@@ -10,7 +10,7 @@
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "chromatic": "npx chromatic storybook:build --project-token wj2a7q7bco",
-    "graphql-codegen": "graphql-codegen --config codegen.yml"
+    "graphql-codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "dependencies": {
     "@emotion/styled-base": "^10.0.31",
@@ -22,6 +22,7 @@
     "@storybook/addon-viewport": "^6.0.21",
     "@storybook/addons": "^6.0.21",
     "@storybook/vue": "^6.0.21",
+    "@stripe/stripe-js": "^1.9.0",
     "@types/react": "^16.9.49",
     "@vue/composition-api": "1.0.0-beta.14",
     "@vue/test-utils": "^1.0.3",
@@ -46,6 +47,8 @@
     "mongodb-stitch-browser-sdk": "4.6.0",
     "realm-web": "^0.8.0",
     "register-service-worker": "^1.7.1",
+    "rxjs": "^6.6.3",
+    "shortid": "^2.2.15",
     "style-loader": "^1.2.1",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^26.2.0",
@@ -83,7 +86,7 @@
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-plugin-unit-jest": "~4.5.4",
     "@vue/cli-plugin-vuex": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-service": "~4.5.4",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^5.0.2",
     "chromatic": "^5.1.0",
