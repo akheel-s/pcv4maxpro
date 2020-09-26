@@ -19,6 +19,10 @@ export interface StripeActions extends ActionTree<typeof stripeState, RootState>
   ) => Promise<{
     error: StripeError;
   }>;
+  createInvoice: (
+    ctx: StripeActionCtx,
+    payload: { lineItems: { priceId: string; quantity: number }[] }
+  ) => Promise<any>;
 }
 export const actions: StripeActions = {
   async createCheckoutSession({ state, rootState }, { lineItems, successUrl, cancelUrl }) {
@@ -49,5 +53,30 @@ export const actions: StripeActions = {
       .then(async session => {
         return (await state.stripePromise)!.redirectToCheckout({ sessionId: session.id });
       });
+  },
+  async createInvoice({ rootState }, { lineItems }) {
+    console.log(process.env.VUE_APP_STRIPE_INVOICE_DEV);
+    return fetch(
+      process.env.NODE_ENV === 'production'
+        ? process.env.VUE_APP_STRIPE_INVOICE_PROD
+        : process.env.VUE_APP_STRIPE_INVOICE_DEV,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          lineItems: lineItems.map(item => ({
+            price: item.priceId,
+            quantity: item.quantity
+          })),
+          customerId: rootState.db.user?.stripeId
+        })
+      }
+    ).then(response => {
+      console.log(response);
+      return response.json();
+    });
   }
 };

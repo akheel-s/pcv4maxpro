@@ -101,7 +101,7 @@
             <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
               >Pay by Card</v-btn
             >
-            <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
+            <v-btn small outlined text :disabled="!selectedProduct.length" @click="sendInvoice"
               >Pay by Invoice</v-btn
             >
             <v-btn small text>Cancel</v-btn>
@@ -193,7 +193,10 @@ export default {
     onBeforeUnmount(() => {
       productSubscription.unsubscribe();
     });
-    const { createCheckoutSession } = useStripeActions(['createCheckoutSession']);
+    const { createCheckoutSession, createInvoice } = useStripeActions([
+      'createCheckoutSession',
+      'createInvoice'
+    ]);
     const checkout = async () => {
       defer(() =>
         createCheckoutSession({
@@ -207,7 +210,11 @@ export default {
           console.error(result.error);
         });
     };
-    return { sponsorName, purchaseOptions, checkout, selectedProduct };
+    const sendInvoice = async () => {
+      console.log(await createInvoice({ lineItems: selectedProduct.value }));
+      // handle invoice logic
+    };
+    return { sponsorName, purchaseOptions, checkout, selectedProduct, sendInvoice };
   }
 };
 </script>
