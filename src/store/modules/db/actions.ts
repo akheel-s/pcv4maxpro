@@ -30,7 +30,7 @@ export interface DbActions extends ActionTree<typeof dbState, RootState> {
       filter: { [x: string]: any };
       options?: { upsert: boolean };
     }
-  ) => Promise<Realm.Services.MongoDB.UpdateResult<getCollectionType<T>['_id']>>;
+  ) => Promise<getCollectionType<T> | null>;
   getProductInfo: (
     ctx: DbActionsCtx,
     payload: { priceId: string }
@@ -47,7 +47,13 @@ export const actions: DbActions = {
     return getters.collection!<typeof payload>(collection).insertOne(payload);
   },
   async update({ getters }, { collection, payload, filter, options }) {
-    return getters.collection!<typeof payload>(collection).updateOne(filter, payload, options);
+    return getters.collection!<typeof payload>(collection).findOneAndUpdate(
+      filter,
+      {
+        $set: payload
+      },
+      options
+    );
   },
   async getProductInfo({ getters }, { priceId }) {
     const res = await getters.functions.callFunction('getProductInfo', priceId);

@@ -28,7 +28,7 @@ export const getters: AuthGetters = {
         : null;
     } catch (error) {
       console.error(error);
-      return null;
+      return rootState.realmApp.app.currentUser;
     }
   },
   getId: (_state, gets) => {
