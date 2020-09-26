@@ -2941,12 +2941,16 @@
             "description": "",
             "args": [
               {
-                "name": "query",
+                "name": "set",
                 "description": null,
                 "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "UserQueryInput",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "UserUpdateInput",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               }
@@ -3046,13 +3050,9 @@
             "name": "ethnicity",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -3081,7 +3081,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -3091,7 +3091,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -3100,9 +3100,13 @@
             "name": "gender",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -3111,7 +3115,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -3177,11 +3181,11 @@
             "defaultValue": null
           },
           {
-            "name": "_id",
+            "name": "firstName_exists",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -3221,13 +3225,9 @@
             "name": "_id_in",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectId",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -3235,13 +3235,9 @@
             "name": "lastName_nin",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -3356,7 +3352,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -3386,7 +3382,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -3436,7 +3432,7 @@
             "defaultValue": null
           },
           {
-            "name": "_id_lt",
+            "name": "_id_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -3588,46 +3584,26 @@
           {
             "name": "email_ne",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "lastName_gte",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "userTypes_in",
             "description": "",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_gte",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "userTypes",

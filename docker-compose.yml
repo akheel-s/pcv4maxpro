@@ -17,7 +17,7 @@ services:
     stdin_open: true
     tty: true
     command: sh /usr/src/app/entrypoint.sh
-  service:
+  storybook:
     build: .
     container_name: storybook
     environment: 

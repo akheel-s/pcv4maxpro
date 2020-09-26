@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
 import { createNamespacedHelpers } from 'vuex-composition-helpers';
+import { StripeActions } from './modules/stripe/actions';
 import { DbGetters } from './modules/db/getters';
 import { DbActions } from './modules/db/actions';
 import { AuthGetters } from './modules/auth/getters';
@@ -20,6 +21,8 @@ import fileStorageState from './modules/fileStorage/state';
 import authState from './modules/auth/state';
 import dbState from './modules/db/state';
 import { mutations as dbMutations } from './modules/db/mutations';
+import stripe from './modules/stripe';
+import stripeState from './modules/stripe/state';
 
 Vue.use(Vuex);
 // * Declare a vuex store w/out a root state
@@ -31,7 +34,8 @@ const store: StoreOptions<RootState> = {
     realmApp,
     tools,
     fileStorage,
-    db
+    db,
+    stripe
   }
 };
 const vuexStore = new Vuex.Store<RootState>(store);
@@ -72,4 +76,10 @@ export const {
   vuexStore,
   'db'
 );
+export const {
+  useState: useStripeState,
+  useGetters: useStripeGetters,
+  useMutations: useStripeMutations,
+  useActions: useStripeActions
+} = createNamespacedHelpers<typeof stripeState, any, StripeActions, any>(vuexStore, 'stripe');
 export default vuexStore;
