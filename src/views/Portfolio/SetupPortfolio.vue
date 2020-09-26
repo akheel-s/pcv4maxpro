@@ -27,7 +27,7 @@
         <v-stepper-items>
           <v-stepper-content :step="step">
             <v-slide-x-transition hide-on-leave>
-              <component :is="idSections[step - 1]" @SaveID="step++" />
+              <component :is="idSections[step - 1]" @input="step++" />
             </v-slide-x-transition>
           </v-stepper-content>
         </v-stepper-items>

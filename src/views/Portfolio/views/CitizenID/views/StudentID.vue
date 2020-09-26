@@ -17,7 +17,7 @@
       <!-- Google Maps Integration to find school name / district so data coming in across the board is consistent -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
-          v-model="schoolName"
+          v-model="school.name"
           :error-messages="errors"
           label="School Name"
           outlined
@@ -27,7 +27,7 @@
       <!-- School District -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
-          v-model="schoolDistrict"
+          v-model="school.district"
           :error-messages="errors"
           label="School District"
           outlined
@@ -63,7 +63,6 @@
           :max="new Date().toISOString().substr(0, 10)"
           min="1950-01-01"
           @input="menu = false"
-          @change="save"
         ></v-date-picker>
       </v-menu>
 
@@ -95,7 +94,7 @@
       <div class="d-flex flex-row my-id--position">
         <validation-provider v-slot="{ errors }" rules="required">
           <v-text-field
-            v-model="guardianEmail"
+            v-model="guardian.email"
             :error-messages="errors"
             label="Guardian Email"
             outlined
@@ -108,7 +107,7 @@
       <!-- Relationship to Guardian -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
-          v-model="relationship"
+          v-model="guardian.relationship"
           :items="guardianRelationship"
           :error-messages="errors"
           label="Relationship to Guardian"
@@ -119,7 +118,7 @@
       <!-- Home Language -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-select
-          v-model="homeLanguage"
+          v-model="home.language"
           :error-messages="errors"
           :items="homeLanguageOpts"
           multiple
@@ -131,14 +130,14 @@
       <!-- Home Address -->
       <validation-provider v-slot="{ errors }" rules="required">
         <v-text-field
-          v-model="homeAddress"
+          v-model="home.address"
           :error-messages="errors"
           label="Home Address"
           outlined
         ></v-text-field>
       </validation-provider>
 
-      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="emit('SaveID')"
+      <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="save"
         >Save and Continue</v-btn
       >
     </div>
@@ -147,40 +146,112 @@
 
 <script lang="ts">
 import { reactive, toRefs, ref } from '@vue/composition-api';
+// import Loading from '@/components/Loading.vue';
+import { useAuthGetters, useDbActions } from '@/store';
+import gql from 'graphql-tag';
+import { ActionTypes } from '@/store/modules/db/actions';
+import { GetterTypes } from '@/store/modules/auth/getters';
+import { StudentPortfolio } from '@/generated/graphql';
 import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
-
+// import { EmployerPortfolio } from '@/generated/graphql';
+const {
+  getObjectId: { value: getObjectId }
+} = useAuthGetters([GetterTypes.getObjectId]);
 export default {
   name: 'StudentID',
-  setup(props, { emit }) {
-    const formInput = reactive({
+  setup(
+    props,
+    {
+      emit,
+      root: {
+        $apolloProvider: {
+          defaultClient: { query }
+        }
+      }
+    }
+  ) {
+    const formOpt = reactive({
       gradeLevel: GRADE_LEVEL,
       superGender: SUPER_GENDER,
       ethnicityCulture: ETHNICITY,
       guardianRelationship: GUARDIAN,
       homeLanguageOpts: HOME_LANG
     });
-
     // Interactions
     const menu = ref(false);
     // to be labeled
     const responses = reactive({
-      schoolName: '',
-      schoolDistrict: '',
-      guardianEmail: '',
-      homeAddress: '',
+      school: {
+        name: '',
+        district: ''
+      },
+      guardian: {
+        email: '',
+        relationship: ''
+      },
+      home: {
+        address: '',
+        language: []
+      },
       date: '',
-      ethnicity: '',
-      relationship: '',
+      ethnicity: [],
       gender: '',
-      grade: '',
-      homeLanguage: [],
-      save: ''
+      grade: ''
     });
+    const STUDENTIDQUERY = gql`
+      query thisStudent {
+        studentPortfolio {
+          school {
+            name
+            district
+          }
+          guardian {
+            email
+            relationship
+          }
+          home {
+            address
+            language
+          }
+          date
+          ethnicity
+          gender
+          grade
+        }
+      }
+    `;
+    query({ query: STUDENTIDQUERY }).then(({ data: { studentPortfolio: res } }) => {
+      console.log(res);
+      Object.keys(responses).forEach(key => {
+        console.log(key, res[key]);
+        if (res[key]) responses[key] = res[key];
+      });
+    });
+    const { update } = useDbActions([ActionTypes.update]);
+    async function save() {
+      await update({
+        collection: 'StudentPortfolio',
+        payload: {
+          _id: getObjectId,
+          school: responses.school,
+          guardian: responses.guardian,
+          home: responses.home,
+          date: responses.date,
+          ethnicity: responses.ethnicity,
+          gender: responses.gender,
+          grade: responses.grade
+        } as StudentPortfolio,
+        filter: { _id: getObjectId },
+        options: { upsert: true }
+      });
+      emit('input');
+    }
     return {
-      ...toRefs(formInput),
+      ...toRefs(formOpt),
       ...toRefs(responses),
       menu,
-      emit
+      emit,
+      save
     };
   }
 };
