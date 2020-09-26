@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -31,44 +32,36 @@ export type Mutation = {
   upsertOneUser?: Maybe<User>;
 };
 
-
 export type MutationDeleteManyUsersArgs = {
   query?: Maybe<UserQueryInput>;
 };
-
 
 export type MutationDeleteOneUserArgs = {
   query: UserQueryInput;
 };
 
-
 export type MutationInsertManyUsersArgs = {
   data: Array<UserInsertInput>;
 };
 
-
 export type MutationInsertOneUserArgs = {
   data: UserInsertInput;
 };
-
 
 export type MutationReplaceOneUserArgs = {
   query?: Maybe<UserQueryInput>;
   data: UserInsertInput;
 };
 
-
 export type MutationUpdateManyUsersArgs = {
   query?: Maybe<UserQueryInput>;
   set: UserUpdateInput;
 };
 
-
 export type MutationUpdateOneUserArgs = {
   query?: Maybe<UserQueryInput>;
   set: UserUpdateInput;
 };
-
 
 export type MutationUpsertOneUserArgs = {
   data: UserInsertInput;
@@ -134,11 +127,9 @@ export type Query = {
   users: Array<Maybe<User>>;
 };
 
-
 export type QueryUserArgs = {
   query?: Maybe<UserQueryInput>;
 };
-
 
 export type QueryUsersArgs = {
   query?: Maybe<UserQueryInput>;
@@ -166,7 +157,6 @@ export type UserUpdateInput = {
   userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   _id?: Maybe<Scalars['ObjectId']>;
 };
-
 
 export enum UserSortByInput {
   FirstnameDesc = 'FIRSTNAME_DESC',
@@ -207,22 +197,20 @@ export type UpdateManyPayload = {
   modifiedCount: Scalars['Int'];
 };
 
-
-      export interface IntrospectionResultData {
-        __schema: {
-          types: {
-            kind: string;
-            name: string;
-            possibleTypes: {
-              name: string;
-            }[];
-          }[];
-        };
-      }
-      const result: IntrospectionResultData = {
-  "__schema": {
-    "types": []
+export interface IntrospectionResultData {
+  __schema: {
+    types: {
+      kind: string;
+      name: string;
+      possibleTypes: {
+        name: string;
+      }[];
+    }[];
+  };
+}
+const result: IntrospectionResultData = {
+  __schema: {
+    types: []
   }
 };
-      export default result;
-    
+export default result;
