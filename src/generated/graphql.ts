@@ -434,7 +434,6 @@ export type QueryUserArgs = {
 };
 
 export type QueryUsersArgs = {
-  sortBy?: Maybe<UserSortByInput>;
   query?: Maybe<UserQueryInput>;
   limit?: Maybe<Scalars['Int']>;
   sortBy?: Maybe<UserSortByInput>;
