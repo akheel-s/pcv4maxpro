@@ -52,7 +52,6 @@ import { reactive, ref, toRefs } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
-import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { ObjectId } from 'bson';
 import gql from 'graphql-tag';

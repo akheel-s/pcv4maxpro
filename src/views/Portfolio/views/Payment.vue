@@ -65,71 +65,31 @@
 
           <v-stepper-content step="1">
             <div class="sponsor__program-menu">
-              <v-card elevation="0" color="green" dark class="mb-3" width="200px" height="200px">
-                <v-card-title>Student</v-card-title>
-                <v-card-subtitle
-                  >Per Student. Get an all out pass for one participant in our
-                  programs.</v-card-subtitle
-                >
-                <v-card-actions>
-                  <v-radio-group v-model="ex1" class="sponsor__menu-radio"
-                    ><v-radio class="sponsor__menu-radio" label="$500"></v-radio></v-radio-group
-                ></v-card-actions>
-              </v-card>
-
-              <v-card elevation="0" dark color="blue" class="mb-3" width="200px" height="200px">
-                <v-card-title>Class</v-card-title>
-                <v-card-subtitle
-                  >Up to 30 students. Have your entire classroom participate in our
-                  program.</v-card-subtitle
-                >
-                <v-card-actions>
-                  <v-radio-group v-model="ex1" class="sponsor__menu-radio"
-                    ><v-radio class="sponsor__menu-radio" label="$5,250"></v-radio></v-radio-group
-                ></v-card-actions>
-              </v-card>
-              <v-card elevation="0" dark color="pink" class="mb-3" width="200px" height="200px">
-                <v-card-title>Teacher</v-card-title>
-                <v-card-subtitle
-                  >Up to 90 students. Enroll multiple classroom sections in our
-                  program.</v-card-subtitle
-                >
-                <v-card-actions>
-                  <v-radio-group v-model="ex1" class="sponsor__menu-radio"
-                    ><v-radio class="sponsor__menu-radio" label="$11,250"></v-radio></v-radio-group
-                ></v-card-actions>
-              </v-card>
-
               <v-card
+                v-for="option in purchaseOptions"
+                :key="option.title"
                 elevation="0"
-                color="orange"
+                :color="option.color"
                 dark
-                class="mb-3 sponsor__program-menu-card"
+                class="mb-3"
                 width="200px"
                 height="200px"
               >
-                <v-card-title>Family</v-card-title>
-                <v-card-subtitle
-                  >Up to 3 Students. Enroll all your students in a family bundle.</v-card-subtitle
-                >
+                <v-card-title>{{ option.title }}</v-card-title>
+                <v-card-subtitle>{{ option.desc }}</v-card-subtitle>
                 <v-card-actions>
-                  <v-radio-group v-model="ex1" class="sponsor__menu-radio"
-                    ><v-radio class="sponsor__menu-radio" label="$1,350"></v-radio></v-radio-group
-                ></v-card-actions>
-              </v-card>
-              <v-card elevation="0" color="purple" dark class="mb-3" width="200px" height="200px">
-                <v-card-title>Group</v-card-title>
-                <v-card-subtitle
-                  >Up to 5 Students. Great for a group or team of friends and family
-                  members.</v-card-subtitle
-                >
-                <v-card-actions>
-                  <v-radio-group v-model="ex1" class="sponsor__menu-radio"
-                    ><v-radio class="sponsor__menu-radio" label="$2,000"></v-radio></v-radio-group
+                  <v-radio-group v-model="selectedProduct" class="sponsor__menu-radio"
+                    ><v-radio
+                      :value="option.priceId"
+                      class="sponsor__menu-radio"
+                      :label="`$${option.price / 100}`"
+                    ></v-radio></v-radio-group
                 ></v-card-actions>
               </v-card>
             </div>
-            <v-btn small outlined text @click="e6 = 2">Enter Payment Details</v-btn>
+            <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
+              >Enter Payment Details</v-btn
+            >
             <v-btn small text>Cancel</v-btn>
           </v-stepper-content>
 
@@ -169,29 +129,71 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { onBeforeUnmount, ref, Ref } from '@vue/composition-api';
+import { useDbActions, useStripeActions } from '@/store';
+import { defer, merge } from 'rxjs';
+import { retry } from 'rxjs/operators';
 
 export default {
   name: 'Payment',
-  setup(props, { emit }) {
-    const sponsorName = ref('');
-
-    function emitSaveID() {
-      emit('SaveID', 'ID Saved');
-    }
-    return { emitSaveID, sponsorName };
-  }
-};
-</script>
-
-<script>
-export default {
   data() {
     return {
       e13: 2,
-      e6: 1,
-      ex1: 'radio'
+      e6: 1
     };
+  },
+  setup(props, { emit }) {
+    const selectedProduct = ref('');
+    const sponsorName = ref('');
+    const { getProductInfo } = useDbActions(['getProductInfo']);
+    const PRICE_IDS = [
+      'price_1HVJv6LnkQGEgDQn1armT4XJ',
+      'price_1HVJukLnkQGEgDQnTsO13Ks2',
+      'price_1HVJuELnkQGEgDQnV1dDldCH',
+      'price_1HVJtoLnkQGEgDQnS2SvWBqk',
+      'price_1HVJtBLnkQGEgDQnS2rf3PSD'
+    ];
+    const ColorCode = {
+      Student: 'green',
+      Class: 'blue',
+      Teacher: 'pink',
+      Family: 'orange',
+      Group: 'purple'
+    };
+    const purchaseOptions: Ref<any> = ref([]);
+    const productSubscription = merge(
+      ...PRICE_IDS.map(id => defer(() => getProductInfo({ priceId: id })))
+    )
+      .pipe(retry(3))
+      .subscribe(result => {
+        const title = result.body?.product.name.split(' ')[0];
+        purchaseOptions.value.push({
+          title,
+          desc: result.body?.product.description,
+          priceId: result.body?.price.id,
+          price: result.body?.price.unit_amount,
+          color: ColorCode[title]
+        });
+      });
+    onBeforeUnmount(() => {
+      productSubscription.unsubscribe();
+    });
+    const { createCheckoutSession } = useStripeActions(['createCheckoutSession']);
+    const checkout = async () => {
+      defer(() =>
+        createCheckoutSession({
+          priceId: selectedProduct.value,
+          quantity: 1,
+          successUrl: 'http://test.com',
+          cancelUrl: 'http://test.com'
+        })
+      )
+        .pipe(retry(3))
+        .subscribe(result => {
+          console.error(result.error);
+        });
+    };
+    return { sponsorName, purchaseOptions, checkout, selectedProduct };
   }
 };
 </script>

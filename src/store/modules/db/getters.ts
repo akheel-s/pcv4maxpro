@@ -14,6 +14,7 @@ type DbGetterCtx<T> = (
 ) => T;
 export interface DbGetters extends GetterTree<typeof dbState, RootState> {
   collection: DbGetterCtx<Realm.Services.MongoDBDatabase['collection'] | null>;
+  functions: DbGetterCtx<Realm.DefaultFunctionsFactory & Realm.BaseFunctionsFactory>;
 }
 export const getters: DbGetters = {
   collection: (_state, _gets, rootState, rootGetters) => {
@@ -22,5 +23,8 @@ export const getters: DbGetters = {
           .mongodb(process.env.VUE_APP_ATLAS_SERVICE_NAME)
           .db(process.env.VUE_APP_DB).collection
       : null;
+  },
+  functions: (_state, _gets, rootState, rootGetters) => {
+    return rootState.realmApp.app.currentUser!.functions;
   }
 };
