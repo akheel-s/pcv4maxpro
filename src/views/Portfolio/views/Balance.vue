@@ -63,6 +63,19 @@
         </div>
       </div>
     </div>
+    <div class="balance__transfer">
+      <div class="balance__tickets">
+        <v-select placeholder="tickets" outlined></v-select>
+      </div>
+
+      <div class="balance__email">
+        <v-text-field placeholder="Email" outlined></v-text-field>
+      </div>
+
+      <div class="balance__transfer-button">
+        <v-btn depressed>Transfer</v-btn>
+      </div>
+    </div>
     <div class="balance__table-view">
       <BalanceView />
     </div>
@@ -162,5 +175,29 @@ export default {
     padding-left: 40px;
     padding-right: 40px;
   }
+
+  &__transfer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+    padding-left: 180px;
+  }
+
+  &__tickets {
+    width: 75px;
+    margin-right: 10px;
+  }
+
+  &__email {
+    width: 50%;
+  }
+
+  &__transfer-button {
+    margin-left: 10px;
+  }
+}
+.v-btn:not(.v-btn--round).v-size--default {
+  height: 57px;
 }
 </style>
