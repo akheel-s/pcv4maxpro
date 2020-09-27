@@ -9,6 +9,7 @@ import Timeline from '@/components/Timeline.vue';
 import Error404 from '@/views/Error404.vue';
 import { useAuthGetters } from '@/store';
 import ErrorLogin from '@/views/ErrorLogin.vue';
+import Landing from '@/views/Landing.vue';
 
 Vue.use(VueRouter);
 
@@ -55,6 +56,11 @@ const routes: Array<RouteConfig> = [
     path: '/authRequired',
     name: 'authError',
     component: ErrorLogin
+  },
+  {
+    path: '/landing',
+    name: 'landing',
+    component: Landing
   }
 ];
 
