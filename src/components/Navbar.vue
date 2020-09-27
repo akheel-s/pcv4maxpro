@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar depressed flat color="primary" height="75">
+  <!-- <v-toolbar depressed flat color="primary" height="75">
     <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
 
     <v-toolbar-title
@@ -12,7 +12,7 @@
       :indeterminate="loading"
       absolute
       bottom
-      color="blue"
+      color="blue" 
     ></v-progress-linear>
 
     <v-spacer></v-spacer>
@@ -75,9 +75,9 @@
           offset-y="20"
           ><v-icon color="white" large>mdi-bell</v-icon>
         </v-badge></v-btn
-      >
+      > -->
 
-      <!-- <v-btn
+  <!-- <v-btn
         v-if="getUser"
         class="mr-3 ml-3"
         large
@@ -91,14 +91,16 @@
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
 
-      <v-btn text color="#404142"
+  <!-- <v-btn text color="#404142"
         ><v-avatar color="#404142" size="45" outlined>
           <v-img
             src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
           ></v-img> </v-avatar
       ></v-btn>
     </div>
-  </v-toolbar>
+  </v-toolbar> -->
+
+  <div></div>
 </template>
 <style lang="scss">
 .nav__logo {

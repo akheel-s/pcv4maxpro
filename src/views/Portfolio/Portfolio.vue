@@ -47,7 +47,7 @@
 
       <!-- Chip Tabs -->
 
-      <div class="profile__sub-container text-center mt-12">
+      <!-- <div class="profile__sub-container text-center mt-12">
         <div>
           <v-badge bordered color="orange" offset-x="32" offset-y="32">
             <v-avatar color="orange" size="150">
@@ -78,7 +78,7 @@
           <v-icon left>mdi-plus</v-icon>
           Add Citizen Type
         </v-chip>
-      </div>
+      </div> -->
 
       <!-- <v-divider class="mt-10"></v-divider> -->
 
