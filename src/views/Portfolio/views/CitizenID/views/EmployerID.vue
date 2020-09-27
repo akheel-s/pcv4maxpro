@@ -77,7 +77,7 @@ import Loading from '@/components/Loading.vue';
 const {
   getObjectId: { value: getObjectId }
   // getId: { value: getId }
-} = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
+} = useAuthGetters([GetterTypes.getObjectId]);
 
 export default {
   name: 'EmployerID',
