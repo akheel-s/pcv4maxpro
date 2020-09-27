@@ -31,14 +31,14 @@
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" rules="required">
-          <v-text-field outlined label="Last Name"> </v-text-field>
-          <v-select
+          <v-text-field
             v-model="lastName"
             :error-messages="errors"
             label="Last Name"
             multiple
             outlined
-          ></v-select>
+          >
+          </v-text-field>
         </validation-provider>
 
         <v-btn
