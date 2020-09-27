@@ -64,7 +64,7 @@
       </div>
     </v-parallax>
 
-    <v-parallax
+    <!-- <v-parallax
       dark
       class="landing__hero-default"
       height="100%"
@@ -74,20 +74,14 @@
         <div class="landing__row1">
           <v-btn dark depressed outlined small>Program Timeline</v-btn>
         </div>
-        <div class="landing__row2">
-          <v-stepper>
-            <v-stepper-step>a</v-stepper-step>
-            <v-stepper-step>b</v-stepper-step>
-            <v-stepper-step>c</v-stepper-step>
-          </v-stepper>
-        </div>
+        <div class="landing__row2"></div>
         <div class="landing__row1">
           <v-btn dark depressed outlined small color="green"
             >A civic engine for resilience, equity and digital transformation</v-btn
           >
         </div>
       </div>
-    </v-parallax>
+    </v-parallax> -->
 
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
@@ -111,13 +105,49 @@
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/students.png"
       dark
-      class="landing__hero-default"
+      class="landing__hero-default-padded"
+      height="100%"
     >
       <div class="landing__2-column">
         <div class="landing__left">
-          <v-card elevation="0" tile depressed>
-            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
-          </v-card>
+          <v-btn dark depressed outlined small rounded>Program Timeline</v-btn>
+          <div class="landing__timeline-card">
+            <v-timeline dark dense>
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Explore programs</v-timeline-item
+              >
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Build employer projects</v-timeline-item
+              >
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Auto-apply for internships</v-timeline-item
+              >
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Interviews</v-timeline-item
+              >
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Position Offers</v-timeline-item
+              >
+              <v-timeline-item class="landing__timeline-card-step" fill-dot color="green" small
+                >Internships</v-timeline-item
+              >
+              <!-- <v-timeline-item small>Practice Log</v-timeline-item> -->
+              <!-- <v-timeline-item small>Business Model Canvas</v-timeline-item>
+            <v-timeline-item small>Your One Sentence Pitch</v-timeline-item>
+
+            <v-timeline-item small>Write Your 60-Second Elevator Pitch</v-timeline-item>
+            <v-timeline-item small>Hack Day</v-timeline-item>
+            <v-timeline-item small>Post-Hack Reflection</v-timeline-item>
+
+            <v-timeline-item small>Design & Prototype Process Log</v-timeline-item>
+
+            <v-timeline-item small>Enter Prototype Demonstration Video</v-timeline-item>
+            <v-timeline-item small>Enter Link to Presentation Deck</v-timeline-item>
+            <v-timeline-item small>Demo Day</v-timeline-item>
+            <v-timeline-item small>Complete The Program</v-timeline-item>
+            <v-timeline-item small>Auto-Application</v-timeline-item> -->
+            </v-timeline>
+          </div>
         </div>
         <div class="landing__right">
           <v-icon dark x-large color="green">mdi-telegram</v-icon><br />
@@ -259,7 +289,15 @@
 
 <script lang="ts">
 export default {
-  name: 'Landing'
+  name: 'Landing',
+  setup() {
+    return {};
+  },
+  data() {
+    return {
+      e6: 1
+    };
+  }
 };
 </script>
 
@@ -273,6 +311,22 @@ export default {
 
   &__hero-default {
     background-color: #404142;
+    // padding-top: 50px;
+    // padding-bottom: 50px;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: column;
+    // flex-grow: 1;
+    // padding: none;
+    // margin: none;
+    // height: fit-content;
+    // width: fit-content;
+  }
+
+  &__hero-default-padded {
+    background-color: #404142;
+    padding-top: 50px;
+    padding-bottom: 50px;
     // justify-content: center;
     // align-items: center;
     // flex-direction: column;
@@ -341,9 +395,27 @@ export default {
   }
 
   &__left {
-    justify-content: flex-start;
+    // justify-content: center;
+    // align-items: center;
     // flex-grow: 1;
     padding-left: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &__timeline-card {
+    border: 1px solid #6fbb81;
+    border-radius: 25px;
+    padding-right: 25px;
+    margin-top: 15px;
+  }
+
+  &__timeline-card-step {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   &__right {
@@ -352,6 +424,7 @@ export default {
     font-family: Montserrat;
     font-weight: 800;
     font-size: 42px;
+    padding-left: 50px;
   }
 
   &__text-subtitle-pink {
