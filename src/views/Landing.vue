@@ -2,8 +2,8 @@
   <div>
     <v-parallax
       dark
-      height="600"
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/ppa_grey.png"
+      height="625"
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/pilotcitypaperplanes_grey.png"
       class="landing__hero"
     >
       <div class="landing__hero-body">
@@ -93,15 +93,17 @@
       src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
     >
       <div class="landing__single-column">
-        <div class="landing__row1">
-          <v-btn dark depressed outlined small>PilotCity's Flagship Program</v-btn>
+        <div>
+          <v-btn class="landing__row1-button" color="white" dark depressed outlined small
+            >PilotCity's Flagship Program</v-btn
+          >
         </div>
         <div class="landing__row2">
           PilotCity enables students to build employer projects to win internships. 97% of our
           alumni and 90% of our parents would recommend our program.
         </div>
         <div class="landing__row3">
-          <v-btn dark depressed outlined small color="green"
+          <v-btn class="landing__row3-button" dark depressed outlined small color="white"
             >A civic engine for resilience, equity and digital transformation</v-btn
           >
         </div>
@@ -135,7 +137,7 @@
     >
       <div class="landing__2-column">
         <div class="landing__left">
-          <div class="landing__text-testimonial">
+          <div class="landing__text-testimonial-green">
             <v-icon left dark>mdi-comment-quote</v-icon>
             PilotCity kicks the idea of 'coffee fetching and document copying' internships to the
             curb
@@ -149,7 +151,7 @@
               </v-avatar>
             </div>
             <div class="landing__text-testimonial-title">
-              <div class="landing__text-testimonial-name">Kevin C.</div>
+              <div class="landing__text-testimonial-name-green">Kevin C.</div>
               <div class="landing__text-testimonial-position">Intern, Strategy of Things</div>
             </div>
           </div>
@@ -170,6 +172,10 @@
       class="landing__hero-default"
     >
       <div class="landing__primary-title">Activities</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Key events and program activities</v-btn
+      >
       <div class="">
         <v-img
           src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_ProgramTimeline_v2.svg"
@@ -183,10 +189,70 @@
     </v-parallax>
 
     <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-backgroundB.png"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <div class="landing__text-testimonial-green">
+            <v-icon left dark>mdi-comment-quote</v-icon>
+            PilotCity was a fresh breath of air. It was a new program that offered a mind-blowing
+            and unique experience.
+          </div>
+          <div class="landing__text-testimonial-body">
+            <div>
+              <v-avatar size="75">
+                <v-img
+                  src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.33.36%20AM.png"
+                ></v-img>
+              </v-avatar>
+            </div>
+            <div class="landing__text-testimonial-title">
+              <div class="landing__text-testimonial-name-green">Amratha R.</div>
+              <div class="landing__text-testimonial-position">
+                Healthtech Entrepreneur, PilotCity
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="landing__right landing__testimonial-logo">
+          <!-- <v-img
+            max-width="75"
+            src="https://f.hubspotusercontent00.net/hubfs/2480959/WI_P_Wireframe-1.png"
+          ></v-img> -->
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
+      dark
+      class="landing__hero-default"
+      height="100%"
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
+    >
+      <div class="landing__primary-title">People</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle">
+        Students are the protagonist, the community is their village</v-btn
+      >
+      <v-img
+        src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_CrossSector_v3.svg"
+        class="landing__primary-image"
+        width="35%"
+      ></v-img>
+
+      <div class="landing__banner-cta">
+        <v-btn x-large depressed dark rounded color="green">Sponsor Students</v-btn>
+      </div>
+    </v-parallax>
+
+    <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/students.png"
       dark
       class="landing__hero-default-padded"
-      height="100%"
+      height="700"
     >
       <div class="landing__2-column">
         <div class="landing__left">
@@ -246,20 +312,37 @@
     </v-parallax>
 
     <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-backgroundE.png"
       dark
-      class="landing__hero-default"
       height="100%"
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
+      class="landing__hero-default"
     >
-      <div class="landing__primary-title">Students are our protagonist</div>
-      <v-img
-        src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_CrossSector_v3.svg"
-        class="landing__primary-image"
-        width="35%"
-      ></v-img>
-
-      <div class="landing__banner-cta">
-        <v-btn x-large depressed dark rounded color="green">Sponsor Students</v-btn>
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <div class="landing__text-testimonial-green">
+            <v-icon left dark>mdi-comment-quote</v-icon>
+            PilotCity is more than just a program... it's a family.
+          </div>
+          <div class="landing__text-testimonial-body">
+            <div>
+              <v-avatar size="75">
+                <v-img
+                  src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.31.38%20AM.png"
+                ></v-img>
+              </v-avatar>
+            </div>
+            <div class="landing__text-testimonial-title">
+              <div class="landing__text-testimonial-name-green">Pranav P.</div>
+              <div class="landing__text-testimonial-position">MESH Fellow, Takeoff Point</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="landing__right landing__testimonial-logo"> -->
+        <!-- <v-img
+            max-width="75"
+            src="https://f.hubspotusercontent00.net/hubfs/2480959/WI_P_Wireframe-1.png"
+          ></v-img> -->
+        <!-- </div> -->
       </div>
     </v-parallax>
 
@@ -351,6 +434,56 @@
     </v-parallax>
 
     <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/employer.png"
+      dark
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <v-card elevation="0" tile depressed>
+            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
+          </v-card>
+        </div>
+        <div class="landing__right">
+          <v-icon dark x-large color="purple">mdi-graph-outline</v-icon>
+          <div class="landing__text-subtitle-purple">Employer simple, low-commitment setup</div>
+          <div class="landing__text-body">
+            Setup program from template<br />
+            Get your program running in 4-hours<br />
+            Asynchronous interactions, or zero-management option
+          </div>
+          <v-btn rounded outlined depressed dark large>Onboard Now</v-btn>
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/sponsor.png"
+      dark
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <v-card elevation="0" tile depressed>
+            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
+          </v-card>
+        </div>
+        <div class="landing__right">
+          <v-icon dark x-large color="red">mdi-currency-usd-circle</v-icon>
+          <div class="landing__text-subtitle-red">
+            Sponsor participants, and monitor your impact
+          </div>
+          <div class="landing__text-body">
+            Sign-up for an account<br />
+            Sponsor and purchase program tokens<br />
+            Transfer to participants and stakeholders for use
+          </div>
+          <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/parent_v2.png"
       dark
       class="landing__hero-default"
@@ -407,56 +540,6 @@
             max-width="75"
             src="https://f.hubspotusercontent00.net/hubfs/2480959/WI_P_Wireframe-1.png"
           ></v-img>
-        </div>
-      </div>
-    </v-parallax>
-
-    <v-parallax
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/employer.png"
-      dark
-      class="landing__hero-default"
-    >
-      <div class="landing__2-column">
-        <div class="landing__left">
-          <v-card elevation="0" tile depressed>
-            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
-          </v-card>
-        </div>
-        <div class="landing__right">
-          <v-icon dark x-large color="purple">mdi-graph-outline</v-icon>
-          <div class="landing__text-subtitle-purple">Employer simple, low-commitment setup</div>
-          <div class="landing__text-body">
-            Setup program from template<br />
-            Get your program running in 4-hours<br />
-            Asynchronous interactions, or zero-management option
-          </div>
-          <v-btn rounded outlined depressed dark large>Onboard Now</v-btn>
-        </div>
-      </div>
-    </v-parallax>
-
-    <v-parallax
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/sponsor.png"
-      dark
-      class="landing__hero-default"
-    >
-      <div class="landing__2-column">
-        <div class="landing__left">
-          <v-card elevation="0" tile depressed>
-            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
-          </v-card>
-        </div>
-        <div class="landing__right">
-          <v-icon dark x-large color="red">mdi-currency-usd-circle</v-icon>
-          <div class="landing__text-subtitle-red">
-            Sponsor participants, and monitor your impact
-          </div>
-          <div class="landing__text-body">
-            Sign-up for an account<br />
-            Sponsor and purchase program tokens<br />
-            Transfer to participants and stakeholders for use
-          </div>
-          <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
         </div>
       </div>
     </v-parallax>
@@ -540,7 +623,7 @@ export default {
     width: 45%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
+    padding-top: 75px;
     display: flex;
   }
 
@@ -553,7 +636,7 @@ export default {
 
   &__hero-citizenchips {
     width: 75%;
-    padding-top: 25px;
+    padding-top: 50px;
     font-family: Montserrat;
     font-weight: 700;
     margin-left: auto;
@@ -659,7 +742,33 @@ export default {
     font-family: Montserrat;
     font-weight: 700;
     font-size: 22px;
+    color: #ffffff;
+    max-width: 75%;
+    margin-top: 100px;
+    margin-bottom: 35px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__text-testimonial-green {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 22px;
     color: #6fba7f;
+    max-width: 75%;
+    margin-top: 100px;
+    margin-bottom: 35px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__text-testimonial-yellow {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 22px;
+    color: #fec34b;
     max-width: 75%;
     margin-top: 100px;
     margin-bottom: 35px;
@@ -698,7 +807,21 @@ export default {
     font-family: Montserrat;
     font-weight: 700;
     font-size: 15px;
+    color: #ffffff;
+  }
+
+  &__text-testimonial-name-green {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15px;
     color: #6fba7f;
+  }
+
+  &__text-testimonial-name-yellow {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fec34b;
   }
 
   &__text-testimonial-name-black {
@@ -731,24 +854,33 @@ export default {
   }
 
   &__row1 {
+  }
+
+  &__row1-button {
     font-family: Montserrat;
     font-weight: 800;
   }
 
   &__row2 {
     font-family: Montserrat;
-    font-weight: 800;
+    font-weight: 700;
     padding-top: 35px;
     font-size: 50px;
     line-height: 75px;
+    color: #fec34b;
   }
 
   &__row3 {
-    font-family: Montserrat;
     justify-content: flex-end;
     align-items: flex-end;
     padding-top: 35px;
     margin-left: auto;
+  }
+
+  &__row3-button {
+    font-family: Montserrat;
+
+    font-weight: 800;
   }
 
   &__banner-cta {
@@ -775,6 +907,21 @@ export default {
     color: #ffffff;
     text-align: center;
     margin-top: 4%;
+  }
+
+  &__primary-subtitle {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 22px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    width: 50%;
+    margin: auto;
+    // justify-content: center;
+    // align-items: center;
+    // font-style:italic;
   }
 }
 </style>
