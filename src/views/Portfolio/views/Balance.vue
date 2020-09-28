@@ -147,36 +147,29 @@ export default {
     const transferEmail = ref('');
     const transferQuantity = ref(0);
     const processTransfer = async () => {
-      const user = await query<{ user: User }>({
-        query: gql`
-          query findUser($email: String!) {
-            user(query: { email: $email }) {
-              _id
-              firstName
-              lastName
-            }
-          }
-        `,
-        variables: { email: transferEmail.value }
-      });
-      if (!user) throw new Error('User not found');
-      const tokenQuery = tokens.value
-        .map(token => ({ _id: token._id }))
-        .slice(0, transferQuantity.value);
-      console.log(tokenQuery);
       console.log(
         await mutate({
           mutation: gql`
-            mutation transferTokens($id: ObjectId!, $tokenQueryInputs: [TokenQueryInput!]) {
-              updateManyTokens(query: { OR: $tokenQueryInputs }, set: { newOwner_id: $id }) {
-                matchedCount
-                matchedCount
+            mutation transferTokens(
+              $senderId: ObjectId!
+              $recipientEmail: String!
+              $tokenIds: [ObjectId!]
+            ) {
+              sendTokensMutation(
+                input: {
+                  token_ids: $tokenIds
+                  sender_id: $senderId
+                  recipient_email: $recipientEmail
+                }
+              ) {
+                status
               }
             }
           `,
           variables: {
-            id: new ObjectId(user.data.user._id),
-            tokenQueryInputs: tokenQuery
+            recipientEmail: transferEmail.value,
+            senderId: id.value,
+            tokenIds: tokens.value.map(token => token._id).slice(0, transferQuantity.value)
           }
         })
       );

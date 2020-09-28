@@ -13,43 +13,70 @@ export type Scalars = {
   ObjectId: any;
 };
 
-export enum StudentPortfolioSortByInput {
-  IdAsc = '_ID_ASC',
-  IdDesc = '_ID_DESC',
-  DateAsc = 'DATE_ASC',
-  DateDesc = 'DATE_DESC',
-  GenderAsc = 'GENDER_ASC',
-  GenderDesc = 'GENDER_DESC',
-  GradeAsc = 'GRADE_ASC',
-  GradeDesc = 'GRADE_DESC'
-}
-
-export type TokenEventLogInsertInput = {
-  event?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['DateTime']>;
+export type EmployerPortfolioInsertInput = {
+  _id?: Maybe<Scalars['ObjectId']>;
+  employerName?: Maybe<Scalars['String']>;
+  industry?: Maybe<Scalars['String']>;
+  jobTitle?: Maybe<Scalars['String']>;
+  primaryProduct?: Maybe<Scalars['String']>;
+  workAddress?: Maybe<Scalars['String']>;
 };
 
-export type StudentPortfolioGuardianQueryInput = {
-  email_ne?: Maybe<Scalars['String']>;
-  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  email_gte?: Maybe<Scalars['String']>;
-  email_gt?: Maybe<Scalars['String']>;
-  relationship_ne?: Maybe<Scalars['String']>;
-  relationship_lt?: Maybe<Scalars['String']>;
-  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  relationship_exists?: Maybe<Scalars['Boolean']>;
+export type StudentPortfolioSchoolUpdateInput = {
+  name?: Maybe<Scalars['String']>;
+  name_unset?: Maybe<Scalars['Boolean']>;
+  district?: Maybe<Scalars['String']>;
+  district_unset?: Maybe<Scalars['Boolean']>;
+};
+
+export type StudentPortfolioSchoolQueryInput = {
+  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  district_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name_exists?: Maybe<Scalars['Boolean']>;
+  district_gte?: Maybe<Scalars['String']>;
+  district_lt?: Maybe<Scalars['String']>;
+  name_gte?: Maybe<Scalars['String']>;
+  district_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  district_ne?: Maybe<Scalars['String']>;
+  district_gt?: Maybe<Scalars['String']>;
+  name_ne?: Maybe<Scalars['String']>;
+  district_exists?: Maybe<Scalars['Boolean']>;
+  district_lte?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  name_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  OR?: Maybe<Array<StudentPortfolioSchoolQueryInput>>;
+  name_lt?: Maybe<Scalars['String']>;
+  name_lte?: Maybe<Scalars['String']>;
+  name_gt?: Maybe<Scalars['String']>;
+  district?: Maybe<Scalars['String']>;
+  AND?: Maybe<Array<StudentPortfolioSchoolQueryInput>>;
+};
+
+export type EmployerPortfolioUpdateInput = {
+  industry?: Maybe<Scalars['String']>;
+  jobTitle_unset?: Maybe<Scalars['Boolean']>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  jobTitle?: Maybe<Scalars['String']>;
+  workAddress?: Maybe<Scalars['String']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  employerName?: Maybe<Scalars['String']>;
+  employerName_unset?: Maybe<Scalars['Boolean']>;
+  industry_unset?: Maybe<Scalars['Boolean']>;
+  primaryProduct_unset?: Maybe<Scalars['Boolean']>;
+  workAddress_unset?: Maybe<Scalars['Boolean']>;
+  primaryProduct?: Maybe<Scalars['String']>;
+};
+
+export type ParentPortfolio = {
+  __typename?: 'ParentPortfolio';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
   email?: Maybe<Scalars['String']>;
-  relationship_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  OR?: Maybe<Array<StudentPortfolioGuardianQueryInput>>;
-  email_lt?: Maybe<Scalars['String']>;
-  relationship_gte?: Maybe<Scalars['String']>;
-  email_exists?: Maybe<Scalars['Boolean']>;
-  relationship_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  relationship?: Maybe<Scalars['String']>;
-  relationship_lte?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<StudentPortfolioGuardianQueryInput>>;
-  email_lte?: Maybe<Scalars['String']>;
-  relationship_gt?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  homeAddress?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  participantEmail?: Maybe<Scalars['String']>;
 };
 
 export type StudentPortfolioGuardian = {
@@ -60,170 +87,105 @@ export type StudentPortfolioGuardian = {
   relationship?: Maybe<Scalars['String']>;
 };
 
-export type UserEventLogQueryInput = {
-  created_gte?: Maybe<Scalars['DateTime']>;
-  created_lte?: Maybe<Scalars['DateTime']>;
-  created_ne?: Maybe<Scalars['DateTime']>;
-  created_gt?: Maybe<Scalars['DateTime']>;
-  created_lt?: Maybe<Scalars['DateTime']>;
-  created_nin?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  created_exists?: Maybe<Scalars['Boolean']>;
-  AND?: Maybe<Array<UserEventLogQueryInput>>;
-  created?: Maybe<Scalars['DateTime']>;
-  created_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  OR?: Maybe<Array<UserEventLogQueryInput>>;
-};
-
-export type TeacherPortfolioUpdateInput = {
-  schoolDistrict?: Maybe<Scalars['String']>;
-  schoolDistrict_unset?: Maybe<Scalars['Boolean']>;
-  schoolName?: Maybe<Scalars['String']>;
-  schoolName_unset?: Maybe<Scalars['Boolean']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  schoolAddress?: Maybe<Scalars['String']>;
-  schoolAddress_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type UserInsertInput = {
-  eventLog?: Maybe<Array<Maybe<UserEventLogInsertInput>>>;
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  stripeId?: Maybe<Scalars['String']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  email?: Maybe<Scalars['String']>;
-};
-
-export type EmployerPortfolioUpdateInput = {
-  workAddress_unset?: Maybe<Scalars['Boolean']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  jobTitle_unset?: Maybe<Scalars['Boolean']>;
-  primaryProduct?: Maybe<Scalars['String']>;
-  primaryProduct_unset?: Maybe<Scalars['Boolean']>;
-  employerName?: Maybe<Scalars['String']>;
-  industry?: Maybe<Scalars['String']>;
-  industry_unset?: Maybe<Scalars['Boolean']>;
-  jobTitle?: Maybe<Scalars['String']>;
-  employerName_unset?: Maybe<Scalars['Boolean']>;
-  workAddress?: Maybe<Scalars['String']>;
-};
-
-export type StudentPortfolioSchool = {
-  __typename?: 'StudentPortfolioSchool';
+export type UserEventLog = {
+  __typename?: 'UserEventLog';
   /** @deprecated  */
-  district?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  name?: Maybe<Scalars['String']>;
-};
-
-export enum TokenSortByInput {
-  OwnerIdAsc = 'OWNER_ID_ASC',
-  OwnerIdDesc = 'OWNER_ID_DESC',
-  IdAsc = '_ID_ASC',
-  IdDesc = '_ID_DESC',
-  CustomerIdAsc = 'CUSTOMER_ID_ASC',
-  CustomerIdDesc = 'CUSTOMER_ID_DESC',
-  NewownerIdAsc = 'NEWOWNER_ID_ASC',
-  NewownerIdDesc = 'NEWOWNER_ID_DESC'
-}
-
-export type UserEventLogInsertInput = {
   created?: Maybe<Scalars['DateTime']>;
 };
 
-export type TeacherPortfolioInsertInput = {
+export type StudentPortfolioUpdateInput = {
+  ethnicity_unset?: Maybe<Scalars['Boolean']>;
+  home?: Maybe<StudentPortfolioHomeUpdateInput>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
+  grade_unset?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['ObjectId']>;
-  schoolAddress?: Maybe<Scalars['String']>;
-  schoolDistrict?: Maybe<Scalars['String']>;
-  schoolName?: Maybe<Scalars['String']>;
+  date_unset?: Maybe<Scalars['Boolean']>;
+  guardian_unset?: Maybe<Scalars['Boolean']>;
+  school_unset?: Maybe<Scalars['Boolean']>;
+  home_unset?: Maybe<Scalars['Boolean']>;
+  gender?: Maybe<Scalars['String']>;
+  gender_unset?: Maybe<Scalars['Boolean']>;
+  date?: Maybe<Scalars['String']>;
+  grade?: Maybe<Scalars['String']>;
+  school?: Maybe<StudentPortfolioSchoolUpdateInput>;
+  guardian?: Maybe<StudentPortfolioGuardianUpdateInput>;
 };
 
-export type TokenEventLogUpdateInput = {
-  created?: Maybe<Scalars['DateTime']>;
-  created_unset?: Maybe<Scalars['Boolean']>;
-  event?: Maybe<Scalars['String']>;
-  event_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export enum TeacherPortfolioSortByInput {
-  SchooldistrictAsc = 'SCHOOLDISTRICT_ASC',
-  SchooldistrictDesc = 'SCHOOLDISTRICT_DESC',
-  SchoolnameAsc = 'SCHOOLNAME_ASC',
-  SchoolnameDesc = 'SCHOOLNAME_DESC',
-  IdAsc = '_ID_ASC',
-  IdDesc = '_ID_DESC',
-  SchooladdressAsc = 'SCHOOLADDRESS_ASC',
-  SchooladdressDesc = 'SCHOOLADDRESS_DESC'
-}
-
-export enum UserSortByInput {
-  LastnameDesc = 'LASTNAME_DESC',
-  StripeidDesc = 'STRIPEID_DESC',
-  IdAsc = '_ID_ASC',
-  IdDesc = '_ID_DESC',
-  EmailDesc = 'EMAIL_DESC',
-  FirstnameAsc = 'FIRSTNAME_ASC',
-  FirstnameDesc = 'FIRSTNAME_DESC',
-  LastnameAsc = 'LASTNAME_ASC',
-  StripeidAsc = 'STRIPEID_ASC',
-  EmailAsc = 'EMAIL_ASC'
-}
-
-export type ParentPortfolioQueryInput = {
-  homeAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  participantEmail_exists?: Maybe<Scalars['Boolean']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  homeAddress_lt?: Maybe<Scalars['String']>;
-  participantEmail_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  participantEmail_ne?: Maybe<Scalars['String']>;
-  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
+export type StudentPortfolioQueryInput = {
+  guardian?: Maybe<StudentPortfolioGuardianQueryInput>;
+  ethnicity_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  home_exists?: Maybe<Scalars['Boolean']>;
   _id_lte?: Maybe<Scalars['ObjectId']>;
-  email_lt?: Maybe<Scalars['String']>;
-  participantEmail_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  homeAddress_ne?: Maybe<Scalars['String']>;
-  email_ne?: Maybe<Scalars['String']>;
-  email_gt?: Maybe<Scalars['String']>;
-  homeAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  AND?: Maybe<Array<ParentPortfolioQueryInput>>;
-  email_gte?: Maybe<Scalars['String']>;
-  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  participantEmail_gt?: Maybe<Scalars['String']>;
-  participantEmail_lt?: Maybe<Scalars['String']>;
-  homeAddress?: Maybe<Scalars['String']>;
-  participantEmail_lte?: Maybe<Scalars['String']>;
-  participantEmail?: Maybe<Scalars['String']>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  homeAddress_gte?: Maybe<Scalars['String']>;
-  homeAddress_lte?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  email_lte?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<ParentPortfolioQueryInput>>;
-  homeAddress_gt?: Maybe<Scalars['String']>;
+  gender_exists?: Maybe<Scalars['Boolean']>;
+  date_lt?: Maybe<Scalars['String']>;
+  date_lte?: Maybe<Scalars['String']>;
+  gender_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  date?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<StudentPortfolioQueryInput>>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  gender_lte?: Maybe<Scalars['String']>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  date_exists?: Maybe<Scalars['Boolean']>;
+  gender_lt?: Maybe<Scalars['String']>;
+  date_gt?: Maybe<Scalars['String']>;
+  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
+  date_ne?: Maybe<Scalars['String']>;
+  gender_ne?: Maybe<Scalars['String']>;
+  guardian_exists?: Maybe<Scalars['Boolean']>;
+  grade_gte?: Maybe<Scalars['String']>;
   _id_lt?: Maybe<Scalars['ObjectId']>;
-  participantEmail_gte?: Maybe<Scalars['String']>;
-  email_exists?: Maybe<Scalars['Boolean']>;
-  homeAddress_exists?: Maybe<Scalars['Boolean']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  gender?: Maybe<Scalars['String']>;
+  school?: Maybe<StudentPortfolioSchoolQueryInput>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  gender_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  grade?: Maybe<Scalars['String']>;
+  home?: Maybe<StudentPortfolioHomeQueryInput>;
+  date_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  AND?: Maybe<Array<StudentPortfolioQueryInput>>;
+  grade_lt?: Maybe<Scalars['String']>;
+  grade_ne?: Maybe<Scalars['String']>;
+  grade_exists?: Maybe<Scalars['Boolean']>;
+  date_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  grade_lte?: Maybe<Scalars['String']>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  grade_gt?: Maybe<Scalars['String']>;
+  ethnicity_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  gender_gt?: Maybe<Scalars['String']>;
+  grade_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  school_exists?: Maybe<Scalars['Boolean']>;
+  ethnicity_exists?: Maybe<Scalars['Boolean']>;
+  date_gte?: Maybe<Scalars['String']>;
+  grade_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  gender_gte?: Maybe<Scalars['String']>;
 };
 
-export type Token = {
-  __typename?: 'Token';
+export type StudentPortfolio = {
+  __typename?: 'StudentPortfolio';
   /** @deprecated  */
   _id?: Maybe<Scalars['ObjectId']>;
   /** @deprecated  */
-  customer_id?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
   /** @deprecated  */
-  eventLog?: Maybe<Array<Maybe<TokenEventLog>>>;
+  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
   /** @deprecated  */
-  newOwner_id?: Maybe<Scalars['ObjectId']>;
+  gender?: Maybe<Scalars['String']>;
   /** @deprecated  */
-  owner_id?: Maybe<Scalars['ObjectId']>;
+  grade?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  guardian?: Maybe<StudentPortfolioGuardian>;
+  /** @deprecated  */
+  home?: Maybe<StudentPortfolioHome>;
+  /** @deprecated  */
+  school?: Maybe<StudentPortfolioSchool>;
+};
+
+export type StudentPortfolioGuardianInsertInput = {
+  email?: Maybe<Scalars['String']>;
+  relationship?: Maybe<Scalars['String']>;
 };
 
 export type DeleteManyPayload = {
@@ -232,403 +194,11 @@ export type DeleteManyPayload = {
   deletedCount: Scalars['Int'];
 };
 
-export type StudentPortfolioSchoolInsertInput = {
-  district?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-export type StudentPortfolioUpdateInput = {
-  guardian?: Maybe<StudentPortfolioGuardianUpdateInput>;
-  home_unset?: Maybe<Scalars['Boolean']>;
-  gender_unset?: Maybe<Scalars['Boolean']>;
-  home?: Maybe<StudentPortfolioHomeUpdateInput>;
-  guardian_unset?: Maybe<Scalars['Boolean']>;
-  school_unset?: Maybe<Scalars['Boolean']>;
-  date?: Maybe<Scalars['String']>;
-  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
-  grade?: Maybe<Scalars['String']>;
-  school?: Maybe<StudentPortfolioSchoolUpdateInput>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  ethnicity_unset?: Maybe<Scalars['Boolean']>;
-  grade_unset?: Maybe<Scalars['Boolean']>;
-  date_unset?: Maybe<Scalars['Boolean']>;
-  gender?: Maybe<Scalars['String']>;
-};
-
-export type SchoolPortfolioInsertInput = {
-  schoolDistrict?: Maybe<Scalars['String']>;
-  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholder?: Maybe<Scalars['String']>;
-  stakeholderAccess?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  districtAddress?: Maybe<Scalars['String']>;
-};
-
-export type StudentPortfolioGuardianUpdateInput = {
-  relationship?: Maybe<Scalars['String']>;
-  relationship_unset?: Maybe<Scalars['Boolean']>;
-  email?: Maybe<Scalars['String']>;
-  email_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type SchoolPortfolioUpdateInput = {
-  stakeholder?: Maybe<Scalars['String']>;
-  stakeholderAccess_unset?: Maybe<Scalars['Boolean']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  districtAddress?: Maybe<Scalars['String']>;
-  schoolDistrict?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  districtAddress_unset?: Maybe<Scalars['Boolean']>;
-  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholder_unset?: Maybe<Scalars['Boolean']>;
-  staffType_unset?: Maybe<Scalars['Boolean']>;
-  stakeholderAccess?: Maybe<Scalars['String']>;
-  schoolDistrict_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type EmployerPortfolioInsertInput = {
-  _id?: Maybe<Scalars['ObjectId']>;
-  employerName?: Maybe<Scalars['String']>;
-  industry?: Maybe<Scalars['String']>;
-  jobTitle?: Maybe<Scalars['String']>;
-  primaryProduct?: Maybe<Scalars['String']>;
-  workAddress?: Maybe<Scalars['String']>;
-};
-
-export type ParentPortfolioUpdateInput = {
-  homeAddress?: Maybe<Scalars['String']>;
-  homeAddress_unset?: Maybe<Scalars['Boolean']>;
-  participantEmail?: Maybe<Scalars['String']>;
-  participantEmail_unset?: Maybe<Scalars['Boolean']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  email?: Maybe<Scalars['String']>;
-  email_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type TeacherPortfolioQueryInput = {
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  schoolDistrict_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  AND?: Maybe<Array<TeacherPortfolioQueryInput>>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  schoolAddress_lt?: Maybe<Scalars['String']>;
-  schoolDistrict_gt?: Maybe<Scalars['String']>;
-  schoolName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  schoolAddress_exists?: Maybe<Scalars['Boolean']>;
-  schoolAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  schoolName_exists?: Maybe<Scalars['Boolean']>;
-  schoolName?: Maybe<Scalars['String']>;
-  schoolName_lte?: Maybe<Scalars['String']>;
-  schoolName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  schoolAddress_ne?: Maybe<Scalars['String']>;
-  schoolAddress_gt?: Maybe<Scalars['String']>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  schoolDistrict?: Maybe<Scalars['String']>;
-  schoolDistrict_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  schoolDistrict_ne?: Maybe<Scalars['String']>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  schoolName_lt?: Maybe<Scalars['String']>;
-  schoolName_ne?: Maybe<Scalars['String']>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  schoolDistrict_gte?: Maybe<Scalars['String']>;
-  schoolDistrict_exists?: Maybe<Scalars['Boolean']>;
-  schoolAddress?: Maybe<Scalars['String']>;
-  schoolName_gte?: Maybe<Scalars['String']>;
-  schoolAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  schoolName_gt?: Maybe<Scalars['String']>;
-  schoolDistrict_lt?: Maybe<Scalars['String']>;
-  schoolAddress_lte?: Maybe<Scalars['String']>;
-  schoolAddress_gte?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<TeacherPortfolioQueryInput>>;
-  schoolDistrict_lte?: Maybe<Scalars['String']>;
-};
-
-export type UserQueryInput = {
-  stripeId?: Maybe<Scalars['String']>;
-  stripeId_lt?: Maybe<Scalars['String']>;
-  firstName_gt?: Maybe<Scalars['String']>;
-  email_gte?: Maybe<Scalars['String']>;
-  lastName_exists?: Maybe<Scalars['Boolean']>;
-  email?: Maybe<Scalars['String']>;
-  eventLog_in?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
-  lastName?: Maybe<Scalars['String']>;
-  lastName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  userTypes_exists?: Maybe<Scalars['Boolean']>;
-  firstName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_gte?: Maybe<Scalars['String']>;
-  stripeId_gte?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  firstName_ne?: Maybe<Scalars['String']>;
-  stripeId_exists?: Maybe<Scalars['Boolean']>;
-  userTypes_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_lt?: Maybe<Scalars['String']>;
-  stripeId_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  email_ne?: Maybe<Scalars['String']>;
-  email_exists?: Maybe<Scalars['Boolean']>;
-  stripeId_lte?: Maybe<Scalars['String']>;
-  lastName_gt?: Maybe<Scalars['String']>;
-  firstName_exists?: Maybe<Scalars['Boolean']>;
-  email_gt?: Maybe<Scalars['String']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  lastName_lte?: Maybe<Scalars['String']>;
-  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  eventLog?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
-  eventLog_exists?: Maybe<Scalars['Boolean']>;
-  AND?: Maybe<Array<UserQueryInput>>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  lastName_lt?: Maybe<Scalars['String']>;
-  userTypes_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  firstName_lte?: Maybe<Scalars['String']>;
-  email_lte?: Maybe<Scalars['String']>;
-  email_lt?: Maybe<Scalars['String']>;
-  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stripeId_ne?: Maybe<Scalars['String']>;
-  eventLog_nin?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
-  stripeId_gt?: Maybe<Scalars['String']>;
-  stripeId_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  OR?: Maybe<Array<UserQueryInput>>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  lastName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  lastName_ne?: Maybe<Scalars['String']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  firstName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  lastName_gte?: Maybe<Scalars['String']>;
-};
-
-export type User = {
-  __typename?: 'User';
-  /** @deprecated  */
-  _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
-  email?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  eventLog?: Maybe<Array<Maybe<UserEventLog>>>;
-  /** @deprecated  */
-  firstName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  lastName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  stripeId?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type InsertManyPayload = {
-  __typename?: 'InsertManyPayload';
-  /** @deprecated  */
-  insertedIds: Array<Maybe<Scalars['ObjectId']>>;
-};
-
 export type StudentPortfolioHomeUpdateInput = {
   address?: Maybe<Scalars['String']>;
   address_unset?: Maybe<Scalars['Boolean']>;
   language?: Maybe<Array<Maybe<Scalars['String']>>>;
   language_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export enum EmployerPortfolioSortByInput {
-  IndustryDesc = 'INDUSTRY_DESC',
-  PrimaryproductAsc = 'PRIMARYPRODUCT_ASC',
-  WorkaddressAsc = 'WORKADDRESS_ASC',
-  IdAsc = '_ID_ASC',
-  WorkaddressDesc = 'WORKADDRESS_DESC',
-  IdDesc = '_ID_DESC',
-  EmployernameAsc = 'EMPLOYERNAME_ASC',
-  EmployernameDesc = 'EMPLOYERNAME_DESC',
-  IndustryAsc = 'INDUSTRY_ASC',
-  JobtitleAsc = 'JOBTITLE_ASC',
-  JobtitleDesc = 'JOBTITLE_DESC',
-  PrimaryproductDesc = 'PRIMARYPRODUCT_DESC'
-}
-
-export type TokenQueryInput = {
-  eventLog?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
-  owner_id_gt?: Maybe<Scalars['ObjectId']>;
-  OR?: Maybe<Array<TokenQueryInput>>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  eventLog_nin?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  owner_id_ne?: Maybe<Scalars['ObjectId']>;
-  AND?: Maybe<Array<TokenQueryInput>>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  owner_id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  customer_id_gt?: Maybe<Scalars['String']>;
-  newOwner_id?: Maybe<Scalars['ObjectId']>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  eventLog_exists?: Maybe<Scalars['Boolean']>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  eventLog_in?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
-  customer_id_ne?: Maybe<Scalars['String']>;
-  owner_id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  newOwner_id_exists?: Maybe<Scalars['Boolean']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  owner_id_exists?: Maybe<Scalars['Boolean']>;
-  owner_id_lte?: Maybe<Scalars['ObjectId']>;
-  customer_id?: Maybe<Scalars['String']>;
-  customer_id_exists?: Maybe<Scalars['Boolean']>;
-  owner_id_gte?: Maybe<Scalars['ObjectId']>;
-  newOwner_id_gte?: Maybe<Scalars['ObjectId']>;
-  customer_id_lte?: Maybe<Scalars['String']>;
-  newOwner_id_ne?: Maybe<Scalars['ObjectId']>;
-  customer_id_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  customer_id_gte?: Maybe<Scalars['String']>;
-  customer_id_lt?: Maybe<Scalars['String']>;
-  newOwner_id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  customer_id_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  newOwner_id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  owner_id?: Maybe<Scalars['ObjectId']>;
-  newOwner_id_lt?: Maybe<Scalars['ObjectId']>;
-  owner_id_lt?: Maybe<Scalars['ObjectId']>;
-  newOwner_id_lte?: Maybe<Scalars['ObjectId']>;
-  newOwner_id_gt?: Maybe<Scalars['ObjectId']>;
-};
-
-export type StudentPortfolioHomeQueryInput = {
-  language?: Maybe<Array<Maybe<Scalars['String']>>>;
-  address?: Maybe<Scalars['String']>;
-  address_gt?: Maybe<Scalars['String']>;
-  address_gte?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<StudentPortfolioHomeQueryInput>>;
-  language_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  language_exists?: Maybe<Scalars['Boolean']>;
-  address_exists?: Maybe<Scalars['Boolean']>;
-  address_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  language_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  address_lt?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<StudentPortfolioHomeQueryInput>>;
-  address_ne?: Maybe<Scalars['String']>;
-  address_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  address_lte?: Maybe<Scalars['String']>;
-};
-
-export type TokenUpdateInput = {
-  _id?: Maybe<Scalars['ObjectId']>;
-  newOwner_id_unset?: Maybe<Scalars['Boolean']>;
-  owner_id?: Maybe<Scalars['ObjectId']>;
-  newOwner_id?: Maybe<Scalars['ObjectId']>;
-  _id_unset?: Maybe<Scalars['Boolean']>;
-  customer_id?: Maybe<Scalars['String']>;
-  customer_id_unset?: Maybe<Scalars['Boolean']>;
-  owner_id_unset?: Maybe<Scalars['Boolean']>;
-  eventLog?: Maybe<Array<Maybe<TokenEventLogUpdateInput>>>;
-  eventLog_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type StudentPortfolioSchoolUpdateInput = {
-  district?: Maybe<Scalars['String']>;
-  district_unset?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  name_unset?: Maybe<Scalars['Boolean']>;
-};
-
-export type StudentPortfolioQueryInput = {
-  grade_lt?: Maybe<Scalars['String']>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  home?: Maybe<StudentPortfolioHomeQueryInput>;
-  gender?: Maybe<Scalars['String']>;
-  gender_gte?: Maybe<Scalars['String']>;
-  grade_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  date_lte?: Maybe<Scalars['String']>;
-  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  date_exists?: Maybe<Scalars['Boolean']>;
-  grade_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  grade_exists?: Maybe<Scalars['Boolean']>;
-  ethnicity_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ethnicity_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  OR?: Maybe<Array<StudentPortfolioQueryInput>>;
-  guardian?: Maybe<StudentPortfolioGuardianQueryInput>;
-  ethnicity_exists?: Maybe<Scalars['Boolean']>;
-  gender_lte?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  gender_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  grade_lte?: Maybe<Scalars['String']>;
-  date_gte?: Maybe<Scalars['String']>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  AND?: Maybe<Array<StudentPortfolioQueryInput>>;
-  date_lt?: Maybe<Scalars['String']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  date_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  guardian_exists?: Maybe<Scalars['Boolean']>;
-  gender_gt?: Maybe<Scalars['String']>;
-  home_exists?: Maybe<Scalars['Boolean']>;
-  grade_gte?: Maybe<Scalars['String']>;
-  date_ne?: Maybe<Scalars['String']>;
-  gender_ne?: Maybe<Scalars['String']>;
-  gender_exists?: Maybe<Scalars['Boolean']>;
-  date?: Maybe<Scalars['String']>;
-  school?: Maybe<StudentPortfolioSchoolQueryInput>;
-  school_exists?: Maybe<Scalars['Boolean']>;
-  date_gt?: Maybe<Scalars['String']>;
-  grade_ne?: Maybe<Scalars['String']>;
-  date_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  gender_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  grade_gt?: Maybe<Scalars['String']>;
-  grade?: Maybe<Scalars['String']>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  gender_lt?: Maybe<Scalars['String']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-};
-
-export type StudentPortfolioHome = {
-  __typename?: 'StudentPortfolioHome';
-  /** @deprecated  */
-  address?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  language?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export enum ParentPortfolioSortByInput {
-  IdDesc = '_ID_DESC',
-  EmailAsc = 'EMAIL_ASC',
-  EmailDesc = 'EMAIL_DESC',
-  HomeaddressAsc = 'HOMEADDRESS_ASC',
-  HomeaddressDesc = 'HOMEADDRESS_DESC',
-  ParticipantemailAsc = 'PARTICIPANTEMAIL_ASC',
-  ParticipantemailDesc = 'PARTICIPANTEMAIL_DESC',
-  IdAsc = '_ID_ASC'
-}
-
-export type SchoolPortfolio = {
-  __typename?: 'SchoolPortfolio';
-  /** @deprecated  */
-  _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
-  districtAddress?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  schoolDistrict?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** @deprecated  */
-  stakeholder?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  stakeholderAccess?: Maybe<Scalars['String']>;
-};
-
-export type StudentPortfolioHomeInsertInput = {
-  language?: Maybe<Array<Maybe<Scalars['String']>>>;
-  address?: Maybe<Scalars['String']>;
-};
-
-export type UserEventLogUpdateInput = {
-  created_unset?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['DateTime']>;
 };
 
 export type Query = {
@@ -670,9 +240,9 @@ export type QueryEmployerPortfolioArgs = {
 
 
 export type QueryEmployerPortfoliosArgs = {
+  query?: Maybe<EmployerPortfolioQueryInput>;
   limit?: Maybe<Scalars['Int']>;
   sortBy?: Maybe<EmployerPortfolioSortByInput>;
-  query?: Maybe<EmployerPortfolioQueryInput>;
 };
 
 
@@ -682,9 +252,9 @@ export type QueryParentPortfolioArgs = {
 
 
 export type QueryParentPortfoliosArgs = {
-  query?: Maybe<ParentPortfolioQueryInput>;
   limit?: Maybe<Scalars['Int']>;
   sortBy?: Maybe<ParentPortfolioSortByInput>;
+  query?: Maybe<ParentPortfolioQueryInput>;
 };
 
 
@@ -694,9 +264,9 @@ export type QuerySchoolPortfolioArgs = {
 
 
 export type QuerySchoolPortfoliosArgs = {
+  sortBy?: Maybe<SchoolPortfolioSortByInput>;
   query?: Maybe<SchoolPortfolioQueryInput>;
   limit?: Maybe<Scalars['Int']>;
-  sortBy?: Maybe<SchoolPortfolioSortByInput>;
 };
 
 
@@ -748,14 +318,6 @@ export type QueryUsersArgs = {
 };
 
 
-export type TokenEventLog = {
-  __typename?: 'TokenEventLog';
-  /** @deprecated  */
-  created?: Maybe<Scalars['DateTime']>;
-  /** @deprecated  */
-  event?: Maybe<Scalars['String']>;
-};
-
 export type EmployerPortfolio = {
   __typename?: 'EmployerPortfolio';
   /** @deprecated  */
@@ -772,6 +334,22 @@ export type EmployerPortfolio = {
   workAddress?: Maybe<Scalars['String']>;
 };
 
+export type StudentPortfolioHomeInsertInput = {
+  address?: Maybe<Scalars['String']>;
+  language?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type StudentPortfolioSchoolInsertInput = {
+  name?: Maybe<Scalars['String']>;
+  district?: Maybe<Scalars['String']>;
+};
+
+export type InsertManyPayload = {
+  __typename?: 'InsertManyPayload';
+  /** @deprecated  */
+  insertedIds: Array<Maybe<Scalars['ObjectId']>>;
+};
+
 export type UpdateManyPayload = {
   __typename?: 'UpdateManyPayload';
   /** @deprecated  */
@@ -780,252 +358,165 @@ export type UpdateManyPayload = {
   modifiedCount: Scalars['Int'];
 };
 
-export type ParentPortfolio = {
-  __typename?: 'ParentPortfolio';
-  /** @deprecated  */
-  _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
-  email?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  homeAddress?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  participantEmail?: Maybe<Scalars['String']>;
-};
-
-export type TeacherPortfolio = {
-  __typename?: 'TeacherPortfolio';
-  /** @deprecated  */
-  _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
+export type TeacherPortfolioUpdateInput = {
   schoolAddress?: Maybe<Scalars['String']>;
-  /** @deprecated  */
+  schoolAddress_unset?: Maybe<Scalars['Boolean']>;
   schoolDistrict?: Maybe<Scalars['String']>;
-  /** @deprecated  */
+  schoolDistrict_unset?: Maybe<Scalars['Boolean']>;
   schoolName?: Maybe<Scalars['String']>;
-};
-
-export type StudentPortfolio = {
-  __typename?: 'StudentPortfolio';
-  /** @deprecated  */
+  schoolName_unset?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['ObjectId']>;
-  /** @deprecated  */
-  date?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** @deprecated  */
-  gender?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  grade?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  guardian?: Maybe<StudentPortfolioGuardian>;
-  /** @deprecated  */
-  home?: Maybe<StudentPortfolioHome>;
-  /** @deprecated  */
-  school?: Maybe<StudentPortfolioSchool>;
-};
-
-export type UserUpdateInput = {
-  stripeId_unset?: Maybe<Scalars['Boolean']>;
-  lastName?: Maybe<Scalars['String']>;
-  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  eventLog_unset?: Maybe<Scalars['Boolean']>;
-  lastName_unset?: Maybe<Scalars['Boolean']>;
-  firstName?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  email_unset?: Maybe<Scalars['Boolean']>;
-  firstName_unset?: Maybe<Scalars['Boolean']>;
-  eventLog?: Maybe<Array<Maybe<UserEventLogUpdateInput>>>;
   _id_unset?: Maybe<Scalars['Boolean']>;
-  userTypes_unset?: Maybe<Scalars['Boolean']>;
-  email?: Maybe<Scalars['String']>;
+};
+
+export type UserQueryInput = {
+  lastName_lte?: Maybe<Scalars['String']>;
   stripeId?: Maybe<Scalars['String']>;
-};
-
-export type TokenInsertInput = {
-  newOwner_id?: Maybe<Scalars['ObjectId']>;
-  owner_id?: Maybe<Scalars['ObjectId']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  lastName_gt?: Maybe<Scalars['String']>;
+  email_gt?: Maybe<Scalars['String']>;
+  stripeId_lte?: Maybe<Scalars['String']>;
+  userTypes_exists?: Maybe<Scalars['Boolean']>;
+  lastName?: Maybe<Scalars['String']>;
+  lastName_ne?: Maybe<Scalars['String']>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  stripeId_ne?: Maybe<Scalars['String']>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  userTypes_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  AND?: Maybe<Array<UserQueryInput>>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  eventLog_in?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
+  firstName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  OR?: Maybe<Array<UserQueryInput>>;
+  email_lt?: Maybe<Scalars['String']>;
+  lastName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  firstName_ne?: Maybe<Scalars['String']>;
+  stripeId_exists?: Maybe<Scalars['Boolean']>;
+  stripeId_lt?: Maybe<Scalars['String']>;
+  lastName_exists?: Maybe<Scalars['Boolean']>;
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  firstName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  firstName_exists?: Maybe<Scalars['Boolean']>;
+  userTypes_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  email_exists?: Maybe<Scalars['Boolean']>;
+  lastName_lt?: Maybe<Scalars['String']>;
+  stripeId_gte?: Maybe<Scalars['String']>;
+  firstName_gte?: Maybe<Scalars['String']>;
+  eventLog_nin?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
+  stripeId_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stripeId_gt?: Maybe<Scalars['String']>;
+  lastName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  lastName_gte?: Maybe<Scalars['String']>;
+  stripeId_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_lte?: Maybe<Scalars['String']>;
   _id?: Maybe<Scalars['ObjectId']>;
-  customer_id?: Maybe<Scalars['String']>;
-  eventLog?: Maybe<Array<Maybe<TokenEventLogInsertInput>>>;
+  email?: Maybe<Scalars['String']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  email_ne?: Maybe<Scalars['String']>;
+  firstName_gt?: Maybe<Scalars['String']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  firstName?: Maybe<Scalars['String']>;
+  eventLog?: Maybe<Array<Maybe<UserEventLogQueryInput>>>;
+  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  eventLog_exists?: Maybe<Scalars['Boolean']>;
+  firstName_lte?: Maybe<Scalars['String']>;
+  firstName_lt?: Maybe<Scalars['String']>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  email_gte?: Maybe<Scalars['String']>;
 };
 
-export type TokenEventLogQueryInput = {
+export type UserEventLogQueryInput = {
+  created_gte?: Maybe<Scalars['DateTime']>;
+  created_lte?: Maybe<Scalars['DateTime']>;
   created_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  event_exists?: Maybe<Scalars['Boolean']>;
-  created_nin?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
-  event_gt?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<TokenEventLogQueryInput>>;
-  event_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  event_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  created_ne?: Maybe<Scalars['DateTime']>;
+  AND?: Maybe<Array<UserEventLogQueryInput>>;
   created?: Maybe<Scalars['DateTime']>;
-  OR?: Maybe<Array<TokenEventLogQueryInput>>;
+  created_exists?: Maybe<Scalars['Boolean']>;
+  created_nin?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  OR?: Maybe<Array<UserEventLogQueryInput>>;
+  created_ne?: Maybe<Scalars['DateTime']>;
   created_lt?: Maybe<Scalars['DateTime']>;
   created_gt?: Maybe<Scalars['DateTime']>;
-  created_exists?: Maybe<Scalars['Boolean']>;
-  event?: Maybe<Scalars['String']>;
-  created_lte?: Maybe<Scalars['DateTime']>;
-  event_gte?: Maybe<Scalars['String']>;
-  event_lt?: Maybe<Scalars['String']>;
-  event_lte?: Maybe<Scalars['String']>;
-  created_gte?: Maybe<Scalars['DateTime']>;
-  event_ne?: Maybe<Scalars['String']>;
 };
 
-export type StudentPortfolioSchoolQueryInput = {
-  name_gte?: Maybe<Scalars['String']>;
-  name_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  district_lte?: Maybe<Scalars['String']>;
-  name_lte?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<StudentPortfolioSchoolQueryInput>>;
-  name_exists?: Maybe<Scalars['Boolean']>;
-  district_exists?: Maybe<Scalars['Boolean']>;
-  district?: Maybe<Scalars['String']>;
-  district_lt?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<StudentPortfolioSchoolQueryInput>>;
-  district_gte?: Maybe<Scalars['String']>;
-  district_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  district_ne?: Maybe<Scalars['String']>;
-  name_ne?: Maybe<Scalars['String']>;
-  name_gt?: Maybe<Scalars['String']>;
-  district_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name_lt?: Maybe<Scalars['String']>;
-  district_gt?: Maybe<Scalars['String']>;
+export type User = {
+  __typename?: 'User';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  email?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  eventLog?: Maybe<Array<Maybe<UserEventLog>>>;
+  /** @deprecated  */
+  firstName?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  lastName?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  stripeId?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type EmployerPortfolioQueryInput = {
-  primaryProduct_gt?: Maybe<Scalars['String']>;
-  jobTitle_gte?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<EmployerPortfolioQueryInput>>;
-  primaryProduct_lt?: Maybe<Scalars['String']>;
-  jobTitle_ne?: Maybe<Scalars['String']>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  primaryProduct_lte?: Maybe<Scalars['String']>;
-  primaryProduct_exists?: Maybe<Scalars['Boolean']>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  workAddress_lt?: Maybe<Scalars['String']>;
-  industry_lt?: Maybe<Scalars['String']>;
-  workAddress_gt?: Maybe<Scalars['String']>;
-  primaryProduct_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  workAddress_gte?: Maybe<Scalars['String']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  primaryProduct_ne?: Maybe<Scalars['String']>;
-  workAddress_ne?: Maybe<Scalars['String']>;
-  workAddress_exists?: Maybe<Scalars['Boolean']>;
-  employerName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  jobTitle_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gte?: Maybe<Scalars['ObjectId']>;
-  industry_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  jobTitle_lt?: Maybe<Scalars['String']>;
-  jobTitle_gt?: Maybe<Scalars['String']>;
-  employerName_ne?: Maybe<Scalars['String']>;
-  employerName_gt?: Maybe<Scalars['String']>;
-  primaryProduct_gte?: Maybe<Scalars['String']>;
-  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  employerName_lte?: Maybe<Scalars['String']>;
-  jobTitle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  jobTitle?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<EmployerPortfolioQueryInput>>;
-  workAddress_lte?: Maybe<Scalars['String']>;
-  workAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  jobTitle_lte?: Maybe<Scalars['String']>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
+  primaryProduct?: Maybe<Scalars['String']>;
   industry_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  workAddress?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  employerName_exists?: Maybe<Scalars['Boolean']>;
-  primaryProduct_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  employerName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  industry_exists?: Maybe<Scalars['Boolean']>;
-  jobTitle_exists?: Maybe<Scalars['Boolean']>;
+  industry_gte?: Maybe<Scalars['String']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  workAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  primaryProduct_gt?: Maybe<Scalars['String']>;
   industry?: Maybe<Scalars['String']>;
-  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  jobTitle_lt?: Maybe<Scalars['String']>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  primaryProduct_ne?: Maybe<Scalars['String']>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  industry_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jobTitle_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jobTitle_gt?: Maybe<Scalars['String']>;
+  AND?: Maybe<Array<EmployerPortfolioQueryInput>>;
+  workAddress_gt?: Maybe<Scalars['String']>;
+  workAddress_lt?: Maybe<Scalars['String']>;
+  jobTitle?: Maybe<Scalars['String']>;
+  employerName_lte?: Maybe<Scalars['String']>;
+  primaryProduct_gte?: Maybe<Scalars['String']>;
+  employerName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  industry_ne?: Maybe<Scalars['String']>;
+  industry_exists?: Maybe<Scalars['Boolean']>;
+  workAddress_gte?: Maybe<Scalars['String']>;
+  workAddress_exists?: Maybe<Scalars['Boolean']>;
+  employerName_gte?: Maybe<Scalars['String']>;
   industry_gt?: Maybe<Scalars['String']>;
+  employerName_ne?: Maybe<Scalars['String']>;
+  industry_lt?: Maybe<Scalars['String']>;
+  jobTitle_gte?: Maybe<Scalars['String']>;
+  primaryProduct_exists?: Maybe<Scalars['Boolean']>;
+  employerName_gt?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<EmployerPortfolioQueryInput>>;
+  workAddress?: Maybe<Scalars['String']>;
+  employerName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
   employerName?: Maybe<Scalars['String']>;
   employerName_lt?: Maybe<Scalars['String']>;
-  workAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  industry_lte?: Maybe<Scalars['String']>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  primaryProduct?: Maybe<Scalars['String']>;
-  industry_gte?: Maybe<Scalars['String']>;
-  industry_ne?: Maybe<Scalars['String']>;
-  employerName_gte?: Maybe<Scalars['String']>;
-};
-
-export type SchoolPortfolioQueryInput = {
-  staffType_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholder_gt?: Maybe<Scalars['String']>;
-  schoolDistrict_lte?: Maybe<Scalars['String']>;
-  schoolDistrict_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  districtAddress?: Maybe<Scalars['String']>;
-  AND?: Maybe<Array<SchoolPortfolioQueryInput>>;
-  stakeholder_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  schoolDistrict_lt?: Maybe<Scalars['String']>;
-  staffType_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholderAccess_lte?: Maybe<Scalars['String']>;
-  stakeholder_ne?: Maybe<Scalars['String']>;
-  stakeholderAccess_exists?: Maybe<Scalars['Boolean']>;
-  stakeholder_exists?: Maybe<Scalars['Boolean']>;
-  stakeholderAccess_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  districtAddress_gte?: Maybe<Scalars['String']>;
-  stakeholderAccess_lt?: Maybe<Scalars['String']>;
-  districtAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  schoolDistrict?: Maybe<Scalars['String']>;
-  stakeholder_lt?: Maybe<Scalars['String']>;
-  districtAddress_lte?: Maybe<Scalars['String']>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  districtAddress_gt?: Maybe<Scalars['String']>;
-  stakeholderAccess_ne?: Maybe<Scalars['String']>;
-  stakeholderAccess_gte?: Maybe<Scalars['String']>;
-  districtAddress_exists?: Maybe<Scalars['Boolean']>;
-  schoolDistrict_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholder_gte?: Maybe<Scalars['String']>;
-  districtAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  workAddress_lte?: Maybe<Scalars['String']>;
+  primaryProduct_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jobTitle_exists?: Maybe<Scalars['Boolean']>;
   _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  staffType_exists?: Maybe<Scalars['Boolean']>;
-  stakeholderAccess_in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_gt?: Maybe<Scalars['ObjectId']>;
-  stakeholder_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  _id_exists?: Maybe<Scalars['Boolean']>;
-  _id_ne?: Maybe<Scalars['ObjectId']>;
-  schoolDistrict_ne?: Maybe<Scalars['String']>;
+  industry_lte?: Maybe<Scalars['String']>;
+  jobTitle_lte?: Maybe<Scalars['String']>;
+  workAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id?: Maybe<Scalars['ObjectId']>;
   _id_gte?: Maybe<Scalars['ObjectId']>;
-  districtAddress_lt?: Maybe<Scalars['String']>;
-  schoolDistrict_gt?: Maybe<Scalars['String']>;
-  OR?: Maybe<Array<SchoolPortfolioQueryInput>>;
-  schoolDistrict_gte?: Maybe<Scalars['String']>;
-  stakeholderAccess_gt?: Maybe<Scalars['String']>;
-  districtAddress_ne?: Maybe<Scalars['String']>;
-  schoolDistrict_exists?: Maybe<Scalars['Boolean']>;
-  stakeholderAccess?: Maybe<Scalars['String']>;
+  jobTitle_ne?: Maybe<Scalars['String']>;
   _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
-  _id_lt?: Maybe<Scalars['ObjectId']>;
-  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
-  stakeholder?: Maybe<Scalars['String']>;
-  _id_lte?: Maybe<Scalars['ObjectId']>;
-  stakeholder_lte?: Maybe<Scalars['String']>;
+  jobTitle_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  workAddress_ne?: Maybe<Scalars['String']>;
+  employerName_exists?: Maybe<Scalars['Boolean']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  primaryProduct_lt?: Maybe<Scalars['String']>;
+  primaryProduct_lte?: Maybe<Scalars['String']>;
+  primaryProduct_in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
-
-export type UserEventLog = {
-  __typename?: 'UserEventLog';
-  /** @deprecated  */
-  created?: Maybe<Scalars['DateTime']>;
-};
-
-export enum SchoolPortfolioSortByInput {
-  StakeholderaccessAsc = 'STAKEHOLDERACCESS_ASC',
-  IdDesc = '_ID_DESC',
-  DistrictaddressAsc = 'DISTRICTADDRESS_ASC',
-  SchooldistrictDesc = 'SCHOOLDISTRICT_DESC',
-  StakeholderDesc = 'STAKEHOLDER_DESC',
-  StakeholderaccessDesc = 'STAKEHOLDERACCESS_DESC',
-  IdAsc = '_ID_ASC',
-  DistrictaddressDesc = 'DISTRICTADDRESS_DESC',
-  SchooldistrictAsc = 'SCHOOLDISTRICT_ASC',
-  StakeholderAsc = 'STAKEHOLDER_ASC'
-}
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -1099,6 +590,8 @@ export type Mutation = {
   replaceOneToken?: Maybe<Token>;
   /** @deprecated  */
   replaceOneUser?: Maybe<User>;
+  /** @deprecated  */
+  sendTokensMutation?: Maybe<DefaultPayload>;
   /** @deprecated  */
   updateManyEmployerPortfolios?: Maybe<UpdateManyPayload>;
   /** @deprecated  */
@@ -1285,8 +778,8 @@ export type MutationInsertOneUserArgs = {
 
 
 export type MutationReplaceOneEmployerPortfolioArgs = {
-  query?: Maybe<EmployerPortfolioQueryInput>;
   data: EmployerPortfolioInsertInput;
+  query?: Maybe<EmployerPortfolioQueryInput>;
 };
 
 
@@ -1326,6 +819,11 @@ export type MutationReplaceOneUserArgs = {
 };
 
 
+export type MutationSendTokensMutationArgs = {
+  input?: Maybe<SendTokensInput>;
+};
+
+
 export type MutationUpdateManyEmployerPortfoliosArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
   set: EmployerPortfolioUpdateInput;
@@ -1333,8 +831,8 @@ export type MutationUpdateManyEmployerPortfoliosArgs = {
 
 
 export type MutationUpdateManyParentPortfoliosArgs = {
-  query?: Maybe<ParentPortfolioQueryInput>;
   set: ParentPortfolioUpdateInput;
+  query?: Maybe<ParentPortfolioQueryInput>;
 };
 
 
@@ -1381,20 +879,20 @@ export type MutationUpdateOneParentPortfolioArgs = {
 
 
 export type MutationUpdateOneSchoolPortfolioArgs = {
-  set: SchoolPortfolioUpdateInput;
   query?: Maybe<SchoolPortfolioQueryInput>;
+  set: SchoolPortfolioUpdateInput;
 };
 
 
 export type MutationUpdateOneStudentPortfolioArgs = {
-  set: StudentPortfolioUpdateInput;
   query?: Maybe<StudentPortfolioQueryInput>;
+  set: StudentPortfolioUpdateInput;
 };
 
 
 export type MutationUpdateOneTeacherPortfolioArgs = {
-  query?: Maybe<TeacherPortfolioQueryInput>;
   set: TeacherPortfolioUpdateInput;
+  query?: Maybe<TeacherPortfolioQueryInput>;
 };
 
 
@@ -1429,8 +927,8 @@ export type MutationUpsertOneSchoolPortfolioArgs = {
 
 
 export type MutationUpsertOneStudentPortfolioArgs = {
-  data: StudentPortfolioInsertInput;
   query?: Maybe<StudentPortfolioQueryInput>;
+  data: StudentPortfolioInsertInput;
 };
 
 
@@ -1451,9 +949,399 @@ export type MutationUpsertOneUserArgs = {
   data: UserInsertInput;
 };
 
-export type StudentPortfolioGuardianInsertInput = {
-  relationship?: Maybe<Scalars['String']>;
+export type UserUpdateInput = {
+  firstName?: Maybe<Scalars['String']>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  lastName?: Maybe<Scalars['String']>;
+  lastName_unset?: Maybe<Scalars['Boolean']>;
   email?: Maybe<Scalars['String']>;
+  userTypes_unset?: Maybe<Scalars['Boolean']>;
+  eventLog?: Maybe<Array<Maybe<UserEventLogUpdateInput>>>;
+  email_unset?: Maybe<Scalars['Boolean']>;
+  stripeId?: Maybe<Scalars['String']>;
+  firstName_unset?: Maybe<Scalars['Boolean']>;
+  stripeId_unset?: Maybe<Scalars['Boolean']>;
+  eventLog_unset?: Maybe<Scalars['Boolean']>;
+};
+
+export type SchoolPortfolioInsertInput = {
+  _id?: Maybe<Scalars['ObjectId']>;
+  districtAddress?: Maybe<Scalars['String']>;
+  schoolDistrict?: Maybe<Scalars['String']>;
+  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder?: Maybe<Scalars['String']>;
+  stakeholderAccess?: Maybe<Scalars['String']>;
+};
+
+export type UserEventLogInsertInput = {
+  created?: Maybe<Scalars['DateTime']>;
+};
+
+export type TokenEventLog = {
+  __typename?: 'TokenEventLog';
+  /** @deprecated  */
+  created?: Maybe<Scalars['DateTime']>;
+  /** @deprecated  */
+  event?: Maybe<Scalars['String']>;
+};
+
+export enum TokenSortByInput {
+  NewownerIdDesc = 'NEWOWNER_ID_DESC',
+  OwnerIdAsc = 'OWNER_ID_ASC',
+  OwnerIdDesc = 'OWNER_ID_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+  CustomerIdAsc = 'CUSTOMER_ID_ASC',
+  CustomerIdDesc = 'CUSTOMER_ID_DESC',
+  NewownerIdAsc = 'NEWOWNER_ID_ASC'
+}
+
+export type ParentPortfolioQueryInput = {
+  email?: Maybe<Scalars['String']>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  homeAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  participantEmail_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  homeAddress_gt?: Maybe<Scalars['String']>;
+  homeAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  email_exists?: Maybe<Scalars['Boolean']>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  email_gt?: Maybe<Scalars['String']>;
+  homeAddress?: Maybe<Scalars['String']>;
+  homeAddress_lte?: Maybe<Scalars['String']>;
+  participantEmail_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  OR?: Maybe<Array<ParentPortfolioQueryInput>>;
+  email_lte?: Maybe<Scalars['String']>;
+  AND?: Maybe<Array<ParentPortfolioQueryInput>>;
+  homeAddress_ne?: Maybe<Scalars['String']>;
+  email_lt?: Maybe<Scalars['String']>;
+  homeAddress_exists?: Maybe<Scalars['Boolean']>;
+  homeAddress_gte?: Maybe<Scalars['String']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  participantEmail_lt?: Maybe<Scalars['String']>;
+  email_gte?: Maybe<Scalars['String']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  participantEmail_gte?: Maybe<Scalars['String']>;
+  participantEmail_lte?: Maybe<Scalars['String']>;
+  participantEmail?: Maybe<Scalars['String']>;
+  participantEmail_exists?: Maybe<Scalars['Boolean']>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  email_ne?: Maybe<Scalars['String']>;
+  participantEmail_gt?: Maybe<Scalars['String']>;
+  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  homeAddress_lt?: Maybe<Scalars['String']>;
+  participantEmail_ne?: Maybe<Scalars['String']>;
+};
+
+export type SendTokensInput = {
+  token_ids?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  sender_id?: Maybe<Scalars['ObjectId']>;
+  recipient_id?: Maybe<Scalars['ObjectId']>;
+  recipient_email?: Maybe<Scalars['String']>;
+};
+
+export type SchoolPortfolio = {
+  __typename?: 'SchoolPortfolio';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  districtAddress?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  schoolDistrict?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** @deprecated  */
+  stakeholder?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  stakeholderAccess?: Maybe<Scalars['String']>;
+};
+
+export type ParentPortfolioUpdateInput = {
+  _id?: Maybe<Scalars['ObjectId']>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  email?: Maybe<Scalars['String']>;
+  email_unset?: Maybe<Scalars['Boolean']>;
+  homeAddress?: Maybe<Scalars['String']>;
+  homeAddress_unset?: Maybe<Scalars['Boolean']>;
+  participantEmail?: Maybe<Scalars['String']>;
+  participantEmail_unset?: Maybe<Scalars['Boolean']>;
+};
+
+export enum EmployerPortfolioSortByInput {
+  JobtitleAsc = 'JOBTITLE_ASC',
+  JobtitleDesc = 'JOBTITLE_DESC',
+  PrimaryproductAsc = 'PRIMARYPRODUCT_ASC',
+  WorkaddressDesc = 'WORKADDRESS_DESC',
+  EmployernameDesc = 'EMPLOYERNAME_DESC',
+  IdDesc = '_ID_DESC',
+  EmployernameAsc = 'EMPLOYERNAME_ASC',
+  IndustryAsc = 'INDUSTRY_ASC',
+  IndustryDesc = 'INDUSTRY_DESC',
+  PrimaryproductDesc = 'PRIMARYPRODUCT_DESC',
+  WorkaddressAsc = 'WORKADDRESS_ASC',
+  IdAsc = '_ID_ASC'
+}
+
+export type TokenInsertInput = {
+  newOwner_id?: Maybe<Scalars['ObjectId']>;
+  owner_id?: Maybe<Scalars['ObjectId']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  customer_id?: Maybe<Scalars['String']>;
+  eventLog?: Maybe<Array<Maybe<TokenEventLogInsertInput>>>;
+};
+
+export type TokenEventLogInsertInput = {
+  created?: Maybe<Scalars['DateTime']>;
+  event?: Maybe<Scalars['String']>;
+};
+
+export type StudentPortfolioInsertInput = {
+  date?: Maybe<Scalars['String']>;
+  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
+  gender?: Maybe<Scalars['String']>;
+  grade?: Maybe<Scalars['String']>;
+  guardian?: Maybe<StudentPortfolioGuardianInsertInput>;
+  home?: Maybe<StudentPortfolioHomeInsertInput>;
+  school?: Maybe<StudentPortfolioSchoolInsertInput>;
+  _id?: Maybe<Scalars['ObjectId']>;
+};
+
+export type UserInsertInput = {
+  lastName?: Maybe<Scalars['String']>;
+  stripeId?: Maybe<Scalars['String']>;
+  userTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  email?: Maybe<Scalars['String']>;
+  eventLog?: Maybe<Array<Maybe<UserEventLogInsertInput>>>;
+  firstName?: Maybe<Scalars['String']>;
+};
+
+export enum TeacherPortfolioSortByInput {
+  SchooldistrictAsc = 'SCHOOLDISTRICT_ASC',
+  SchooldistrictDesc = 'SCHOOLDISTRICT_DESC',
+  SchoolnameAsc = 'SCHOOLNAME_ASC',
+  SchoolnameDesc = 'SCHOOLNAME_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+  SchooladdressAsc = 'SCHOOLADDRESS_ASC',
+  SchooladdressDesc = 'SCHOOLADDRESS_DESC'
+}
+
+export type SchoolPortfolioUpdateInput = {
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  stakeholder?: Maybe<Scalars['String']>;
+  districtAddress?: Maybe<Scalars['String']>;
+  districtAddress_unset?: Maybe<Scalars['Boolean']>;
+  stakeholder_unset?: Maybe<Scalars['Boolean']>;
+  stakeholderAccess?: Maybe<Scalars['String']>;
+  stakeholderAccess_unset?: Maybe<Scalars['Boolean']>;
+  staffType_unset?: Maybe<Scalars['Boolean']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  schoolDistrict?: Maybe<Scalars['String']>;
+  schoolDistrict_unset?: Maybe<Scalars['Boolean']>;
+  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type TokenUpdateInput = {
+  _id?: Maybe<Scalars['ObjectId']>;
+  newOwner_id_unset?: Maybe<Scalars['Boolean']>;
+  _id_unset?: Maybe<Scalars['Boolean']>;
+  customer_id_unset?: Maybe<Scalars['Boolean']>;
+  eventLog_unset?: Maybe<Scalars['Boolean']>;
+  owner_id?: Maybe<Scalars['ObjectId']>;
+  owner_id_unset?: Maybe<Scalars['Boolean']>;
+  customer_id?: Maybe<Scalars['String']>;
+  eventLog?: Maybe<Array<Maybe<TokenEventLogUpdateInput>>>;
+  newOwner_id?: Maybe<Scalars['ObjectId']>;
+};
+
+export type DefaultPayload = {
+  __typename?: 'DefaultPayload';
+  /** @deprecated  */
+  status: Scalars['String'];
+};
+
+export type StudentPortfolioHome = {
+  __typename?: 'StudentPortfolioHome';
+  /** @deprecated  */
+  address?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  language?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type StudentPortfolioSchool = {
+  __typename?: 'StudentPortfolioSchool';
+  /** @deprecated  */
+  district?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  name?: Maybe<Scalars['String']>;
+};
+
+export type Token = {
+  __typename?: 'Token';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  customer_id?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  eventLog?: Maybe<Array<Maybe<TokenEventLog>>>;
+  /** @deprecated  */
+  newOwner_id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  owner_id?: Maybe<Scalars['ObjectId']>;
+};
+
+export type StudentPortfolioHomeQueryInput = {
+  OR?: Maybe<Array<StudentPortfolioHomeQueryInput>>;
+  language_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  AND?: Maybe<Array<StudentPortfolioHomeQueryInput>>;
+  address_gt?: Maybe<Scalars['String']>;
+  address_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  language_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  address_ne?: Maybe<Scalars['String']>;
+  address_lt?: Maybe<Scalars['String']>;
+  address_lte?: Maybe<Scalars['String']>;
+  address_gte?: Maybe<Scalars['String']>;
+  language_exists?: Maybe<Scalars['Boolean']>;
+  address_exists?: Maybe<Scalars['Boolean']>;
+  address?: Maybe<Scalars['String']>;
+  language?: Maybe<Array<Maybe<Scalars['String']>>>;
+  address_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type TeacherPortfolio = {
+  __typename?: 'TeacherPortfolio';
+  /** @deprecated  */
+  _id?: Maybe<Scalars['ObjectId']>;
+  /** @deprecated  */
+  schoolAddress?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  schoolDistrict?: Maybe<Scalars['String']>;
+  /** @deprecated  */
+  schoolName?: Maybe<Scalars['String']>;
+};
+
+export type SchoolPortfolioQueryInput = {
+  schoolDistrict_exists?: Maybe<Scalars['Boolean']>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  districtAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder_lte?: Maybe<Scalars['String']>;
+  stakeholderAccess_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  districtAddress_ne?: Maybe<Scalars['String']>;
+  staffType_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  districtAddress?: Maybe<Scalars['String']>;
+  stakeholder_gt?: Maybe<Scalars['String']>;
+  schoolDistrict?: Maybe<Scalars['String']>;
+  schoolDistrict_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolDistrict_lt?: Maybe<Scalars['String']>;
+  districtAddress_gt?: Maybe<Scalars['String']>;
+  stakeholderAccess_lte?: Maybe<Scalars['String']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  stakeholderAccess_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder_ne?: Maybe<Scalars['String']>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  districtAddress_exists?: Maybe<Scalars['Boolean']>;
+  schoolDistrict_gte?: Maybe<Scalars['String']>;
+  stakeholder_gte?: Maybe<Scalars['String']>;
+  stakeholderAccess_exists?: Maybe<Scalars['Boolean']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  schoolDistrict_ne?: Maybe<Scalars['String']>;
+  districtAddress_gte?: Maybe<Scalars['String']>;
+  stakeholder_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolDistrict_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder_exists?: Maybe<Scalars['Boolean']>;
+  stakeholderAccess_gte?: Maybe<Scalars['String']>;
+  districtAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  staffType_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholderAccess_gt?: Maybe<Scalars['String']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  stakeholderAccess?: Maybe<Scalars['String']>;
+  schoolDistrict_lte?: Maybe<Scalars['String']>;
+  stakeholder?: Maybe<Scalars['String']>;
+  districtAddress_lte?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<SchoolPortfolioQueryInput>>;
+  stakeholderAccess_ne?: Maybe<Scalars['String']>;
+  stakeholderAccess_lt?: Maybe<Scalars['String']>;
+  AND?: Maybe<Array<SchoolPortfolioQueryInput>>;
+  staffType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stakeholder_lt?: Maybe<Scalars['String']>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  districtAddress_lt?: Maybe<Scalars['String']>;
+  schoolDistrict_gt?: Maybe<Scalars['String']>;
+  staffType_exists?: Maybe<Scalars['Boolean']>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+};
+
+export enum ParentPortfolioSortByInput {
+  EmailAsc = 'EMAIL_ASC',
+  EmailDesc = 'EMAIL_DESC',
+  HomeaddressAsc = 'HOMEADDRESS_ASC',
+  HomeaddressDesc = 'HOMEADDRESS_DESC',
+  ParticipantemailAsc = 'PARTICIPANTEMAIL_ASC',
+  ParticipantemailDesc = 'PARTICIPANTEMAIL_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC'
+}
+
+export type TeacherPortfolioInsertInput = {
+  schoolName?: Maybe<Scalars['String']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  schoolAddress?: Maybe<Scalars['String']>;
+  schoolDistrict?: Maybe<Scalars['String']>;
+};
+
+export type TokenQueryInput = {
+  eventLog_exists?: Maybe<Scalars['Boolean']>;
+  newOwner_id?: Maybe<Scalars['ObjectId']>;
+  customer_id_gt?: Maybe<Scalars['String']>;
+  owner_id_lte?: Maybe<Scalars['ObjectId']>;
+  eventLog_in?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
+  eventLog_nin?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  customer_id_exists?: Maybe<Scalars['Boolean']>;
+  customer_id_ne?: Maybe<Scalars['String']>;
+  owner_id_exists?: Maybe<Scalars['Boolean']>;
+  customer_id_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  AND?: Maybe<Array<TokenQueryInput>>;
+  customer_id_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  customer_id_gte?: Maybe<Scalars['String']>;
+  newOwner_id_exists?: Maybe<Scalars['Boolean']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  newOwner_id_ne?: Maybe<Scalars['ObjectId']>;
+  customer_id_lt?: Maybe<Scalars['String']>;
+  newOwner_id_lte?: Maybe<Scalars['ObjectId']>;
+  owner_id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  newOwner_id_gte?: Maybe<Scalars['ObjectId']>;
+  owner_id_gte?: Maybe<Scalars['ObjectId']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  OR?: Maybe<Array<TokenQueryInput>>;
+  customer_id?: Maybe<Scalars['String']>;
+  customer_id_lte?: Maybe<Scalars['String']>;
+  eventLog?: Maybe<Array<Maybe<TokenEventLogQueryInput>>>;
+  owner_id_ne?: Maybe<Scalars['ObjectId']>;
+  owner_id_lt?: Maybe<Scalars['ObjectId']>;
+  owner_id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  newOwner_id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  newOwner_id_lt?: Maybe<Scalars['ObjectId']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  owner_id?: Maybe<Scalars['ObjectId']>;
+  owner_id_gt?: Maybe<Scalars['ObjectId']>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  newOwner_id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  newOwner_id_gt?: Maybe<Scalars['ObjectId']>;
 };
 
 
@@ -1464,16 +1352,148 @@ export type ParentPortfolioInsertInput = {
   participantEmail?: Maybe<Scalars['String']>;
 };
 
-export type StudentPortfolioInsertInput = {
-  grade?: Maybe<Scalars['String']>;
-  guardian?: Maybe<StudentPortfolioGuardianInsertInput>;
-  home?: Maybe<StudentPortfolioHomeInsertInput>;
-  school?: Maybe<StudentPortfolioSchoolInsertInput>;
-  _id?: Maybe<Scalars['ObjectId']>;
-  date?: Maybe<Scalars['String']>;
-  ethnicity?: Maybe<Array<Maybe<Scalars['String']>>>;
-  gender?: Maybe<Scalars['String']>;
+export enum StudentPortfolioSortByInput {
+  GenderDesc = 'GENDER_DESC',
+  GradeAsc = 'GRADE_ASC',
+  GradeDesc = 'GRADE_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+  DateAsc = 'DATE_ASC',
+  DateDesc = 'DATE_DESC',
+  GenderAsc = 'GENDER_ASC'
+}
+
+export type UserEventLogUpdateInput = {
+  created?: Maybe<Scalars['DateTime']>;
+  created_unset?: Maybe<Scalars['Boolean']>;
 };
+
+export type TokenEventLogUpdateInput = {
+  created?: Maybe<Scalars['DateTime']>;
+  created_unset?: Maybe<Scalars['Boolean']>;
+  event?: Maybe<Scalars['String']>;
+  event_unset?: Maybe<Scalars['Boolean']>;
+};
+
+export type StudentPortfolioGuardianUpdateInput = {
+  email?: Maybe<Scalars['String']>;
+  email_unset?: Maybe<Scalars['Boolean']>;
+  relationship?: Maybe<Scalars['String']>;
+  relationship_unset?: Maybe<Scalars['Boolean']>;
+};
+
+export type TokenEventLogQueryInput = {
+  created_ne?: Maybe<Scalars['DateTime']>;
+  event_gt?: Maybe<Scalars['String']>;
+  created_gt?: Maybe<Scalars['DateTime']>;
+  event_exists?: Maybe<Scalars['Boolean']>;
+  AND?: Maybe<Array<TokenEventLogQueryInput>>;
+  created_nin?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  event_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  event_gte?: Maybe<Scalars['String']>;
+  event_ne?: Maybe<Scalars['String']>;
+  created_gte?: Maybe<Scalars['DateTime']>;
+  event_lte?: Maybe<Scalars['String']>;
+  created_exists?: Maybe<Scalars['Boolean']>;
+  created_lte?: Maybe<Scalars['DateTime']>;
+  created_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
+  event?: Maybe<Scalars['String']>;
+  event_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  event_lt?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<TokenEventLogQueryInput>>;
+  created?: Maybe<Scalars['DateTime']>;
+  created_lt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum UserSortByInput {
+  LastnameAsc = 'LASTNAME_ASC',
+  LastnameDesc = 'LASTNAME_DESC',
+  StripeidAsc = 'STRIPEID_ASC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+  EmailDesc = 'EMAIL_DESC',
+  FirstnameAsc = 'FIRSTNAME_ASC',
+  FirstnameDesc = 'FIRSTNAME_DESC',
+  EmailAsc = 'EMAIL_ASC',
+  StripeidDesc = 'STRIPEID_DESC'
+}
+
+export type StudentPortfolioGuardianQueryInput = {
+  relationship_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  relationship_gt?: Maybe<Scalars['String']>;
+  email_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_lte?: Maybe<Scalars['String']>;
+  email_gte?: Maybe<Scalars['String']>;
+  relationship_exists?: Maybe<Scalars['Boolean']>;
+  email_exists?: Maybe<Scalars['Boolean']>;
+  relationship?: Maybe<Scalars['String']>;
+  email_gt?: Maybe<Scalars['String']>;
+  relationship_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  email_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  relationship_lt?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  email_ne?: Maybe<Scalars['String']>;
+  OR?: Maybe<Array<StudentPortfolioGuardianQueryInput>>;
+  AND?: Maybe<Array<StudentPortfolioGuardianQueryInput>>;
+  relationship_ne?: Maybe<Scalars['String']>;
+  relationship_gte?: Maybe<Scalars['String']>;
+  email_lt?: Maybe<Scalars['String']>;
+  relationship_lte?: Maybe<Scalars['String']>;
+};
+
+export type TeacherPortfolioQueryInput = {
+  _id_nin?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  _id_lte?: Maybe<Scalars['ObjectId']>;
+  _id?: Maybe<Scalars['ObjectId']>;
+  schoolAddress_lt?: Maybe<Scalars['String']>;
+  schoolDistrict_exists?: Maybe<Scalars['Boolean']>;
+  schoolDistrict_lt?: Maybe<Scalars['String']>;
+  schoolDistrict_gte?: Maybe<Scalars['String']>;
+  _id_gt?: Maybe<Scalars['ObjectId']>;
+  schoolAddress_gte?: Maybe<Scalars['String']>;
+  _id_exists?: Maybe<Scalars['Boolean']>;
+  schoolName_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolAddress_ne?: Maybe<Scalars['String']>;
+  schoolAddress_exists?: Maybe<Scalars['Boolean']>;
+  _id_ne?: Maybe<Scalars['ObjectId']>;
+  schoolAddress_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolAddress?: Maybe<Scalars['String']>;
+  schoolName_ne?: Maybe<Scalars['String']>;
+  schoolName_lt?: Maybe<Scalars['String']>;
+  _id_in?: Maybe<Array<Maybe<Scalars['ObjectId']>>>;
+  _id_lt?: Maybe<Scalars['ObjectId']>;
+  schoolName_lte?: Maybe<Scalars['String']>;
+  schoolName_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolName_gte?: Maybe<Scalars['String']>;
+  _id_gte?: Maybe<Scalars['ObjectId']>;
+  schoolAddress_gt?: Maybe<Scalars['String']>;
+  schoolDistrict?: Maybe<Scalars['String']>;
+  schoolDistrict_gt?: Maybe<Scalars['String']>;
+  schoolDistrict_lte?: Maybe<Scalars['String']>;
+  schoolDistrict_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolDistrict_in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolName_gt?: Maybe<Scalars['String']>;
+  AND?: Maybe<Array<TeacherPortfolioQueryInput>>;
+  OR?: Maybe<Array<TeacherPortfolioQueryInput>>;
+  schoolAddress_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
+  schoolName_exists?: Maybe<Scalars['Boolean']>;
+  schoolAddress_lte?: Maybe<Scalars['String']>;
+  schoolName?: Maybe<Scalars['String']>;
+  schoolDistrict_ne?: Maybe<Scalars['String']>;
+};
+
+export enum SchoolPortfolioSortByInput {
+  StakeholderaccessDesc = 'STAKEHOLDERACCESS_DESC',
+  IdAsc = '_ID_ASC',
+  IdDesc = '_ID_DESC',
+  DistrictaddressAsc = 'DISTRICTADDRESS_ASC',
+  SchooldistrictAsc = 'SCHOOLDISTRICT_ASC',
+  StakeholderDesc = 'STAKEHOLDER_DESC',
+  StakeholderaccessAsc = 'STAKEHOLDERACCESS_ASC',
+  SchooldistrictDesc = 'SCHOOLDISTRICT_DESC',
+  StakeholderAsc = 'STAKEHOLDER_ASC',
+  DistrictaddressDesc = 'DISTRICTADDRESS_DESC'
+}
 
 
       export interface IntrospectionResultData {
