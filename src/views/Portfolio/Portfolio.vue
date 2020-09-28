@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >{{ tickets }} Tickets</v-btn
+            >0 Tickets</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"
@@ -35,105 +35,76 @@
             @click="currentTab = 'payment'"
             ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
           >
-          <div class="profile__mode-container pc-container">
-            <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-            <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
-            <v-btn
-              class="profile__mode"
-              depressed
-              color="grey"
+          <v-btn
+            class="profile__mode white--text font-weight-bold"
+            depressed
+            color="green"
+            small
+            @click="currentTab = 'referral'"
+            ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
+          >
+        </div>
+        <div class="profile__container pc-container">
+          <!-- <div class="profile__namepate"> -->
+          <!-- <div class="profile__image"></div> -->
+          <!-- </div> -->
+
+          <!-- Chip Tabs -->
+
+          <div class="profile__sub-container text-center mt-12">
+            <div>
+              <v-badge bordered color="orange" offset-x="32" offset-y="32">
+                <v-avatar color="orange" size="150">
+                  <v-img
+                    src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+                  ></v-img>
+                </v-avatar>
+              </v-badge>
+
+              <span class="profile__name">{{ firstName }} {{ lastName }}</span>
+            </div>
+
+            <v-chip
+              class="pl-8 pr-8 ma-2"
+              color="black"
+              outlined
+              @click="currentTab = 'my programs'"
+            >
+              <v-icon left>mdi-server-plus</v-icon>
+              Programs
+            </v-chip>
+
+            <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
+              <v-icon left>mdi-wrench</v-icon>
+              Settings
+            </v-chip>
+
+            <v-chip
+              v-for="(owner, index) in modOriginalOwners"
+              :key="index"
               dark
-              small
-              @click="currentTab = 'my-programs'"
-              >Manage</v-btn
+              :color="owner.color"
+              class="pl-8 pr-8 ma-2"
             >
-            <div class="profile__spacer"></div>
-            <v-btn
-              class="profile__mode font-weight-bold"
-              text
-              color="grey"
-              small
-              @click="currentTab = 'balance'"
-              >0 Tickets</v-btn
-            >
-            <v-btn
-              class="profile__mode white--text font-weight-bold"
-              depressed
-              color="purple"
-              small
-              @click="currentTab = 'payment'"
-              ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
-            >
-            <v-btn
-              class="profile__mode white--text font-weight-bold"
-              depressed
-              color="green"
-              small
-              @click="currentTab = 'referral'"
-              ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
-            >
-          </div>
-          <div class="profile__container pc-container">
-            <!-- <div class="profile__namepate"> -->
-            <!-- <div class="profile__image"></div> -->
-            <!-- </div> -->
+              <v-icon left>mdi-account-outline</v-icon>
+              {{ `${owner.userTypes}` }}
+            </v-chip>
 
-            <!-- Chip Tabs -->
-
-            <div class="profile__sub-container text-center mt-12">
-              <div>
-                <v-badge bordered color="orange" offset-x="32" offset-y="32">
-                  <v-avatar color="orange" size="150">
-                    <v-img
-                      src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-                    ></v-img>
-                  </v-avatar>
-                </v-badge>
-
-                <span class="profile__name">{{ firstName }} {{ lastName }}</span>
-              </div>
-
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'my programs'"
-              >
-                <v-icon left>mdi-server-plus</v-icon>
-                Programs
-              </v-chip>
-
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
-
-              <v-chip v-for="id in userTypes" :key="id" class="pl-8 pr-8 ma-2" dark :color="color">
-                <v-icon left>mdi-account-outline</v-icon>
-                {{ id }}
-              </v-chip>
-
-              <!-- <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
+            <!-- <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
               <v-icon left>mdi-plus</v-icon>
               Add Citizen Type
             </v-chip> -->
-            </div>
-
-            <component :is="getComponent" />
           </div>
 
-          <div class="profile__tabs">
-            <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
-              <div class="pc-highlight"></div>
-              <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{
-                tab
-              }}</span>
-            </div>
+          <component :is="getComponent" />
+        </div>
+
+        <div class="profile__tabs">
+          <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
+            <div class="pc-highlight"></div>
+            <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{
+              tab
+            }}</span>
           </div>
         </div>
       </v-skeleton-loader>
@@ -198,6 +169,16 @@ export default {
       userTypes: []
     });
 
+    // UI Management
+    const colors = ['red', 'orange', 'blue', 'purple', 'pink', 'yellow'];
+    const modOriginalOwners = computed(() =>
+      user.userTypes.map(owner => ({
+        ...user,
+        color: colors[Math.floor(Math.random() * (colors.length - 1))]
+      }))
+    );
+
+    // loader
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
 
     // GraphQL Query
@@ -229,7 +210,16 @@ export default {
       loader.value!.process();
     });
 
-    return { tabs, currentTab, getComponent, IDs, ...toRefs(user), loader, processQuery };
+    return {
+      tabs,
+      currentTab,
+      getComponent,
+      IDs,
+      ...toRefs(user),
+      loader,
+      processQuery,
+      modOriginalOwners
+    };
   }
 };
 </script>

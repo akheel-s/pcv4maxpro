@@ -2,7 +2,7 @@
   <div class="my-id__container">
     <component :is="expComponent ? expComponent : getComponent" />
 
-    <v-row class="mt-12" justify="center">
+    <!-- <v-row class="mt-12" justify="center">
       <v-btn class="red darken-1" dark depressed x-large @click.stop="dialog = true"
         ><v-icon left>mdi-delete</v-icon>Delete ID</v-btn
       >
@@ -22,7 +22,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </v-row>
+    </v-row> -->
   </div>
 </template>
 
