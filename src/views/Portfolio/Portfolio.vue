@@ -21,7 +21,7 @@
         color="grey"
         small
         @click="currentTab = 'balance'"
-        >0 Tickets</v-btn
+        >{{ tickets }} Tickets</v-btn
       >
       <v-btn
         class="profile__mode white--text font-weight-bold"
@@ -289,6 +289,9 @@
 </style>
 <script lang="ts">
 import { ref, computed } from '@vue/composition-api';
+import gql from 'graphql-tag';
+import { User, Token } from '@/generated/graphql';
+import { useAuthGetters } from '@/store';
 import Portfolio from './views';
 
 export default {
@@ -301,7 +304,8 @@ export default {
     payment: Portfolio.Payment,
     referral: Portfolio.Referral
   },
-  setup() {
+  setup(_props, { root: { $apolloProvider } }) {
+    // Layout Generation
     const tabs = ref(['My Programs', 'Settings', 'ID']);
     const currentTab = ref('My Programs');
     const IDs = ref({
@@ -316,7 +320,26 @@ export default {
       tab = tab.split(' ').join('-');
       return tab;
     });
-    return { tabs, currentTab, getComponent, IDs };
+    // Data Handling
+    const id = useAuthGetters(['getId']).getId;
+    const tickets = ref(0);
+    const MYTOKENQUERY = gql`
+      query myTokensCustomer($id: ObjectId!) {
+        tokens(query: { newOwner_id: $id }) {
+          customer_id
+        }
+      }
+    `;
+    $apolloProvider.defaultClient
+      .query<{ tokens: Token[] }>({
+        query: MYTOKENQUERY,
+        variables: { id: id.value }
+      })
+      .then(({ data: { tokens } }) => {
+        console.log(tokens);
+        tickets.value = tokens.length;
+      });
+    return { tabs, currentTab, getComponent, IDs, tickets };
   }
 };
 </script>
