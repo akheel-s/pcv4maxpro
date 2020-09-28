@@ -3,7 +3,7 @@
   <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
     <div>
       <v-skeleton-loader
-        :loading="loading"
+        :loading="loading || !user"
         type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
       >
         <div class="profile__mode-container pc-container">
@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >0 Tickets</v-btn
+            >{{ tickets }} Tickets</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"
@@ -51,7 +51,7 @@
 
           <!-- Chip Tabs -->
 
-          <div class="profile__sub-container text-center mt-12">
+          <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
               <v-badge bordered color="orange" offset-x="32" offset-y="32">
                 <v-avatar color="orange" size="150">
@@ -61,7 +61,7 @@
                 </v-avatar>
               </v-badge>
 
-              <span class="profile__name">{{ firstName }} {{ lastName }}</span>
+              <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
 
             <v-chip
@@ -79,7 +79,13 @@
               Settings
             </v-chip>
 
-            <v-chip v-for="id in userTypes" :key="id" class="pl-8 pr-8 ma-2" dark :color="color">
+            <v-chip
+              v-for="id in user.userTypes"
+              :key="id"
+              class="pl-8 pr-8 ma-2"
+              dark
+              :color="IDs[id]"
+            >
               <v-icon left>mdi-account-outline</v-icon>
               {{ id }}
             </v-chip>
@@ -105,99 +111,6 @@
     </div>
   </Loading>
 </template>
-
-<script lang="ts">
-import { ref, computed, reactive, toRefs, onMounted, Ref } from '@vue/composition-api';
-import { useAuthGetters } from '@/store';
-import { GetterTypes } from '@/store/modules/auth/getters';
-import { User } from '@/generated/graphql';
-import gql from 'graphql-tag';
-import Loading from '@/components/Loading.vue';
-import Portfolio from './views';
-
-const {
-  getObjectId: { value: getObjectId }
-} = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
-
-export default {
-  name: 'Portfolio',
-
-  components: {
-    'my-programs': Portfolio.MyPrograms,
-    id: Portfolio.CitizenID,
-    // settings: Portfolio.Settings,
-    balance: Portfolio.Balance,
-    payment: Portfolio.Payment,
-    referral: Portfolio.Referral,
-    Loading
-  },
-  setup(
-    props,
-    {
-      emit,
-      root: {
-        $apolloProvider: {
-          defaultClient: { query }
-        }
-      }
-    }
-  ) {
-    const tabs = ref(['My Programs', 'Settings', 'ID']);
-    const currentTab = ref('My Programs');
-    const IDs = ref({
-      Employer: 'purple',
-      Student: 'green',
-      Teacher: 'pink',
-      School: 'blue',
-      Parent: 'yellow'
-    });
-    const getComponent = computed(() => {
-      let tab = currentTab.value.toLowerCase();
-      tab = tab.split(' ').join('-');
-      return tab;
-    });
-
-    const user = reactive({
-      firstName: '',
-      lastName: '',
-      userTypes: []
-    });
-
-    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
-
-    // GraphQL Query
-    const GENERALIDQUERY = gql`
-      query thisGeneralUser($id: ObjectId!) {
-        user(query: { _id: $id }) {
-          firstName
-          lastName
-          userTypes
-        }
-      }
-    `;
-
-    // Invoke Query
-    function processQuery() {
-      return query<{ user: User }>({
-        query: GENERALIDQUERY,
-        variables: { id: getObjectId }
-      }).then(({ data: { user: userRes } }) => {
-        // Set Query result when loaded
-        Object.keys(user).forEach(key => {
-          if (userRes[key]) user[key] = userRes[key];
-        });
-      });
-    }
-
-    // emit('input');
-    onMounted(() => {
-      loader.value!.process();
-    });
-
-    return { tabs, currentTab, getComponent, IDs, ...toRefs(user), loader, processQuery };
-  }
-};
-</script>
 
 <style lang="scss">
 .profile {
@@ -393,3 +306,76 @@ export default {
   }
 }
 </style>
+<script lang="ts">
+import { ref, computed, Ref, onMounted, toRefs } from '@vue/composition-api';
+import gql from 'graphql-tag';
+import { Token } from '@/generated/graphql';
+import { useAuthGetters, useDbState } from '@/store';
+import LoadingVue from '@/components/Loading.vue';
+import Portfolio from './views';
+
+export default {
+  name: 'Portfolio',
+  components: {
+    'my-programs': Portfolio.MyPrograms,
+    id: Portfolio.CitizenID,
+    balance: Portfolio.Balance,
+    payment: Portfolio.Payment,
+    referral: Portfolio.Referral,
+    Loading: LoadingVue
+  },
+  setup(_props, { root: { $apolloProvider } }) {
+    // Layout Generation
+    const tabs = ref(['My Programs', 'ID']);
+    const currentTab = ref('My Programs');
+    const IDs = ref({
+      Employer: 'purple',
+      Student: 'green',
+      Teacher: 'pink',
+      School: 'blue',
+      Parent: 'yellow'
+    });
+    const getComponent = computed(() => {
+      let tab = currentTab.value.toLowerCase();
+      tab = tab.split(' ').join('-');
+      return tab;
+    });
+    // Data Handling
+    const id = useAuthGetters(['getId']).getId;
+    const tickets = ref(0);
+    const MYTOKENQUERY = gql`
+      query myTokensCustomer($id: ObjectId!) {
+        tokens(query: { newOwner_id: $id }) {
+          customer_id
+        }
+      }
+    `;
+    const processQuery = () =>
+      $apolloProvider.defaultClient
+        .query<{ tokens: Token[] }>({
+          query: MYTOKENQUERY,
+          variables: { id: id.value }
+        })
+        .then(({ data: { tokens } }) => {
+          console.log(tokens);
+          tickets.value = tokens.length;
+        });
+    // Skeleton Loader
+    const loader: Ref<ReturnType<typeof LoadingVue['setup']> | null> = ref(null);
+
+    onMounted(() => {
+      loader.value!.process();
+    });
+    return {
+      tabs,
+      currentTab,
+      getComponent,
+      IDs,
+      tickets,
+      loader,
+      processQuery,
+      user: useDbState(['user']).user
+    };
+  }
+};
+</script>
