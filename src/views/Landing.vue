@@ -349,6 +349,7 @@
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/teacher-2.png"
       dark
+      height="650"
       class="landing__hero-default"
     >
       <div class="landing__2-column">
@@ -368,7 +369,95 @@
           <v-btn rounded outlined depressed dark large>Invite Schools, Students and Peers</v-btn>
         </div>
       </div>
+
+      <div class="landing__content-grid">
+        <v-chip-group>
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Computer Science</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large>Engineering</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo" large>Digital Media</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Public Service</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Transportation</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Business & Finance</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Education & Family</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large
+            >Energy & Sustainability</v-chip
+          >
+          <v-chip dark color="pink" class="landing__content-grid-combo" large>Healthcare</v-chip>
+        </v-chip-group>
+      </div>
     </v-parallax>
+
+    <!-- <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Subject Areas</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Classes that find our program amplifying</v-btn
+      >
+      <div class="landing__content-grid">
+        <v-chip-group>
+          <v-chip dark class="landing__content-grid-combo" large>Computer Science</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Engineering</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Digital Media</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Public Service</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Transportation</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Business & Finance</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Education & Family</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Energy & Sustainability</v-chip>
+          <v-chip dark class="landing__content-grid-combo" large>Healthcare</v-chip>
+        </v-chip-group>
+      </div>
+
+      <div class="landing__content-grid">
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Computer Science
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Engineering
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Digital Media
+        </div>
+      </div>
+
+      <div class="landing__content-grid">
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Public Service
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Transportation
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Business & Finance
+        </div>
+      </div>
+
+      <div class="landing__content-grid">
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Education & Family
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Energy & Sustainability
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Healthcare
+        </div>
+      </div>
+    </v-parallax> -->
 
     <!-- <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink.svg"
@@ -434,6 +523,31 @@
     </v-parallax>
 
     <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_blue-1.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Outcomes</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >What our program delivers to our student participants</v-btn
+      >
+
+      <div class="landing__content-grid">
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Project-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Work-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Service-based Learning
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/employer.png"
       dark
       class="landing__hero-default"
@@ -455,6 +569,19 @@
           <v-btn rounded outlined depressed dark large>Onboard Now</v-btn>
         </div>
       </div>
+    </v-parallax>
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_purple-1.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Deliverables</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Prototypes, pilots and products for employer goals</v-btn
+      >
     </v-parallax>
 
     <v-parallax
@@ -481,6 +608,19 @@
           <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
         </div>
       </div>
+    </v-parallax>
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_red-1.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Impact</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Sponsor participants to advance outcome goals</v-btn
+      >
     </v-parallax>
 
     <v-parallax
@@ -650,7 +790,7 @@ export default {
     // justify-content: center;
     // align-items: center;
     margin: 5px;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   &__2-column {
@@ -922,6 +1062,20 @@ export default {
     // justify-content: center;
     // align-items: center;
     // font-style:italic;
+  }
+
+  &__content-grid {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    max-width: 100%;
+  }
+
+  &__content-grid-combo {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 22px;
   }
 }
 </style>
