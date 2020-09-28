@@ -16,28 +16,72 @@
         <div class="landing__hero-title">Digital programs, for digital cities.</div>
 
         <div class="landing__hero-cta">
-          <v-text-field dark rounded outlined label="Enter your email"></v-text-field
+          <v-text-field dark rounded outlined label="Signup with email"></v-text-field
           ><v-btn class="landing__hero-cta-button" x-large rounded depressed dark
             >Build Communities</v-btn
           >
         </div>
 
         <div class="landing__hero-citizenchips text-center">
-          <v-chip center dark color="green" class="landing__hero-citizenchips-group"
-            >For Students</v-chip
+          <v-btn
+            center
+            rounded
+            depressed
+            dark
+            color="green"
+            class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-clover</v-icon>Students</v-btn
+          >
+          <v-btn
+            center
+            rounded
+            depressed
+            dark
+            color="purple"
+            class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-graph-outline</v-icon>Employers</v-btn
+          >
+          <v-btn center rounded depressed dark color="pink" class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-head-heart</v-icon>Teachers</v-btn
+          >
+          <v-btn center rounded depressed dark color="blue" class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-airballoon</v-icon>Schools</v-btn
+          >
+          <v-btn
+            center
+            rounded
+            depressed
+            dark
+            color="yellow"
+            class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-sign-direction</v-icon>Parents</v-btn
+          >
+          <v-btn center rounded depressed dark color="red" class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-currency-usd-circle</v-icon>Sponsors</v-btn
+          >
+
+          <!-- <v-btn
+            center
+            dark
+            color="green"
+            class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-clover</v-icon>For Students</v-btn
           >
           <v-chip center dark color="purple" class="landing__hero-citizenchips-group"
-            >For Employers</v-chip
+            ><v-icon left>mdi-graph-outline</v-icon>For Employers</v-chip
           >
           <v-chip center dark color="pink" class="landing__hero-citizenchips-group"
-            >For Teachers</v-chip
+            ><v-icon left>mdi-head-heart</v-icon>For Teachers</v-chip
           >
           <v-chip center dark color="blue" class="landing__hero-citizenchips-group"
-            >For Schools</v-chip
+            ><v-icon left>mdi-airballoon</v-icon>For Schools</v-chip
           >
           <v-chip center dark color="yellow" class="landing__hero-citizenchips-group"
-            >For Parents</v-chip
+            ><v-icon left>mdi-sign-direction</v-icon>For Parents</v-chip
           >
+          <v-chip center dark color="red" class="landing__hero-citizenchips-group"
+            ><v-icon left>mdi-currency-usd-circle</v-icon>For Sponsors</v-chip
+          > -->
         </div>
       </div>
     </v-parallax>
@@ -82,6 +126,42 @@
         </div>
       </div>
     </v-parallax> -->
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-background4.png"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <div class="landing__text-testimonial">
+            <v-icon left dark>mdi-comment-quote</v-icon>
+            PilotCity kicks the idea of 'coffee fetching and document copying' internships to the
+            curb
+          </div>
+          <div class="landing__text-testimonial-body">
+            <div>
+              <v-avatar size="75">
+                <v-img
+                  src="https://f.hubspotusercontent00.net/hubfs/2480959/_DSC4843_small.jpg"
+                ></v-img>
+              </v-avatar>
+            </div>
+            <div class="landing__text-testimonial-title">
+              <div class="landing__text-testimonial-name">Kevin C.</div>
+              <div class="landing__text-testimonial-position">Intern, Strategy of Things</div>
+            </div>
+          </div>
+        </div>
+        <div class="landing__right landing__testimonial-logo">
+          <v-img
+            max-width="200"
+            src="https://f.hubspotusercontent00.net/hubfs/2480959/StrategyOfThings_white.png"
+          ></v-img>
+        </div>
+      </div>
+    </v-parallax>
 
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
@@ -150,7 +230,7 @@
           </div>
         </div>
         <div class="landing__right">
-          <v-icon dark x-large color="green">mdi-telegram</v-icon><br />
+          <v-icon dark x-large color="green">mdi-clover</v-icon><br />
           <div class="landing__text-subtitle-green">Student choice of employer</div>
           <div class="landing__text-body">
             Freely explore employer programs and projects<br />
@@ -171,7 +251,7 @@
       height="100%"
       src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
     >
-      <div class="landing__primary-title">The highest potential energy</div>
+      <div class="landing__primary-title">Students are our protagonist</div>
       <v-img
         src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_CrossSector_v3.svg"
         class="landing__primary-image"
@@ -195,7 +275,7 @@
           </v-card>
         </div>
         <div class="landing__right">
-          <v-icon dark x-large color="pink">mdi-telegram</v-icon><br />
+          <v-icon dark x-large color="pink">mdi-head-heart</v-icon><br />
           <div class="landing__text-subtitle-pink">Teacher as coach, and monitor</div>
           <div class="landing__text-body">
             Share explore programs page with students<br />
@@ -206,6 +286,42 @@
         </div>
       </div>
     </v-parallax>
+
+    <!-- <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <div class="landing__text-testimonial">
+            <v-icon left dark>mdi-comment-quote</v-icon>
+            PilotCity kicks the idea of 'coffee fetching and document copying' internships to the
+            curb
+          </div>
+          <div class="landing__text-testimonial-body">
+            <div>
+              <v-avatar size="75">
+                <v-img
+                  src="https://f.hubspotusercontent00.net/hubfs/2480959/_DSC4843_small.jpg"
+                ></v-img>
+              </v-avatar>
+            </div>
+            <div class="landing__text-testimonial-title">
+              <div class="landing__text-testimonial-name">Kevin C.</div>
+              <div class="landing__text-testimonial-position">Intern, Strategy of Things</div>
+            </div>
+          </div>
+        </div>
+        <div class="landing__right landing__testimonial-logo">
+          <v-img
+            max-width="200"
+            src="https://f.hubspotusercontent00.net/hubfs/2480959/StrategyOfThings_white.png"
+          ></v-img>
+        </div>
+      </div>
+    </v-parallax> -->
 
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/school.png"
@@ -219,7 +335,7 @@
           </v-card>
         </div>
         <div class="landing__right">
-          <v-icon dark x-large color="blue">mdi-telegram</v-icon><br />
+          <v-icon dark x-large color="blue">mdi-airballoon</v-icon><br />
           <div class="landing__text-subtitle-blue">School as sponsor, and stakeholder</div>
           <div class="landing__text-body">
             Sponsor student participants<br />
@@ -235,7 +351,7 @@
     </v-parallax>
 
     <v-parallax
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/parent.png"
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/parent_v2.png"
       dark
       class="landing__hero-default"
     >
@@ -246,7 +362,7 @@
           </v-card>
         </div>
         <div class="landing__right">
-          <v-icon dark x-large color="yellow">mdi-telegram</v-icon><br />
+          <v-icon dark x-large color="yellow">mdi-sign-direction</v-icon><br />
           <div class="landing__text-subtitle-yellow">Parent as sponsor, and stakeholder</div>
           <div class="landing__text-body">
             Sponsor student participants<br />
@@ -255,6 +371,42 @@
           </div>
 
           <v-btn rounded outlined depressed dark large>Invite Your Student and School</v-btn>
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_yellow.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <div class="landing__text-testimonial-black">
+            <v-icon left dark>mdi-comment-quote</v-icon>
+            PilotCity is 'too good to be true' for people of all ages who would like to rediscover
+            themselves.
+          </div>
+          <div class="landing__text-testimonial-body">
+            <div>
+              <v-avatar size="75">
+                <v-img
+                  src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                ></v-img>
+              </v-avatar>
+            </div>
+            <div class="landing__text-testimonial-title">
+              <div class="landing__text-testimonial-name-black">Nina S.</div>
+              <div class="landing__text-testimonial-position">PilotCity Parent & Guardian</div>
+            </div>
+          </div>
+        </div>
+        <div class="landing__right landing__testimonial-logo">
+          <v-img
+            max-width="75"
+            src="https://f.hubspotusercontent00.net/hubfs/2480959/WI_P_Wireframe-1.png"
+          ></v-img>
         </div>
       </div>
     </v-parallax>
@@ -271,7 +423,7 @@
           </v-card>
         </div>
         <div class="landing__right">
-          <v-icon dark x-large color="purple">mdi-telegram</v-icon>
+          <v-icon dark x-large color="purple">mdi-graph-outline</v-icon>
           <div class="landing__text-subtitle-purple">Employer simple, low-commitment setup</div>
           <div class="landing__text-body">
             Setup program from template<br />
@@ -279,6 +431,32 @@
             Asynchronous interactions, or zero-management option
           </div>
           <v-btn rounded outlined depressed dark large>Onboard Now</v-btn>
+        </div>
+      </div>
+    </v-parallax>
+
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/sponsor.png"
+      dark
+      class="landing__hero-default"
+    >
+      <div class="landing__2-column">
+        <div class="landing__left">
+          <v-card elevation="0" tile depressed>
+            <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
+          </v-card>
+        </div>
+        <div class="landing__right">
+          <v-icon dark x-large color="red">mdi-currency-usd-circle</v-icon>
+          <div class="landing__text-subtitle-red">
+            Sponsor participants, and monitor your impact
+          </div>
+          <div class="landing__text-body">
+            Sign-up for an account<br />
+            Sponsor and purchase program tokens<br />
+            Transfer to participants and stakeholders for use
+          </div>
+          <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
         </div>
       </div>
     </v-parallax>
@@ -369,10 +547,12 @@ export default {
   &__hero-cta-button {
     margin-left: 10px;
     margin-right: 10px;
+    font-family: Montserrat;
+    font-weight: 700;
   }
 
   &__hero-citizenchips {
-    width: 50%;
+    width: 75%;
     padding-top: 25px;
     font-family: Montserrat;
     font-weight: 700;
@@ -387,6 +567,7 @@ export default {
     // justify-content: center;
     // align-items: center;
     margin: 5px;
+    font-weight: 700;
   }
 
   &__2-column {
@@ -427,6 +608,11 @@ export default {
     padding-left: 50px;
   }
 
+  &__testimonial-logo {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
   &__text-subtitle-pink {
     font-family: Montserrat;
     font-weight: 800;
@@ -439,6 +625,13 @@ export default {
     font-weight: 800;
     font-size: 42px;
     color: #ae92b1;
+  }
+
+  &__text-subtitle-red {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 42px;
+    color: #ea6764;
   }
 
   &__text-subtitle-blue {
@@ -460,6 +653,65 @@ export default {
     font-weight: 800;
     font-size: 42px;
     color: #6fba7f;
+  }
+
+  &__text-testimonial {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 22px;
+    color: #6fba7f;
+    max-width: 75%;
+    margin-top: 100px;
+    margin-bottom: 35px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__text-testimonial-black {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 22px;
+    color: #404142;
+    max-width: 75%;
+    margin-top: 100px;
+    margin-bottom: 35px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__text-testimonial-body {
+    flex-direction: row;
+    display: flex;
+    margin-bottom: 100px;
+  }
+
+  &__text-testimonial-title {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    padding-left: 25px;
+  }
+
+  &__text-testimonial-name {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15px;
+    color: #6fba7f;
+  }
+
+  &__text-testimonial-name-black {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15px;
+    color: #404142;
+  }
+
+  &__text-testimonial-position {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 15px;
   }
 
   &__text-body {
