@@ -30,7 +30,7 @@
           depressed
           rounded
           x-large
-          @click="emitSaveID"
+          @click="processTransfer"
         >
           <v-icon left>mdi-telegram</v-icon>Send</v-btn
         >
@@ -83,18 +83,55 @@
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
+import { useAuthGetters, useDbState } from '@/store';
+import gql from 'graphql-tag';
+import { SendReferalInput } from '@/generated/graphql';
+import { GetterTypes } from '@/store/modules/auth/getters';
 import { AllInvites } from '../../components';
+
+const {
+  getObjectId: { value: getObjectId }
+} = useAuthGetters([GetterTypes.getObjectId]);
 
 export default {
   name: 'Referral',
   components: { AllInvites },
-  setup() {
+  setup(
+    _props,
+    {
+      root: {
+        $apolloProvider: {
+          defaultClient: { mutate }
+        }
+      }
+    }
+  ) {
     const details = reactive({
-      email: '',
-      phoneNumber: ''
+      email: ''
     });
 
-    return { ...toRefs(details) };
+    const processTransfer = async () => {
+      console.log(
+        await mutate({
+          mutation: gql`
+            mutation sendInvite($input: SendReferalInput!) {
+              sendRefferal(input: $input) {
+                status
+              }
+            }
+          `,
+          variables: {
+            input: {
+              id: getObjectId,
+              email: details.email,
+              name: useDbState(['user']).user.value!.firstName
+            } as SendReferalInput
+          }
+        })
+      );
+    };
+
+    return { ...toRefs(details), processTransfer };
   }
 };
 </script>

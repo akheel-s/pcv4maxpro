@@ -10,7 +10,8 @@ export enum Collection {
   ParentPortfolio = 'ParentPortfolio',
   Program = 'Program',
   Team = 'Team',
-  Participant = 'Participant'
+  Participant = 'Participant',
+  Transaction = 'Transaction'
 }
 export type getCollectionType<T extends keyof typeof Collection> = T extends 'User'
   ? UserType
