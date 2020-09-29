@@ -95,7 +95,7 @@ export default {
   &__textfield {
     margin-top: 1%;
     width: 30%;
-    margin-left: 36%;
+    margin-left: 35%;
     align-content: center;
     text-align: center;
     align-items: center;
@@ -119,7 +119,7 @@ export default {
   &__button {
     width: 30%;
     margin-bottom: 50%;
-    margin-left: 36%;
+    margin-left: 35%;
     & .v-btn__content {
       color: white;
     }
