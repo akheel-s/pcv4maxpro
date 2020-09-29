@@ -2,7 +2,7 @@
   <div>
     <div class="my-settings__subtitle">Password</div>
 
-    <validation-provider v-slot="{ errors }" rules="required">
+    <!-- <validation-provider v-slot="{ errors }" rules="required">
       <v-text-field
         v-model="currentPasssword"
         :error-messages="errors"
@@ -15,11 +15,9 @@
     <validation-provider v-slot="{ errors }" rules="required">
       <v-text-field v-model="newPassword" :error-messages="errors" outlined label="New Password">
       </v-text-field>
-    </validation-provider>
+    </validation-provider> -->
 
-    <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
-      >Change Password</v-btn
-    >
+    <v-btn outlined depressed x-large href="password-reset">Forgot Password</v-btn>
   </div>
 </template>
 <style lang="scss">
@@ -70,42 +68,9 @@
 }
 </style>
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import {} from '@vue/composition-api';
 
 export default {
-  name: 'Settings',
-  setup() {
-    const idItems = ref([
-      { title: 'General', icon: 'mdi-key' },
-      { title: 'Notifications', icon: 'mdi-bell' },
-      { title: 'Programs', icon: 'mdi-telegram' },
-      { title: 'Delete Account', icon: 'mdi-delete', color: 'red' }
-    ]);
-    return { idItems };
-  },
-  data: () => ({
-    items: [
-      {
-        id: 1,
-        name: 'Program 1',
-        children: [{ id: 2, name: 'Date joined: September 1st, 2020' }]
-      },
-      {
-        id: 5,
-        name: 'Program 2',
-        children: [{ id: 2, name: 'Date joined: September 1st, 2020' }]
-      },
-      {
-        id: 15,
-        name: 'Program 3',
-        children: [{ id: 2, name: 'Date joined: September 1st, 2020' }]
-      },
-      {
-        id: 19,
-        name: 'Program 4',
-        children: [{ id: 2, name: 'Date joined: September 1st, 2020' }]
-      }
-    ]
-  })
+  name: 'Settings'
 };
 </script>

@@ -11,9 +11,7 @@
       </v-text-field>
     </validation-provider>
 
-    <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
-      >Change Email</v-btn
-    >
+    <v-btn :disabled="invalid" outlined depressed x-large @click="emitSaveID">Change Email</v-btn>
   </div>
 </template>
 <style lang="scss">
