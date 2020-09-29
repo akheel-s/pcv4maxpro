@@ -72,9 +72,8 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import gql from 'graphql-tag';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
-// import gql from 'graphql-tag';
+
 const {
-  getUser: { value: getUser },
   getObjectId: { value: getObjectId }
   // getId: { value: getId }
 } = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);

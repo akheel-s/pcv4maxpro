@@ -21,36 +21,86 @@
       </v-navigation-drawer>
     </div>
 
-    <div class="my-settings__wrapper-right">
+    <ValidationObserver v-slot="{ invalid }" class="my-settings__wrapper-right">
       <div class="my-settings__content">
         <!-- General -->
         <div class="my-settings__title">General</div>
-        <v-text-field outlined label="First Name"> </v-text-field>
-        <v-text-field outlined label="Last Name"> </v-text-field>
-        <v-select
-          v-model="selectedIDs"
-          :error-messages="errors"
-          :items="AVAILABLE_IDS"
-          chips
-          hide-details
-          label="Citizen Type"
-          multiple
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field v-model="firstName" :error-messages="errors" outlined label="First Name">
+          </v-text-field>
+        </validation-provider>
+
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field
+            v-model="lastName"
+            :error-messages="errors"
+            label="Last Name"
+            multiple
+            outlined
+          >
+          </v-text-field>
+        </validation-provider>
+
+        <v-btn
+          class="my-settings__save"
+          :disabled="invalid"
+          :dark="!invalid"
           outlined
-        ></v-select>
-        <v-btn class="my-settings__save" outlined depressed x-large>Save</v-btn>
+          depressed
+          x-large
+          @click="emitSaveID"
+          >Save</v-btn
+        >
 
         <v-divider class="my-settings__divider"></v-divider>
 
         <div class="my-settings__subtitle">Password</div>
-        <v-text-field outlined label="Current Password"> </v-text-field>
-        <v-text-field outlined label="New Password"> </v-text-field>
-        <v-btn outlined depressed x-large>Change Password</v-btn>
+
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field
+            v-model="currentPasssword"
+            :error-messages="errors"
+            outlined
+            label="Current Password"
+          >
+          </v-text-field>
+        </validation-provider>
+
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field
+            v-model="newPassword"
+            :error-messages="errors"
+            outlined
+            label="New Password"
+          >
+          </v-text-field>
+        </validation-provider>
+
+        <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
+          >Change Password</v-btn
+        >
 
         <v-divider class="my-settings__divider"></v-divider>
         <div class="my-settings__subtitle">Email</div>
-        <v-text-field outlined label="Current Email"> </v-text-field>
-        <v-text-field outlined label="New Email"> </v-text-field>
-        <v-btn outlined depressed x-large>Change Email</v-btn>
+
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field
+            v-model="currentEmail"
+            :error-messages="errors"
+            outlined
+            label="Current Email"
+          >
+          </v-text-field>
+        </validation-provider>
+
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field v-model="newEmail" :error-messages="errors" outlined label="New Email">
+          </v-text-field>
+        </validation-provider>
+
+        <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
+          >Change Email</v-btn
+        >
         <v-divider class="my-settings__divider"></v-divider>
         <!-- Notifications -->
         <div class="my-settings__title">Notifications</div>
@@ -71,7 +121,7 @@
         >
         <v-divider class="my-settings__divider"></v-divider>
       </div>
-    </div>
+    </ValidationObserver>
   </div>
 </template>
 <style lang="scss">

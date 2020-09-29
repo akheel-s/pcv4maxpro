@@ -24,7 +24,7 @@
         </validation-provider>
 
         <div class="login__password text-subtitle-2">Password</div>
-        <validation-provider v-slot="{ errors }" rules="required">
+        <validation-provider v-slot="{ errors }" slim rules="required">
           <v-text-field
             ref="passwordInput"
             v-model="password"
@@ -37,7 +37,11 @@
             full-width
             dark
             :error-messagees="errors"
-          ></v-text-field>
+          >
+          </v-text-field>
+          <div class="login__forgotpassword">
+            <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
+          </div>
         </validation-provider>
 
         <Loading v-slot="{ loading, process }" :callback="login" linear-loader>
@@ -55,6 +59,9 @@
           >
         </Loading>
         <v-alert v-if="error" class="login__alert" type="error">{{ error }}</v-alert>
+        <div class="login__newaccount">
+          <a class="login__signuplink" href="signup"> No account yet? Signup.</a>
+        </div>
       </validation-observer>
     </div>
   </div>
@@ -168,6 +175,9 @@ export default {
     & .v-text-field--outlined > .v-input__control > .v-input__slot {
       background: white;
     }
+    & .v-text-field .v-text-field__details {
+      display: none;
+    }
   }
   &__emailalign {
     width: 100%;
@@ -190,6 +200,25 @@ export default {
     display: inherit;
     margin-bottom: 4.5px;
     color: #ffffff;
+    margin-top: 10%;
+  }
+
+  &__forgotpassword {
+    color: #ffff;
+    text-align: right;
+    & a.login__forgotlink {
+      color: #ffffff;
+    }
+  }
+
+  &__newaccount {
+    color: #ffffff;
+    margin-top: 5%;
+    text-align: center;
+    & a.login__signuplink {
+      margin-top: 5%;
+      color: #ffffff;
+    }
   }
 }
 

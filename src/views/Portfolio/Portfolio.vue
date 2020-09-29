@@ -1,98 +1,117 @@
 <template>
   <!--  TODO: make the inputs into actual components -->
-
-  <div>
-    <div class="profile__mode-container pc-container">
-      <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-      <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
-      <v-btn
-        class="profile__mode"
-        depressed
-        color="grey"
-        dark
-        small
-        @click="currentTab = 'my-programs'"
-        >Manage</v-btn
+  <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
+    <div>
+      <v-skeleton-loader
+        :loading="loading || !user"
+        type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
       >
-      <div class="profile__spacer"></div>
-      <v-btn
-        class="profile__mode font-weight-bold"
-        text
-        color="grey"
-        small
-        @click="currentTab = 'balance'"
-        >0 Tickets</v-btn
-      >
-      <v-btn
-        class="profile__mode white--text font-weight-bold"
-        depressed
-        color="purple"
-        small
-        @click="currentTab = 'payment'"
-        ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
-      >
-      <v-btn
-        class="profile__mode white--text font-weight-bold"
-        depressed
-        color="green"
-        small
-        @click="currentTab = 'referral'"
-        ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
-      >
-    </div>
-    <div class="profile__container pc-container">
-      <!-- <div class="profile__namepate"> -->
-      <!-- <div class="profile__image"></div> -->
-      <!-- </div> -->
-
-      <!-- Chip Tabs -->
-
-      <div class="profile__sub-container text-center mt-12">
-        <div>
-          <v-badge bordered color="orange" offset-x="32" offset-y="32">
-            <v-avatar color="orange" size="150">
-              <v-img
-                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-              ></v-img>
-            </v-avatar>
-          </v-badge>
-
-          <span class="profile__name">Jerold Inocencio</span>
+        <div class="profile__mode-container pc-container">
+          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
+          <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+          <v-btn
+            class="profile__mode"
+            depressed
+            color="grey"
+            dark
+            small
+            @click="currentTab = 'my-programs'"
+            >Manage</v-btn
+          >
+          <div class="profile__spacer"></div>
+          <v-btn
+            class="profile__mode font-weight-bold"
+            text
+            color="grey"
+            small
+            @click="currentTab = 'balance'"
+            >{{ tickets }} Tickets</v-btn
+          >
+          <v-btn
+            class="profile__mode white--text font-weight-bold"
+            depressed
+            color="purple"
+            small
+            @click="currentTab = 'payment'"
+            ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+          >
+          <v-btn
+            class="profile__mode white--text font-weight-bold"
+            depressed
+            color="green"
+            small
+            @click="currentTab = 'referral'"
+            ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
+          >
         </div>
-        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'my programs'">
-          <v-icon left>mdi-server-plus</v-icon>
-          Programs
-        </v-chip>
+        <div class="profile__container pc-container">
+          <!-- <div class="profile__namepate"> -->
+          <!-- <div class="profile__image"></div> -->
+          <!-- </div> -->
 
-        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
-          <v-icon left>mdi-wrench</v-icon>
-          Settings
-        </v-chip>
+          <!-- Chip Tabs -->
 
-        <v-chip v-for="(color, id) in IDs" :key="id" class="pl-8 pr-8 ma-2" dark :color="color">
-          <v-icon left>mdi-account-outline</v-icon>
-          {{ id }}
-        </v-chip>
+          <div v-if="user" class="profile__sub-container text-center mt-12">
+            <div>
+              <v-badge bordered color="orange" offset-x="32" offset-y="32">
+                <v-avatar color="orange" size="150">
+                  <v-img
+                    src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+                  ></v-img>
+                </v-avatar>
+              </v-badge>
 
-        <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
-          <v-icon left>mdi-plus</v-icon>
-          Add Citizen Type
-        </v-chip>
-      </div>
+              <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
+            </div>
 
-      <!-- <v-divider class="mt-10"></v-divider> -->
+            <v-chip
+              class="pl-8 pr-8 ma-2"
+              color="black"
+              outlined
+              @click="currentTab = 'my programs'"
+            >
+              <v-icon left>mdi-server-plus</v-icon>
+              Programs
+            </v-chip>
 
-      <component :is="getComponent" />
+            <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
+              <v-icon left>mdi-wrench</v-icon>
+              Settings
+            </v-chip>
+
+            <v-chip
+              v-for="id in user.userTypes"
+              :key="id"
+              class="pl-8 pr-8 ma-2"
+              dark
+              :color="IDs[id]"
+            >
+              <v-icon left>mdi-account-outline</v-icon>
+              {{ id }}
+            </v-chip>
+
+            <!-- <v-chip class="pl-8 pr-8 ma-2" color="black" outlined>
+              <v-icon left>mdi-plus</v-icon>
+              Add Citizen Type
+            </v-chip> -->
+          </div>
+
+          <component :is="getComponent" />
+        </div>
+
+        <div class="profile__tabs">
+          <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
+            <div class="pc-highlight"></div>
+            <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{
+              tab
+            }}</span>
+          </div>
+        </div>
+      </v-skeleton-loader>
     </div>
-
-    <div class="profile__tabs">
-      <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
-        <div class="pc-highlight"></div>
-        <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{ tab }}</span>
-      </div>
-    </div>
-  </div>
+  </Loading>
 </template>
+
 <style lang="scss">
 .profile {
   &__spacer {
@@ -288,7 +307,11 @@
 }
 </style>
 <script lang="ts">
-import { ref, computed } from '@vue/composition-api';
+import { ref, computed, Ref, onMounted, toRefs, reactive } from '@vue/composition-api';
+import gql from 'graphql-tag';
+import { Token } from '@/generated/graphql';
+import { useAuthGetters, useDbState } from '@/store';
+import LoadingVue from '@/components/Loading.vue';
 import Portfolio from './views';
 
 export default {
@@ -296,13 +319,14 @@ export default {
   components: {
     'my-programs': Portfolio.MyPrograms,
     id: Portfolio.CitizenID,
-    settings: Portfolio.Settings,
     balance: Portfolio.Balance,
     payment: Portfolio.Payment,
-    referral: Portfolio.Referral
+    referral: Portfolio.Referral,
+    Loading: LoadingVue
   },
-  setup() {
-    const tabs = ref(['My Programs', 'Settings', 'ID']);
+  setup(_props, { root: { $apolloProvider } }) {
+    // Layout Generation
+    const tabs = ref(['My Programs', 'ID']);
     const currentTab = ref('My Programs');
     const IDs = ref({
       Employer: 'purple',
@@ -316,7 +340,44 @@ export default {
       tab = tab.split(' ').join('-');
       return tab;
     });
-    return { tabs, currentTab, getComponent, IDs };
+    // Data Handling
+    const id = useAuthGetters(['getId']).getId;
+    const tickets = ref(0);
+    const MYTOKENQUERY = gql`
+      query myTokensCustomer($id: ObjectId!) {
+        tokens(query: { newOwner_id: $id }) {
+          customer_id
+        }
+      }
+    `;
+    const processQuery = () =>
+      $apolloProvider.defaultClient
+        .query<{ tokens: Token[] }>({
+          query: MYTOKENQUERY,
+          variables: { id: id.value }
+        })
+        .then(({ data: { tokens } }) => {
+          tickets.value = tokens.length;
+        });
+    // Skeleton Loader
+    const loader: Ref<ReturnType<typeof LoadingVue['setup']> | null> = ref(null);
+    onMounted(() => {
+      loader.value!.process();
+    });
+
+    return {
+      // Layout Gen
+      tabs,
+      currentTab,
+      getComponent,
+      IDs,
+      // Data Handling
+      tickets,
+      processQuery,
+      user: useDbState(['user']).user,
+      // Loader
+      loader
+    };
   }
 };
 </script>

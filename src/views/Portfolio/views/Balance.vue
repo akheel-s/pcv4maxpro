@@ -11,7 +11,7 @@
 
           <div class="balance__main-left-title">BALANCE</div>
 
-          <div class="balance__main-left-header">0 Tickets</div>
+          <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
 
           <div>
             <v-icon class="balance__main-left-icon" color="grey" large
@@ -20,19 +20,14 @@
           </div>
 
           <div class="balance__main-left-chippers">
-            <v-chip dark color="red" class="balance__main-left-chips">Verizon 5G Labs</v-chip>
-
-            <v-chip dark color="green" class="balance__main-left-chips"
-              >Congresswoman Barbara Lee
-            </v-chip>
-
-            <v-chip dark color="blue" class="balance__main-left-chips">Zoom</v-chip>
-
-            <v-chip dark color="purple" class="balance__main-left-chips"
-              >City of San Leandro</v-chip
+            <v-chip
+              v-for="(owner, index) in modOriginalOwners"
+              :key="index"
+              dark
+              :color="owner.color"
+              class="balance__main-left-chips"
+              >{{ `${owner.firstName} ${owner.lastName}` }}</v-chip
             >
-
-            <v-chip dark color="yellow" class="balance__main-left-chips">Microsoft</v-chip>
           </div>
         </div>
 
@@ -63,6 +58,24 @@
         </div>
       </div>
     </div>
+    <div class="balance__transfer">
+      <div class="balance__tickets">
+        <v-text-field
+          v-model="transferQuantity"
+          type="number"
+          placeholder="tickets"
+          outlined
+        ></v-text-field>
+      </div>
+
+      <div class="balance__email">
+        <v-text-field v-model="transferEmail" placeholder="Email" outlined></v-text-field>
+      </div>
+
+      <div class="balance__transfer-button">
+        <v-btn depressed @click="processTransfer">Transfer</v-btn>
+      </div>
+    </div>
     <div class="balance__table-view">
       <BalanceView />
     </div>
@@ -70,12 +83,105 @@
 </template>
 
 <script lang="ts">
-import {} from '@vue/composition-api';
+import { computed, ref, Ref } from '@vue/composition-api';
+import { Token, User } from '@/generated/graphql';
+import gql from 'graphql-tag';
+import { useAuthGetters } from '@/store';
 import { BalanceView } from '../components';
 
 export default {
   name: 'Referral',
-  components: { BalanceView }
+  components: { BalanceView },
+  setup(
+    _props,
+    {
+      root: {
+        $apolloProvider: {
+          defaultClient: { query, mutate }
+        }
+      }
+    }
+  ) {
+    // Token Management
+    const tokens: Ref<Token[]> = ref([]);
+    const originalOwners: Ref<Pick<User, 'firstName' | 'lastName'>[]> = ref([]);
+    const id = useAuthGetters(['getId']).getId;
+    query<{ tokens: Token[] }>({
+      query: gql`
+        query myTokensOwner($id: ObjectId!) {
+          tokens(query: { newOwner_id: $id }) {
+            _id
+            owner_id
+          }
+        }
+      `,
+      variables: { id: id.value }
+    }).then(async ({ data }) => {
+      tokens.value = data.tokens;
+      data.tokens.map(token => ({ _id: token.customer_id }));
+      const {
+        data: { users }
+      } = await query<{ users: User[] }>({
+        query: gql`
+          query Users($userQueryInputs: [UserQueryInput!]) {
+            users(query: { OR: $userQueryInputs }) {
+              firstName
+              lastName
+            }
+          }
+        `,
+        variables: { userQueryInputs: data.tokens.map(token => ({ _id: token.owner_id })) }
+      });
+      originalOwners.value = users;
+    });
+    // UI Management
+    const colors = ['red', 'orange', 'blue', 'purple', 'pink', 'yellow'];
+    const modOriginalOwners = computed(() =>
+      originalOwners.value.map(owner => ({
+        ...owner,
+        color: colors[Math.floor(Math.random() * (colors.length - 1))]
+      }))
+    );
+    // Transfer Management
+    const transferEmail = ref('');
+    const transferQuantity = ref(0);
+    const processTransfer = async () => {
+      console.log(
+        await mutate({
+          mutation: gql`
+            mutation transferTokens(
+              $senderId: ObjectId!
+              $recipientEmail: String!
+              $tokenIds: [ObjectId!]
+            ) {
+              sendTokensMutation(
+                input: {
+                  token_ids: $tokenIds
+                  sender_id: $senderId
+                  recipient_email: $recipientEmail
+                }
+              ) {
+                status
+              }
+            }
+          `,
+          variables: {
+            recipientEmail: transferEmail.value,
+            senderId: id.value,
+            tokenIds: tokens.value.map(token => token._id).slice(0, transferQuantity.value)
+          }
+        })
+      );
+    };
+    return {
+      tokens,
+      originalOwners,
+      modOriginalOwners,
+      transferEmail,
+      processTransfer,
+      transferQuantity
+    };
+  }
 };
 </script>
 
@@ -162,5 +268,29 @@ export default {
     padding-left: 40px;
     padding-right: 40px;
   }
+
+  &__transfer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+    padding-left: 180px;
+  }
+
+  &__tickets {
+    width: 75px;
+    margin-right: 10px;
+  }
+
+  &__email {
+    width: 50%;
+  }
+
+  &__transfer-button {
+    margin-left: 10px;
+  }
+}
+.v-btn:not(.v-btn--round).v-size--default {
+  height: 57px;
 }
 </style>
