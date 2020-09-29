@@ -24,7 +24,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     camelcase: 'off',
     '@typescript-eslint/camelcase': ['warn'],
-    'no-underscore-dangle':'off'
+    'no-underscore-dangle': 'off'
   },
   overrides: [
     {

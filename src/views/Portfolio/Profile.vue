@@ -29,7 +29,7 @@ import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import { useFileStorageState, useAuthGetters, useDbActions } from '@/store';
-import { computed, onMounted, ref } from '@vue/composition-api';
+import { computed, ref } from '@vue/composition-api';
 import { User } from '@/generated/graphql';
 
 const FilePond = vueFilePond(
@@ -78,7 +78,7 @@ export default {
     } = useAuthGetters(['getObjectId']);
     const { update } = useDbActions(['update']);
     const server = ref({
-      process(fieldName, file, metadata, load, error, progress, abort) {
+      process(fieldName, file, metadata, load, error) {
         bucket.value.upload(
           {
             Bucket: 'pilotcity',

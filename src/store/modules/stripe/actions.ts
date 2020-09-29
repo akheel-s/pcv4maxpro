@@ -1,6 +1,5 @@
 import { ActionContext, ActionTree } from 'vuex';
 import { StripeError } from '@stripe/stripe-js';
-import { items } from '@/views/Portfolio/components/AllInvites/const';
 import { RootState } from '../../state';
 import stripeState from './state';
 

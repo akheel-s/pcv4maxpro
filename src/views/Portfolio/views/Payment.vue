@@ -165,7 +165,7 @@ export default {
       e6: 1
     };
   },
-  setup(props, { emit }) {
+  setup() {
     const selectedProduct = ref([]);
     const sponsorName = ref('');
     const { getProductInfo } = useDbActions(['getProductInfo']);
