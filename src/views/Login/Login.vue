@@ -77,7 +77,6 @@ import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
 import { useAuthActions } from '@/store';
 import Loading from '@/components/Loading.vue';
-import { redirectIfLoggedIn } from '@/utils/guards';
 
 export default {
   components: {
@@ -103,7 +102,6 @@ export default {
         else state.error = err;
       }
     }
-    redirectIfLoggedIn($router);
     return { ...toRefs(state), login };
   }
 };
