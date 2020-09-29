@@ -17,9 +17,7 @@
       </v-text-field>
     </validation-provider> -->
 
-    <v-btn :disabled="invalid" outlined depressed x-large @click="emitSaveID"
-      >Forgot Password</v-btn
-    >
+    <v-btn outlined depressed x-large href="password-reset">Forgot Password</v-btn>
   </div>
 </template>
 <style lang="scss">
