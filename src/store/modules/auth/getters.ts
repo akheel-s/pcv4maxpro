@@ -22,14 +22,7 @@ export interface AuthGetters extends GetterTree<typeof authState, RootState> {
 }
 export const getters: AuthGetters = {
   getUser: (_state, _gets, rootState) => {
-    try {
-      return rootState.realmApp.app.currentUser?.profile?.email
-        ? rootState.realmApp.app.currentUser
-        : null;
-    } catch (error) {
-      console.error(error);
-      return rootState.realmApp.app.currentUser;
-    }
+    return rootState.realmApp.app.currentUser;
   },
   getId: (_state, gets) => {
     return gets.getUser?.id || null;

@@ -101,6 +101,7 @@
                 </v-card-actions>
               </v-card>
             </div>
+            <!-- <v-text-field label="coupon"></v-text-field> -->
             <v-btn
               class="sponsor__pay-card"
               small
@@ -168,6 +169,7 @@ export default {
   setup() {
     const selectedProduct = ref([]);
     const sponsorName = ref('');
+    const coupon = ref('');
     const { getProductInfo } = useDbActions(['getProductInfo']);
     const PRICE_IDS = [
       'price_1HVJv6LnkQGEgDQn1armT4XJ',

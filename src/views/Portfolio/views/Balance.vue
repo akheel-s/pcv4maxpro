@@ -6,7 +6,7 @@
           <div class="balance__main-left">
             <v-avatar size="70">
               <v-img
-                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+                :src="'https://pilotcity.s3.us-west-1.amazonaws.com/' + user.profileImg"
               ></v-img>
             </v-avatar>
 
@@ -101,7 +101,7 @@
 import { computed, ref, Ref } from '@vue/composition-api';
 import { Token, User } from '@/generated/graphql';
 import gql from 'graphql-tag';
-import { useAuthGetters } from '@/store';
+import { useAuthGetters, useDbState } from '@/store';
 import { BalanceView } from '../components';
 
 export default {
@@ -194,7 +194,8 @@ export default {
       modOriginalOwners,
       transferEmail,
       processTransfer,
-      transferQuantity
+      transferQuantity,
+      user: useDbState(['user']).user
     };
   }
 };
