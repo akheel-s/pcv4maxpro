@@ -3,7 +3,9 @@
     <div class="forgotpassword__content">
       <ValidationObserver v-slot="{ invalid }" class="forgotpassword_inputs1">
         <validation-provider v-slot="{ errors }" name="confirm" rules="required|min:6">
-          <div class="forgotpassword__newpassword text-h4 font-weight-black">New Password</div>
+          <div class="forgotpassword__newpassword text-h4 font-weight-black">
+            Enter New Password
+          </div>
 
           <div class="forgotpassword__textfield">
             <v-text-field

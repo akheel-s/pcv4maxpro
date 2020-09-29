@@ -1,7 +1,9 @@
 <template>
-  <div class="my-settings__title">Notifications</div>
-  <v-checkbox label="Turn on email notifications"></v-checkbox>
-  <v-checkbox label="Get email updates and announcements"></v-checkbox>
+  <div>
+    <div class="my-settings__title">Notifications</div>
+    <v-checkbox label="Turn on email notifications"></v-checkbox>
+    <v-checkbox label="Get email updates and announcements"></v-checkbox>
+  </div>
 </template>
 <style lang="scss">
 .my-settings {

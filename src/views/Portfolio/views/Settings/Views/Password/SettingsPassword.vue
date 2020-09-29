@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" class="my-settings__wrapper-right">
+  <div>
     <div class="my-settings__subtitle">Password</div>
 
     <validation-provider v-slot="{ errors }" rules="required">
@@ -20,7 +20,7 @@
     <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
       >Change Password</v-btn
     >
-  </ValidationObserver>
+  </div>
 </template>
 <style lang="scss">
 .my-settings {
