@@ -9459,6 +9459,46 @@ filelist@^1.0.1:
   dependencies:
     minimatch "^3.0.4"
 
+filepond-plugin-file-encode@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-encode/-/filepond-plugin-file-encode-2.1.9.tgz#e38626353f300759532949160820e7821e10292a"
+  integrity sha512-HKM+ok6X6HBAg0fZt/dgA0aly7YJa2+OtWNd6cWc3D0wAXpApZp+f139g1a8uRaARsFxCBaKrzeWOFJWx3xXug==
+
+filepond-plugin-file-validate-type@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.5.tgz#b3588088d2b0d5dbdf706d068c0ecdf28140a8e3"
+  integrity sha512-SsdYD6N+PDnetrPrBHfl13ZC9jRv5BuGdai5cORfANhuE/N32OwU/IclCNQ4qlpIa88hzqBg9dj6IINkiW+4HA==
+
+filepond-plugin-image-crop@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-crop/-/filepond-plugin-image-crop-2.0.4.tgz#53cd0a92b0b357d02789d0f6dcc980f067b08848"
+  integrity sha512-Y5dv2rFd/UBwA3+sdJOFjuCv1t5ekLOJr2C3hsNjq58lw7kM9/twaT+qjyZW0LFj1Yq4DccynuqS3BG50oHBoQ==
+
+filepond-plugin-image-exif-orientation@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.9.tgz#bf1220d99c117a69859f3297d0618e7469705019"
+  integrity sha512-Pyw7oNpMk5YwX0eYsa1wjNTJ2WxTQ27VUDviV0XrNbKPB7/iDSZ9r2zWSEeT9yS46OUGNE8lcdAARi5Z2v5TLA==
+
+filepond-plugin-image-preview@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.4.tgz#19edade651559cf8c9fb97bcc8ce56af16ebae67"
+  integrity sha512-grlFJv1LH4E7IzsKTIFI52LuyLQa+lXMqmUnSm0cufDblRXHxdraRkjj/88bd9pyVJm206dBXQnlIVVyEaE5xg==
+
+filepond-plugin-image-resize@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-resize/-/filepond-plugin-image-resize-2.0.7.tgz#03264e288b1af68bef1ae046882f9712d5ba14c7"
+  integrity sha512-Ea2shQ8DFWyfbgqEuz8tp23F8v+kQLlHXNIDo+C7qxKHbflHoQ8Aol5ZrWLBImLx/J3Kbrzc+SrBem8RZOz9CA==
+
+filepond-plugin-image-transform@^3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.7.4.tgz#8b81bea9ede2c3a40a11c20b39549139b18c9ef1"
+  integrity sha512-4slNgfKW7BrbSPF/ie02miNPttk6Mit1V9phLzup0DPLo9gQGqvaXi/md2291+2EA+yjeyLeJ3JBUVQ/ymPrUg==
+
+filepond@^4.20.1:
+  version "4.20.1"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.20.1.tgz#d0e2ce447dc785f8cc51abd207805b886090b2b7"
+  integrity sha512-qYwE/xSODJuAJH0E2BHeD8f3X66nxZ/aUQSaGhUTVXuAWe0wvIjxaRcMZUIsZm2f7truScxAe16l5ITzxi5TFw==
+
 filesize@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-6.0.1.tgz#f850b509909c7c86f7e450ea19006c31c2ed3d2f"
@@ -19887,6 +19927,11 @@ vue-eslint-parser@^7.0.0:
     espree "^6.2.1"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-filepond@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/vue-filepond/-/vue-filepond-6.0.3.tgz#199871e7d91f4d6a6c4ba5a4e653c6ce9cafbfa9"
+  integrity sha512-m0wArAdpgzOOs19bWA6zzYlHAb2aK+igPoKPZGrzpgKiiELPKW7XZ2OBDXzk7rhpFLkedujVrMqwjPyZfmQTTQ==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
