@@ -3,10 +3,6 @@
   <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
     <div class="profile__wrapper">
       <v-skeleton-loader
-        :loading="true"
-        type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
-      />
-      <v-skeleton-loader
         :loading="loading || !user"
         type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
       >
@@ -52,7 +48,9 @@
           <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
               <v-badge bordered color="orange" offset-x="32" offset-y="32">
-                <v-img class="rounded-circle" width="150px" height="150px"> <profile /></v-img>
+                <v-img class="rounded-circle" width="150px" height="150px">
+                  <profile v-model="user.profileImg"
+                /></v-img>
               </v-badge>
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>

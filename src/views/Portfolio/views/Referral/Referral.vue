@@ -88,7 +88,7 @@ import { AllInvites } from '../../components';
 export default {
   name: 'Referral',
   components: { AllInvites },
-  setup(props) {
+  setup() {
     const details = reactive({
       email: '',
       phoneNumber: ''

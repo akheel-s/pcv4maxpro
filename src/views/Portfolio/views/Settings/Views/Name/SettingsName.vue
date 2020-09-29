@@ -46,7 +46,6 @@
 <script lang="ts">
 import { Ref, reactive, ref, toRefs, onMounted } from '@vue/composition-api';
 import { useAuthGetters, useDbActions } from '@/store';
-import { ActionTypes } from '@/store/modules/db/actions';
 import gql from 'graphql-tag';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { PropType } from 'vue';
