@@ -87,7 +87,6 @@ import { computed, ref, Ref } from '@vue/composition-api';
 import { Token, User } from '@/generated/graphql';
 import gql from 'graphql-tag';
 import { useAuthGetters } from '@/store';
-import { ObjectId } from 'bson';
 import { BalanceView } from '../components';
 
 export default {

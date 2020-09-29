@@ -307,7 +307,7 @@
 }
 </style>
 <script lang="ts">
-import { ref, computed, Ref, onMounted, toRefs } from '@vue/composition-api';
+import { ref, computed, Ref, onMounted, toRefs, reactive } from '@vue/composition-api';
 import gql from 'graphql-tag';
 import { Token } from '@/generated/graphql';
 import { useAuthGetters, useDbState } from '@/store';
@@ -357,24 +357,26 @@ export default {
           variables: { id: id.value }
         })
         .then(({ data: { tokens } }) => {
-          console.log(tokens);
           tickets.value = tokens.length;
         });
     // Skeleton Loader
     const loader: Ref<ReturnType<typeof LoadingVue['setup']> | null> = ref(null);
-
     onMounted(() => {
       loader.value!.process();
     });
+
     return {
+      // Layout Gen
       tabs,
       currentTab,
       getComponent,
       IDs,
+      // Data Handling
       tickets,
-      loader,
       processQuery,
-      user: useDbState(['user']).user
+      user: useDbState(['user']).user,
+      // Loader
+      loader
     };
   }
 };
