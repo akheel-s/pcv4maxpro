@@ -20,7 +20,7 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn
+            >Manage</v-btn🚚
           > -->
           <div class="profile__spacer"></div>
           <v-btn
@@ -51,13 +51,9 @@
         <div class="profile__container pc-container">
           <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
-              <profile></profile>
-              <!-- <v-badge bordered color="orange" offset-x="32" offset-y="32">
-                <v-avatar color="orange" size="150">
-                  <v-img> </v-img>
-                </v-avatar>
-              </v-badge> -->
-
+              <v-badge bordered color="orange" offset-x="32" offset-y="32">
+                <v-img class="rounded-circle" width="150px" height="150px"> <profile /></v-img>
+              </v-badge>
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
 
