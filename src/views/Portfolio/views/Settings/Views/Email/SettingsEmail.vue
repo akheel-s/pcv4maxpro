@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" class="my-settings__wrapper-right">
+  <div>
     <div class="my-settings__subtitle">Email</div>
     <validation-provider v-slot="{ errors }" rules="required">
       <v-text-field v-model="currentEmail" :error-messages="errors" outlined label="Current Email">
@@ -14,7 +14,7 @@
     <v-btn :disabled="invalid" :dark="!invalid" outlined depressed x-large @click="emitSaveID"
       >Change Email</v-btn
     >
-  </ValidationObserver>
+  </div>
 </template>
 <style lang="scss">
 .my-settings {

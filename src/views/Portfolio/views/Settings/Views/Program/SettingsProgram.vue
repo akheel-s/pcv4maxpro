@@ -1,5 +1,5 @@
 <template>
-  <div class="my-settings__container">
+  <div>
     <div class="my-settings__title">Programs</div>
     <v-treeview open-on-click rounded :items="items"></v-treeview>
     <v-divider class="my-settings__divider"></v-divider>

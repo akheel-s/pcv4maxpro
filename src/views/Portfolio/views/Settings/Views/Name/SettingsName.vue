@@ -1,33 +1,25 @@
 <template>
-  <div class="my-settings__container">
-    <ValidationObserver v-slot="{ invalid }" class="my-settings__wrapper-right">
-      <validation-provider v-slot="{ errors }" rules="required">
-        <v-text-field v-model="firstName" :error-messages="errors" outlined label="First Name">
-        </v-text-field>
-      </validation-provider>
+  <div>
+    <validation-provider v-slot="{ errors }" rules="required">
+      <v-text-field v-model="firstName" :error-messages="errors" outlined label="First Name">
+      </v-text-field>
+    </validation-provider>
 
-      <validation-provider v-slot="{ errors }" rules="required">
-        <v-text-field
-          v-model="lastName"
-          :error-messages="errors"
-          label="Last Name"
-          multiple
-          outlined
-        >
-        </v-text-field>
-      </validation-provider>
+    <validation-provider v-slot="{ errors }" rules="required">
+      <v-text-field v-model="lastName" :error-messages="errors" label="Last Name" multiple outlined>
+      </v-text-field>
+    </validation-provider>
 
-      <v-btn
-        class="my-settings__save"
-        :disabled="invalid"
-        :dark="!invalid"
-        outlined
-        depressed
-        x-large
-        @click="emitSaveID"
-        >Save</v-btn
-      >
-    </ValidationObserver>
+    <v-btn
+      class="my-settings__save"
+      :disabled="invalid"
+      :dark="!invalid"
+      outlined
+      depressed
+      x-large
+      @click="emitSaveID"
+      >Save</v-btn
+    >
   </div>
 </template>
 <style lang="scss">

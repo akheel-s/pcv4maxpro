@@ -1,10 +1,48 @@
 <template>
-  <div>
-    <div class="my-settings__title">Delete Account</div>
-    <v-checkbox label="I acknowledge deletion of my program data"></v-checkbox>
-    <v-checkbox label="I acknowledge deletion of my ID data"></v-checkbox>
-    <v-checkbox label="I acknowledge loss of all my virtual currency"></v-checkbox>
-    <v-btn class="my-settings__divider" color="red" dark depressed x-large>Delete Account</v-btn>
+  <div class="my-settings__container">
+    <div class="my-settings__wrapper-left">
+      <v-navigation-drawer floating tag="aside" :permanent="true">
+        <v-list class="py-0">
+          <v-list-item
+            v-for="item in idItems"
+            :key="item.title"
+            link
+            @click="currentID = item.title"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+    </div>
+
+    <ValidationObserver v-slot="{}" class="my-settings__wrapper-right">
+      <div class="my-settings__content">
+        <!-- General -->
+        <div class="my-settings__title">General</div>
+        <Name />
+
+        <v-divider class="my-settings__divider"></v-divider>
+
+        <Password />
+
+        <v-divider class="my-settings__divider"></v-divider>
+        <Email />
+        <v-divider class="my-settings__divider"></v-divider>
+        <!-- Notifications -->
+        <Notifications />
+        <v-divider class="my-settings__divider"></v-divider>
+        <!-- Programs -->
+        <Program />
+        <!-- Delete Account -->
+        <Delete />
+      </div>
+    </ValidationObserver>
   </div>
 </template>
 <style lang="scss">
@@ -56,9 +94,18 @@
 </style>
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import { Email, Delete, Name, Notifications, Password, Program } from './Views';
 
 export default {
   name: 'Settings',
+  components: {
+    Email,
+    Delete,
+    Name,
+    Notifications,
+    Password,
+    Program
+  },
   setup() {
     const idItems = ref([
       { title: 'General', icon: 'mdi-key' },

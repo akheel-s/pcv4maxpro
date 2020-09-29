@@ -322,11 +322,12 @@ export default {
     balance: Portfolio.Balance,
     payment: Portfolio.Payment,
     referral: Portfolio.Referral,
-    Loading: LoadingVue
+    Loading: LoadingVue,
+    settings: Portfolio.Settings
   },
   setup(_props, { root: { $apolloProvider } }) {
     // Layout Generation
-    const tabs = ref(['My Programs', 'ID']);
+    const tabs = ref(['My Programs', 'Settings', 'ID']);
     const currentTab = ref('My Programs');
     const IDs = ref({
       Employer: 'purple',
