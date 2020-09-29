@@ -14,7 +14,7 @@ const routes: Array<RouteConfig> = [
     name: 'setup',
     component: Setup,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
