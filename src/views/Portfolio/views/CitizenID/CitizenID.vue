@@ -41,7 +41,7 @@ export default {
     'parent-id': ParentID
   },
   props: {
-    expComponent: {
+    'exp-component': {
       type: String,
       default: ''
     }
