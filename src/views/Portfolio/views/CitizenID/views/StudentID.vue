@@ -1,8 +1,11 @@
 <template>
   <ValidationObserver v-slot="{ invalid }" slim>
-    <Loading v-slot="{ loading }" class="my-id__content" :callback="processQuery">
+    <Loading ref="loader" v-slot="{ loading }" class="my-id__content" :callback="processQuery">
       <div class="my-id__wrapper">
-        <v-skeleton-loader :loading="loading">
+        <v-skeleton-loader
+          :loading="loading"
+          type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
+        >
           <div class="my-id__title mb-3">Student ID</div>
 
           <!-- Grade Level -->
@@ -10,6 +13,7 @@
             <v-select
               v-model="grade"
               :error-messages="errors"
+              type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
               :items="gradeLevel"
               label="Grade Level"
               outlined
@@ -140,29 +144,41 @@
           </validation-provider>
         </v-skeleton-loader>
 
-        <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="save"
-          >Save and Continue</v-btn
-        >
+        <Loading v-slot="{ loading: saving, process: save }" :callback="save">
+          <v-btn
+            :disabled="invalid"
+            :loading="saving"
+            :dark="!invalid"
+            large
+            depressed
+            @click="save"
+            >Save and Continue</v-btn
+          >
+        </Loading>
       </div>
     </Loading>
   </ValidationObserver>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref } from '@vue/composition-api';
+import { Ref, reactive, toRefs, ref, onMounted } from '@vue/composition-api';
 // import Loading from '@/components/Loading.vue';
 import { useAuthGetters, useDbActions } from '@/store';
 import gql from 'graphql-tag';
 import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { StudentPortfolio } from '@/generated/graphql';
+import Loading from '@/components/Loading.vue';
 import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
-// import { EmployerPortfolio } from '@/generated/graphql';
+
 const {
   getObjectId: { value: getObjectId }
 } = useAuthGetters([GetterTypes.getObjectId]);
 export default {
   name: 'StudentID',
+  components: {
+    Loading
+  },
   setup(
     props,
     {
@@ -202,6 +218,7 @@ export default {
       gender: '',
       grade: ''
     });
+    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
     const STUDENTIDQUERY = gql`
       query thisStudent($id: ObjectId!) {
         studentPortfolio(query: { _id: $id }) {
@@ -225,14 +242,15 @@ export default {
       }
     `;
     function processQuery() {
-      return query({ query: STUDENTIDQUERY, variables: { id: getObjectId } }).then(
-        ({ data: { studentPortfolio: res } }) => {
-          Object.keys(responses).forEach(key => {
-            console.log(key, res[key]);
-            if (res[key]) responses[key] = res[key];
-          });
-        }
-      );
+      return query<{ studentPortfolio: StudentPortfolio }>({
+        query: STUDENTIDQUERY,
+        variables: { id: getObjectId }
+      }).then(({ data: { studentPortfolio: res } }) => {
+        Object.keys(responses).forEach(key => {
+          console.log(key, res[key]);
+          if (res[key]) responses[key] = res[key];
+        });
+      });
     }
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
@@ -253,12 +271,16 @@ export default {
       });
       emit('input');
     }
+    onMounted(() => {
+      loader.value!.process();
+    });
     return {
       ...toRefs(formOpt),
       ...toRefs(responses),
       menu,
       emit,
-      save
+      save,
+      processQuery
     };
   }
 };
