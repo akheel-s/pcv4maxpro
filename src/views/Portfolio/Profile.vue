@@ -15,7 +15,6 @@
     accept="image/png, image/jpeg, image/gif"
     class="filepond"
     :server="server"
-    @init="handleFilePondInit"
   />
 </template>
 <script lang="ts">
@@ -30,8 +29,7 @@ import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import { useFileStorageState, useAuthGetters, useDbActions } from '@/store';
-import { onMounted, ref, Ref } from '@vue/composition-api';
-import gql from 'graphql-tag';
+import { computed, onMounted, ref } from '@vue/composition-api';
 import { User } from '@/generated/graphql';
 
 const FilePond = vueFilePond(
@@ -54,64 +52,31 @@ export default {
   components: {
     FilePond
   },
-  data() {
-    return {
-      test: ''
-      // 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0'
-    };
-  },
-  setup(
-    props,
-    {
-      root: {
-        $apolloProvider: {
-          defaultClient: { query }
-        }
-      }
+  props: {
+    value: {
+      type: String,
+      default: undefined
     }
-  ) {
+  },
+  setup(props) {
     // init data
-    const pond = ref(null);
-    const myFiles: Ref<FileType[]> = ref([
-      {
-        source: '', // populate file keys here. Same key as data.key in the process method
-        options: {
-          type: 'local' // make sure this parameter is included to load data
-        }
-      }
-    ]);
+    // const pond = ref(null);
+    const myFiles = computed(() => {
+      const files: FileType[] = [];
+      if (props.value)
+        files.push({
+          source: props.value as string,
+          options: {
+            type: 'local'
+          }
+        });
+      return files;
+    });
     // mongo setup
     const {
       getObjectId: { value: getObjectId }
     } = useAuthGetters(['getObjectId']);
     const { update } = useDbActions(['update']);
-    const IMAGEQUERY = gql`
-      query thisUserProfileImage($id: ObjectId!) {
-        user(query: { _id: $id }) {
-          profileImg
-        }
-      }
-    `;
-    query<{ user: User }>({
-      query: IMAGEQUERY,
-      variables: { id: getObjectId }
-    }).then(
-      ({
-        data: {
-          user: { profileImg: key }
-        }
-      }) => {
-        console.log('key: ', key);
-        myFiles.value = [
-          {
-            source: key,
-            options: {
-              type: 'local'
-            }
-          }
-        ];
-      }
-    );
     const server = ref({
       process(fieldName, file, metadata, load, error, progress, abort) {
         bucket.value.upload(
@@ -133,50 +98,21 @@ export default {
               collection: 'User',
               payload: {
                 profileImg: data.key
-              } as User,
+              } as Pick<User, 'profileImg'>,
               filter: { _id: getObjectId }
             });
             load(data.Key); // load image to filepond from key
           }
         );
       },
-      load(source, load, error, progress, abort, headers) {
+      load(source, load, error, progress, abort) {
         // Should request a file object from the server here
-        console.log(source);
         const myRequest = new Request(`https://pilotcity.s3.us-west-1.amazonaws.com/${source}`); // this request can also be used as a URL
         fetch(myRequest).then(response => {
           response.blob().then(myBlob => {
             load(myBlob);
           });
         });
-        // bucket.value.getObject(
-        //   {
-        //     Bucket: 'pilotcity',
-        //     Key: source
-        //   },
-        //   (err, data) => {
-        //     // Can call the error method if something is wrong, should exit after
-        //     // error('oh my goodness');
-        //     if (err) {
-        //       error(err);
-        //       return;
-        //     }
-        //     console.log(data);
-        //     // console.log(data.Body!.toString('utf-8'));
-        //     load(new Blob([data.Body as Uint8Array]));
-        //   }
-        // );
-        // Can call the header method to supply FilePond with early response header string
-        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders
-        // headers(headersString);
-
-        // Should call the progress method to update the progress to 100% before calling load
-        // (endlessMode, loadedSize, totalSize)
-
-        // Should call the load method with a file object or blob when done
-        // load(file);
-
-        // Should expose an abort method so the request can be cancelled
         return {
           abort: () => {
             // User tapped cancel, abort our ongoing actions here
@@ -187,15 +123,8 @@ export default {
         };
       }
     });
-    // handlers
-    function handleFilePondInit() {
-      console.log('FilePond has initialized');
-      // FilePond instance methods are available on `this.$refs.pond`
-    }
-    onMounted(() => {
-      console.log(pond.value);
-    });
-    return { myFiles, server, handleFilePondInit };
+    // handlersf
+    return { myFiles, server };
   }
 };
 </script>
