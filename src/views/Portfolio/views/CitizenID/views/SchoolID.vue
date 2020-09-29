@@ -70,7 +70,14 @@
         </v-skeleton-loader>
 
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
-          <v-btn :disabled="invalid" :dark="!invalid" large depressed @click="save">
+          <v-btn
+            :disabled="invalid"
+            :loading="saving"
+            :dark="!invalid"
+            large
+            depressed
+            @click="save"
+          >
             Save and Continue
           </v-btn>
         </Loading>

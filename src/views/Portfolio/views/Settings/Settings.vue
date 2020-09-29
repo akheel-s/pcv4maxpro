@@ -21,30 +21,29 @@
       </v-navigation-drawer>
     </div>
 
-    <ValidationObserver v-slot="{}" class="my-settings__wrapper-right">
-      <div class="my-settings__content">
-        <!-- General -->
-        <div class="my-settings__title">General</div>
-        <Name />
+    <div class="my-settings__content">
+      <!-- General -->
+      <div class="my-settings__title">General</div>
+      <Name />
 
-        <v-divider class="my-settings__divider"></v-divider>
+      <v-divider class="my-settings__divider"></v-divider>
 
-        <Password />
+      <Password />
 
-        <v-divider class="my-settings__divider"></v-divider>
-        <Email />
-        <v-divider class="my-settings__divider"></v-divider>
-        <!-- Notifications -->
-        <Notifications />
-        <v-divider class="my-settings__divider"></v-divider>
-        <!-- Programs -->
-        <Program />
-        <!-- Delete Account -->
-        <Delete />
-      </div>
-    </ValidationObserver>
+      <!-- <v-divider class="my-settings__divider"></v-divider>
+      <Email />
+      <v-divider class="my-settings__divider"></v-divider> -->
+      <!-- Notifications -->
+      <!-- <Notifications /> -->
+      <!-- <v-divider class="my-settings__divider"></v-divider> -->
+      <!-- Programs -->
+      <!-- <Program /> -->
+      <!-- Delete Account -->
+      <!-- <Delete /> -->
+    </div>
   </div>
 </template>
+
 <style lang="scss">
 .my-settings {
   &__container {
@@ -92,26 +91,26 @@
   }
 }
 </style>
+
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { Email, Delete, Name, Notifications, Password, Program } from './Views';
+import { Name, Password } from './Views';
 
 export default {
   name: 'Settings',
   components: {
-    Email,
-    Delete,
+    // Delete,
     Name,
-    Notifications,
-    Password,
-    Program
+    // Notifications,
+    Password
+    // Program
   },
   setup() {
     const idItems = ref([
-      { title: 'General', icon: 'mdi-key' },
-      { title: 'Notifications', icon: 'mdi-bell' },
-      { title: 'Programs', icon: 'mdi-telegram' },
-      { title: 'Delete Account', icon: 'mdi-delete', color: 'red' }
+      { title: 'General', icon: 'mdi-key' }
+      // { title: 'Notifications', icon: 'mdi-bell' },
+      // { title: 'Programs', icon: 'mdi-telegram' },
+      // { title: 'Delete Account', icon: 'mdi-delete', color: 'red' }
     ]);
     return { idItems };
   },
