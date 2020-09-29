@@ -8,7 +8,7 @@
       >
         <div class="profile__mode-container pc-container">
           <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-          <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
           <v-btn
             class="profile__mode"
             depressed
@@ -17,7 +17,7 @@
             small
             @click="currentTab = 'my-programs'"
             >Manage</v-btn
-          >
+          > -->
           <div class="profile__spacer"></div>
           <v-btn
             class="profile__mode font-weight-bold"
@@ -54,7 +54,6 @@
           <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
               <profile></profile>
-
               <!-- <v-badge bordered color="orange" offset-x="32" offset-y="32">
                 <v-avatar color="orange" size="150">
                   <v-img> </v-img>
@@ -99,14 +98,14 @@
           <component :is="getComponent" />
         </div>
 
-        <div class="profile__tabs">
+        <!-- <div class="profile__tabs">
           <div v-for="tab in tabs" :key="tab" class="profile__tab" @click="currentTab = tab">
             <div class="pc-highlight"></div>
             <span class="font-weight-black text-h6 text-subtitle-2-md text-uppercase">{{
               tab
             }}</span>
           </div>
-        </div>
+        </div> -->
       </v-skeleton-loader>
     </div>
   </Loading>
@@ -329,7 +328,7 @@ export default {
   },
   setup(_props, { root: { $apolloProvider } }) {
     // Layout Generation
-    const tabs = ref(['My Programs', 'Settings', 'ID']);
+    // const tabs = ref(['My Programs', 'Settings', 'ID']);
     const currentTab = ref('My Programs');
     const IDs = ref({
       Employer: 'purple',
@@ -370,7 +369,6 @@ export default {
       loader.value!.process();
     });
     return {
-      tabs,
       currentTab,
       getComponent,
       IDs,

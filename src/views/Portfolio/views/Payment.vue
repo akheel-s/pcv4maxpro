@@ -90,15 +90,24 @@
                     :value="option"
                     :label="`$${option.price / 100}`"
                   ></v-checkbox>
+
                   <v-text-field
                     v-model="option.quantity"
+                    class="sponsor__quantity-check"
+                    min="1"
                     label="quantity"
                     type="number"
                   ></v-text-field>
                 </v-card-actions>
               </v-card>
             </div>
-            <v-btn small outlined text :disabled="!selectedProduct.length" @click="checkout"
+            <v-btn
+              class="sponsor__pay-card"
+              small
+              outlined
+              text
+              :disabled="!selectedProduct.length"
+              @click="checkout"
               >Pay by Card</v-btn
             >
             <v-btn small outlined text :disabled="!selectedProduct.length" @click="sendInvoice"
@@ -228,9 +237,11 @@ export default {
     padding-right: 6%;
   }
 
+  &__pay-card {
+    margin-right: 3%;
+  }
+
   &__details {
-    // border-bottom: 3px solid #dedede;
-    // margin-bottom: 50px;
     flex-direction: row;
     display: flex;
     margin-top: 7px;
@@ -239,38 +250,26 @@ export default {
     align-items: flex-start;
   }
 
-  &__details-avatar {
-    // flex-shrink: 1;
-  }
-
   &__details-namecard {
-    // flex-shrink: 1;
     margin-left: 25px;
-    // width: 75%;
+
     flex-direction: column;
     display: flex;
-
-    // justify-content: flex-start !important;
-    // align-items: flex-start !important;
   }
 
   &__details-name {
-    // flex-shrink: 1;
     font-family: Raleway;
     font-size: 25px;
-    // font-weight: 800;
   }
 
   &__details-anonymous {
     font-family: Raleway;
     font-weight: 700;
-    // margin-left: 30px;
-    // align-items: flex-start;
-    // justify-content: flex-start;
   }
 
-  &__timeline-container {
-    // width: 40%;
+  &__quantity-check {
+    padding-left: 20px;
+    max-width: 80px;
   }
 
   &__timeline {
@@ -278,8 +277,6 @@ export default {
   }
 
   &__timeline-step {
-    //   font-family: Raleway;
-    //   font-weight: 800;
     font-family: Raleway;
     font-weight: 700;
     color: #404142;
@@ -287,10 +284,6 @@ export default {
   }
 
   &__program-menu {
-    // margin-top: 50px;
-    // margin-left: 25px;
-    // margin-right: 25px;
-    // margin-bottom: 25px;
     display: grid;
     grid-template-columns: repeat(2, 200px);
     grid-template-rows: repeat(2, 200px);
@@ -302,12 +295,9 @@ export default {
 
   &__program-menu-card-radio {
     justify-content: center;
-    // align-items: flex-end;
   }
 
   &__menu-radio {
-    // margin-top: 0px;
-    // padding: 0px;
     margin-left: 3px;
   }
 

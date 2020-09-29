@@ -39,8 +39,11 @@
             :error-messagees="errors"
           >
           </v-text-field>
+
           <div class="login__forgotpassword">
-            <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
+            <i>
+              <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
+            </i>
           </div>
         </validation-provider>
 
@@ -60,7 +63,9 @@
         </Loading>
         <v-alert v-if="error" class="login__alert" type="error">{{ error }}</v-alert>
         <div class="login__newaccount">
-          <a class="login__signuplink" href="signup"> No account yet? Signup.</a>
+          <i>
+            <a class="login__signuplink" href="signup"> No account yet? Signup.</a>
+          </i>
         </div>
       </validation-observer>
     </div>
@@ -207,16 +212,19 @@ export default {
     color: #ffff;
     text-align: right;
     & a.login__forgotlink {
+      font-size: 13px;
       color: #ffffff;
     }
   }
 
   &__newaccount {
     color: #ffffff;
-    margin-top: 5%;
+    margin-top: 4%;
     text-align: center;
+
     & a.login__signuplink {
-      margin-top: 5%;
+      margin-top: 4.5%;
+      font-size: 13px;
       color: #ffffff;
     }
   }

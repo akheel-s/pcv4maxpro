@@ -36,7 +36,7 @@
         >
       </div>
 
-      <div class="refer__body2">
+      <!-- <div class="refer__body2">
         <validation-provider v-slot="{ errors }" rules="required">
           <v-text-field
             v-model="phoneNumber"
@@ -60,18 +60,18 @@
         >
           <v-icon left>mdi-telegram</v-icon>Text
         </v-btn>
-      </div>
+      </div> -->
 
       <div class="refer__manage1">
         <v-btn small class="refer__manage1-buttons" depressed dark color="grey3"
           ><v-icon left>mdi-email-outline</v-icon>All Invites</v-btn
         >
-        <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
+        <!-- <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
           ><v-icon left>mdi-clock-time-two-outline</v-icon>Pending</v-btn
         >
         <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
           ><v-icon left>mdi-emoticon-excited-outline</v-icon>Accepted</v-btn
-        >
+        > -->
       </div>
 
       <div class="refer__all_invite">

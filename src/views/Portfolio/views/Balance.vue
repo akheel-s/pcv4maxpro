@@ -1,84 +1,99 @@
 <template>
   <div class="balance__entire-body">
-    <div class="balance__container">
-      <div class="balance__main">
-        <div class="balance__main-left">
-          <v-avatar size="70">
-            <v-img
-              src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-            ></v-img>
-          </v-avatar>
+    <ValidationObserver v-slot="{ invalid }">
+      <div class="balance__container">
+        <div class="balance__main">
+          <div class="balance__main-left">
+            <v-avatar size="70">
+              <v-img
+                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+              ></v-img>
+            </v-avatar>
 
-          <div class="balance__main-left-title">BALANCE</div>
+            <div class="balance__main-left-title">BALANCE</div>
 
-          <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
+            <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
 
-          <div>
-            <v-icon class="balance__main-left-icon" color="grey" large
-              >mdi-ticket-confirmation</v-icon
-            >
+            <div>
+              <v-icon class="balance__main-left-icon" color="grey" large
+                >mdi-ticket-confirmation</v-icon
+              >
+            </div>
+
+            <div class="balance__main-left-chippers">
+              <v-chip
+                v-for="(owner, index) in modOriginalOwners"
+                :key="index"
+                dark
+                :color="owner.color"
+                class="balance__main-left-chips"
+                >{{ `${owner.firstName} ${owner.lastName}` }}</v-chip
+              >
+            </div>
           </div>
 
-          <div class="balance__main-left-chippers">
-            <v-chip
-              v-for="(owner, index) in modOriginalOwners"
-              :key="index"
-              dark
-              :color="owner.color"
-              class="balance__main-left-chips"
-              >{{ `${owner.firstName} ${owner.lastName}` }}</v-chip
-            >
+          <div class="balance__main-right">
+            <div>
+              <v-btn
+                class="balance__main-right-button white--text font-weight-bold"
+                depressed
+                color="purple"
+                x-large
+                @click="currentTab = 'payment'"
+              >
+                <v-icon left>mdi-shield-star</v-icon>Sponsor
+              </v-btn>
+            </div>
+
+            <div>
+              <v-btn
+                class="balance__main-right-button white--text font-weight-bold"
+                depressed
+                color="grey"
+                outlined
+                x-large
+                @click="currentTab = 'payment'"
+                ><v-icon left>mdi-bank-transfer</v-icon>Transfer</v-btn
+              >
+            </div>
           </div>
         </div>
-
-        <div class="balance__main-right">
-          <div>
-            <v-btn
-              class="balance__main-right-button white--text font-weight-bold"
-              depressed
-              color="purple"
-              x-large
-              @click="currentTab = 'payment'"
-            >
-              <v-icon left>mdi-shield-star</v-icon>Sponsor
-            </v-btn>
-          </div>
-
-          <div>
-            <v-btn
-              class="balance__main-right-button white--text font-weight-bold"
-              depressed
-              color="grey"
+      </div>
+      <div class="balance__transfer">
+        <div class="balance__tickets">
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="transferQuantity"
+              :error-messages="errors"
+              type="number"
+              min="1"
+              placeholder="tickets"
               outlined
-              x-large
-              @click="currentTab = 'payment'"
-              ><v-icon left>mdi-bank-transfer</v-icon>Transfer</v-btn
-            >
-          </div>
+            ></v-text-field>
+          </validation-provider>
+        </div>
+
+        <div class="balance__email">
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="transferEmail"
+              :error-messages="errors"
+              placeholder="Email"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+        </div>
+
+        <div class="balance__transfer-button">
+          <v-btn :disabled="invalid" :dark="!invalid" depressed @click="processTransfer"
+            >Transfer</v-btn
+          >
         </div>
       </div>
-    </div>
-    <div class="balance__transfer">
-      <div class="balance__tickets">
-        <v-text-field
-          v-model="transferQuantity"
-          type="number"
-          placeholder="tickets"
-          outlined
-        ></v-text-field>
+      <div class="balance__table-view">
+        <BalanceView />
       </div>
-
-      <div class="balance__email">
-        <v-text-field v-model="transferEmail" placeholder="Email" outlined></v-text-field>
-      </div>
-
-      <div class="balance__transfer-button">
-        <v-btn depressed @click="processTransfer">Transfer</v-btn>
-      </div>
-    </div>
-    <div class="balance__table-view">
-      <BalanceView />
-    </div>
+    </ValidationObserver>
   </div>
 </template>
 
@@ -198,7 +213,7 @@ export default {
   }
 
   &__main {
-    flex-direction: col;
+    flex-direction: column;
     display: flex;
     width: 100%;
     flex-grow: 1;
@@ -272,9 +287,9 @@ export default {
   &__transfer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-top: 30px;
     width: 100%;
-    padding-left: 180px;
   }
 
   &__tickets {
