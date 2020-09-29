@@ -61,6 +61,7 @@
           >
 
           <!-- <v-btn
+         The code for the v-scrolls for each chip @click="$vuetify.goTo(target, options)"
             center
             dark
             color="green"
