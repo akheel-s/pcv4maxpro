@@ -220,7 +220,7 @@ export default {
     });
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
     const STUDENTIDQUERY = gql`
-      query thisStudent($id: ObjectId!) {
+      query thisStudent($id: ObjectId) {
         studentPortfolio(query: { _id: $id }) {
           school {
             name
@@ -274,13 +274,15 @@ export default {
     onMounted(() => {
       loader.value!.process();
     });
+
     return {
       ...toRefs(formOpt),
       ...toRefs(responses),
       menu,
       emit,
       save,
-      processQuery
+      processQuery,
+      loader
     };
   }
 };
