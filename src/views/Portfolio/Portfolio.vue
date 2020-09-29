@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >0 Tickets</v-btn
+            >{{ tickets }} Tickets</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"
@@ -53,13 +53,13 @@
 
           <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
-              <v-badge bordered color="orange" offset-x="32" offset-y="32">
+              <profile></profile>
+
+              <!-- <v-badge bordered color="orange" offset-x="32" offset-y="32">
                 <v-avatar color="orange" size="150">
-                  <v-img
-                    src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-                  ></v-img>
+                  <v-img> </v-img>
                 </v-avatar>
-              </v-badge>
+              </v-badge> -->
 
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
@@ -313,6 +313,7 @@ import { Token } from '@/generated/graphql';
 import { useAuthGetters, useDbState } from '@/store';
 import LoadingVue from '@/components/Loading.vue';
 import Portfolio from './views';
+import Profile from './Profile.vue';
 
 export default {
   name: 'Portfolio',
@@ -323,7 +324,8 @@ export default {
     payment: Portfolio.Payment,
     referral: Portfolio.Referral,
     Loading: LoadingVue,
-    settings: Portfolio.Settings
+    settings: Portfolio.Settings,
+    Profile
   },
   setup(_props, { root: { $apolloProvider } }) {
     // Layout Generation
