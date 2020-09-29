@@ -2,27 +2,24 @@
   <div class="forgotpassword__background">
     <div class="forgotpassword__content">
       <ValidationObserver v-slot="{ invalid }" class="forgotpassword_inputs1">
-        <validation-provider v-slot="{ errors }" name="confirm" rules="required|min:6">
-          <div class="forgotpassword__newpassword text-h4 font-weight-black">
-            Enter New Password
-          </div>
+        <div class="forgotpassword__newpassword text-h4 font-weight-black">Enter New Password</div>
 
-          <div class="forgotpassword__textfield">
+        <div class="forgotpassword__textfield">
+          <validation-provider v-slot="{ errors }" rules="required|min:6">
             <v-text-field
               v-model="password"
+              type="password"
+              :error-messages="errors"
               color="white"
               label="Password"
               class="forgotpassword__input"
-              :error-messages="errors"
               single-line
               outlined
               full-width
-              toggle
-              @score="handleScore"
             ></v-text-field>
-            <span v-if="valid && score < 3">Your password is not strong enough</span>
-          </div>
-        </validation-provider>
+          </validation-provider>
+          <span v-if="valid && score < 3">Your password is not strong enough</span>
+        </div>
 
         <v-btn
           class="forgotpassword__button text-h6 font-weight-black"
