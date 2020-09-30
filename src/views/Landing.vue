@@ -373,27 +373,17 @@
 
       <div class="landing__content-grid">
         <v-chip-group>
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
-            >Computer Science</v-chip
-          >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large>Engineering</v-chip>
-          <v-chip dark color="pink" class="landing__content-grid-combo" large>Digital Media</v-chip>
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
-            >Public Service</v-chip
-          >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
-            >Transportation</v-chip
-          >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
-            >Business & Finance</v-chip
-          >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
-            >Education & Family</v-chip
-          >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large
+          <v-chip dark color="pink" class="landing__content-grid-combo">Computer Science</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Engineering</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Digital Media</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Public Service</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Transportation</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Business & Finance</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Education & Family</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo"
             >Energy & Sustainability</v-chip
           >
-          <v-chip dark color="pink" class="landing__content-grid-combo" large>Healthcare</v-chip>
+          <v-chip dark color="pink" class="landing__content-grid-combo">Healthcare</v-chip>
         </v-chip-group>
       </div>
     </v-parallax>
@@ -524,7 +514,7 @@
     </v-parallax>
 
     <v-parallax
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_blue-1.svg"
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_blue-3.svg"
       dark
       height="100%"
       class="landing__hero-default"
@@ -535,8 +525,70 @@
         >What our program delivers to our student participants</v-btn
       >
 
-      <div class="landing__content-grid">
-        <div class="landing__content-grid-combo">
+      <div class="landing__benefits">
+        <div>
+          <v-card elevation="0" max-width="300px" min-width="250px" class="landing__benefits-card">
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="blue" large class="landing__benefits-card-icon"
+                >mdi-book-account-outline</v-icon
+              >Work-based Learning</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body"
+              >Our program oozes with work-based learning experiences from developing real solutions
+              for real employers to a full-blown internship program. Oh and all the stuff in-between
+              from interviewing, resume workshops to client engagement.</v-card-text
+            >
+          </v-card>
+        </div>
+        <div>
+          <v-card
+            max-width="300px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="blue" large class="landing__benefits-card-icon"
+                >mdi-ruler-square-compass</v-icon
+              >Project-based Learning</v-card-title
+            >
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body"
+              >Project-based learning is our secret sauce. By developing real projects for real
+              employers, our students tend to get wild. Their engagement increases, their motivation
+              amps up, and most importantly, it builds their confidence when they've built a real
+              project.</v-card-text
+            >
+          </v-card>
+        </div>
+
+        <div>
+          <v-card
+            max-width="300px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation=""
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="blue" large class="landing__benefits-card-icon"
+                >mdi-account-heart-outline</v-icon
+              >Service-based Learning</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-text class="landing__benefits-card-body"
+              >We were born to believe our youngest citizens can build the future of their own
+              communities. Students are the protagonists of this mission to improve their
+              communities through building resilience, equity and digital transformation.
+            </v-card-text>
+          </v-card>
+        </div>
+        <!-- <div class="landing__content-grid-combo">
           <v-icon dark x-large>mdi-telegram</v-icon>Project-based Learning
         </div>
         <div class="landing__content-grid-combo">
@@ -544,7 +596,7 @@
         </div>
         <div class="landing__content-grid-combo">
           <v-icon dark x-large>mdi-telegram</v-icon>Service-based Learning
-        </div>
+        </div> -->
       </div>
     </v-parallax>
 
@@ -573,6 +625,95 @@
     </v-parallax>
 
     <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_purple-2.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Benefits</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Enable students to build projects to win internships with you</v-btn
+      >
+
+      <div class="landing__benefits">
+        <div>
+          <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="purple" large class="landing__benefits-card-icon"
+                >mdi-book-account-outline</v-icon
+              >Present problems, get solutions</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body"
+              >Pose problems, allow students to solve it for you. Whether they're in class, part of
+              extracurricular or outside of school, our students build an initial solution to
+              present to you before you decide to hire them as an intern. Saving you onboarding
+              time, and management bandwidth.
+            </v-card-text>
+          </v-card>
+        </div>
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="purple" large class="landing__benefits-card-icon"
+                >mdi-ruler-square-compass</v-icon
+              >Test drive, then hire to execute</v-card-title
+            >
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body">
+              Students deliver initial solutions in competition for your internship. Once hired,
+              students carry-over proejcts to further develop their prototype, pilot or product.
+              This model gets your side project off the ground, while eliminating the wonder if the
+              intern will be a good-fit.
+            </v-card-text>
+          </v-card>
+        </div>
+
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="purple" large class="landing__benefits-card-icon"
+                >mdi-account-heart-outline</v-icon
+              >Setup for scale, manage easier</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-text class="landing__benefits-card-body">
+              Our one-time program setup allows you to run your program over and over again,
+              preparing you for greater replicability and scale. You can then focus your time
+              monitoring, tracking and supporting your participants to deliver the outcomes you're
+              looking for.
+            </v-card-text>
+          </v-card>
+        </div>
+        <!-- <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Project-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Work-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Service-based Learning
+        </div> -->
+      </div>
+    </v-parallax>
+
+    <!-- <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_purple-1.svg"
       dark
       height="100%"
@@ -583,7 +724,7 @@
       <v-btn outlined color="white" rounded class="landing__primary-subtitle"
         >Prototypes, pilots and products for employer goals</v-btn
       >
-    </v-parallax>
+    </v-parallax> -->
 
     <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/sponsor.png"
@@ -612,7 +753,7 @@
     </v-parallax>
 
     <v-parallax
-      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_red-1.svg"
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_red-2.svg"
       dark
       height="100%"
       class="landing__hero-default"
@@ -622,6 +763,81 @@
       <v-btn outlined color="white" rounded class="landing__primary-subtitle"
         >Sponsor participants to advance outcome goals</v-btn
       >
+
+      <div class="landing__benefits">
+        <div>
+          <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="red" large class="landing__benefits-card-icon"
+                >mdi-book-account-outline</v-icon
+              >Fund participants, transform lives</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body">
+              Student participants in our program transform as individuals while in our program.
+              They discover interests within themself and motivation to pursue a path for themself.
+              Fund participants to see an impact in student lives as they pursue their growth as
+              contributors to the community.
+            </v-card-text>
+          </v-card>
+        </div>
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="red" large class="landing__benefits-card-icon"
+                >mdi-ruler-square-compass</v-icon
+              >Monitor your sponsorsees</v-card-title
+            >
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body">
+              Once you've funded participants, the token they use to select and join programs will
+              be tracked under the name and entity that sponsored the participant. Monitor and track
+              the progress of your sponsorships, and see outcomes be delivered live.
+            </v-card-text>
+          </v-card>
+        </div>
+
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="red" large class="landing__benefits-card-icon"
+                >mdi-account-heart-outline</v-icon
+              >Ads and acknowledgements</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-text class="landing__benefits-card-body">
+              Your participant's success is your success. Your entity or name will be forever
+              associated with the impact you had on the program participant. You will be
+              automatically advertised, recognized and acknowledged during key activities during the
+              program.
+            </v-card-text>
+          </v-card>
+        </div>
+        <!-- <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Project-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Work-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Service-based Learning
+        </div> -->
+      </div>
     </v-parallax>
 
     <v-parallax
@@ -1058,7 +1274,8 @@ export default {
     text-align: center;
     margin-top: 2%;
     margin-bottom: 1%;
-    width: 50%;
+    min-width: 50%;
+    max-width: 75%;
     margin: auto;
     // justify-content: center;
     // align-items: center;
@@ -1077,6 +1294,42 @@ export default {
     font-family: Montserrat;
     font-weight: 800;
     font-size: 22px;
+  }
+
+  &__benefits {
+    flex-direction: row;
+    display: flex;
+    flex-grow: 1;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  &__benefits-card {
+    margin: 25px;
+    // min-width: 250px;
+    // max-width: 275px;
+  }
+
+  &__benefits-card-body {
+    // margin: auto;
+    // justify-content: center;
+    // align-items: center;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  &__benefits-card-icon {
+    // margin: auto;
+    margin: 5px;
+  }
+
+  &__benefits-card-title {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 16px;
+    // text-align: center;
   }
 }
 </style>
