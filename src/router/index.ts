@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
     component: Timeline
   },
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: Login
   },
@@ -49,7 +49,10 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '*',
-    component: Error404
+    component: Error404,
+    redirect: () => {
+      return { name: 'portfolio' };
+    }
   },
   {
     path: '/authRequired',

@@ -44,6 +44,7 @@
     background-color: #4f4f4f;
   }
   &__name {
+    text-transform: capitalize;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

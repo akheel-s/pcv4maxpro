@@ -77,7 +77,7 @@ import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
 import { useAuthActions } from '@/store';
 import Loading from '@/components/Loading.vue';
-import { redirectIfLoggedIn } from '@/utils/guards';
+import { onLogin } from '@/vue-apollo';
 
 export default {
   components: {
@@ -92,10 +92,8 @@ export default {
     const { loginUser } = useAuthActions([ActionTypes.loginUser]);
     async function login() {
       try {
-        await loginUser({ email: state.email, password: state.password });
-        // create({collection:"User",{
-
-        // }})
+        const user = await loginUser({ email: state.email, password: state.password });
+        await onLogin(user!.accessToken);
         $router.push({ name: 'setup' });
       } catch (err) {
         if (err.statusCode === 401)
@@ -103,7 +101,6 @@ export default {
         else state.error = err;
       }
     }
-    redirectIfLoggedIn($router);
     return { ...toRefs(state), login };
   }
 };
