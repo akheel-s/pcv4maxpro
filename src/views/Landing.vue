@@ -1100,6 +1100,9 @@
 
     <v-footer dark height="100">
       <div class="landing__footer">
+        <div class="landing__footer-text-secondary">
+          <v-icon small>mdi-copyright</v-icon> 2015 - 2020, PilotCity Inc.
+        </div>
         <a
           href="https://www.iubenda.com/terms-and-conditions/32542296"
           target="_blank"
@@ -1154,6 +1157,16 @@ export default {
   }
 
   &__footer-text {
+    font-family: Montserrat;
+    font-weight: 700;
+    color: #ffffff !important;
+    font-size: 12px;
+    margin: 10px;
+    // font-style: none;
+    text-decoration: none;
+  }
+
+  &__footer-text-secondary {
     font-family: Montserrat;
     font-weight: 700;
     color: #ffffff !important;
