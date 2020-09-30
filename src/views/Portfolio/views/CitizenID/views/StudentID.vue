@@ -98,7 +98,7 @@
           <!-- Guardian Email -->
 
           <div class="d-flex flex-row my-id--position">
-            <validation-provider v-slot="{ errors }" rules="required">
+            <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="guardian.email"
                 :error-messages="errors"
