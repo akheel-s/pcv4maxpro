@@ -128,7 +128,7 @@ export default {
   margin-left: auto;
   padding-right: 4.8%;
   padding-left: 4.8%;
-  height: 100vh;
+  height: 100%;
   // & .my-id__left-wrapper,
   // .my-id__right-wrapper {
   //   padding: 12px;

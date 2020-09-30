@@ -96,7 +96,6 @@ export default {
     }
   ) {
     const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
-    console.log('loading page', getObjectId.value);
     // Page Setup
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
