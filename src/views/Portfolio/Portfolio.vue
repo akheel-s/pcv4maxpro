@@ -8,7 +8,7 @@
       >
         <div class="profile__mode-container pc-container">
           <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
           <v-btn
             class="profile__mode"
             depressed
@@ -16,8 +16,8 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn
-          > -->
+            >My Portfolio</v-btn
+          >
           <div class="profile__spacer"></div>
           <v-btn
             class="profile__mode font-weight-bold"
