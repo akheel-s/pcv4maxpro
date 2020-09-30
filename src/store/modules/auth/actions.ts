@@ -16,9 +16,13 @@ export enum ActionTypes {
   resendEmailConfirmation = 'resendEmailConfirmation'
 }
 type AuthActionCtx = ActionContext<typeof authState, RootState>;
+
 export interface AuthActions extends ActionTree<typeof authState, RootState> {
   // loginAnon: (ctx: AuthActionCtx) => Promise<void>;
-  loginUser: (ctx: AuthActionCtx, payload: { email: string; password: string }) => Promise<void>;
+  loginUser: (
+    ctx: AuthActionCtx,
+    payload: { email: string; password: string }
+  ) => Promise<RootState['realmApp']['app']['currentUser']>;
   signup: (ctx: AuthActionCtx, payload: { email: string; password: string }) => Promise<void>;
   confirmUser: (ctx: AuthActionCtx, payload: { token: string; tokenId: string }) => Promise<void>;
   logout: (ctx: AuthActionCtx) => Promise<void>;
@@ -46,6 +50,7 @@ export const actions: AuthActions = {
         MutationTypes.LOGIN_USER,
         await rootState.realmApp.app.logIn(Realm.Credentials.emailPassword(email, password))
       );
+      return rootState.realmApp.app.currentUser!;
       // const user = rootState.realmApp.app.currentUser;
       // await onLogin(user!.accessToken);
     } catch (err) {

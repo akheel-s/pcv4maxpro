@@ -136,6 +136,7 @@
 </style>
 <script lang="ts">
 import { useAuthActions } from '@/store';
+import { onLogout } from '@/vue-apollo';
 import Profile from '@/components/Profile.vue';
 
 export default {
@@ -157,6 +158,7 @@ export default {
     const { logout: logoutProcess } = useAuthActions(['logout']);
     async function logout() {
       await logoutProcess();
+      await onLogout();
       ctx.root.$router.push({ name: 'login' });
     }
     // Global Tooling for linear progression
