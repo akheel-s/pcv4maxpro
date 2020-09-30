@@ -176,7 +176,12 @@ export default {
                   recipient_email: $recipientEmail
                 }
               ) {
-                status
+                recipient {
+                  firstName
+                  lastName
+                }
+                timestamp
+                tokensSent
               }
             }
           `,
