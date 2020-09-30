@@ -75,13 +75,18 @@
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
 import { ActionTypes } from '@/store/modules/auth/actions';
-import { useAuthActions } from '@/store';
+import { useAuthActions, useDbState } from '@/store';
 import Loading from '@/components/Loading.vue';
 import { onLogin } from '@/vue-apollo';
 
 export default {
   components: {
     Loading
+  },
+  beforeRouteEnter(to, from, next) {
+    const { user } = useDbState(['user']);
+    if (!user.value) next();
+    else next({ name: 'portfolio' });
   },
   setup(_props, { root: { $router } }) {
     const state = reactive({

@@ -5,6 +5,7 @@ import { ValidationObserver, ValidationProvider } from '@/validation';
 
 import VueApollo from 'vue-apollo';
 import provider from '@/vue-apollo';
+import VueMask from 'v-mask';
 import * as Layouts from './layouts';
 import App from './App.vue';
 import './registerServiceWorker';
@@ -21,6 +22,7 @@ Vue.component('landing-layout', Layouts.Landing);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
+Vue.use(VueMask);
 Vue.use(VueApollo);
 new Vue({
   apolloProvider: provider,

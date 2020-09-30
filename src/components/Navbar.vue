@@ -32,11 +32,11 @@
         <span class="font-weight-black">Signup</span>
       </v-btn>
 
-      <v-btn color="#404142" text rounded large
+      <!-- <v-btn color="#404142" text rounded large
         ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
-      >
+      > -->
 
-      <v-btn
+      <!-- <v-btn
         v-if="user"
         class="mr-3 ml-3 pr-10 pl-10"
         large
@@ -48,7 +48,7 @@
         @click="logout"
       >
         <span class="font-weight-black">Explore</span>
-      </v-btn>
+      </v-btn> -->
 
       <v-btn
         v-if="user"
@@ -59,12 +59,12 @@
         outlined
         color="white"
         :ripple="false"
-        @click="logout"
+        @click="$router.push({ name: 'portfolio' })"
       >
         <span class="font-weight-black">My Portfolio</span>
       </v-btn>
 
-      <v-btn color="#404142" rounded text
+      <!-- <v-btn color="#404142" rounded text
         ><v-badge
           class="ml-1 mr-1"
           :content="10"
@@ -75,9 +75,7 @@
           offset-y="20"
           ><v-icon color="white" large>mdi-bell</v-icon>
         </v-badge></v-btn
-      >
-
-      <!-- <v-btn
+      > <v-btn
         v-if="getUser"
         class="mr-3 ml-3"
         large
@@ -90,9 +88,9 @@
       >
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
-      <v-menu offset-y :ripple="false">
+      <v-menu v-if="user" offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark depressed v-bind="attrs" v-on="on">
+          <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
             <Profile :size="45" />
           </v-btn>
         </template>
@@ -143,7 +141,7 @@
 }
 </style>
 <script lang="ts">
-import { useAuthActions } from '@/store';
+import { useAuthActions, useDbState } from '@/store';
 import { onLogout } from '@/vue-apollo';
 import Profile from '@/components/Profile.vue';
 
@@ -152,10 +150,6 @@ export default {
     Profile
   },
   props: {
-    user: {
-      type: Object,
-      default: null
-    },
     loading: {
       type: Boolean,
       default: false
@@ -164,6 +158,7 @@ export default {
   setup(_props, ctx) {
     // Auth configuration
     const { logout: logoutProcess } = useAuthActions(['logout']);
+    const { user } = useDbState(['user']);
     async function logout() {
       await logoutProcess();
       await onLogout();
@@ -171,7 +166,8 @@ export default {
     }
     // Global Tooling for linear progression
     return {
-      logout
+      logout,
+      user
     };
   }
 };

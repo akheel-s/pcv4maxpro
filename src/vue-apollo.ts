@@ -73,7 +73,7 @@ const defaultOptions = {
 };
 const apolloClient = new ApolloClient({
   ...defaultOptions,
-  connectToDevTools: true
+  connectToDevTools: process.env.NODE_ENV === 'development'
 });
 
 export async function onLogin(token) {

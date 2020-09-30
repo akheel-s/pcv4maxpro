@@ -7,7 +7,11 @@ const routes: Array<RouteConfig> = [
   {
     path: '/portfolio',
     name: 'portfolio',
-    component: Portfolio
+    component: Portfolio,
+    meta: {
+      requiresAuth: true,
+      requiresUser: true
+    }
   },
   {
     path: '/setup',

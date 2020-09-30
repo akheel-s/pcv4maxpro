@@ -98,7 +98,7 @@
           <!-- Guardian Email -->
 
           <div class="d-flex flex-row my-id--position">
-            <validation-provider v-slot="{ errors }" rules="required">
+            <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="guardian.email"
                 :error-messages="errors"
@@ -107,8 +107,38 @@
               >
               </v-text-field>
             </validation-provider>
-            <v-btn class="my-id__button--append" depressed outlined x-large>Invite</v-btn>
+            <Loading v-slot="{ loading: loadInvite, process }" :callback="sendInvite">
+              <v-btn
+                class="my-id__button--append"
+                depressed
+                outlined
+                x-large
+                :loading="loadInvite"
+                @click="process"
+                >Invite</v-btn
+              >
+            </Loading>
           </div>
+
+          <!-- First Name -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="guardian.firstName"
+              :error-messages="errors"
+              label="Gaurdian First Name"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- Last Name -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="guardian.lastName"
+              :error-messages="errors"
+              label="Guardian Last Name"
+              outlined
+            ></v-text-field>
+          </validation-provider>
 
           <!-- Relationship to Guardian -->
           <validation-provider v-slot="{ errors }" rules="required">
@@ -133,20 +163,53 @@
             ></v-select>
           </validation-provider>
 
-          <!-- Home Address -->
+          <!-- Street Address -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
-              v-model="home.address"
+              v-model="home.streetAddress"
               :error-messages="errors"
-              label="Home Address"
+              label="Street Address"
               outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- City -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="home.city"
+              :error-messages="errors"
+              label="City"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- State -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-select
+              v-model="home.state"
+              :error-messages="errors"
+              :items="stateOpts"
+              label="State"
+              outlined
+            ></v-select>
+          </validation-provider>
+
+          <!-- Zipcode  -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="home.zipcode"
+              v-mask="'#####'"
+              :error-messages="errors"
+              label="Zipcode"
+              outlined
+              maxlength="5"
             ></v-text-field>
           </validation-provider>
         </v-skeleton-loader>
 
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
           <v-btn
-            :disabled="invalid"
+            :disabled="invalid && emailSent"
             :loading="saving"
             :dark="!invalid"
             block
@@ -164,17 +227,15 @@
 <script lang="ts">
 import { Ref, reactive, toRefs, ref, onMounted } from '@vue/composition-api';
 // import Loading from '@/components/Loading.vue';
-import { useAuthGetters, useDbActions } from '@/store';
+import { useAuthGetters, useDbActions, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { ActionTypes } from '@/store/modules/db/actions';
 import { GetterTypes } from '@/store/modules/auth/getters';
-import { StudentPortfolio } from '@/generated/graphql';
+import { SendReferalInput, StudentPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
-import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG } from '../../../const';
+import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG, STATE } from '../../../const';
 
-const {
-  getObjectId: { value: getObjectId }
-} = useAuthGetters([GetterTypes.getObjectId]);
+const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
 export default {
   name: 'StudentID',
   components: {
@@ -186,7 +247,7 @@ export default {
       emit,
       root: {
         $apolloProvider: {
-          defaultClient: { query }
+          defaultClient: { query, mutate }
         }
       }
     }
@@ -196,7 +257,8 @@ export default {
       superGender: SUPER_GENDER,
       ethnicityCulture: ETHNICITY,
       guardianRelationship: GUARDIAN,
-      homeLanguageOpts: HOME_LANG
+      homeLanguageOpts: HOME_LANG,
+      stateOpts: STATE
     });
     // Interactions
     const menu = ref(false);
@@ -208,18 +270,26 @@ export default {
       },
       guardian: {
         email: '',
-        relationship: ''
+        relationship: '',
+        firstName: '',
+        lastName: ''
       },
       home: {
-        address: '',
-        language: []
+        streetAddress: '',
+        language: [],
+        city: '',
+        state: '',
+        zipcode: ''
       },
       date: '',
       ethnicity: [],
       gender: '',
-      grade: ''
+      grade: '',
+      invited: false
     });
+
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
+    const emailSent = ref(false);
     const STUDENTIDQUERY = gql`
       query thisStudent($id: ObjectId) {
         studentPortfolio(query: { _id: $id }) {
@@ -230,22 +300,28 @@ export default {
           guardian {
             email
             relationship
+            firstName
+            lastName
           }
           home {
-            address
+            streetAddress
             language
+            city
+            state
+            zipcode
           }
           date
           ethnicity
           gender
           grade
+          invited
         }
       }
     `;
     function processQuery() {
       return query<{ studentPortfolio: StudentPortfolio }>({
         query: STUDENTIDQUERY,
-        variables: { id: getObjectId }
+        variables: { id: getObjectId.value }
       }).then(({ data: { studentPortfolio: res } }) => {
         if (res)
           Object.keys(responses).forEach(key => {
@@ -253,21 +329,41 @@ export default {
           });
       });
     }
+    const { user } = useDbState(['user']);
+    function sendInvite() {
+      return mutate({
+        mutation: gql`
+          mutation sendGuardianRefferal($email: String!, $id: ObjectId!, $name: String!) {
+            sendRefferal(input: { email: $email, name: $name, id: $id }) {
+              status
+            }
+          }
+        `,
+        variables: {
+          email: responses.guardian.email,
+          id: getObjectId.value,
+          name: `${user.value!.firstName} ${user.value!.lastName}`
+        } as SendReferalInput
+      }).then(() => {
+        emailSent.value = true;
+      });
+    }
     const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'StudentPortfolio',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           school: responses.school,
           guardian: responses.guardian,
           home: responses.home,
           date: responses.date,
           ethnicity: responses.ethnicity,
           gender: responses.gender,
-          grade: responses.grade
+          grade: responses.grade,
+          invited: responses.invited
         } as StudentPortfolio,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input');
@@ -283,7 +379,9 @@ export default {
       emit,
       save,
       processQuery,
-      loader
+      loader,
+      sendInvite,
+      emailSent
     };
   }
 };

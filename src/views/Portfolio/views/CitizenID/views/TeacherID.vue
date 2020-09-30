@@ -27,17 +27,76 @@
             ></v-text-field>
           </validation-provider>
 
-          <!-- School Address. Google Maps Integration from above-->
+          <!-- School District -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-combobox
+              v-model="subjects"
+              :items="[]"
+              :error-messages="errors"
+              chips
+              clearable
+              outlined
+              label="List subject areas you teach"
+              multiple
+              solo
+            >
+              <template v-slot:selection="{ attrs, item, select, selected }">
+                <v-chip
+                  v-bind="attrs"
+                  :input-value="selected"
+                  close
+                  @click="select"
+                  @click:close="remove(item)"
+                >
+                  <span>{{ item }}</span>
+                </v-chip>
+              </template>
+            </v-combobox>
+          </validation-provider>
+
+          <!-- Street Address -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
-              v-model="schoolAddress"
+              v-model="schools.streetAddress"
               :error-messages="errors"
-              label="School Address"
+              label="Street Address"
               outlined
             ></v-text-field>
           </validation-provider>
-        </v-skeleton-loader>
 
+          <!-- City -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="schools.city"
+              :error-messages="errors"
+              label="City"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- State -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-select
+              v-model="schools.state"
+              :error-messages="errors"
+              :items="stateOpts"
+              label="State"
+              outlined
+            ></v-select>
+          </validation-provider>
+
+          <!-- Zipcode  -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="schools.zipcode"
+              v-mask="'#####'"
+              :error-messages="errors"
+              label="Zipcode"
+              outlined
+              maxlength="5"
+            ></v-text-field>
+          </validation-provider>
+        </v-skeleton-loader>
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
           <v-btn
             :disabled="invalid"
@@ -62,6 +121,7 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import gql from 'graphql-tag';
 import { TeacherPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
+import { STATE } from '../../../const';
 
 const {
   getObjectId: { value: getObjectId }
@@ -83,10 +143,17 @@ export default {
       }
     }
   ) {
+    const formOpt = reactive({ stateOpts: STATE });
     const details = reactive({
       schoolDistrict: '',
       schoolName: '',
-      schoolAddress: ''
+      subjects: [] as string[],
+      schools: {
+        streetAddress: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }
     });
 
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -96,11 +163,20 @@ export default {
         teacherPortfolio(query: { _id: $id }) {
           schoolDistrict
           schoolName
-          schoolAddress
+          subjects
+          schools {
+            streetAddress
+            city
+            state
+            zipcode
+          }
         }
       }
     `;
-
+    function remove(item: string) {
+      details.subjects.splice(details.subjects.indexOf(item), 1);
+      details.subjects = [...details.subjects];
+    }
     onMounted(() => {
       loader.value!.process();
     });
@@ -126,7 +202,8 @@ export default {
           _id: getObjectId,
           schoolDistrict: details.schoolDistrict,
           schoolName: details.schoolName,
-          schoolAddress: details.schoolAddress
+          subjects: details.subjects,
+          schools: details.schools
         } as TeacherPortfolio,
         filter: { _id: getObjectId },
         options: { upsert: true }
@@ -134,7 +211,7 @@ export default {
       emit('input');
     }
 
-    return { save, ...toRefs(details), processQuery, loader };
+    return { save, ...toRefs(details), processQuery, loader, ...toRefs(formOpt), remove };
   }
 };
 </script>
