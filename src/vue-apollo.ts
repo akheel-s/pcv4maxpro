@@ -101,10 +101,10 @@ export async function onLogout() {
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
   }
 }
-watchEffect(() => {
-  if (app.value.currentUser) {
-    onLogin(app.value.currentUser.accessToken);
-  } else {
-    onLogout();
-  }
-});
+// watchEffect(() => {
+//   if (app.value.currentUser) {
+//     onLogin(app.value.currentUser.accessToken);
+//   } else {
+//     onLogout();
+//   }
+// });
