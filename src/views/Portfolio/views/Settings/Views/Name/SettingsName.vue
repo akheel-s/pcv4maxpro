@@ -97,7 +97,7 @@ export default {
 
     // GraphQL Query
     const GENERALIDQUERY = gql`
-      query thisGeneralUser($id: ObjectId!) {
+      query thisGeneralPerson($id: ObjectId!) {
         user(query: { _id: $id }) {
           firstName
           lastName
