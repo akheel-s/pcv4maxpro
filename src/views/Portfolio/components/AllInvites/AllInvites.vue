@@ -25,19 +25,12 @@ import gql from 'graphql-tag';
 import { Transaction, TransactionQueryInput, User, UserQueryInput } from '@/generated/graphql';
 import { useAuthGetters } from '@/store';
 import { keyBy } from 'lodash';
-import { items, HEADER } from './const';
+import { HEADER } from './const';
 
 export default {
   name: 'AllInvites',
   components: {
     IndexTable
-  },
-  props: {
-    items: {
-      type: Array as PropType<InviteItem[]>,
-      default: () => [],
-      required: true
-    }
   },
 
   setup(
@@ -45,7 +38,7 @@ export default {
     {
       root: {
         $apolloProvider: {
-          defaultClient: { query, mutate }
+          defaultClient: { query }
         }
       }
     }
