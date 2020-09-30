@@ -81,11 +81,16 @@
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
-import { useAuthActions } from '@/store';
+import { useAuthActions, useDbState } from '@/store';
 
 export default {
   name: 'Signup',
   components: {},
+  beforeRouteEnter(to, from, next) {
+    const { user } = useDbState(['user']);
+    if (!user.value) next();
+    else next({ name: 'portfolio' });
+  },
   setup(props, { root }) {
     // * Signup main
     const param = root.$route.query.email ? (root.$route.query.email as string) : '';

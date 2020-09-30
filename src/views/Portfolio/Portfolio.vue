@@ -48,7 +48,11 @@
       </div>
       <div class="profile__container pc-container">
         <div
-          v-if="(user && getComponent == 'my-programs') || (user && getComponent == 'settings')"
+          v-if="
+            (user && getComponent == 'my-programs') ||
+            (user && getComponent == 'settings') ||
+            (user && getComponent == 'id')
+          "
           align-items="center"
           class="profile__sub-container text-center mt-12"
         >
