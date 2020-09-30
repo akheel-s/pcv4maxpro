@@ -21,6 +21,15 @@
             >
             </v-text-field>
           </validation-provider>
+          <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              v-model="phoneNumber"
+              v-mask="'(###)###-####'"
+              :error-messages="errors"
+              label="Phone Number"
+              outlined
+            ></v-text-field>
+          </validation-provider>
 
           <validation-provider v-slot="{ errors }" slim rules="required">
             <v-select
@@ -90,6 +99,7 @@ export default {
     const user = reactive({
       firstName: '',
       lastName: '',
+      phoneNumber: '',
       userTypes: []
     });
 
@@ -101,6 +111,7 @@ export default {
         user(query: { _id: $id }) {
           firstName
           lastName
+          phoneNumber
           userTypes
         }
       }
@@ -125,12 +136,13 @@ export default {
       await update({
         collection: 'User',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           firstName: user.firstName,
           lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
           userTypes: user.userTypes
         } as User,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input', user.userTypes);

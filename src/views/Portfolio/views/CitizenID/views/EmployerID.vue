@@ -27,21 +27,23 @@
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
+            <v-textarea
               v-model="industry"
               :error-messages="errors"
               label="Describe your industry"
               outlined
-            ></v-text-field>
+              auto-grow
+            ></v-textarea>
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
+            <v-textarea
               v-model="primaryProduct"
               :error-messages="errors"
-              label="Describe your primary product or servic"
+              label="Describe your primary product or service"
               outlined
-            ></v-text-field>
+              auto-grow
+            ></v-textarea>
           </validation-provider>
 
           <!-- Street Address -->
@@ -49,7 +51,7 @@
             <v-text-field
               v-model="work.streetAddress"
               :error-messages="errors"
-              label="street Address"
+              label="Street Address"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -79,6 +81,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="work.zipcode"
+              v-mask="'#####'"
               :error-messages="errors"
               label="Zipcode"
               outlined

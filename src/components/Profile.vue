@@ -158,7 +158,10 @@ export default {
         });
     });
     const initials = computed(
-      () => `${user.value?.firstName?.charAt(0)} ${user.value?.lastName?.charAt(0)}`
+      () =>
+        `${user.value?.firstName
+          ?.toUpperCase()
+          .charAt(0)} ${user.value?.lastName?.toUpperCase().charAt(0)}`
     );
     return {
       myFiles,

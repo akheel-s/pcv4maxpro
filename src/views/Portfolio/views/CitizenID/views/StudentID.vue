@@ -135,7 +135,7 @@
             <v-text-field
               v-model="guardian.lastName"
               :error-messages="errors"
-              label="Gaurdian Last Name"
+              label="Guardian Last Name"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -168,7 +168,7 @@
             <v-text-field
               v-model="home.streetAddress"
               :error-messages="errors"
-              label="street Address"
+              label="Street Address"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -198,6 +198,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="home.zipcode"
+              v-mask="'#####'"
               :error-messages="errors"
               label="Zipcode"
               outlined
