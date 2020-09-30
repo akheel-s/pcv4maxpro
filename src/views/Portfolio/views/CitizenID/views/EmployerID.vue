@@ -118,11 +118,6 @@ import { EmployerPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
 import { STATE } from '../../../const';
 
-const {
-  getObjectId: { value: getObjectId }
-  // getId: { value: getId }
-} = useAuthGetters([GetterTypes.getObjectId]);
-
 export default {
   name: 'EmployerID',
   components: {
@@ -139,6 +134,10 @@ export default {
       }
     }
   ) {
+    const {
+      getObjectId
+      // getId: { value: getId }
+    } = useAuthGetters([GetterTypes.getObjectId]);
     const formOpt = reactive({
       stateOpts: STATE
     });
@@ -181,7 +180,7 @@ export default {
     function processQuery() {
       return query<{ employerPortfolio: EmployerPortfolio }>({
         query: EMPLOYERIDQUERY,
-        variables: { id: getObjectId }
+        variables: { id: getObjectId.value }
       }).then(({ data: { employerPortfolio: res } }) => {
         if (res)
           Object.keys(employer).forEach(key => {
@@ -196,14 +195,14 @@ export default {
       await update({
         collection: 'EmployerPortfolio',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           employerName: employer.employerName,
           jobTitle: employer.jobTitle,
           industry: employer.industry,
           primaryProduct: employer.primaryProduct,
           work: employer.work
         } as EmployerPortfolio,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input');
