@@ -23,7 +23,7 @@
     <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
     </v-img>
     <v-avatar v-else color="accent" boredered :width="size" :height="size"
-      >{{ `${user.firstName.charAt(0)} ${user.lastName.charAt(0)}` }}
+      >{{ initials }}
     </v-avatar>
   </div>
 </template>
@@ -157,12 +157,15 @@ export default {
           // });
         });
     });
-
+    const initials = computed(
+      () => `${user.value?.firstName?.charAt(0)} ${user.value?.lastName?.charAt(0)}`
+    );
     return {
       myFiles,
       server,
       user,
-      src
+      src,
+      initials
     };
   }
 };
