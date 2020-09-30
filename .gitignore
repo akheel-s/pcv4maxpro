@@ -25,3 +25,5 @@ pnpm-debug.log*
 docker-compose.override.yml
 .eslintcache
 .pnpm-store
+graphql.schema.json
+src/generated/graphql.ts
