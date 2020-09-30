@@ -28,7 +28,7 @@
 
       <v-divider class="my-settings__divider"></v-divider>
 
-      <Password />
+      <!-- <Password /> -->
 
       <!-- <v-divider class="my-settings__divider"></v-divider>
       <Email />
@@ -94,15 +94,15 @@
 
 <script lang="ts">
 import { ref } from '@vue/composition-api';
-import { Name, Password } from './Views';
+import { Name } from './Views';
 
 export default {
   name: 'Settings',
   components: {
     // Delete,
-    Name,
+    Name
     // Notifications,
-    Password
+    // Password
     // Program
   },
   setup() {

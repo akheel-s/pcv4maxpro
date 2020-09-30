@@ -88,7 +88,7 @@
       >
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
-      <v-menu offset-y :ripple="false">
+      <v-menu v-if="user" offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
             <Profile :size="45" />
@@ -141,7 +141,7 @@
 }
 </style>
 <script lang="ts">
-import { useAuthActions } from '@/store';
+import { useAuthActions, useDbState } from '@/store';
 import { onLogout } from '@/vue-apollo';
 import Profile from '@/components/Profile.vue';
 
@@ -150,10 +150,6 @@ export default {
     Profile
   },
   props: {
-    user: {
-      type: Object,
-      default: null
-    },
     loading: {
       type: Boolean,
       default: false
@@ -162,6 +158,7 @@ export default {
   setup(_props, ctx) {
     // Auth configuration
     const { logout: logoutProcess } = useAuthActions(['logout']);
+    const { user } = useDbState(['user']);
     async function logout() {
       await logoutProcess();
       await onLogout();
@@ -169,7 +166,8 @@ export default {
     }
     // Global Tooling for linear progression
     return {
-      logout
+      logout,
+      user
     };
   }
 };

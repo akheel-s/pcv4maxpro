@@ -29,12 +29,29 @@
 
           <!-- School District -->
           <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
+            <v-combobox
               v-model="subjects"
+              :items="[]"
               :error-messages="errors"
-              label="List subject areas you teach"
+              chips
+              clearable
               outlined
-            ></v-text-field>
+              label="List subject areas you teach"
+              multiple
+              solo
+            >
+              <template v-slot:selection="{ attrs, item, select, selected }">
+                <v-chip
+                  v-bind="attrs"
+                  :input-value="selected"
+                  close
+                  @click="select"
+                  @click:close="remove(item)"
+                >
+                  <span>{{ item }}</span>
+                </v-chip>
+              </template>
+            </v-combobox>
           </validation-provider>
 
           <!-- Street Address -->
@@ -72,6 +89,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="schools.zipcode"
+              v-mask="'#####'"
               :error-messages="errors"
               label="Zipcode"
               outlined
@@ -129,7 +147,7 @@ export default {
     const details = reactive({
       schoolDistrict: '',
       schoolName: '',
-      subjects: '',
+      subjects: [] as string[],
       schools: {
         streetAddress: '',
         city: '',
@@ -155,7 +173,10 @@ export default {
         }
       }
     `;
-
+    function remove(item: string) {
+      details.subjects.splice(details.subjects.indexOf(item), 1);
+      details.subjects = [...details.subjects];
+    }
     onMounted(() => {
       loader.value!.process();
     });
@@ -190,7 +211,7 @@ export default {
       emit('input');
     }
 
-    return { save, ...toRefs(details), processQuery, loader, ...toRefs(formOpt) };
+    return { save, ...toRefs(details), processQuery, loader, ...toRefs(formOpt), remove };
   }
 };
 </script>

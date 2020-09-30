@@ -1,58 +1,62 @@
 <template>
   <!--  TODO: make the inputs into actual components -->
-  <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
+  <Loading ref="loader" :callback="processQuery">
     <div class="profile__wrapper">
-      <v-skeleton-loader
+      <!-- v-slot="{ loading }"-->
+      <!-- <v-skeleton-loader
         :loading="loading || !user"
         type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
-      >
-        <div class="profile__mode-container pc-container">
-          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
-          <v-btn
-            class="profile__mode"
-            depressed
-            color="grey"
-            dark
-            small
-            @click="currentTab = 'my-programs'"
-            >My Portfolio</v-btn
-          >
-          <div class="profile__spacer"></div>
-          <v-btn
-            class="profile__mode font-weight-bold"
-            text
-            color="grey"
-            small
-            @click="currentTab = 'balance'"
-            >{{ tickets }} Tokens</v-btn
-          >
-          <v-btn
-            class="profile__mode white--text font-weight-bold"
-            depressed
-            color="purple"
-            small
-            @click="currentTab = 'payment'"
-            ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
-          >
-          <v-btn
-            class="profile__mode white--text font-weight-bold"
-            depressed
-            color="green"
-            small
-            @click="currentTab = 'referral'"
-            ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
-          >
-        </div>
-        <div class="profile__container pc-container">
-          <div v-if="user" align-items="center" class="profile__sub-container text-center mt-12">
-            <div>
-              <profile :size="150" editable />
-              <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
-            </div>
+      > -->
+      <div class="profile__mode-container pc-container">
+        <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
+        <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
+        <v-btn
+          class="profile__mode"
+          depressed
+          color="grey"
+          dark
+          small
+          @click="currentTab = 'my-programs'"
+          >My Portfolio</v-btn
+        >
+        <div class="profile__spacer"></div>
+        <v-btn
+          class="profile__mode font-weight-bold"
+          text
+          color="grey"
+          small
+          @click="currentTab = 'balance'"
+          >{{ tickets }} Tokens</v-btn
+        >
+        <v-btn
+          class="profile__mode white--text font-weight-bold"
+          depressed
+          color="purple"
+          small
+          @click="currentTab = 'payment'"
+          ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+        >
+        <v-btn
+          class="profile__mode white--text font-weight-bold"
+          depressed
+          color="green"
+          small
+          @click="currentTab = 'referral'"
+          ><v-icon left>mdi-telegram</v-icon>Invite</v-btn
+        >
+      </div>
+      <div class="profile__container pc-container">
+        <div
+          v-if="(user && getComponent == 'my-programs') || (user && getComponent == 'settings')"
+          align-items="center"
+          class="profile__sub-container text-center mt-12"
+        >
+          <div>
+            <profile :size="150" editable />
+            <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
+          </div>
 
-            <div v-if="(getComponent == 'my-programs') | (getComponent == 'settings')">
-              <!-- <v-chip
+          <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"
                 outlined
@@ -62,33 +66,27 @@
                 Programs
               </v-chip> -->
 
-              <v-chip
-                v-for="id in user.userTypes"
-                :key="id"
-                class="pl-8 pr-8 ma-2"
-                dark
-                :color="IDs[id]"
-                @click="(currentTab = 'id'), (currentProfile = `${id} id`)"
-              >
-                <v-icon left>mdi-account-outline</v-icon>
-                {{ id }}
-              </v-chip>
+          <v-chip
+            v-for="id in user.userTypes"
+            :key="id"
+            class="pl-8 pr-8 ma-2"
+            dark
+            :color="IDs[id]"
+            @click="(currentTab = 'id'), (currentProfile = `${id} id`)"
+          >
+            <v-icon left>mdi-account-outline</v-icon>
+            {{ id }}
+          </v-chip>
 
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
-            </div>
-          </div>
-
-          <component :is="getComponent" :exp-component="getProfile" />
+          <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
+            <v-icon left>mdi-wrench</v-icon>
+            Settings
+          </v-chip>
         </div>
-      </v-skeleton-loader>
+
+        <component :is="getComponent" :exp-component="getProfile" />
+      </div>
+      <!-- </v-skeleton-loader> -->
     </div>
   </Loading>
 </template>
