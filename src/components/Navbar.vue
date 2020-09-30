@@ -32,9 +32,9 @@
         <span class="font-weight-black">Signup</span>
       </v-btn>
 
-      <v-btn color="#404142" text rounded large
+      <!-- <v-btn color="#404142" text rounded large
         ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
-      >
+      > -->
 
       <!-- <v-btn
         v-if="user"
