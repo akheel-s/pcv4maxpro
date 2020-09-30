@@ -2,7 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const state = {
   stripePromise: loadStripe(
-    'pk_test_51HLdB4LnkQGEgDQnafDjpychGkVt5DxQFpiZR1hDvLyPDkfsH8PrxmbyCy2G5ZJDPfKjR7GKt1SR4ylbiyehXuma00KrfKoSFC',
+    'pk_live_51HLdB4LnkQGEgDQnXGptKroG5ZA55RvdG1jpcnVPMsIhtGhzEaiuyozyHOXQs6UvJQ3A23cPmszUyMByLhXuUX7i00YVOZNJTl',
     { apiVersion: '2020-08-27' }
   )
 };
