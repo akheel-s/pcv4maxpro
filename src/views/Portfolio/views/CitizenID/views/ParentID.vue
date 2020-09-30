@@ -19,12 +19,12 @@
 
           <!-- Request Stakeholder Access -->
           <div class="d-flex flex-row">
-            <validation-provider v-slot="{ errors }" rules="required">
+            <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="email"
                 :error-messages="errors"
                 label="Request Stakeholder Access"
-                placeholder="participant@email.com"
+                placeholder="stakeholder@email.com"
                 outlined
               ></v-text-field>
             </validation-provider>
@@ -33,7 +33,7 @@
 
           <!-- Refer Participant-->
           <div class="d-flex flex-row">
-            <validation-provider v-slot="{ errors }" rules="required">
+            <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="participantEmail"
                 :error-messages="errors"
@@ -51,11 +51,12 @@
             :disabled="invalid"
             :loading="saving"
             :dark="!invalid"
+            block
             large
             depressed
             @click="save"
           >
-            Save and Continue
+            Save
           </v-btn>
         </Loading>
       </div>
