@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <v-main>
+    <component :is="layout">
       <Navbar :user="getUser" :loading="loading"></Navbar>
       <router-view />
-      <!-- <profile></profile> -->
-    </v-main>
+    </component>
   </v-app>
 </template>
 
@@ -12,6 +11,7 @@
 import Vue from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import '@/styles/main.scss';
+import { computed } from '@vue/composition-api';
 import { useToolGetters, useAuthGetters } from '@/store';
 // import Profile from 'src/views/Portfolio/Profile.vue';
 
@@ -23,9 +23,13 @@ export default Vue.extend({
     // Profile
   },
 
-  setup() {
+  setup(props, { root: { $route } }) {
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
+    const layout = computed(() => {
+      return `${$route.meta.layout || 'default'}-layout`;
+    });
     return {
+      layout,
       getUser: useAuthGetters(['getUser']).getUser,
       loading
     };
