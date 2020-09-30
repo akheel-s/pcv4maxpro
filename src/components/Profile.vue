@@ -19,9 +19,10 @@
         :server="server"
       />
     </v-img>
-    <v-img v-else-if="src" class="rounded-circle" :width="size" :height="size" :src="src"> </v-img>
-    <v-avatar v-else color="accent" bordered :width="size" :height="size"
-      >{{ `${user.firstName.toUpperCase().charAt(0)} ${user.lastName.toUpperCase().charAt(0)}` }}
+    <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
+    </v-img>
+    <v-avatar v-else color="accent" boredered :width="size" :height="size"
+      >{{ `${user.firstName.toUpperCase().charAt(0)} ${user.lastName.charAt(0)}` }}
     </v-avatar>
   </div>
 </template>
@@ -37,7 +38,7 @@ import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import { useFileStorageState, useAuthGetters, useDbActions, useDbState } from '@/store';
-import { computed, ref } from '@vue/composition-api';
+import { computed, ref, watchEffect } from '@vue/composition-api';
 import { User } from '@/generated/graphql';
 
 const FilePond = vueFilePond(
@@ -121,7 +122,12 @@ export default {
       load(source, load, error, progress, abort) {
         // Should request a file object from the server here
         const myRequest = new Request(`https://pilotcity.s3.us-west-1.amazonaws.com/${source}`); // this request can also be used as a URL
-        fetch(myRequest).then(response => {
+        fetch(myRequest, {
+          method: 'GET',
+          headers: {
+            origin: 'http://localhost:8080'
+          }
+        }).then(response => {
           response.blob().then(myBlob => {
             load(myBlob);
           });
@@ -136,20 +142,21 @@ export default {
         };
       }
     });
-    const src = '';
-    // computed(() => {
-    //   const image = user.value?.profileImg
-    //     ? `https://pilotcity.s3.us-west-1.amazonaws.com/${user.value?.profileImg}`
-    //     : '';
-    //   if (image.length)
-    //     return fetch(new Request(image), {
-    //       method: 'GET'
-    //     }).then(response => {
-    //       response.blob().then(blob => URL.createObjectURL(blob));
-    //     });
-    //   return '';
-    // });
-    // handlers
+    const src = ref('');
+    watchEffect(() => {
+      if (user.value?.profileImg)
+        fetch(new Request(user.value.profileImg), {
+          method: 'GET'
+        }).then(response => {
+          src.value = `https://pilotcity.s3.us-west-1.amazonaws.com/${user.value!.profileImg}`;
+          // response.blob().then(blob => {
+          //   const url = URL.createObjectURL(blob);
+          //   src.value = url.substring(5);
+          //   console.log(src.value);
+          // });
+        });
+    });
+
     return {
       myFiles,
       server,

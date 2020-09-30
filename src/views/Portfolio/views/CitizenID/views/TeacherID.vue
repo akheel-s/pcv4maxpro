@@ -37,16 +37,16 @@
             ></v-text-field>
           </validation-provider>
         </v-skeleton-loader>
-
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
           <v-btn
             :disabled="invalid"
             :loading="saving"
             :dark="!invalid"
+            block
             large
             depressed
             @click="save"
-            >Save and Continue</v-btn
+            >Save</v-btn
           >
         </Loading>
       </div>
@@ -109,9 +109,10 @@ export default {
         query: TEACHERIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { teacherPortfolio: res } }) => {
-        Object.keys(details).forEach(key => {
-          if (res[key]) details[key] = res[key];
-        });
+        if (res)
+          Object.keys(details).forEach(key => {
+            if (res[key]) details[key] = res[key];
+          });
       });
     }
 

@@ -55,7 +55,7 @@
             large
             depressed
             @click="save"
-            >Save and Continue</v-btn
+            >Save</v-btn
           >
         </Loading>
       </div>
@@ -134,12 +134,12 @@ export default {
       await update({
         collection: 'User',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           firstName: user.firstName,
           lastName: user.lastName,
           userTypes: user.userTypes
         } as User,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input', user.userTypes);

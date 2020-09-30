@@ -61,10 +61,11 @@
             :loading="saving"
             :dark="!invalid"
             large
+            block
             depressed
             @click="save"
           >
-            Save and Continue
+            Save
           </v-btn>
         </Loading>
       </div>
@@ -133,9 +134,10 @@ export default {
         query: EMPLOYERIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { employerPortfolio: res } }) => {
-        Object.keys(employer).forEach(key => {
-          if (res[key]) employer[key] = res[key];
-        });
+        if (res)
+          Object.keys(employer).forEach(key => {
+            if (res[key]) employer[key] = res[key];
+          });
       });
     }
 

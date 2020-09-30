@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -61,7 +62,6 @@ export type TeacherPortfolioQueryInput = {
   _id_gte?: Maybe<Scalars['ObjectId']>;
   schoolAddress_lt?: Maybe<Scalars['String']>;
 };
-
 
 export type EmployerPortfolioQueryInput = {
   jobTitle_exists?: Maybe<Scalars['Boolean']>;
@@ -367,362 +367,296 @@ export type Mutation = {
   upsertOneUser?: Maybe<User>;
 };
 
-
 export type MutationDeleteManyEmployerPortfoliosArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
 };
-
 
 export type MutationDeleteManyParentPortfoliosArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
 };
 
-
 export type MutationDeleteManySchoolPortfoliosArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
 };
-
 
 export type MutationDeleteManyStudentPortfoliosArgs = {
   query?: Maybe<StudentPortfolioQueryInput>;
 };
 
-
 export type MutationDeleteManyTeacherPortfoliosArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
 };
-
 
 export type MutationDeleteManyTokensArgs = {
   query?: Maybe<TokenQueryInput>;
 };
 
-
 export type MutationDeleteManyTransactionsArgs = {
   query?: Maybe<TransactionQueryInput>;
 };
-
 
 export type MutationDeleteManyUsersArgs = {
   query?: Maybe<UserQueryInput>;
 };
 
-
 export type MutationDeleteOneEmployerPortfolioArgs = {
   query: EmployerPortfolioQueryInput;
 };
-
 
 export type MutationDeleteOneParentPortfolioArgs = {
   query: ParentPortfolioQueryInput;
 };
 
-
 export type MutationDeleteOneSchoolPortfolioArgs = {
   query: SchoolPortfolioQueryInput;
 };
-
 
 export type MutationDeleteOneStudentPortfolioArgs = {
   query: StudentPortfolioQueryInput;
 };
 
-
 export type MutationDeleteOneTeacherPortfolioArgs = {
   query: TeacherPortfolioQueryInput;
 };
-
 
 export type MutationDeleteOneTokenArgs = {
   query: TokenQueryInput;
 };
 
-
 export type MutationDeleteOneTransactionArgs = {
   query: TransactionQueryInput;
 };
-
 
 export type MutationDeleteOneUserArgs = {
   query: UserQueryInput;
 };
 
-
 export type MutationInsertManyEmployerPortfoliosArgs = {
   data: Array<EmployerPortfolioInsertInput>;
 };
-
 
 export type MutationInsertManyParentPortfoliosArgs = {
   data: Array<ParentPortfolioInsertInput>;
 };
 
-
 export type MutationInsertManySchoolPortfoliosArgs = {
   data: Array<SchoolPortfolioInsertInput>;
 };
-
 
 export type MutationInsertManyStudentPortfoliosArgs = {
   data: Array<StudentPortfolioInsertInput>;
 };
 
-
 export type MutationInsertManyTeacherPortfoliosArgs = {
   data: Array<TeacherPortfolioInsertInput>;
 };
-
 
 export type MutationInsertManyTokensArgs = {
   data: Array<TokenInsertInput>;
 };
 
-
 export type MutationInsertManyTransactionsArgs = {
   data: Array<TransactionInsertInput>;
 };
-
 
 export type MutationInsertManyUsersArgs = {
   data: Array<UserInsertInput>;
 };
 
-
 export type MutationInsertOneEmployerPortfolioArgs = {
   data: EmployerPortfolioInsertInput;
 };
-
 
 export type MutationInsertOneParentPortfolioArgs = {
   data: ParentPortfolioInsertInput;
 };
 
-
 export type MutationInsertOneSchoolPortfolioArgs = {
   data: SchoolPortfolioInsertInput;
 };
-
 
 export type MutationInsertOneStudentPortfolioArgs = {
   data: StudentPortfolioInsertInput;
 };
 
-
 export type MutationInsertOneTeacherPortfolioArgs = {
   data: TeacherPortfolioInsertInput;
 };
-
 
 export type MutationInsertOneTokenArgs = {
   data: TokenInsertInput;
 };
 
-
 export type MutationInsertOneTransactionArgs = {
   data: TransactionInsertInput;
 };
 
-
 export type MutationInsertOneUserArgs = {
   data: UserInsertInput;
 };
-
 
 export type MutationReplaceOneEmployerPortfolioArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
   data: EmployerPortfolioInsertInput;
 };
 
-
 export type MutationReplaceOneParentPortfolioArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
   data: ParentPortfolioInsertInput;
 };
-
 
 export type MutationReplaceOneSchoolPortfolioArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
   data: SchoolPortfolioInsertInput;
 };
 
-
 export type MutationReplaceOneStudentPortfolioArgs = {
   data: StudentPortfolioInsertInput;
   query?: Maybe<StudentPortfolioQueryInput>;
 };
-
 
 export type MutationReplaceOneTeacherPortfolioArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
   data: TeacherPortfolioInsertInput;
 };
 
-
 export type MutationReplaceOneTokenArgs = {
   query?: Maybe<TokenQueryInput>;
   data: TokenInsertInput;
 };
-
 
 export type MutationReplaceOneTransactionArgs = {
   query?: Maybe<TransactionQueryInput>;
   data: TransactionInsertInput;
 };
 
-
 export type MutationReplaceOneUserArgs = {
   query?: Maybe<UserQueryInput>;
   data: UserInsertInput;
 };
 
-
 export type MutationSendRefferalArgs = {
   input?: Maybe<SendReferalInput>;
 };
 
-
 export type MutationSendTokensMutationArgs = {
   input?: Maybe<SendTokensInput>;
 };
-
 
 export type MutationUpdateManyEmployerPortfoliosArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
   set: EmployerPortfolioUpdateInput;
 };
 
-
 export type MutationUpdateManyParentPortfoliosArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
   set: ParentPortfolioUpdateInput;
 };
-
 
 export type MutationUpdateManySchoolPortfoliosArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
   set: SchoolPortfolioUpdateInput;
 };
 
-
 export type MutationUpdateManyStudentPortfoliosArgs = {
   query?: Maybe<StudentPortfolioQueryInput>;
   set: StudentPortfolioUpdateInput;
 };
-
 
 export type MutationUpdateManyTeacherPortfoliosArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
   set: TeacherPortfolioUpdateInput;
 };
 
-
 export type MutationUpdateManyTokensArgs = {
   query?: Maybe<TokenQueryInput>;
   set: TokenUpdateInput;
 };
-
 
 export type MutationUpdateManyTransactionsArgs = {
   query?: Maybe<TransactionQueryInput>;
   set: TransactionUpdateInput;
 };
 
-
 export type MutationUpdateManyUsersArgs = {
   query?: Maybe<UserQueryInput>;
   set: UserUpdateInput;
 };
-
 
 export type MutationUpdateOneEmployerPortfolioArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
   set: EmployerPortfolioUpdateInput;
 };
 
-
 export type MutationUpdateOneParentPortfolioArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
   set: ParentPortfolioUpdateInput;
 };
-
 
 export type MutationUpdateOneSchoolPortfolioArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
   set: SchoolPortfolioUpdateInput;
 };
 
-
 export type MutationUpdateOneStudentPortfolioArgs = {
   query?: Maybe<StudentPortfolioQueryInput>;
   set: StudentPortfolioUpdateInput;
 };
-
 
 export type MutationUpdateOneTeacherPortfolioArgs = {
   set: TeacherPortfolioUpdateInput;
   query?: Maybe<TeacherPortfolioQueryInput>;
 };
 
-
 export type MutationUpdateOneTokenArgs = {
   query?: Maybe<TokenQueryInput>;
   set: TokenUpdateInput;
 };
-
 
 export type MutationUpdateOneTransactionArgs = {
   query?: Maybe<TransactionQueryInput>;
   set: TransactionUpdateInput;
 };
 
-
 export type MutationUpdateOneUserArgs = {
   query?: Maybe<UserQueryInput>;
   set: UserUpdateInput;
 };
-
 
 export type MutationUpsertOneEmployerPortfolioArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
   data: EmployerPortfolioInsertInput;
 };
 
-
 export type MutationUpsertOneParentPortfolioArgs = {
   data: ParentPortfolioInsertInput;
   query?: Maybe<ParentPortfolioQueryInput>;
 };
-
 
 export type MutationUpsertOneSchoolPortfolioArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
   data: SchoolPortfolioInsertInput;
 };
 
-
 export type MutationUpsertOneStudentPortfolioArgs = {
   data: StudentPortfolioInsertInput;
   query?: Maybe<StudentPortfolioQueryInput>;
 };
-
 
 export type MutationUpsertOneTeacherPortfolioArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
   data: TeacherPortfolioInsertInput;
 };
 
-
 export type MutationUpsertOneTokenArgs = {
   query?: Maybe<TokenQueryInput>;
   data: TokenInsertInput;
 };
 
-
 export type MutationUpsertOneTransactionArgs = {
   query?: Maybe<TransactionQueryInput>;
   data: TransactionInsertInput;
 };
-
 
 export type MutationUpsertOneUserArgs = {
   data: UserInsertInput;
@@ -1109,7 +1043,6 @@ export type UserEventLogQueryInput = {
   timestamp_in?: Maybe<Array<Maybe<Scalars['DateTime']>>>;
 };
 
-
 export type TokenEventLogQueryInput = {
   event_nin?: Maybe<Array<Maybe<Scalars['String']>>>;
   created_gte?: Maybe<Scalars['DateTime']>;
@@ -1423,11 +1356,9 @@ export type Query = {
   users: Array<Maybe<User>>;
 };
 
-
 export type QueryEmployerPortfolioArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
 };
-
 
 export type QueryEmployerPortfoliosArgs = {
   query?: Maybe<EmployerPortfolioQueryInput>;
@@ -1435,11 +1366,9 @@ export type QueryEmployerPortfoliosArgs = {
   sortBy?: Maybe<EmployerPortfolioSortByInput>;
 };
 
-
 export type QueryParentPortfolioArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
 };
-
 
 export type QueryParentPortfoliosArgs = {
   query?: Maybe<ParentPortfolioQueryInput>;
@@ -1447,11 +1376,9 @@ export type QueryParentPortfoliosArgs = {
   sortBy?: Maybe<ParentPortfolioSortByInput>;
 };
 
-
 export type QuerySchoolPortfolioArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
 };
-
 
 export type QuerySchoolPortfoliosArgs = {
   query?: Maybe<SchoolPortfolioQueryInput>;
@@ -1459,11 +1386,9 @@ export type QuerySchoolPortfoliosArgs = {
   sortBy?: Maybe<SchoolPortfolioSortByInput>;
 };
 
-
 export type QueryStudentPortfolioArgs = {
   query?: Maybe<StudentPortfolioQueryInput>;
 };
-
 
 export type QueryStudentPortfoliosArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -1471,11 +1396,9 @@ export type QueryStudentPortfoliosArgs = {
   query?: Maybe<StudentPortfolioQueryInput>;
 };
 
-
 export type QueryTeacherPortfolioArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
 };
-
 
 export type QueryTeacherPortfoliosArgs = {
   query?: Maybe<TeacherPortfolioQueryInput>;
@@ -1483,11 +1406,9 @@ export type QueryTeacherPortfoliosArgs = {
   sortBy?: Maybe<TeacherPortfolioSortByInput>;
 };
 
-
 export type QueryTokenArgs = {
   query?: Maybe<TokenQueryInput>;
 };
-
 
 export type QueryTokensArgs = {
   query?: Maybe<TokenQueryInput>;
@@ -1495,11 +1416,9 @@ export type QueryTokensArgs = {
   sortBy?: Maybe<TokenSortByInput>;
 };
 
-
 export type QueryTransactionArgs = {
   query?: Maybe<TransactionQueryInput>;
 };
-
 
 export type QueryTransactionsArgs = {
   query?: Maybe<TransactionQueryInput>;
@@ -1507,11 +1426,9 @@ export type QueryTransactionsArgs = {
   sortBy?: Maybe<TransactionSortByInput>;
 };
 
-
 export type QueryUserArgs = {
   query?: Maybe<UserQueryInput>;
 };
-
 
 export type QueryUsersArgs = {
   query?: Maybe<UserQueryInput>;
@@ -1664,22 +1581,20 @@ export enum UserSortByInput {
   EmailAsc = 'EMAIL_ASC'
 }
 
-
-      export interface IntrospectionResultData {
-        __schema: {
-          types: {
-            kind: string;
-            name: string;
-            possibleTypes: {
-              name: string;
-            }[];
-          }[];
-        };
-      }
-      const result: IntrospectionResultData = {
-  "__schema": {
-    "types": []
+export interface IntrospectionResultData {
+  __schema: {
+    types: {
+      kind: string;
+      name: string;
+      possibleTypes: {
+        name: string;
+      }[];
+    }[];
+  };
+}
+const result: IntrospectionResultData = {
+  __schema: {
+    types: []
   }
 };
-      export default result;
-    
+export default result;
