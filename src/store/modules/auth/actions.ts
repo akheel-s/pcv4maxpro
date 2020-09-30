@@ -1,7 +1,8 @@
 import { ActionTree, ActionContext } from 'vuex';
 import { RootState } from '@/store/state';
 import * as Realm from 'realm-web';
-import { onLogin, onLogout } from '@/vue-apollo';
+// import { onLogin, onLogout } from '@/vue-apollo';
+import { MutationTypes as DbMutationTypes } from '@/store/modules/db/mutations';
 import { MutationTypes } from './mutations';
 import authState from './state';
 
@@ -38,17 +39,15 @@ export const actions: AuthActions = {
   //     commit(MutationTypes.LOGIN_ERROR);
   //   }
   // },
-  async loginUser(
-    { commit, rootState, dispatch },
-    { email, password }: { email: string; password: string }
-  ) {
+  async loginUser({ commit, rootState }, { email, password }: { email: string; password: string }) {
     try {
-      await dispatch('logout');
+      // await dispatch('logout');
       commit(
         MutationTypes.LOGIN_USER,
         await rootState.realmApp.app.logIn(Realm.Credentials.emailPassword(email, password))
       );
-      await onLogin(rootState.realmApp.app.currentUser?.accessToken);
+      // const user = rootState.realmApp.app.currentUser;
+      // await onLogin(user!.accessToken);
     } catch (err) {
       commit(MutationTypes.LOGIN_ERROR, err);
       throw err;
@@ -75,7 +74,8 @@ export const actions: AuthActions = {
   async logout({ commit, rootState }) {
     try {
       await rootState.realmApp.app.currentUser?.logOut();
-      await onLogout();
+      // await onLogout();
+      commit(`db/${DbMutationTypes.setUser}`, null, { root: true });
       commit(MutationTypes.LOGOUT);
     } catch (err) {
       commit(MutationTypes.LOGOUT_ERROR, err);

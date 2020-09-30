@@ -54,7 +54,6 @@ export const actions: StripeActions = {
       });
   },
   async createInvoice({ rootState }, { lineItems }) {
-    console.log(process.env.VUE_APP_STRIPE_INVOICE_DEV);
     return fetch(
       process.env.NODE_ENV === 'production'
         ? process.env.VUE_APP_STRIPE_INVOICE_PROD

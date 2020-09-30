@@ -82,13 +82,12 @@
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
 import { useAuthActions } from '@/store';
-import { redirectIfLoggedIn } from '@/utils/guards';
 
 export default {
   name: 'Signup',
   components: {},
 
-  setup(_props, { root: { $router } }) {
+  setup() {
     // * Signup main
     const state = reactive({
       email: '',
@@ -116,7 +115,6 @@ export default {
       }
       ui.loading = false;
     }
-    redirectIfLoggedIn($router);
     return { ...toRefs(state), submit, ...toRefs(ui) };
   },
   methods: {}

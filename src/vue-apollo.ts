@@ -1,16 +1,13 @@
+import { watchEffect } from '@vue/composition-api';
+import { useRealmAppState } from '@/store';
 import { setContext } from 'apollo-link-context';
 import { ApolloClient } from 'apollo-boost';
 
-import * as RealmWeb from 'realm-web';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-const app = new RealmWeb.App({
-  id: process.env.VUE_APP_REALM_ID!,
-  baseUrl: 'https://realm.mongodb.com'
-});
+const { app } = useRealmAppState(['app']);
 // Install the vue plugin
-
 // Name of the localStorage item
 const AUTH_TOKEN = 'apollo-token';
 
@@ -20,25 +17,26 @@ const AUTH_TOKEN = 'apollo-token';
 const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP;
 const httpLink = createHttpLink({ uri: httpEndpoint });
 
-const authorizationHeaderLink = setContext(async (_, { headers }) => {
-  if (app.currentUser) {
-    // Refreshing custom data also refreshes the access token
-    await app.currentUser.refreshCustomData();
-  } else {
-    // If no user is logged in, log in an anonymous user
-    await app.logIn(RealmWeb.Credentials.anonymous());
-  }
-  // Get a valid access token for the current user
-  const accessToken = app.currentUser?.accessToken;
-
-  // Set the Authorization header, preserving any other headers
-  return {
-    headers: {
-      ...headers,
-      Authorization: `Bearer ${accessToken}`
+const authorizationHeaderLink = () =>
+  setContext(async (_, { headers }) => {
+    if (app.value.currentUser) {
+      // Refreshing custom data also refreshes the access token
+      await app.value.currentUser.refreshCustomData();
+    } else {
+      // If no user is logged in, log in an anonymous user
+      // await app.logIn(RealmWeb.Credentials.anonymous());
     }
-  };
-});
+    // Get a valid access token for the current user
+    const accessToken = app.value.currentUser?.accessToken;
+
+    // Set the Authorization header, preserving any other headers
+    return {
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${accessToken}`
+      }
+    };
+  });
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
   httpEndpoint,
@@ -59,7 +57,7 @@ const defaultOptions = {
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
 
-  link: authorizationHeaderLink.concat(httpLink),
+  link: authorizationHeaderLink().concat(httpLink),
 
   // Override default cache
   cache: new InMemoryCache()
@@ -103,3 +101,10 @@ export async function onLogout() {
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
   }
 }
+watchEffect(() => {
+  if (app.value.currentUser) {
+    onLogin(app.value.currentUser.accessToken);
+  } else {
+    onLogout();
+  }
+});
