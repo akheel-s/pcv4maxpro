@@ -2,8 +2,9 @@ import Vue from 'vue';
 import './installCompositionApi';
 import './store/watchers';
 import { ValidationObserver, ValidationProvider } from '@/validation';
-import apolloClient from '@/vue-apollo';
+
 import VueApollo from 'vue-apollo';
+import provider from '@/vue-apollo';
 import * as Layouts from './layouts';
 import App from './App.vue';
 import './registerServiceWorker';
@@ -22,9 +23,7 @@ Vue.component('ValidationObserver', ValidationObserver);
 
 Vue.use(VueApollo);
 new Vue({
-  apolloProvider: new VueApollo({
-    defaultClient: apolloClient
-  }),
+  apolloProvider: provider,
   router,
   store,
   vuetify,

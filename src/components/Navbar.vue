@@ -93,7 +93,7 @@
       <v-menu offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark depressed v-bind="attrs" v-on="on">
-            <v-img class="border-circle" width="45" height="45"><Profile /></v-img>
+            <Profile :size="45" />
           </v-btn>
         </template>
 

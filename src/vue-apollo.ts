@@ -1,4 +1,4 @@
-import { watchEffect } from '@vue/composition-api';
+import VueApollo from 'vue-apollo';
 import { useRealmAppState } from '@/store';
 import { setContext } from 'apollo-link-context';
 import { ApolloClient } from 'apollo-boost';
@@ -75,7 +75,6 @@ const apolloClient = new ApolloClient({
   ...defaultOptions,
   connectToDevTools: true
 });
-export default apolloClient;
 
 export async function onLogin(token) {
   if (typeof localStorage !== 'undefined' && token) {
@@ -101,6 +100,10 @@ export async function onLogout() {
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
   }
 }
+const provider = new VueApollo({
+  defaultClient: apolloClient
+});
+export default provider;
 // watchEffect(() => {
 //   if (app.value.currentUser) {
 //     onLogin(app.value.currentUser.accessToken);
