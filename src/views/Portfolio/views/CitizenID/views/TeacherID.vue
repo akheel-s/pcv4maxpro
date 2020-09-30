@@ -37,7 +37,6 @@
             ></v-text-field>
           </validation-provider>
         </v-skeleton-loader>
-
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
           <v-btn
             :disabled="invalid"

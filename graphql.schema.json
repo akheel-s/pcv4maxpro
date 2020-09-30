@@ -272,7 +272,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -1509,7 +1509,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "isDeprecated": true,
@@ -1584,26 +1584,31 @@
           {
             "name": "sender_id",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "recipient_id",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "recipient_email",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -2371,9 +2376,13 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": true,
             "deprecationReason": ""
@@ -2400,7 +2409,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "isDeprecated": true,
@@ -2554,7 +2563,7 @@
             "defaultValue": null
           },
           {
-            "name": "OR",
+            "name": "profileImg_gt",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -2576,7 +2585,27 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "email_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -2642,7 +2671,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -2793,9 +2822,13 @@
             "name": "_id_unset",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -3038,7 +3071,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -3163,7 +3196,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -3203,9 +3236,13 @@
             "name": "gender",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -3233,9 +3270,13 @@
             "name": "_id_unset",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -3254,7 +3295,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -3294,7 +3335,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -3376,7 +3417,6 @@
           {
             "name": "_id",
             "description": "",
-            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
@@ -3388,14 +3428,12 @@
           {
             "name": "email",
             "description": "",
-            "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "eventLog",
@@ -3416,7 +3454,6 @@
           {
             "name": "firstName",
             "description": "",
-            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -3682,7 +3719,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null
@@ -3691,9 +3728,13 @@
             "name": "event_ne",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -3845,13 +3886,9 @@
             "name": "staffType",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -4025,7 +4062,18 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SchoolPortfolioQueryInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "eventLog",
             "description": "",
@@ -4055,7 +4103,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -4105,7 +4153,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -4124,9 +4172,13 @@
             "name": "stripeId_unset",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -4369,7 +4421,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -4576,9 +4628,13 @@
             "name": "industry",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -4631,7 +4687,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -4641,7 +4697,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -4651,7 +4707,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -4661,7 +4717,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -4701,11 +4757,11 @@
             "defaultValue": null
           },
           {
-            "name": "workAddress_gte",
+            "name": "_id_unset",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -4766,8 +4822,8 @@
             "name": "workAddress_ne",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioSchoolUpdateInput",
               "ofType": null
             },
             "defaultValue": null
@@ -4791,7 +4847,18 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "EmployerPortfolioInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "employerName_nin",
             "description": "",
@@ -4810,13 +4877,9 @@
             "name": "primaryProduct_in",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -4844,17 +4907,9 @@
             "name": "AND",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "EmployerPortfolioQueryInput",
-                  "ofType": null
-                }
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -4863,7 +4918,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -4887,7 +4942,18 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "primaryProduct_ne",
             "description": "",
@@ -4913,7 +4979,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -4953,7 +5019,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -5008,7 +5074,18 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StudentPortfolioGuardianUpdateInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "participantEmail",
             "description": "",
@@ -5100,7 +5177,20 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "EmployerPortfolioSortByInput",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
           {
             "name": "event_unset",
             "description": "",
@@ -5124,12 +5214,8 @@
           {
             "name": "timestamp_unset",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "tokensSent",
@@ -5196,12 +5282,8 @@
           {
             "name": "_id_unset",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "referral",
@@ -5361,12 +5443,8 @@
           {
             "name": "district",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "name",
@@ -5379,8 +5457,6 @@
             "defaultValue": null
           }
         ],
-        "interfaces": null,
-        "enumValues": null,
         "possibleTypes": null
       },
       {
@@ -5474,32 +5550,71 @@
           {
             "name": "timestamp_lt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "EmployerPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "timestamp_gte",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ParentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo_gt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SchoolPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "DeleteManyPayload",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "timestamp_gt",
@@ -5514,6 +5629,18 @@
           {
             "name": "timestamp_in",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -5523,17 +5650,31 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo_ne",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "DeleteManyPayload",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo_in",
@@ -5557,7 +5698,8 @@
               "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "OR",
@@ -5580,6 +5722,18 @@
           {
             "name": "sentTo_nin",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TransactionQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -5589,27 +5743,58 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo_exists",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UserQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo_lt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EmployerPortfolioQueryInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "EmployerPortfolio",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "sentTo",
@@ -5636,8 +5821,8 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "ParentPortfolio",
               "ofType": null
             },
             "isDeprecated": true,
@@ -5741,6 +5926,22 @@
           {
             "name": "eventLog",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TeacherPortfolioQueryInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -5750,41 +5951,117 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "newOwner_id",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TokenQueryInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
+              "kind": "OBJECT",
+              "name": "Token",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "owner_id",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TransactionQueryInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
+              "kind": "OBJECT",
+              "name": "Transaction",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "UserQueryInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
+              "kind": "OBJECT",
+              "name": "User",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "customer_id",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "EmployerPortfolioInsertInput",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -5806,6 +6083,30 @@
           {
             "name": "schoolAddress",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "ParentPortfolioInsertInput",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -5857,19 +6158,68 @@
           {
             "name": "email",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "StudentPortfolioInsertInput",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "InsertManyPayload",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "relationship",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "INPUT_OBJECT",
+                        "name": "TeacherPortfolioInsertInput",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "InsertManyPayload",
               "ofType": null
             },
             "defaultValue": null
@@ -5928,8 +6278,8 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "InsertManyPayload",
               "ofType": null
             },
             "isDeprecated": true,
@@ -5975,8 +6325,8 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "InsertManyPayload",
               "ofType": null
             },
             "isDeprecated": true,
@@ -5987,8 +6337,8 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "EmployerPortfolio",
               "ofType": null
             },
             "isDeprecated": true,
@@ -6017,6 +6367,11 @@
                 "name": "Int",
                 "ofType": null
               }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "ParentPortfolio",
+              "ofType": null
             },
             "isDeprecated": true,
             "deprecationReason": ""
@@ -6033,6 +6388,11 @@
                 "name": "Int",
                 "ofType": null
               }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "StudentPortfolio",
+              "ofType": null
             },
             "isDeprecated": true,
             "deprecationReason": ""
@@ -6052,22 +6412,56 @@
           {
             "name": "_id",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TeacherPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "date",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TokenInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "Token",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "ethnicity",
@@ -6087,11 +6481,12 @@
             "name": "gender",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "Transaction",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "grade",
@@ -6111,21 +6506,75 @@
               "name": "StudentPortfolioGuardianInsertInput",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "home",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "EmployerPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EmployerPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StudentPortfolioHomeInsertInput",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "school",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ParentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ParentPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StudentPortfolioSchoolInsertInput",
@@ -6206,6 +6655,32 @@
           {
             "name": "schoolName_nin",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UserQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "UserInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -6215,11 +6690,24 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolDistrict_nin",
             "description": "",
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SendReferalInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -6229,27 +6717,68 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName_exists",
             "description": "",
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SendTokensInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress_lt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "EmployerPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EmployerPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "UpdateManyPayload",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "OR",
@@ -6277,27 +6806,82 @@
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName_ne",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "StudentPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "UpdateManyPayload",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TeacherPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolDistrict",
@@ -6307,7 +6891,8 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_in",
@@ -6331,17 +6916,45 @@
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress",
             "description": "",
+            "args": [
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "UserUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UserQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolDistrict_ne",
@@ -6385,51 +6998,186 @@
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName_lt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ParentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ParentPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "ParentPortfolio",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress_gt",
             "description": "",
+            "args": [
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "SchoolPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SchoolPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "StudentPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "StudentPortfolio",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_lt",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TeacherPortfolioUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress_in",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TokenQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TokenUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -6439,77 +7187,267 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolDistrict_exists",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TransactionQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TransactionUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
+              "kind": "OBJECT",
+              "name": "Transaction",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_gte",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UserQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "set",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "UserUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolDistrict_lte",
             "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EmployerPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "EmployerPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName_lte",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ParentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ParentPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolName_gte",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "SchoolPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "SchoolPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress_ne",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "StudentPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_ne",
             "description": "",
+            "args": [
+              {
+                "name": "query",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "data",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TeacherPortfolioInsertInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
+              "kind": "OBJECT",
+              "name": "TeacherPortfolio",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "schoolAddress_nin",
@@ -6548,6 +7486,7 @@
           {
             "name": "_id_nin",
             "description": "",
+            "args": [],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -6557,8 +7496,21 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
-          },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SendTokensInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "schoolAddress_exists",
             "description": "",
@@ -6624,15 +7576,18 @@
           {
             "name": "_id_lte",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           }
         ],
-        "interfaces": null,
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -7005,7 +7960,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -7025,7 +7980,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -7072,9 +8027,13 @@
             "name": "profileImg_lte",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -7083,7 +8042,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -7092,9 +8051,17 @@
             "name": "firstName_ne",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TransactionTokenLogQueryInput",
+                  "ofType": null
+                }
+              }
             },
             "defaultValue": null
           },
@@ -7145,7 +8112,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -7169,7 +8136,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -7240,7 +8207,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -7420,7 +8387,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null
@@ -7429,13 +8396,9 @@
             "name": "participantEmail_in",
             "description": "",
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -7444,7 +8407,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -7454,7 +8417,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -7464,7 +8427,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -7487,7 +8450,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -7545,7 +8508,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "ObjectId",
                 "ofType": null
               }
             },
@@ -7656,36 +8619,43 @@
           {
             "name": "email_exists",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_ne",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "homeAddress_lte",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -7716,7 +8686,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -7734,36 +8704,43 @@
           {
             "name": "email_lte",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "participantEmail_gt",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "homeAddress_gt",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_in",
             "description": "",
+            "args": [],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -7778,12 +8755,14 @@
           {
             "name": "homeAddress_gte",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "DateTime",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "_id_nin",
@@ -7802,10 +8781,97 @@
           {
             "name": "homeAddress_exists",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "StudentPortfolioSchool",
+        "description": "",
+        "fields": [
+          {
+            "name": "district",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "referral",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionReferralInsertInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "tokenLog",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionTokenLogInsertInput",
+                "ofType": null
+              }
             },
             "defaultValue": null
           }
@@ -7815,124 +8881,20 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
-        "name": "Mutation",
+        "kind": "INPUT_OBJECT",
+        "name": "EmployerPortfolioUpdateInput",
         "description": "",
-        "fields": [
+        "fields": null,
+        "inputFields": [
           {
-            "name": "deleteManyEmployerPortfolios",
+            "name": "_id",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "EmployerPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
             "type": {
-              "kind": "OBJECT",
-              "name": "DeleteManyPayload",
+              "kind": "SCALAR",
+              "name": "ObjectId",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
-          },
-          {
-            "name": "deleteManyParentPortfolios",
-            "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ParentPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "DeleteManyPayload",
-              "ofType": null
-            },
-            "isDeprecated": true,
-            "deprecationReason": ""
-          },
-          {
-            "name": "deleteManySchoolPortfolios",
-            "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "SchoolPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "DeleteManyPayload",
-              "ofType": null
-            },
-            "isDeprecated": true,
-            "deprecationReason": ""
-          },
-          {
-            "name": "deleteManyStudentPortfolios",
-            "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StudentPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "DeleteManyPayload",
-              "ofType": null
-            },
-            "isDeprecated": true,
-            "deprecationReason": ""
-          },
-          {
-            "name": "deleteManyTeacherPortfolios",
-            "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "TeacherPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "DeleteManyPayload",
-              "ofType": null
-            },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteManyTokens",
@@ -7954,8 +8916,7 @@
               "name": "DeleteManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteManyTransactions",
@@ -7977,8 +8938,7 @@
               "name": "DeleteManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteManyUsers",
@@ -8000,8 +8960,7 @@
               "name": "DeleteManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneEmployerPortfolio",
@@ -8027,8 +8986,7 @@
               "name": "EmployerPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneParentPortfolio",
@@ -8054,8 +9012,7 @@
               "name": "ParentPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneSchoolPortfolio",
@@ -8081,8 +9038,28 @@
               "name": "SchoolPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SchoolPortfolioUpdateInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "stakeholderAccess_unset",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
           },
           {
             "name": "deleteOneStudentPortfolio",
@@ -8108,8 +9085,7 @@
               "name": "StudentPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneTeacherPortfolio",
@@ -8135,8 +9111,7 @@
               "name": "TeacherPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneToken",
@@ -8162,8 +9137,7 @@
               "name": "Token",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneTransaction",
@@ -8189,8 +9163,7 @@
               "name": "Transaction",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "deleteOneUser",
@@ -8216,8 +9189,7 @@
               "name": "User",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyEmployerPortfolios",
@@ -8247,12 +9219,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "InsertManyPayload",
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyParentPortfolios",
@@ -8282,12 +9253,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "InsertManyPayload",
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManySchoolPortfolios",
@@ -8317,12 +9287,15 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "InsertManyPayload",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyStudentPortfolios",
@@ -8350,14 +9323,18 @@
                 },
                 "defaultValue": null
               }
-            ],
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "timestamp_gt",
+            "description": "",
             "type": {
               "kind": "OBJECT",
               "name": "InsertManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyTeacherPortfolios",
@@ -8391,8 +9368,7 @@
               "name": "InsertManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyTokens",
@@ -8426,8 +9402,7 @@
               "name": "InsertManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyTransactions",
@@ -8461,8 +9436,7 @@
               "name": "InsertManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertManyUsers",
@@ -8496,8 +9470,7 @@
               "name": "InsertManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneEmployerPortfolio",
@@ -8519,12 +9492,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "EmployerPortfolio",
+              "kind": "SCALAR",
+              "name": "DateTime",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneParentPortfolio",
@@ -8546,12 +9518,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "ParentPortfolio",
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneSchoolPortfolio",
@@ -8573,12 +9544,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "SchoolPortfolio",
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneStudentPortfolio",
@@ -8600,12 +9570,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "StudentPortfolio",
+              "kind": "SCALAR",
+              "name": "DateTime",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneTeacherPortfolio",
@@ -8627,12 +9596,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "TeacherPortfolio",
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneToken",
@@ -8654,12 +9622,15 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "Token",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneTransaction",
@@ -8679,14 +9650,8 @@
                 },
                 "defaultValue": null
               }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Transaction",
-              "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "insertOneUser",
@@ -8708,12 +9673,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "User",
+              "kind": "SCALAR",
+              "name": "DateTime",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "replaceOneEmployerPortfolio",
@@ -8749,8 +9713,7 @@
               "name": "EmployerPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "replaceOneParentPortfolio",
@@ -8777,8 +9740,7 @@
                   "kind": "INPUT_OBJECT",
                   "name": "ParentPortfolioQueryInput",
                   "ofType": null
-                },
-                "defaultValue": null
+                }
               }
             ],
             "type": {
@@ -8786,8 +9748,7 @@
               "name": "ParentPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "replaceOneSchoolPortfolio",
@@ -8823,8 +9784,7 @@
               "name": "SchoolPortfolio",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "replaceOneStudentPortfolio",
@@ -8854,12 +9814,35 @@
                 },
                 "defaultValue": null
               }
-            ],
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "sentTo_gt",
+            "description": "",
             "type": {
               "kind": "OBJECT",
               "name": "StudentPortfolio",
               "ofType": null
             },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "TransactionSortByInput",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "_ID_ASC",
+            "description": "",
             "isDeprecated": true,
             "deprecationReason": ""
           },
@@ -8899,7 +9882,16 @@
             },
             "isDeprecated": true,
             "deprecationReason": ""
-          },
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "UserEventLogInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "replaceOneToken",
             "description": "",
@@ -8934,8 +9926,7 @@
               "name": "Token",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "replaceOneTransaction",
@@ -8971,9 +9962,19 @@
               "name": "Transaction",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
-          },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ParentPortfolioUpdateInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "replaceOneUser",
             "description": "",
@@ -9008,8 +10009,7 @@
               "name": "User",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "sendRefferal",
@@ -9031,8 +10031,7 @@
               "name": "DefaultPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "sendTokensMutation",
@@ -9054,45 +10053,17 @@
               "name": "SendTokensTransaction",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateManyEmployerPortfolios",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "EmployerPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "set",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "EmployerPortfolioUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateManyParentPortfolios",
@@ -9128,38 +10099,11 @@
               "name": "UpdateManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateManySchoolPortfolios",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "SchoolPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "set",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "SchoolPortfolioUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
@@ -9171,32 +10115,7 @@
           {
             "name": "updateManyStudentPortfolios",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StudentPortfolioQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "set",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "StudentPortfolioUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
+            "args": [],
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
@@ -9233,7 +10152,25 @@
                 },
                 "defaultValue": null
               }
-            ],
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TransactionTokenLogInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "timestamp",
+            "description": "",
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
@@ -9270,88 +10207,1950 @@
                 },
                 "defaultValue": null
               }
-            ],
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "referral_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionReferralQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "tokenLog",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionTokenLogQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "tokenLog_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionTokenLogQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "tokenLog_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "referral_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionReferralQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "referral",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionReferralQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "referral_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TransactionQueryInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "tokenLog_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionTokenLogQueryInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TransactionReferral",
+        "description": "",
+        "fields": [
+          {
+            "name": "sentTo",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "timestamp",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TeacherPortfolioQueryInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "_id_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "TeacherPortfolioQueryInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolName_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolAddress_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "ObjectId",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "DateTime",
+        "description": "The `DateTime` scalar type represents a DateTime. The DateTime is serialized as an RFC 3339 quoted string",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "User",
+        "description": "",
+        "fields": [
+          {
+            "name": "_id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "email",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "eventLog",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "UserEventLog",
+                "ofType": null
+              }
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "firstName",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "lastName",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "profileImg",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "stripeId",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "userTypes",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StudentPortfolioQueryInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "date_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "guardian",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioGuardianQueryInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "school_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "guardian_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "AND",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ethnicity",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "school",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioSchoolQueryInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ethnicity_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "OR",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StudentPortfolioQueryInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_lte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_ne",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "home_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_lt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "home",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioHomeQueryInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_exists",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ethnicity_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ethnicity_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id_nin",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade_gt",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SchoolPortfolio",
+        "description": "",
+        "fields": [
+          {
+            "name": "_id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "districtAddress",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "schoolDistrict",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "staffType",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "stakeholder",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "stakeholderAccess",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "UserSortByInput",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "FIRSTNAME_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "FIRSTNAME_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "PROFILEIMG_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "STRIPEID_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "STRIPEID_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "_ID_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "EMAIL_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "LASTNAME_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "LASTNAME_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "PROFILEIMG_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "_ID_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          },
+          {
+            "name": "EMAIL_DESC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SchoolPortfolioInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "stakeholder",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "stakeholderAccess",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "districtAddress",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "schoolDistrict",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "staffType",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "DeleteManyPayload",
+        "description": "",
+        "fields": [
+          {
+            "name": "deletedCount",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StudentPortfolioInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "date",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ethnicity",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gender",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "grade",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "guardian",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioGuardianInsertInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "home",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioHomeInsertInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "school",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StudentPortfolioSchoolInsertInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StudentPortfolioHomeInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "address",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "city",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "language",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "state",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "streetAddress",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "zipcode",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TokenInsertInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "customer_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventLog",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "TokenEventLogInsertInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "newOwner_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "owner_id",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ObjectId",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "TokenUpdateInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "_id_unset",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "newOwner_id_unset",
+            "description": "",
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateManyTransactions",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "TransactionQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "set",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "TransactionUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateManyUsers",
             "description": "",
-            "args": [
-              {
-                "name": "query",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "UserQueryInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "set",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "UserUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
             "type": {
               "kind": "OBJECT",
               "name": "UpdateManyPayload",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateOneEmployerPortfolio",
@@ -9383,12 +12182,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "EmployerPortfolio",
+              "kind": "SCALAR",
+              "name": "ObjectId",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateOneParentPortfolio",
@@ -9420,12 +12218,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "ParentPortfolio",
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateOneSchoolPortfolio",
@@ -9457,12 +12254,11 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "SchoolPortfolio",
+              "kind": "SCALAR",
+              "name": "ObjectId",
               "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": ""
+            "defaultValue": null
           },
           {
             "name": "updateOneStudentPortfolio",
@@ -9492,10 +12288,36 @@
                 },
                 "defaultValue": null
               }
-            ],
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventLog_unset",
+            "description": "",
             "type": {
-              "kind": "OBJECT",
-              "name": "StudentPortfolio",
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TransactionTokenLog",
+        "description": "",
+        "fields": [
+          {
+            "name": "event",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": true,
@@ -9531,8 +12353,8 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "TeacherPortfolio",
+              "kind": "SCALAR",
+              "name": "ObjectId",
               "ofType": null
             },
             "isDeprecated": true,
@@ -9568,8 +12390,8 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "Token",
+              "kind": "SCALAR",
+              "name": "ObjectId",
               "ofType": null
             },
             "isDeprecated": true,
@@ -9605,8 +12427,8 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "Transaction",
+              "kind": "SCALAR",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": true,
@@ -9642,8 +12464,8 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "User",
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": true,
@@ -10025,12 +12847,8 @@
           {
             "name": "address_ne",
             "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "OR",
@@ -10063,12 +12881,14 @@
           {
             "name": "address_lt",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "language",
@@ -10097,6 +12917,7 @@
           {
             "name": "language_in",
             "description": "",
+            "args": [],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -10106,11 +12927,13 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "address",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -10135,15 +12958,37 @@
           {
             "name": "language_exists",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "ParentPortfolioSortByInput",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "_ID_ASC",
+            "description": "",
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
-            "name": "AND",
+            "name": "_ID_DESC",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -10220,7 +13065,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -10230,7 +13075,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -10240,7 +13085,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -10312,38 +13157,68 @@
               "ofType": null
             },
             "defaultValue": null
-          },
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UpdateManyPayload",
+        "description": "",
+        "fields": [
           {
             "name": "_id_nin",
             "description": "",
+            "args": [],
             "type": {
-              "kind": "LIST",
+              "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "ObjectId",
+                "name": "Int",
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "stakeholderAccess_lt",
             "description": "",
+            "args": [],
             "type": {
               "kind": "SCALAR",
               "name": "String",
               "ofType": null
             },
-            "defaultValue": null
-          },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SendReferalInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
             "name": "stakeholder_exists",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -10359,6 +13234,27 @@
           },
           {
             "name": "schoolDistrict_gte",
+            "description": "",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ParentPortfolioQueryInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "participantEmail_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -10416,7 +13312,7 @@
             "defaultValue": null
           },
           {
-            "name": "OR",
+            "name": "_id_gte",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -10438,7 +13334,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -11025,9 +13921,13 @@
             "name": "language_unset",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -11046,7 +13946,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -11387,11 +14287,11 @@
             "defaultValue": null
           },
           {
-            "name": "_id_gt",
+            "name": "jobTitle",
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -11451,7 +14351,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -11512,9 +14412,13 @@
             "name": "_id_gte",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -11639,7 +14543,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -11658,9 +14562,13 @@
             "name": "customer_id_ne",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -11682,7 +14590,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "ObjectId",
                 "ofType": null
               }
             },
@@ -11691,6 +14599,7 @@
           {
             "name": "OR",
             "description": "",
+            "args": [],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -11704,7 +14613,8 @@
                 }
               }
             },
-            "defaultValue": null
+            "isDeprecated": true,
+            "deprecationReason": ""
           },
           {
             "name": "eventLog_in",
@@ -11751,8 +14661,8 @@
               "kind": "LIST",
               "name": null,
               "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "INPUT_OBJECT",
+                "name": "TransactionReferralUpdateInput",
                 "ofType": null
               }
             },
@@ -11793,7 +14703,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null
@@ -11803,7 +14713,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -11916,9 +14826,13 @@
             "name": "jobTitle",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -11927,7 +14841,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null
@@ -11993,12 +14907,20 @@
             "defaultValue": null
           },
           {
-            "name": "_id",
+            "name": "AND",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "ObjectId",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "UserEventLogQueryInput",
+                  "ofType": null
+                }
+              }
             },
             "defaultValue": null
           },
@@ -12272,9 +15194,13 @@
             "name": "event",
             "description": "",
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectId",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -12286,7 +15212,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "ObjectId",
                 "ofType": null
               }
             },
@@ -12391,7 +15317,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -12401,7 +15327,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -12438,7 +15364,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "_id",
+            "name": "_id_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -12462,7 +15388,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null
@@ -12472,7 +15398,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -12492,7 +15418,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -12567,7 +15493,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "Boolean",
+              "name": "ObjectId",
               "ofType": null
             },
             "defaultValue": null
@@ -12597,7 +15523,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "ObjectId",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -12614,6 +15540,37 @@
           }
         ],
         "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "InsertManyPayload",
+        "description": "",
+        "fields": [
+          {
+            "name": "insertedIds",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ObjectId",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": true,
+            "deprecationReason": ""
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
