@@ -41,6 +41,16 @@ export interface DbActions extends ActionTree<typeof dbState, RootState> {
       product: Stripe.Response<Stripe.Product>;
     };
   }>;
+  getProductInfos: (
+    ctx: DbActionsCtx,
+    payload: { priceId: string[] }
+  ) => Promise<{
+    statusCode: number;
+    body: {
+      price: Stripe.Response<Stripe.Price>;
+      product: Stripe.Response<Stripe.Product>;
+    }[];
+  }>;
 }
 export const actions: DbActions = {
   async create({ getters }, { collection, payload }) {
@@ -56,6 +66,11 @@ export const actions: DbActions = {
     );
   },
   async getProductInfo({ getters }, { priceId }) {
+    const res = await getters.functions.callFunction('getProductInfo', priceId);
+    if (res.statusCode === 500) throw res.body;
+    return res;
+  },
+  async getProductInfos({ getters }, { priceId }) {
     const res = await getters.functions.callFunction('getProductInfo', priceId);
     if (res.statusCode === 500) throw res.body;
     return res;

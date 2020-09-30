@@ -97,7 +97,7 @@
             <v-text-field
               v-model="option.quantity"
               class="sponsor__quantity-check"
-              min="1"
+              min="0"
               outlined
               x-large
               label="Quantity"
@@ -241,7 +241,7 @@ export default {
     const selectedProduct = ref([]);
     const sponsorName = ref('');
     const coupon = ref('');
-    const { getProductInfo } = useDbActions(['getProductInfo']);
+    const { getProductInfos } = useDbActions(['getProductInfos']);
     const PRICE_IDS = [
       'price_1HVJv6LnkQGEgDQn1armT4XJ',
       'price_1HVJukLnkQGEgDQnTsO13Ks2',
@@ -257,25 +257,36 @@ export default {
       'Per Group': 'purple'
     };
     const purchaseOptions: Ref<any> = ref([]);
-    const productSubscription = merge(
-      ...PRICE_IDS.map(id => defer(() => getProductInfo({ priceId: id })))
-    )
-      .pipe(retry(3))
-      .subscribe(result => {
-        const title = result.body?.product.name;
-        purchaseOptions.value.push({
-          title,
-          desc: result.body?.product.description,
-          priceId: result.body?.price.id,
-          price: result.body?.price.unit_amount,
-          color: ColorCode[title],
-          quantity: 0,
-          unitLabel: result.body?.product.unit_label
-        });
-      });
-    onBeforeUnmount(() => {
-      productSubscription.unsubscribe();
+    getProductInfos({ priceId: PRICE_IDS }).then(result => {
+      purchaseOptions.value = result.body.map(res => ({
+        title: res.product.name,
+        desc: res.product.description,
+        priceId: res.price.id,
+        price: res.price.unit_amount,
+        color: ColorCode[res.product.name],
+        quantity: 0,
+        unitLabel: res.product.unit_label
+      }));
     });
+    // const productSubscription = merge(
+    //   ...PRICE_IDS.map(id => defer(() => getProductInfo({ priceId: id })))
+    // )
+    //   .pipe(retry(3))
+    //   .subscribe(result => {
+    //     const title = result.body?.product.name;
+    //     purchaseOptions.value.push({
+    //       title,
+    //       desc: result.body?.product.description,
+    //       priceId: result.body?.price.id,
+    //       price: result.body?.price.unit_amount,
+    //       color: ColorCode[title],
+    //       quantity: 0,
+    //       unitLabel: result.body?.product.unit_label
+    //     });
+    //   });
+    // onBeforeUnmount(() => {
+    //   productSubscription.unsubscribe();
+    // });
     const { createCheckoutSession, createInvoice } = useStripeActions([
       'createCheckoutSession',
       'createInvoice'
