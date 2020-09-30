@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="landing__container">
     <v-parallax
       dark
       height="625"
@@ -23,42 +23,76 @@
         </div>
 
         <div class="landing__hero-citizenchips text-center">
-          <v-btn
-            center
-            rounded
-            depressed
-            dark
-            color="green"
-            class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-clover</v-icon>Students</v-btn
+          <a href="#student">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="green"
+              class="landing__hero-citizenchips-group1"
+              ><v-icon left>mdi-clover</v-icon>Students</v-btn
+            ></a
           >
-          <v-btn
-            center
-            rounded
-            depressed
-            dark
-            color="purple"
-            class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-graph-outline</v-icon>Employers</v-btn
-          >
-          <v-btn center rounded depressed dark color="pink" class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-head-heart</v-icon>Teachers</v-btn
-          >
-          <v-btn center rounded depressed dark color="blue" class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-airballoon</v-icon>Schools</v-btn
-          >
-          <v-btn
-            center
-            rounded
-            depressed
-            dark
-            color="yellow"
-            class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-sign-direction</v-icon>Parents</v-btn
-          >
-          <v-btn center rounded depressed dark color="red" class="landing__hero-citizenchips-group"
-            ><v-icon left>mdi-currency-usd-circle</v-icon>Sponsors</v-btn
-          >
+
+          <a href="#employer">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="purple"
+              class="landing__hero-citizenchips-group"
+              ><v-icon left>mdi-graph-outline</v-icon>Employers</v-btn
+            >
+          </a>
+          <a href="#teacher">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="pink"
+              class="landing__hero-citizenchips-group"
+              ><v-icon left>mdi-head-heart</v-icon>Teachers</v-btn
+            >
+          </a>
+
+          <a href="#school">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="blue"
+              class="landing__hero-citizenchips-group"
+              ><v-icon left>mdi-airballoon</v-icon>Schools</v-btn
+            >
+          </a>
+
+          <a href="#parent">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="yellow"
+              class="landing__hero-citizenchips-group"
+              ><v-icon left>mdi-sign-direction</v-icon>Parents</v-btn
+            >
+          </a>
+
+          <a href="#sponsor">
+            <v-btn
+              center
+              rounded
+              depressed
+              dark
+              color="red"
+              class="landing__hero-citizenchips-group"
+              ><v-icon left>mdi-currency-usd-circle</v-icon>Sponsors</v-btn
+            >
+          </a>
 
           <!-- <v-btn
          The code for the v-scrolls for each chip @click="$vuetify.goTo(target, options)"
@@ -296,7 +330,7 @@
             </v-timeline>
           </div>
         </div>
-        <div class="landing__right">
+        <div id="student" class="landing__right">
           <v-icon dark x-large color="green">mdi-clover</v-icon><br />
           <div class="landing__text-subtitle-green">Student choice of employer</div>
           <div class="landing__text-body">
@@ -359,7 +393,7 @@
             <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
           </v-card>
         </div>
-        <div class="landing__right">
+        <div id="teacher" class="landing__right">
           <v-icon dark x-large color="pink">mdi-head-heart</v-icon><br />
           <div class="landing__text-subtitle-pink">Teacher as coach, and monitor</div>
           <div class="landing__text-body">
@@ -578,7 +612,7 @@
       dark
       class="landing__hero-default"
     >
-      <div class="landing__2-column">
+      <div id="school" class="landing__2-column">
         <div class="landing__left">
           <v-card elevation="0" tile depressed>
             <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
@@ -698,7 +732,7 @@
             <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
           </v-card>
         </div>
-        <div class="landing__right">
+        <div id="employer" class="landing__right">
           <v-icon dark x-large color="purple">mdi-graph-outline</v-icon>
           <div class="landing__text-subtitle-purple">Employer simple, low-commitment setup</div>
           <div class="landing__text-body">
@@ -824,7 +858,7 @@
             <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
           </v-card>
         </div>
-        <div class="landing__right">
+        <div id="sponsor" class="landing__right">
           <v-icon dark x-large color="red">mdi-currency-usd-circle</v-icon>
           <div class="landing__text-subtitle-red">
             Sponsor participants, and monitor your impact
@@ -936,7 +970,7 @@
             <!-- <v-img max-height="300px" max-width="300px" src="" depressed></v-img> -->
           </v-card>
         </div>
-        <div class="landing__right">
+        <div id="parent" class="landing__right">
           <v-icon dark x-large color="yellow">mdi-sign-direction</v-icon><br />
           <div class="landing__text-subtitle-yellow">Parent as sponsor, and stakeholder</div>
           <div class="landing__text-body">
@@ -1005,6 +1039,16 @@ export default {
 </script>
 
 <style lang="scss">
+.landing {
+  &__container {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+.student {
+  text-decoration: none;
+}
 .landing {
   &__hero {
     justify-content: flex-start;
@@ -1093,6 +1137,15 @@ export default {
     // align-items: center;
     margin: 5px;
     font-weight: 800;
+    text-decoration: none;
+  }
+
+  &__hero-citizenchips-group1 {
+    // justify-content: center;
+    // align-items: center;
+    margin: 5px;
+    font-weight: 800;
+    text-decoration: none;
   }
 
   &__2-column {
