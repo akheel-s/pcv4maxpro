@@ -15,15 +15,6 @@
           ><span class="text-h5 signup__header font-weight-black text-sm-h4"></span
         ></v-toolbar-title>
 
-        <v-progress-linear
-          v-if="loading"
-          :active="loading"
-          :indeterminate="loading"
-          absolute
-          bottom
-          color="blue"
-        ></v-progress-linear>
-
         <v-spacer></v-spacer>
 
         <div class="nav__actions">
@@ -70,7 +61,7 @@
             <validation-provider v-slot="{ errors }" slim rules="email">
               <v-text-field
                 v-model="starterEmail"
-                :error="errors[0]"
+                :error-messages="errors[0]"
                 dark
                 rounded
                 outlined
