@@ -59,7 +59,7 @@
         outlined
         color="white"
         :ripple="false"
-        @click="logout"
+        @click="$router.push({ name: 'portfolio' })"
       >
         <span class="font-weight-black">My Portfolio</span>
       </v-btn>
@@ -75,10 +75,20 @@
           offset-y="20"
           ><v-icon color="white" large>mdi-bell</v-icon>
         </v-badge></v-btn
-      > -->
-      <v-img class="border-circle" width="45" height="45"
-        ><Profile v-model="user.profileImg"
-      /></v-img>
+      > <v-btn
+        v-if="getUser"
+        class="mr-3 ml-3"
+        large
+        depressed
+        rounded
+        outlined
+        color="white"
+        :ripple="false"
+        @click="logout"
+      >
+        <span class="font-weight-black">Logout</span>
+      </v-btn> -->
+      <Profile :size="45" />
     </div>
   </v-toolbar>
 </template>
