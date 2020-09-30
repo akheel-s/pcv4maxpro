@@ -35,6 +35,15 @@
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              v-model="phoneNumber"
+              :error-messages="errors"
+              label="Phone Number"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <validation-provider v-slot="{ errors }" slim rules="required">
             <v-select
               v-model="userTypes"
               :error-messages="errors"
@@ -102,6 +111,7 @@ export default {
     const user = reactive({
       firstName: '',
       lastName: '',
+      phoneNumber: '',
       userTypes: []
     });
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -111,6 +121,7 @@ export default {
         user(query: { _id: $id }) {
           firstName
           lastName
+          phoneNumber
           userTypes
         }
       }
@@ -137,6 +148,7 @@ export default {
           _id: getObjectId.value,
           firstName: user.firstName,
           lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
           userTypes: user.userTypes
         } as User,
         filter: { _id: getObjectId.value },
