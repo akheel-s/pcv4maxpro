@@ -92,8 +92,6 @@
     </div>
   </Loading>
 </template>
-
-<style lang="scss"></style>
 <script lang="ts">
 import { ref, computed, Ref, onMounted } from '@vue/composition-api';
 import gql from 'graphql-tag';
