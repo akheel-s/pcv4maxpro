@@ -51,7 +51,7 @@
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
 
-            <div>
+            <div v-if="(getComponent == 'my-programs') | (getComponent == 'settings')">
               <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"

@@ -15,15 +15,6 @@
           ><span class="text-h5 signup__header font-weight-black text-sm-h4"></span
         ></v-toolbar-title>
 
-        <v-progress-linear
-          v-if="loading"
-          :active="loading"
-          :indeterminate="loading"
-          absolute
-          bottom
-          color="blue"
-        ></v-progress-linear>
-
         <v-spacer></v-spacer>
 
         <div class="nav__actions">
@@ -48,71 +39,9 @@
             <span class="font-weight-black">Signup</span>
           </v-btn>
 
-          <!-- <v-btn color="#404142" text rounded large
-            ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
-          > -->
-
-          <!-- <v-btn
-            v-if="user"
-            class="mr-3 ml-3 pr-10 pl-10"
-            large
-            depressed
-            rounded
-            outlined
-            color="white"
-            :ripple="false"
-            @click="logout"
-          >
-            <span class="font-weight-black">Explore</span>
-          </v-btn> -->
-
-          <!-- <v-btn
-            v-if="user"
-            class="mr-3 ml-3"
-            large
-            depressed
-            rounded
-            outlined
-            color="white"
-            :ripple="false"
-            @click="logout"
-          >
-            <span class="font-weight-black">My Portfolio</span>
-          </v-btn> -->
-
-          <!-- <v-btn color="#404142" rounded text
-            ><v-badge
-              class="ml-1 mr-1"
-              :content="10"
-              :value="10"
-              color="purple lighten-2"
-              overlap
-              offset-x="15"
-              offset-y="20"
-              ><v-icon color="white" large>mdi-bell</v-icon>
-            </v-badge></v-btn
-          > -->
-
-          <!-- <v-btn
-        v-if="getUser"
-        class="mr-3 ml-3"
-        large
-        depressed
-        rounded
-        outlined
-        color="white"
-        :ripple="false"
-        @click="logout"
-      >
-        <span class="font-weight-black">Logout</span>
-      </v-btn> -->
-
-          <v-btn text color="#404142"
-            ><v-avatar color="#404142" size="45" outlined>
-              <v-img
-                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-              ></v-img> </v-avatar
-          ></v-btn>
+          <v-btn v-if="user" text color="#404142" @click="$router.push({ name: 'portfolio' })">
+            <Profile size="45" />
+          </v-btn>
         </div>
         <!-- </v-toolbar> -->
       </v-app-bar>
@@ -127,13 +56,30 @@
 
         <div class="landing__hero-title">Digital programs, for digital cities.</div>
 
-        <div class="landing__hero-cta">
-          <v-text-field dark rounded outlined label="Signup with email"></v-text-field
-          ><v-btn class="landing__hero-cta-button" x-large rounded depressed dark
-            >Get Started</v-btn
-          >
-        </div>
+        <validation-observer>
+          <div class="landing__hero-cta">
+            <validation-provider v-slot="{ errors }" slim rules="email">
+              <v-text-field
+                v-model="starterEmail"
+                :error-messages="errors[0]"
+                dark
+                rounded
+                outlined
+                label="Signup with email"
+              ></v-text-field>
+            </validation-provider>
 
+            <v-btn
+              class="landing__hero-cta-button"
+              x-large
+              rounded
+              depressed
+              dark
+              @click="$router.push({ name: 'signup', query: { email: starterEmail } })"
+              >Get Started</v-btn
+            >
+          </div>
+        </validation-observer>
         <div class="landing__hero-citizenchips text-center">
           <a href="#student">
             <v-btn
@@ -241,7 +187,15 @@
     >
       <div class="landing__single-column">
         <div>
-          <v-btn class="landing__row1-button" color="white" dark depressed outlined small
+          <v-btn
+            style="color: white !important"
+            class="landing__row1-button"
+            color="white"
+            disabled
+            dark
+            depressed
+            outlined
+            small
             >PilotCity's Flagship Program</v-btn
           >
         </div>
@@ -250,7 +204,15 @@
           alumni and 90% of our parents would recommend our program.
         </div>
         <div class="landing__row3">
-          <v-btn class="landing__row3-button" dark depressed outlined small color="white"
+          <v-btn
+            class="landing__row3-button"
+            disabled
+            style="color: white !important"
+            dark
+            depressed
+            outlined
+            small
+            color="white"
             >A civic engine for resilience, equity and digital transformation</v-btn
           >
         </div>
@@ -1166,10 +1128,19 @@
 </template>
 
 <script lang="ts">
+import Profile from '@/components/Profile.vue';
+import { useDbState } from '@/store';
+import { ref } from '@vue/composition-api';
+
 export default {
   name: 'Landing',
+  components: {
+    Profile
+  },
   setup() {
-    return {};
+    const starterEmail = ref('');
+    const { user } = useDbState(['user']);
+    return { user, starterEmail };
   },
   data() {
     return {

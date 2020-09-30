@@ -42,7 +42,7 @@
             <v-text-field
               v-model="schools.streetAddress"
               :error-messages="errors"
-              label="street Address"
+              label="Street Address"
               outlined
             ></v-text-field>
           </validation-provider>

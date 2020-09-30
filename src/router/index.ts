@@ -34,6 +34,14 @@ const routes: Array<RouteConfig> = [
     component: Signup
   },
   {
+    path: '/',
+    name: 'landing',
+    component: Landing,
+    meta: {
+      layout: 'no-nav'
+    }
+  },
+  {
     path: '/emailconfirmation',
     name: 'confirmEmail',
     component: ConfirmEmail,

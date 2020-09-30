@@ -68,7 +68,6 @@ export default {
         } as TransactionQueryInput
       }
     }).then(({ data: { transaction } }) => {
-      console.log(transaction);
       if (transaction?.referral)
         query<{ users: User[] }>({
           query: gql`
