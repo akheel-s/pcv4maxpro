@@ -32,7 +32,6 @@ export interface AuthActions extends ActionTree<typeof authState, RootState> {
   ) => Promise<void>;
   resendEmailConfirmation: (ctx: AuthActionCtx, payload: { email: string }) => Promise<void>;
   sendResetPassword: (ctx: AuthActionCtx, payload: { email: string }) => Promise<void>;
-  resendConfrimationEmail: (ctx: AuthActionCtx, payload: { email: string }) => Promise<void>;
 }
 export const actions: AuthActions = {
   // async loginAnon({ commit, rootState }) {
@@ -108,8 +107,5 @@ export const actions: AuthActions = {
   },
   sendResetPassword({ rootState }, { email }) {
     return rootState.realmApp.app.emailPasswordAuth.sendResetPasswordEmail(email);
-  },
-  resendConfrimationEmail({ rootState }, { email }) {
-    return rootState.realmApp.app.emailPasswordAuth.resendConfirmationEmail(email);
   }
 };
