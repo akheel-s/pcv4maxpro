@@ -12,7 +12,7 @@
             <v-text-field
               v-model="employerName"
               :error-messages="errors"
-              label="Employer Name"
+              label="Company / Organization"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -30,7 +30,7 @@
             <v-text-field
               v-model="industry"
               :error-messages="errors"
-              label="Industry"
+              label="Describe your industry"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -39,18 +39,50 @@
             <v-text-field
               v-model="primaryProduct"
               :error-messages="errors"
-              label="Primary Product / Service"
+              label="Describe your primary product or servic"
               outlined
             ></v-text-field>
           </validation-provider>
 
-          <!-- Google Maps Integration / Find way to collect suite, apartment, etc number -->
+          <!-- Street Address -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
-              v-model="workAddress"
+              v-model="work.streetAddress"
               :error-messages="errors"
-              label="Work Address"
+              label="street Address"
               outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- City -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="work.city"
+              :error-messages="errors"
+              label="City"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- State -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-select
+              v-model="work.state"
+              :error-messages="errors"
+              :items="stateOpts"
+              label="State"
+              outlined
+            ></v-select>
+          </validation-provider>
+
+          <!-- Zipcode  -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="work.zipcode"
+              :error-messages="errors"
+              label="Zipcode"
+              outlined
+              maxlength="5"
             ></v-text-field>
           </validation-provider>
         </v-skeleton-loader>
@@ -81,6 +113,7 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import gql from 'graphql-tag';
 import { EmployerPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
+import { STATE } from '../../../const';
 
 const {
   getObjectId: { value: getObjectId }
@@ -103,12 +136,20 @@ export default {
       }
     }
   ) {
+    const formOpt = reactive({
+      stateOpts: STATE
+    });
     const employer = reactive({
       employerName: '',
       jobTitle: '',
       industry: '',
       primaryProduct: '',
-      workAddress: ''
+      work: {
+        streetAddress: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }
     });
 
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -120,7 +161,12 @@ export default {
           jobTitle
           industry
           primaryProduct
-          workAddress
+          work {
+            streetAddress
+            city
+            state
+            zipcode
+          }
         }
       }
     `;
@@ -152,7 +198,7 @@ export default {
           jobTitle: employer.jobTitle,
           industry: employer.industry,
           primaryProduct: employer.primaryProduct,
-          workAddress: employer.workAddress
+          work: employer.work
         } as EmployerPortfolio,
         filter: { _id: getObjectId },
         options: { upsert: true }
@@ -160,7 +206,7 @@ export default {
       emit('input');
     }
 
-    return { ...toRefs(employer), save, processQuery, loader };
+    return { ...toRefs(employer), save, processQuery, loader, ...toRefs(formOpt) };
   }
 };
 </script>

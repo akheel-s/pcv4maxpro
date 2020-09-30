@@ -1,10 +1,10 @@
 <template>
-  <div v-if="user">
+  <div v-if="user" class="filepond-container">
     <v-img v-if="editable" class="rounded-circle" :width="size" :height="size">
       <file-pond
         ref="pond"
         name="test"
-        label-idle="Drag & Drop your picture or <span class='filepond--label-action'>Browse</span>"
+        label-idle="<span class='filepond--label-action'>Upload</span>"
         accepted-file-types="image/jpeg, image/png"
         :files="myFiles"
         :image-preview-height="170"
@@ -189,5 +189,20 @@ html {
 .filepond--root {
   width: 170px;
   margin: 0 auto;
+}
+
+.filepond-container {
+  // margin: auto !important;
+  // justify-content: center !important;
+  // align-items: center !important;
+  // padding: auto;
+  // margin-left: auto !important;
+  // margin-right: auto !important;
+  // padding-left: auto !important;
+  // padding-right: auto !important;
+}
+
+.rounded-circle {
+  margin: auto;
 }
 </style>

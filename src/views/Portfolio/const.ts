@@ -310,7 +310,51 @@ const SCHOOL_ROLE = [
   {
     text: 'Specialist',
     value: 'Specialist'
+  },
+  {
+    text: 'Not Listed',
+    value: 'Not Listed'
   }
 ];
 
-export { CITIZEN_TYPES, GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG, SCHOOL_ROLE };
+const STATE = [
+  {
+    text: 'AL',
+    value: 'AL'
+  },
+  {
+    text: 'AK',
+    value: 'AK'
+  },
+  {
+    text: 'AZ',
+    value: 'AZ'
+  },
+  {
+    text: 'AR',
+    value: 'AR'
+  },
+  {
+    text: 'CA',
+    value: 'CA'
+  },
+  {
+    text: 'CO',
+    value: 'CO'
+  },
+  {
+    text: 'CT',
+    value: 'CT'
+  }
+];
+
+export {
+  CITIZEN_TYPES,
+  GRADE_LEVEL,
+  SUPER_GENDER,
+  ETHNICITY,
+  GUARDIAN,
+  HOME_LANG,
+  SCHOOL_ROLE,
+  STATE
+};
