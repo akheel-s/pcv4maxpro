@@ -70,9 +70,9 @@ export default {
     'school-id': SchoolID,
     'parent-id': ParentID
   },
-  beforeRouteEnter(to, from, next) {
+  async beforeRouteEnter(to, from, next) {
     const { getId } = useAuthGetters(['getId']);
-    apolloProvider.defaultClient
+    await apolloProvider.defaultClient
       .query<{ user: User }>({
         query: gql`
           query setupRouteUser($query: UserQueryInput!) {
@@ -119,7 +119,6 @@ export default {
               }
             })
             .then(({ data }) => {
-              console.log(data);
               if (user.userTypes?.every(type => data[type!])) {
                 console.log('working');
                 next({
