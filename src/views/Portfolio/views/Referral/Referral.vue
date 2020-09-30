@@ -6,7 +6,7 @@
           src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
         ></v-img>
       </v-avatar>
-      <div class="refer__title-main">Make your invites</div>
+      <div class="refer__title-main">Make and manage your invites</div>
 
       <div class="refer__body1">
         <validation-provider v-slot="{ errors }" rules="required">
@@ -82,10 +82,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from '@vue/composition-api';
+import { reactive, toRefs, ref, Ref } from '@vue/composition-api';
 import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
-import { SendReferalInput } from '@/generated/graphql';
+import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { AllInvites } from '../../components';
 
@@ -101,14 +101,36 @@ export default {
     {
       root: {
         $apolloProvider: {
-          defaultClient: { mutate }
+          defaultClient: { query, mutate }
         }
       }
     }
   ) {
-    const details = reactive({
-      email: ''
-    });
+    const referral: Ref<{ email: string; timestamp: Date }[]> = ref([]);
+    const email = ref('');
+    const INVITEQUERY = gql`
+      query thisInvite($id: ObjectId) {
+        transaction(query: { _id: $id }) {
+          referral {
+            sentTo
+            timestamp
+          }
+        }
+      }
+    `;
+
+    function processQuery() {
+      return query<{ transaction: Transaction }>({
+        query: INVITEQUERY,
+        variables: { id: getObjectId }
+      }).then(({ data: { transaction } }) => {
+        if (transaction && transaction.referral)
+          referral.value = transaction.referral.map(item => ({
+            email: item!.sentTo!,
+            timestamp: item!.timestamp!
+          }));
+      });
+    }
 
     const processTransfer = async () => {
       console.log(
@@ -123,7 +145,7 @@ export default {
           variables: {
             input: {
               id: getObjectId,
-              email: details.email,
+              email: email.value,
               name: useDbState(['user']).user.value!.firstName
             } as SendReferalInput
           }
@@ -131,7 +153,7 @@ export default {
       );
     };
 
-    return { ...toRefs(details), processTransfer };
+    return { referral, processTransfer, processQuery, email };
   }
 };
 </script>
@@ -182,6 +204,7 @@ export default {
   &__body-email {
     font-size: 20px;
     margin: 20px;
+    width: 100%;
   }
 
   &__body-email-button {

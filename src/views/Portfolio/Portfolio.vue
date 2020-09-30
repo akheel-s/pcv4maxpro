@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >{{ tickets }} Tickets</v-btn
+            >{{ tickets }} Tokens</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"
@@ -45,7 +45,7 @@
           >
         </div>
         <div class="profile__container pc-container">
-          <div v-if="user" class="profile__sub-container text-center mt-12">
+          <div v-if="user" align-items="center" class="profile__sub-container text-center mt-12">
             <div>
               <profile :size="150" editable />
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
@@ -93,7 +93,12 @@
   </Loading>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.profile {
+  &__avatar-bar {
+  }
+}
+</style>
 <script lang="ts">
 import { ref, computed, Ref, onMounted } from '@vue/composition-api';
 import gql from 'graphql-tag';

@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { ref, Ref, computed } from '@vue/composition-api';
+import { ref, Ref, computed, watch } from '@vue/composition-api';
 import { breakpoints } from '@/utils';
 import {
   GeneralID,
@@ -70,11 +70,11 @@ export default {
         ? ['profile__container', 'pc-container']
         : []
     );
-    function finish() {
-      step.value = 0;
-      console.log('I am finished onboarding myself');
-    }
-    return { step, selectedTypes, idSections, computedClasses, finish };
+    // eslint-disable-next-line no-shadow
+    watch(step, step => {
+      if (step > selectedTypes.value.length) ctx.root.$router.push({ name: 'portfolio' });
+    });
+    return { step, selectedTypes, idSections, computedClasses };
   }
 };
 </script>

@@ -54,7 +54,7 @@ import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../../const';
 
 const {
-  getObjectId: { value: getObjectId }
+  getObjectId
   // getId: { value: getId }
 } = useAuthGetters([GetterTypes.getUser, GetterTypes.getObjectId, GetterTypes.getId]);
 
@@ -110,11 +110,11 @@ export default {
     function processQuery() {
       return query<{ user: User }>({
         query: GENERALIDQUERY,
-        variables: { id: getObjectId }
+        variables: { id: getObjectId.value }
       }).then(({ data: { user: userRes } }) => {
         // Set Query result when loaded
         Object.keys(user).forEach(key => {
-          if (userRes[key]) user[key] = userRes[key];
+          if (userRes && userRes[key]) user[key] = userRes[key];
         });
       });
     }

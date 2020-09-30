@@ -12,7 +12,7 @@
 
             <div class="balance__main-left-title">BALANCE</div>
 
-            <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
+            <div class="balance__main-left-header">{{ tokens.length }} Tokens</div>
 
             <div>
               <v-icon class="balance__main-left-icon" color="grey" large
@@ -59,7 +59,19 @@
           </div>
         </div>
       </div>
+      <div class="balance__transfer-title">Transfer Tokens</div>
       <div class="balance__transfer">
+        <div class="balance__email">
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="transferEmail"
+              :error-messages="errors"
+              outlined
+              label="Enter recipient's email"
+            ></v-text-field>
+          </validation-provider>
+        </div>
+
         <div class="balance__tickets">
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
@@ -67,19 +79,8 @@
               :error-messages="errors"
               type="number"
               min="1"
-              placeholder="tickets"
               outlined
-            ></v-text-field>
-          </validation-provider>
-        </div>
-
-        <div class="balance__email">
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
-              v-model="transferEmail"
-              :error-messages="errors"
-              placeholder="Email"
-              outlined
+              label="# of Tokens"
             ></v-text-field>
           </validation-provider>
         </div>
@@ -91,7 +92,7 @@
         </div>
       </div>
       <div class="balance__table-view">
-        <BalanceView />
+        <BalanceView ref="balanceTable" />
       </div>
     </ValidationObserver>
   </div>
@@ -102,7 +103,7 @@ import { computed, ref, Ref } from '@vue/composition-api';
 import { Token, User } from '@/generated/graphql';
 import gql from 'graphql-tag';
 import { useAuthGetters, useDbState } from '@/store';
-import { BalanceView } from '../components';
+import BalanceView from '../components/BalanceView/BalanceView.vue';
 
 export default {
   name: 'Balance',
@@ -120,6 +121,8 @@ export default {
     // Token Management
     const tokens: Ref<Token[]> = ref([]);
     const originalOwners: Ref<Pick<User, 'firstName' | 'lastName'>[]> = ref([]);
+    const balanceTable: Ref<ReturnType<typeof BalanceView['setup']>> = ref(null);
+    const process = computed(() => balanceTable.value?.process);
     const id = useAuthGetters(['getId']).getId;
     query<{ tokens: Token[] }>({
       query: gql`
@@ -176,7 +179,12 @@ export default {
                   recipient_email: $recipientEmail
                 }
               ) {
-                status
+                recipient {
+                  firstName
+                  lastName
+                }
+                timestamp
+                tokensSent
               }
             }
           `,
@@ -187,6 +195,7 @@ export default {
           }
         })
       );
+      process();
     };
     return {
       tokens,
@@ -293,17 +302,27 @@ export default {
     width: 100%;
   }
 
+  &__transfer-title {
+    text-align: center;
+    margin-top: 75px;
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+  }
+
   &__tickets {
-    width: 75px;
-    margin-right: 10px;
+    width: 15%;
+    margin: 10px;
   }
 
   &__email {
-    width: 50%;
+    width: 30%;
+    margin: 10px;
   }
 
   &__transfer-button {
-    margin-left: 10px;
+    margin: 10px;
   }
 }
 .v-btn:not(.v-btn--round).v-size--default {
