@@ -40,7 +40,7 @@
           </v-btn>
 
           <v-btn v-if="user" text color="#404142" @click="$router.push({ name: 'portfolio' })">
-            <Profile size="45" />
+            <Profile :size="45" />
           </v-btn>
         </div>
         <!-- </v-toolbar> -->

@@ -72,7 +72,7 @@ export default {
       type: Number
     }
   },
-  setup(props) {
+  setup() {
     // init data
     // const pond = ref(null);
     const { user } = useDbState(['user']);

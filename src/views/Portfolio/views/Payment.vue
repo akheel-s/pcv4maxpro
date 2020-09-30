@@ -6,7 +6,7 @@
       }}</v-alert>
       <div class="sponsor__details">
         <div class="sponsor__details-avatar">
-          <Profile size="60" />
+          <Profile :size="60" />
         </div>
 
         <div class="sponsor__details-namecard">

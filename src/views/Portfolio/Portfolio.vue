@@ -93,7 +93,7 @@
   </Loading>
 </template>
 <script lang="ts">
-import { ref, computed, Ref, onMounted } from '@vue/composition-api';
+import { ref, computed, Ref, watch } from '@vue/composition-api';
 import gql from 'graphql-tag';
 import { Token } from '@/generated/graphql';
 import { useAuthGetters, useDbState } from '@/store';
@@ -159,13 +159,17 @@ export default {
     // Skeleton Loader
     const loader: Ref<ReturnType<typeof LoadingVue['setup']> | null> = ref(null);
 
-    onMounted(() => {
-      const types = user.value?.userTypes;
-      if (types?.includes('School') || types?.includes('Parent')) currentTab.value = 'payment';
-      else if (types?.includes('Teacher')) currentTab.value = 'invite';
-      else currentTab.value = 'my programs';
-      loader.value!.process();
-    });
+    watch(
+      user,
+      newUser => {
+        const types = newUser?.userTypes;
+        if (types?.includes('School') || types?.includes('Parent')) currentTab.value = 'payment';
+        else if (types?.includes('Teacher')) currentTab.value = 'invite';
+        else currentTab.value = 'my programs';
+        loader.value!.process();
+      },
+      { deep: true }
+    );
     return {
       currentTab,
       currentProfile,

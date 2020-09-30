@@ -1,11 +1,7 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
     <div class="refer__container">
-      <v-avatar size="75">
-        <v-img
-          src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-        ></v-img>
-      </v-avatar>
+      <profile :size="75"></profile>
       <div class="refer__title-main">Make and manage your invites</div>
 
       <div class="refer__body1">
@@ -84,7 +80,7 @@
       </div>
 
       <div class="refer__all_invite">
-        <AllInvites :ref="count" :items="sortedData" />
+        <AllInvites />
       </div>
     </div>
   </ValidationObserver>
@@ -96,6 +92,7 @@ import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
+import Profile from '@/components/Profile.vue';
 import { AllInvites } from '../../components';
 import { items } from './const';
 
@@ -105,7 +102,7 @@ const {
 
 export default {
   name: 'Referral',
-  components: { AllInvites },
+  components: { AllInvites, Profile },
   setup(
     _props,
     {
