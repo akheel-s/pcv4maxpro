@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="balance__table-view">
-        <BalanceView />
+        <BalanceView ref="balanceTable" />
       </div>
     </ValidationObserver>
   </div>
@@ -103,7 +103,7 @@ import { computed, ref, Ref } from '@vue/composition-api';
 import { Token, User } from '@/generated/graphql';
 import gql from 'graphql-tag';
 import { useAuthGetters, useDbState } from '@/store';
-import { BalanceView } from '../components';
+import BalanceView from '../components/BalanceView/BalanceView.vue';
 
 export default {
   name: 'Balance',
@@ -121,6 +121,8 @@ export default {
     // Token Management
     const tokens: Ref<Token[]> = ref([]);
     const originalOwners: Ref<Pick<User, 'firstName' | 'lastName'>[]> = ref([]);
+    const balanceTable: Ref<ReturnType<typeof BalanceView['setup']>> = ref(null);
+    const process = computed(() => balanceTable.value?.process);
     const id = useAuthGetters(['getId']).getId;
     query<{ tokens: Token[] }>({
       query: gql`
@@ -177,7 +179,12 @@ export default {
                   recipient_email: $recipientEmail
                 }
               ) {
-                status
+                recipient {
+                  firstName
+                  lastName
+                }
+                timestamp
+                tokensSent
               }
             }
           `,
@@ -188,6 +195,7 @@ export default {
           }
         })
       );
+      process();
     };
     return {
       tokens,
