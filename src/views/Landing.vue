@@ -453,7 +453,9 @@
             Win internships
           </div>
 
-          <v-btn rounded outlined depressed dark large>Sign-up to get sponsored</v-btn>
+          <a href="signup"
+            ><v-btn rounded outlined depressed dark large>Sign-up to get sponsored</v-btn></a
+          >
         </div>
       </div>
     </v-parallax>
@@ -513,7 +515,9 @@
             Collect, and distribute sponsorship tickets<br />
             Accept stakeholder invitation, and monitor programs
           </div>
-          <v-btn rounded outlined depressed dark large>Invite Schools, Students and Peers</v-btn>
+          <a href="portfolio">
+            <v-btn rounded outlined depressed dark large>Invite Schools, Students and Peers</v-btn>
+          </a>
         </div>
       </div>
 
@@ -739,9 +743,11 @@
             Monitor sponsorships
           </div>
 
-          <v-btn rounded outlined depressed dark large
-            >Sponsor and Invite Teachers and Students</v-btn
-          >
+          <a href="portfolio">
+            <v-btn rounded outlined depressed dark large
+              >Sponsor and Invite Teachers and Students</v-btn
+            >
+          </a>
         </div>
       </div>
     </v-parallax>
@@ -852,7 +858,7 @@
             Get your program running in 4-hours<br />
             Asynchronous interactions, or zero-management option
           </div>
-          <v-btn rounded outlined depressed dark large>Onboard Now</v-btn>
+          <a href="signup"> <v-btn rounded outlined depressed dark large>Onboard Now</v-btn></a>
         </div>
       </div>
     </v-parallax>
@@ -980,7 +986,9 @@
             Sponsor and purchase program tokens<br />
             Transfer to participants and stakeholders for use
           </div>
-          <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
+          <a href="portfolio">
+            <v-btn rounded outlined depressed dark large>Sponsor and fund participants</v-btn>
+          </a>
         </div>
       </div>
     </v-parallax>
@@ -1090,8 +1098,9 @@
             Transfer tickets to student participants<br />
             Monitor sponsorships
           </div>
-
-          <v-btn rounded outlined depressed dark large>Invite Your Student and School</v-btn>
+          <a href="portfolio">
+            <v-btn rounded outlined depressed dark large>Invite Your Student and School</v-btn></a
+          >
         </div>
       </div>
     </v-parallax>
@@ -1171,15 +1180,20 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  scroll-behavior: smooth;
+}
 .landing {
   &__container {
     a {
       text-decoration: none;
+      scroll-behavior: smooth;
     }
   }
 }
 .student {
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 .landing {
   &__hero {
