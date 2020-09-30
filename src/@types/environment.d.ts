@@ -34,6 +34,16 @@ declare global {
           product: Stripe.Response<Stripe.Product>;
         };
       }>;
+      callFunction(
+        name: 'getProductInfo',
+        priceId: string[]
+      ): Promise<{
+        statusCode: number;
+        body: {
+          price: Stripe.Response<Stripe.Price>;
+          product: Stripe.Response<Stripe.Product>;
+        }[];
+      }>;
     }
   }
 }

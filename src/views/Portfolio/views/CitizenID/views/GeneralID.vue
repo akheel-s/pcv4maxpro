@@ -78,6 +78,7 @@ import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
 import { GetterTypes } from '@/store/modules/auth/getters';
 // import { ObjectId } from 'bson';
+import { ActionTypes } from '@/store/modules/db/actions';
 import gql from 'graphql-tag';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
@@ -105,7 +106,6 @@ export default {
     }
   ) {
     const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
-    console.log('loading page', getObjectId.value);
     // Page Setup
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
@@ -140,7 +140,7 @@ export default {
     }
 
     // Upload Functionality
-    const { update } = useDbActions(['update']);
+    const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'User',
