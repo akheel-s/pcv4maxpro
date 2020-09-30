@@ -1,60 +1,50 @@
 <template>
-  <div>
-    <ValidationObserver v-slot="{ invalid }" slim>
-      <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
-        <v-skeleton-loader
-          :loading="loading"
-          type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
-        >
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field v-model="firstName" :error-messages="errors" outlined label="First Name">
-            </v-text-field>
-          </validation-provider>
+  <ValidationObserver v-slot="{ invalid }" slim>
+    <div class="my-settings__title">General</div>
+    <div class="d-flex justify-center flex-column align-center">
+      <div ref="loader" class="my-id__wrapper" style="width: 100%">
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field v-model="firstName" :error-messages="errors" outlined label="First Name">
+          </v-text-field>
+        </validation-provider>
 
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
-              v-model="lastName"
-              :error-messages="errors"
-              label="Last Name"
-              multiple
-              outlined
-            >
-            </v-text-field>
-          </validation-provider>
-          <validation-provider v-slot="{ errors }" slim rules="required">
-            <v-text-field
-              v-model="phoneNumber"
-              v-mask="'(###)###-####'"
-              :error-messages="errors"
-              label="Phone Number"
-              outlined
-            ></v-text-field>
-          </validation-provider>
+        <validation-provider v-slot="{ errors }" rules="required">
+          <v-text-field v-model="lastName" :error-messages="errors" label="Last Name" outlined>
+          </v-text-field>
+        </validation-provider>
+        <validation-provider v-slot="{ errors }" slim rules="required">
+          <v-text-field
+            v-model="phoneNumber"
+            v-mask="'(###)###-####'"
+            :error-messages="errors"
+            label="Phone Number"
+            outlined
+          ></v-text-field>
+        </validation-provider>
 
-          <validation-provider v-slot="{ errors }" slim rules="required">
-            <v-select
-              v-model="userTypes"
-              :error-messages="errors"
-              :items="AVAILABLE_IDS"
-              chips
-              label="Citizen Type"
-              multiple
-              outlined
-            ></v-select>
-          </validation-provider>
-        </v-skeleton-loader>
-        <Loading v-slot="{ loading: saving, process: save }" :callback="save">
-          <v-btn :disabled="invalid" :loading="saving" outlined depressed x-large @click="save"
+        <validation-provider v-slot="{ errors }" slim rules="required">
+          <v-select
+            v-model="userTypes"
+            :error-messages="errors"
+            :items="AVAILABLE_IDS"
+            chips
+            label="Citizen Type"
+            multiple
+            outlined
+          ></v-select>
+        </validation-provider>
+        <Loading v-slot="{ loading: saving, process }" :callback="save">
+          <v-btn :disabled="invalid" :loading="saving" outlined depressed x-large @click="process"
             >Save</v-btn
           >
         </Loading>
-      </Loading>
-    </ValidationObserver>
-  </div>
+      </div>
+    </div>
+  </ValidationObserver>
 </template>
 <script lang="ts">
 import { Ref, reactive, ref, toRefs, onMounted } from '@vue/composition-api';
-import { useAuthGetters, useDbActions } from '@/store';
+import { useAuthGetters, useDbActions, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { PropType } from 'vue';
@@ -96,40 +86,31 @@ export default {
   ) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
 
+    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
+
+    // GraphQL Query
+    // const GENERALIDQUERY = gql`
+    //   query thisGeneralPerson($id: ObjectId!) {
+    //     user(query: { _id: $id }) {
+    //       firstName
+    //       lastName
+    //       phoneNumber
+    //       userTypes
+    //     }
+    //   }
+    // `;
+
+    const { user: userState } = useDbState(['user']);
+    // Invoke Query
     const user = reactive({
       firstName: '',
       lastName: '',
       phoneNumber: '',
       userTypes: []
     });
-
-    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
-
-    // GraphQL Query
-    const GENERALIDQUERY = gql`
-      query thisGeneralPerson($id: ObjectId!) {
-        user(query: { _id: $id }) {
-          firstName
-          lastName
-          phoneNumber
-          userTypes
-        }
-      }
-    `;
-
-    // Invoke Query
-    function processQuery() {
-      return query<{ user: User }>({
-        query: GENERALIDQUERY,
-        variables: { id: getObjectId.value }
-      }).then(({ data: { user: userRes } }) => {
-        // Set Query result when loaded
-        Object.keys(user).forEach(key => {
-          if (userRes && userRes[key]) user[key] = userRes[key];
-        });
-      });
-    }
-
+    Object.keys(user).forEach(key => {
+      user[key] = userState.value![key];
+    });
     // Upload Functionality
     const { update } = useDbActions(['update']);
     async function save() {
@@ -148,11 +129,7 @@ export default {
       emit('input', user.userTypes);
     }
 
-    onMounted(() => {
-      loader.value!.process();
-    });
-
-    return { save, AVAILABLE_IDS, ...toRefs(user), processQuery, loader };
+    return { save, AVAILABLE_IDS, ...toRefs(user), loader };
   }
 };
 </script>

@@ -23,7 +23,6 @@
 
     <div class="my-settings__content">
       <!-- General -->
-      <div class="my-settings__title">General</div>
       <Name />
 
       <v-divider class="my-settings__divider"></v-divider>

@@ -84,7 +84,7 @@
       </div>
 
       <div class="refer__all_invite">
-        <AllInvites :ref="count" :items="sortedData" />
+        <AllInvites :items="sortedData" />
       </div>
     </div>
   </ValidationObserver>

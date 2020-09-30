@@ -11,6 +11,7 @@
         <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
         <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
         <v-btn
+          v-if="currentTab != 'my-programs'"
           class="profile__mode"
           depressed
           color="grey"
@@ -84,7 +85,11 @@
           </v-chip>
         </div>
 
-        <component :is="getComponent" :exp-component="getProfile" />
+        <component
+          :is="getComponent"
+          :exp-component="getProfile"
+          @changeTab="currentTab = $event"
+        />
       </div>
       <!-- </v-skeleton-loader> -->
     </div>

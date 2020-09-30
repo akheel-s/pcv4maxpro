@@ -9,17 +9,13 @@
                 :src="'https://pilotcity.s3.us-west-1.amazonaws.com/' + user.profileImg"
               ></v-img>
             </v-avatar>
-
             <div class="balance__main-left-title">BALANCE</div>
-
             <div class="balance__main-left-header">{{ tokens.length }} Tokens</div>
-
             <div>
               <v-icon class="balance__main-left-icon" color="grey" large
                 >mdi-ticket-confirmation</v-icon
               >
             </div>
-
             <div class="balance__main-left-chippers">
               <v-chip
                 v-for="(owner, index) in modOriginalOwners"
@@ -31,7 +27,6 @@
               >
             </div>
           </div>
-
           <div class="balance__main-right">
             <div>
               <v-btn
@@ -39,7 +34,7 @@
                 depressed
                 color="purple"
                 x-large
-                @click="currentTab = 'payment'"
+                @click="$emit('changeTab', 'payment')"
               >
                 <v-icon left>mdi-shield-star</v-icon>Sponsor
               </v-btn>
@@ -52,47 +47,49 @@
                 color="grey"
                 outlined
                 x-large
-                @click="currentTab = 'payment'"
+                @click="transferState = !transferState"
                 ><v-icon left>mdi-bank-transfer</v-icon>Transfer</v-btn
               >
             </div>
           </div>
         </div>
       </div>
-      <div class="balance__transfer-title">Transfer Tokens</div>
-      <div class="balance__transfer">
-        <div class="balance__email">
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
-              v-model="transferEmail"
-              :error-messages="errors"
-              outlined
-              label="Enter recipient's email"
-            ></v-text-field>
-          </validation-provider>
-        </div>
+      <div v-show="transferState">
+        <div class="balance__transfer-title">Transfer Tokens</div>
+        <div class="balance__transfer">
+          <div class="balance__email">
+            <validation-provider v-slot="{ errors }" rules="required">
+              <v-text-field
+                v-model="transferEmail"
+                :error-messages="errors"
+                outlined
+                label="Enter recipient's email"
+              ></v-text-field>
+            </validation-provider>
+          </div>
 
-        <div class="balance__tickets">
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
-              v-model="transferQuantity"
-              :error-messages="errors"
-              type="number"
-              min="1"
-              outlined
-              label="# of Tokens"
-            ></v-text-field>
-          </validation-provider>
-        </div>
+          <div class="balance__tickets">
+            <validation-provider v-slot="{ errors }" rules="required">
+              <v-text-field
+                v-model="transferQuantity"
+                :error-messages="errors"
+                type="number"
+                min="1"
+                outlined
+                label="# of Tokens"
+              ></v-text-field>
+            </validation-provider>
+          </div>
 
-        <div class="balance__transfer-button">
-          <v-btn :disabled="invalid" :dark="!invalid" depressed @click="processTransfer"
-            >Transfer</v-btn
-          >
+          <div class="balance__transfer-button">
+            <v-btn :disabled="invalid" :dark="!invalid" depressed @click="processTransfer"
+              >Transfer</v-btn
+            >
+          </div>
         </div>
-      </div>
-      <div class="balance__table-view">
-        <BalanceView ref="balanceTable" />
+        <div class="balance__table-view">
+          <BalanceView ref="balanceTable" />
+        </div>
       </div>
     </ValidationObserver>
   </div>
@@ -118,6 +115,7 @@ export default {
       }
     }
   ) {
+    const transferState = ref(false);
     // Token Management
     const tokens: Ref<Token[]> = ref([]);
     const originalOwners: Ref<Pick<User, 'firstName' | 'lastName'>[]> = ref([]);
@@ -198,6 +196,7 @@ export default {
       process();
     };
     return {
+      transferState,
       tokens,
       originalOwners,
       modOriginalOwners,
