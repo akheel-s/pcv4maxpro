@@ -162,6 +162,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.rounded-circle {
+}
 .filepond--drop-label {
   color: #4c4e53;
 }

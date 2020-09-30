@@ -46,10 +46,10 @@
         </div>
         <div class="profile__container pc-container">
           <div v-if="user" class="profile__sub-container text-center mt-12">
-            <div>
+            <div class="profile__name">
               <profile :size="150" editable />
-              <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
+            <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
 
             <div>
               <v-chip
@@ -93,7 +93,14 @@
   </Loading>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.profile {
+  &__name {
+    display: flex;
+    justify: center;
+  }
+}
+</style>
 <script lang="ts">
 import { ref, computed, Ref, onMounted } from '@vue/composition-api';
 import gql from 'graphql-tag';

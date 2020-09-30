@@ -103,6 +103,7 @@ import { Token, User } from '@/generated/graphql';
 import gql from 'graphql-tag';
 import { useAuthGetters, useDbState } from '@/store';
 import { BalanceView } from '../components';
+import Payment from './Settings';
 
 export default {
   name: 'Balance',
