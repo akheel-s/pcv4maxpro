@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >{{ tickets }} Tickets</v-btn
+            >{{ tickets }} Tokens</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"

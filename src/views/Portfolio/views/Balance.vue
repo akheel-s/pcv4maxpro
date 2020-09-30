@@ -12,7 +12,7 @@
 
             <div class="balance__main-left-title">BALANCE</div>
 
-            <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
+            <div class="balance__main-left-header">{{ tokens.length }} Tokens</div>
 
             <div>
               <v-icon class="balance__main-left-icon" color="grey" large
