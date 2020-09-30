@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar depressed flat color="#404142" height="75">
+  <v-toolbar depressed flat color="primary" height="75">
     <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
 
     <v-toolbar-title
@@ -90,13 +90,15 @@
       >
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
+      <v-menu offset-y :ripple="false">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary" dark depressed v-bind="attrs" v-on="on">
+            <Profile :size="45" />
+          </v-btn>
+        </template>
 
-      <v-btn text color="#404142"
-        ><v-avatar color="#404142" size="45" outlined>
-          <v-img
-            src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-          ></v-img> </v-avatar
-      ></v-btn>
+        <v-btn color="primary" dark depressed @click="logout">Sign Out</v-btn>
+      </v-menu>
     </div>
   </v-toolbar>
 </template>
@@ -142,8 +144,13 @@
 </style>
 <script lang="ts">
 import { useAuthActions } from '@/store';
+import { onLogout } from '@/vue-apollo';
+import Profile from '@/components/Profile.vue';
 
 export default {
+  components: {
+    Profile
+  },
   props: {
     user: {
       type: Object,
@@ -159,6 +166,7 @@ export default {
     const { logout: logoutProcess } = useAuthActions(['logout']);
     async function logout() {
       await logoutProcess();
+      await onLogout();
       ctx.root.$router.push({ name: 'login' });
     }
     // Global Tooling for linear progression

@@ -1,6 +1,6 @@
 import { Stitch, RemoteMongoClient, RemoteMongoDatabase } from 'mongodb-stitch-browser-sdk';
 import Database from '@/@types/database';
-import { User } from '../../../@types/user.d';
+import { User } from '../../../generated/graphql';
 
 const client = Stitch.initializeDefaultAppClient(process.env.VUE_APP_REALM_ID);
 

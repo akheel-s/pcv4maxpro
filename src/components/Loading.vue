@@ -25,7 +25,6 @@ export default {
     const process =
       // setLinearLoader({
       async () => {
-        console.log('processing');
         loading.value = true;
         try {
           await (props.callback as Function)();

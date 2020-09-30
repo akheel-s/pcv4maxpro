@@ -49,9 +49,15 @@
           <template v-slot:label>
             <div class="signup__conditions-text">
               I agree to the following
-              <a href="https://www.iubenda.com/terms-and-conditions/32542296">Terms & Conditions</a>
+              <a
+                class="login__forgotlink"
+                href="https://www.iubenda.com/terms-and-conditions/32542296"
+                >Terms & Conditions</a
+              >
               and
-              <a href="https://www.iubenda.com/privacy-policy/32542296">Privacy Policy.</a>
+              <a class="login__forgotlink" href="https://www.iubenda.com/privacy-policy/32542296"
+                >Privacy Policy.</a
+              >
             </div>
           </template>
         </v-checkbox>
@@ -109,7 +115,6 @@ export default {
       }
       ui.loading = false;
     }
-
     return { ...toRefs(state), submit, ...toRefs(ui) };
   },
   methods: {}
@@ -223,6 +228,9 @@ export default {
   &__conditions-text {
     font-size: 11px;
     color: #ffffff;
+    & a.login__forgotlink {
+      color: #ffffff;
+    }
   }
 
   &__signupbuttons {
