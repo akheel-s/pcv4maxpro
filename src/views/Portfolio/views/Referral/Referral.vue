@@ -69,13 +69,22 @@
         <!-- <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
           ><v-icon left>mdi-clock-time-two-outline</v-icon>Pending</v-btn
         >
-        <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
+          <v-icon left>mdi-clock-time-two-outline</v-icon>Pending
+        </v-btn>
+
+        <v-btn
+          small
+          class="refer__manage1-buttons"
+          depressed
+          color="grey"
+          outlined
+          @click="sortByAccepted()"
           ><v-icon left>mdi-emoticon-excited-outline</v-icon>Accepted</v-btn
         > -->
       </div>
 
       <div class="refer__all_invite">
-        <AllInvites />
+        <AllInvites :ref="count" :items="sortedData" />
       </div>
     </div>
   </ValidationObserver>
@@ -88,6 +97,7 @@ import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { AllInvites } from '../../components';
+import { items } from './const';
 
 const {
   getObjectId: { value: getObjectId }

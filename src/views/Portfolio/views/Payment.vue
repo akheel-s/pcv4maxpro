@@ -243,18 +243,18 @@ export default {
     const coupon = ref('');
     const { getProductInfos } = useDbActions(['getProductInfos']);
     const PRICE_IDS = [
-      'price_1HVJv6LnkQGEgDQn1armT4XJ',
-      'price_1HVJukLnkQGEgDQnTsO13Ks2',
-      'price_1HVJuELnkQGEgDQnV1dDldCH',
-      'price_1HVJtoLnkQGEgDQnS2SvWBqk',
-      'price_1HVJtBLnkQGEgDQnS2rf3PSD'
+      'price_1HXAFALnkQGEgDQnGsjqbuuM',
+      'price_1HXABLLnkQGEgDQnwzzt63Np',
+      'price_1HXA9ZLnkQGEgDQn9uaE7Hm2',
+      'price_1HXAD3LnkQGEgDQnqxQabHZO',
+      'price_1HXACELnkQGEgDQnWpGByUE0'
     ];
     const ColorCode = {
       'Per Student': 'green',
-      'Per Class': 'blue',
-      'Per Teacher': 'pink',
       'Per Family': 'orange',
-      'Per Group': 'purple'
+      'Per Group': 'purple',
+      'Per Class': 'blue',
+      'Per Teacher': 'pink'
     };
     const purchaseOptions: Ref<any> = ref([]);
     getProductInfos({ priceId: PRICE_IDS }).then(result => {
@@ -418,7 +418,7 @@ export default {
     grid-template-rows: repeat(5, 20%);
     grid-column-gap: 25px;
     grid-row-gap: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 150px;
     justify-content: center;
   }
 
