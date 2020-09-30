@@ -158,7 +158,6 @@ export default {
           variables: { id: id.value }
         })
         .then(({ data: { tokens } }) => {
-          console.log(tokens);
           tickets.value = tokens.length;
         });
     // File Storage
