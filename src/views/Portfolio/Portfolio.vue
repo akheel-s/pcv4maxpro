@@ -52,7 +52,7 @@
             </div>
 
             <div>
-              <v-chip
+              <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"
                 outlined
@@ -60,17 +60,7 @@
               >
                 <v-icon left>mdi-server-plus</v-icon>
                 Programs
-              </v-chip>
-
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
+              </v-chip> -->
 
               <v-chip
                 v-for="id in user.userTypes"
@@ -82,6 +72,16 @@
               >
                 <v-icon left>mdi-account-outline</v-icon>
                 {{ id }}
+              </v-chip>
+
+              <v-chip
+                class="pl-8 pr-8 ma-2"
+                color="black"
+                outlined
+                @click="currentTab = 'settings'"
+              >
+                <v-icon left>mdi-wrench</v-icon>
+                Settings
               </v-chip>
             </div>
           </div>
