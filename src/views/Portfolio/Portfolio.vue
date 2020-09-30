@@ -16,7 +16,7 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn🚚
+            >Manage</v-btn
           > -->
           <div class="profile__spacer"></div>
           <v-btn
@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >{{ tickets }} Tickets</v-btn
+            >{{ tickets }} Tokens</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"

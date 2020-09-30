@@ -25,7 +25,8 @@
             ></v-text-field>
           </validation-provider>
 
-          <v-card class="sponsor__support-card" elevation="0" ripple outlined width="100%">
+          <!-- LATEST TRANSACTIONS / BUILDING AFTER OPEN HOUSE -->
+          <!-- <v-card class="sponsor__support-card" elevation="0" ripple outlined width="100%">
             <v-card-title>Latest transactions</v-card-title>
 
             <v-timeline dense>
@@ -39,19 +40,89 @@
                 ><v-chip color="grey" small dark>$24,500</v-chip></v-timeline-item
               >
             </v-timeline>
-          </v-card>
+          </v-card> -->
 
-          <v-switch
+          <!-- LATEST TRANSACTIONS / BUILDING AFTER OPEN HOUSE -->
+
+          <!-- <v-switch
             inset
             color="red"
             class="sponsor__details-anonymous"
             label="Make public display name anonymous"
           >
-          </v-switch>
+          </v-switch> -->
+
+          <!-- LATEST TRANSACTIONS / BUILDING AFTER OPEN HOUSE -->
+        </div>
+
+        <div class="sponsor__pay-card">
+          <v-btn x-large rounded outlined text :disabled="!selectedProduct.length" @click="checkout"
+            >Pay by Card</v-btn
+          >
+        </div>
+        <div class="sponsor__pay-card">
+          <v-btn
+            x-large
+            rounded
+            outlined
+            text
+            :disabled="!selectedProduct.length"
+            @click="sendInvoice"
+            >Pay by Invoice</v-btn
+          >
         </div>
       </div>
 
-      <div class="sponsor__timeline-container">
+      <div class="sponsor__program-menu">
+        <v-card
+          v-for="option in purchaseOptions"
+          :key="option.title"
+          elevation="0"
+          :color="option.color"
+          dark
+          class="mb-3"
+        >
+          <v-card-title class="landing__menu-title">
+            <div class="sponsor__option-title">{{ option.title }}</div>
+            <div class="sponsor__option-unit">
+              <v-chip color="white" outlined>{{ option.unitLabel }}</v-chip>
+            </div>
+            <div class="sponsor__option-price">${{ option.price / 100 }}</div>
+
+            <!-- <v-checkbox v-model="selectedProduct" :label="`$${option.price / 100}`">
+              <template v-slot:label>
+                <span class="sponsor__option-checkbox"></span>
+              </template>
+            </v-checkbox> -->
+            <v-text-field
+              v-model="option.quantity"
+              class="sponsor__quantity-check"
+              min="1"
+              outlined
+              x-large
+              label="Quantity"
+              type="number"
+              hide-details
+            ></v-text-field>
+          </v-card-title>
+
+          <v-divider></v-divider>
+
+          <v-card-subtitle>{{ option.desc }}</v-card-subtitle>
+          <!-- <v-card-actions>
+            <v-radio-group v-model="selectedProduct" multiple class="sponsor__menu-radio"
+                    ><v-radio
+                      :value="option"
+                      class="sponsor__menu-radio"
+                      :label="`$${option.price / 100}`"
+                    ></v-radio
+                  ></v-radio-group>
+          </v-card-actions> -->
+        </v-card>
+      </div>
+      <!-- <v-text-field label="coupon"></v-text-field> -->
+
+      <!-- <div class="sponsor__timeline-container">
         <v-stepper v-model="e6" non-linear class="sponsor__timeline pb-0" vertical>
           <v-stepper-step
             class="sponsor__timeline-step"
@@ -77,15 +148,15 @@
               >
                 <v-card-title>{{ option.title }}</v-card-title>
                 <v-card-subtitle>{{ option.desc }}</v-card-subtitle>
-                <v-card-actions>
-                  <!-- <v-radio-group v-model="selectedProduct" multiple class="sponsor__menu-radio"
+                <v-card-actions> -->
+      <!-- <v-radio-group v-model="selectedProduct" multiple class="sponsor__menu-radio"
                     ><v-radio
                       :value="option"
                       class="sponsor__menu-radio"
                       :label="`$${option.price / 100}`"
                     ></v-radio
                   ></v-radio-group> -->
-                  <v-checkbox
+      <!-- <v-checkbox
                     v-model="selectedProduct"
                     :value="option"
                     :label="`$${option.price / 100}`"
@@ -100,9 +171,9 @@
                   ></v-text-field>
                 </v-card-actions>
               </v-card>
-            </div>
-            <!-- <v-text-field label="coupon"></v-text-field> -->
-            <v-btn
+            </div> -->
+      <!-- <v-text-field label="coupon"></v-text-field> -->
+      <!-- <v-btn
               class="sponsor__pay-card"
               small
               outlined
@@ -146,8 +217,8 @@
             <v-btn small outlined text @click="e6 = 4">Complete Transaction</v-btn>
             <v-btn small text>Cancel</v-btn>
           </v-stepper-content>
-        </v-stepper>
-      </div>
+        </v-stepper> -->
+      <!-- </div> -->
     </div>
   </ValidationObserver>
 </template>
@@ -179,11 +250,11 @@ export default {
       'price_1HVJtBLnkQGEgDQnS2rf3PSD'
     ];
     const ColorCode = {
-      Student: 'green',
-      Class: 'blue',
-      Teacher: 'pink',
-      Family: 'orange',
-      Group: 'purple'
+      'Per Student': 'green',
+      'Per Class': 'blue',
+      'Per Teacher': 'pink',
+      'Per Family': 'orange',
+      'Per Group': 'purple'
     };
     const purchaseOptions: Ref<any> = ref([]);
     const productSubscription = merge(
@@ -191,14 +262,15 @@ export default {
     )
       .pipe(retry(3))
       .subscribe(result => {
-        const title = result.body?.product.name.split(' ')[0];
+        const title = result.body?.product.name;
         purchaseOptions.value.push({
           title,
           desc: result.body?.product.description,
           priceId: result.body?.price.id,
           price: result.body?.price.unit_amount,
           color: ColorCode[title],
-          quantity: 0
+          quantity: 0,
+          unitLabel: result.body?.product.unit_label
         });
       });
     onBeforeUnmount(() => {
@@ -234,21 +306,60 @@ export default {
   &__container {
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 6%;
     padding-right: 6%;
   }
 
   &__pay-card {
-    margin-right: 3%;
+    // margin-right: 3%;
+    margin-left: 25px;
+    margin-top: 5px;
+    // margin-right: 10px;
+    // align-items: center;
+    // justify-content: center;
+  }
+
+  &__menu-title {
+  }
+
+  &__option-title {
+    font-family: Raleway;
+    font-weight: 800;
+    font-size: 30px;
+    color: #ffffff;
+    margin-right: 20px;
+    // margin-right: auto;
+  }
+
+  &__option-unit {
+    font-family: Raleway;
+    font-weight: 700;
+    // font-size: 30px;
+    // margin-right: auto;
+    margin-right: 20px;
+  }
+
+  &__option-price {
+    font-weight: 300;
+    font-size: 30px;
+    color: #ffffff;
+    margin-right: auto;
+  }
+
+  &__option-title-checkbox {
+    font-family: Raleway;
+    font-weight: 800;
+    font-size: 25px;
   }
 
   &__details {
     flex-direction: row;
     display: flex;
     margin-top: 7px;
-    width: 60%;
-    justify-content: flex-start;
+    margin-bottom: 50px;
+    width: 100%;
+    justify-content: center;
     align-items: flex-start;
   }
 
@@ -270,8 +381,13 @@ export default {
   }
 
   &__quantity-check {
-    padding-left: 20px;
-    max-width: 80px;
+    margin-left: auto;
+    max-width: 100px;
+    font-size: 25px;
+    // justify-content: flex-end;
+    // align-items: flex-end;
+    // margin-top: auto;
+    // margin-bottom: auto;
   }
 
   &__timeline {
@@ -287,12 +403,12 @@ export default {
 
   &__program-menu {
     display: grid;
-    grid-template-columns: repeat(2, 200px);
-    grid-template-rows: repeat(2, 200px);
+    grid-template-columns: repeat(1, 80%);
+    grid-template-rows: repeat(5, 20%);
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     margin-bottom: 25px;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   &__program-menu-card-radio {
