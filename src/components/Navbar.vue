@@ -90,7 +90,7 @@
       </v-btn> -->
       <v-menu offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark depressed v-bind="attrs" v-on="on">
+          <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
             <Profile :size="45" />
           </v-btn>
         </template>
