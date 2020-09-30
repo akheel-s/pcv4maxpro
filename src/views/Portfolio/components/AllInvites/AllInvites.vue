@@ -32,6 +32,13 @@ export default {
   components: {
     IndexTable
   },
+  props: {
+    items: {
+      type: Array as PropType<InviteItem[]>,
+      default: () => [],
+      required: true
+    }
+  },
 
   setup(
     _props,

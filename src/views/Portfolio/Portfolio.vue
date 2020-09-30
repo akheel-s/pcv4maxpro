@@ -8,7 +8,7 @@
       >
         <div class="profile__mode-container pc-container">
           <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
           <v-btn
             class="profile__mode"
             depressed
@@ -16,8 +16,8 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn
-          > -->
+            >My Portfolio</v-btn
+          >
           <div class="profile__spacer"></div>
           <v-btn
             class="profile__mode font-weight-bold"
@@ -52,7 +52,7 @@
             </div>
 
             <div>
-              <v-chip
+              <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"
                 outlined
@@ -60,17 +60,7 @@
               >
                 <v-icon left>mdi-server-plus</v-icon>
                 Programs
-              </v-chip>
-
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
+              </v-chip> -->
 
               <v-chip
                 v-for="id in user.userTypes"
@@ -83,6 +73,16 @@
                 <v-icon left>mdi-account-outline</v-icon>
                 {{ id }}
               </v-chip>
+
+              <v-chip
+                class="pl-8 pr-8 ma-2"
+                color="black"
+                outlined
+                @click="currentTab = 'settings'"
+              >
+                <v-icon left>mdi-wrench</v-icon>
+                Settings
+              </v-chip>
             </div>
           </div>
 
@@ -92,13 +92,6 @@
     </div>
   </Loading>
 </template>
-
-<style lang="scss">
-.profile {
-  &__avatar-bar {
-  }
-}
-</style>
 <script lang="ts">
 import { ref, computed, Ref, onMounted } from '@vue/composition-api';
 import gql from 'graphql-tag';

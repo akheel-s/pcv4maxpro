@@ -1,3 +1,4 @@
+import gql from 'graphql-tag';
 import Login from '@/views/Login';
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
@@ -9,6 +10,9 @@ import Timeline from '@/components/Timeline.vue';
 import Error404 from '@/views/Error404.vue';
 import { useAuthGetters } from '@/store';
 import ErrorLogin from '@/views/ErrorLogin.vue';
+import apolloProvider from '@/vue-apollo';
+import Landing from '@/views/Landing.vue';
+import { UserQueryInput, User } from '../generated/graphql';
 
 Vue.use(VueRouter);
 
@@ -68,7 +72,7 @@ const router = new VueRouter({
 });
 //* Router Guards
 const { getUser } = useAuthGetters(['getUser']);
-
+// authorization hook
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
@@ -83,5 +87,30 @@ router.beforeEach((to, from, next) => {
   } else {
     next(); // make sure to always call next()!
   }
+});
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth && record.meta.requiresUser)) {
+    apolloProvider.defaultClient
+      .query<{ user: User }>({
+        query: gql`
+          query userRouteGuard($query: UserQueryInput!) {
+            user(query: $query) {
+              _id
+            }
+          }
+        `,
+        variables: {
+          query: { _id: getUser.value?.id } as UserQueryInput
+        }
+      })
+      .then(({ data: { user } }) => {
+        if (user) next();
+        else next({ name: 'landing' });
+      });
+  } else next();
+});
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.layout)) next();
+  else next();
 });
 export default router;
