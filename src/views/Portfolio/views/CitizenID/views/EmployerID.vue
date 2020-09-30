@@ -133,9 +133,10 @@ export default {
         query: EMPLOYERIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { employerPortfolio: res } }) => {
-        Object.keys(employer).forEach(key => {
-          if (res[key]) employer[key] = res[key];
-        });
+        if (res)
+          Object.keys(employer).forEach(key => {
+            if (res[key]) employer[key] = res[key];
+          });
       });
     }
 

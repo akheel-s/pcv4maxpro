@@ -148,9 +148,10 @@ export default {
         query: SCHOOLIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { schoolPortfolio: res } }) => {
-        Object.keys(details).forEach(key => {
-          if (res[key]) details[key] = res[key];
-        });
+        if (res)
+          Object.keys(details).forEach(key => {
+            if (res[key]) details[key] = res[key];
+          });
       });
     }
 

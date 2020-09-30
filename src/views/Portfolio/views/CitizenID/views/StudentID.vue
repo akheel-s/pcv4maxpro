@@ -246,10 +246,10 @@ export default {
         query: STUDENTIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { studentPortfolio: res } }) => {
-        Object.keys(responses).forEach(key => {
-          console.log(key, res[key]);
-          if (res[key]) responses[key] = res[key];
-        });
+        if (res)
+          Object.keys(responses).forEach(key => {
+            if (res[key]) responses[key] = res[key];
+          });
       });
     }
     const { update } = useDbActions([ActionTypes.update]);

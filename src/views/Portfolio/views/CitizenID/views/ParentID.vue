@@ -118,9 +118,10 @@ export default {
         query: PARENTIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { parentPortfolio: res } }) => {
-        Object.keys(details).forEach(key => {
-          if (res[key]) details[key] = res[key];
-        });
+        if (res)
+          Object.keys(details).forEach(key => {
+            if (res[key]) details[key] = res[key];
+          });
       });
     }
 
