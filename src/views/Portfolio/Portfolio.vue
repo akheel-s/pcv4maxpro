@@ -16,7 +16,7 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn🚚
+            >Manage</v-btn
           > -->
           <div class="profile__spacer"></div>
           <v-btn

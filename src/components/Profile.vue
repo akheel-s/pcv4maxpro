@@ -122,7 +122,12 @@ export default {
       load(source, load, error, progress, abort) {
         // Should request a file object from the server here
         const myRequest = new Request(`https://pilotcity.s3.us-west-1.amazonaws.com/${source}`); // this request can also be used as a URL
-        fetch(myRequest).then(response => {
+        fetch(myRequest, {
+          method: 'GET',
+          headers: {
+            origin: 'http://localhost:8080'
+          }
+        }).then(response => {
           response.blob().then(myBlob => {
             load(myBlob);
           });

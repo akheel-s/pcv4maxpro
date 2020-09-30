@@ -36,7 +36,7 @@
         ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
       >
 
-      <v-btn
+      <!-- <v-btn
         v-if="user"
         class="mr-3 ml-3 pr-10 pl-10"
         large
@@ -48,7 +48,7 @@
         @click="logout"
       >
         <span class="font-weight-black">Explore</span>
-      </v-btn>
+      </v-btn> -->
 
       <v-btn
         v-if="user"
@@ -59,12 +59,12 @@
         outlined
         color="white"
         :ripple="false"
-        @click="logout"
+        @click="$router.push({ name: 'portfolio' })"
       >
         <span class="font-weight-black">My Portfolio</span>
       </v-btn>
 
-      <v-btn color="#404142" rounded text
+      <!-- <v-btn color="#404142" rounded text
         ><v-badge
           class="ml-1 mr-1"
           :content="10"
@@ -75,9 +75,7 @@
           offset-y="20"
           ><v-icon color="white" large>mdi-bell</v-icon>
         </v-badge></v-btn
-      >
-
-      <!-- <v-btn
+      > <v-btn
         v-if="getUser"
         class="mr-3 ml-3"
         large

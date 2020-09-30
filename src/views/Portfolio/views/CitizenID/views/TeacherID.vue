@@ -110,9 +110,10 @@ export default {
         query: TEACHERIDQUERY,
         variables: { id: getObjectId }
       }).then(({ data: { teacherPortfolio: res } }) => {
-        Object.keys(details).forEach(key => {
-          if (res[key]) details[key] = res[key];
-        });
+        if (res)
+          Object.keys(details).forEach(key => {
+            if (res[key]) details[key] = res[key];
+          });
       });
     }
 
