@@ -19,9 +19,10 @@
         :server="server"
       />
     </v-img>
-    <v-img v-else-if="src" class="rounded-circle" :width="size" :height="size" :src="src"> </v-img>
-    <v-avatar v-else color="accent" bordered :width="size" :height="size"
-      >{{ `${user.firstName.toUpperCase().charAt(0)} ${user.lastName.toUpperCase().charAt(0)}` }}
+    <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
+    </v-img>
+    <v-avatar v-else color="accent" boredered :width="size" :height="size"
+      >{{ `${user.firstName.charAt(0)} ${user.lastName.charAt(0)}` }}
     </v-avatar>
   </div>
 </template>

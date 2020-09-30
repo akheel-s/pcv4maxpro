@@ -24,6 +24,7 @@ export default Vue.extend({
   },
 
   setup(props, { root: { $route } }) {
+    document.title = 'PilotCity  |  Digital programs, for digital cities';
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
     const layout = computed(() => {
       return `${$route.meta.layout || 'default'}-layout`;
