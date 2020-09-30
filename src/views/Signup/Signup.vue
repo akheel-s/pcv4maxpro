@@ -86,14 +86,15 @@ import { useAuthActions } from '@/store';
 export default {
   name: 'Signup',
   components: {},
-
-  setup() {
+  setup(props, { root }) {
     // * Signup main
+    const param = root.$route.query.email ? (root.$route.query.email as string) : '';
     const state = reactive({
       email: '',
       password: '',
       terms: false
     });
+    state.email = param;
     // * UI handling
     const ui = reactive({
       msg: '',

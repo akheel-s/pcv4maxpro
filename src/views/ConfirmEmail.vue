@@ -1,7 +1,7 @@
 <template>
   <div class="confirmemail__background">
-    <div class="confirmemail__box">
-      <div class="confirmemail__title text-h4 font-weight-black">
+    <div class="confirmemail__box accent">
+      <div :class="`${color}--text`" class="confirmemail__title text-h4 font-weight-black">
         <div>{{ displayMessage }}</div>
       </div>
     </div>
@@ -25,6 +25,7 @@ export default {
   },
   setup(props, vm) {
     // *Confirm Signup
+    const color = ref('blue');
     const confirmationError = ref(false);
     const displayMessage = ref('Hang on while we verify your email');
     const verifyUser = async () => {
@@ -38,9 +39,11 @@ export default {
     const { setLinearLoader } = useToolActions(['setLinearLoader']);
     onMounted(async () => {
       await setLinearLoader({ func: verifyUser });
-      if (confirmationError.value)
+      if (confirmationError.value) {
+        color.value = 'red';
         displayMessage.value = 'We could not verify your email at this time, please call us';
-      else {
+      } else {
+        color.value = 'green';
         displayMessage.value = 'Your email has been verified, you will be redirected shortly';
         vm.root.$router.push({ name: 'login' });
       }
@@ -48,7 +51,8 @@ export default {
 
     return {
       confirmationError,
-      displayMessage
+      displayMessage,
+      color
     };
   }
 };
