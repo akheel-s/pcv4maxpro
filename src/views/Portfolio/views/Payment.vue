@@ -191,7 +191,7 @@ export default {
     )
       .pipe(retry(3))
       .subscribe(result => {
-        const title = result.body?.product.name.split(' ')[0];
+        const title = result.body?.product.name;
         purchaseOptions.value.push({
           title,
           desc: result.body?.product.description,
