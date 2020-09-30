@@ -2,10 +2,122 @@
   <div>
     <v-parallax
       dark
-      height="625"
+      height="600"
       src="https://f.hubspotusercontent00.net/hubfs/2480959/pilotcitypaperplanes_grey.png"
       class="landing__hero"
     >
+      <!-- APP BAR  -->
+      <v-app-bar absolute class="landing__app-bar" color="transparent" flat>
+        <!-- <v-toolbar depressed flat color="primary" height="75"> -->
+        <!-- <img src="@/assets/Pilotcity_logo.png" class="nav__logo" /> -->
+
+        <v-toolbar-title
+          ><span class="text-h5 signup__header font-weight-black text-sm-h4"></span
+        ></v-toolbar-title>
+
+        <v-progress-linear
+          v-if="loading"
+          :active="loading"
+          :indeterminate="loading"
+          absolute
+          bottom
+          color="blue"
+        ></v-progress-linear>
+
+        <v-spacer></v-spacer>
+
+        <div class="nav__actions">
+          <v-btn
+            v-if="!user"
+            depressed
+            color="white"
+            outlined
+            :to="{ name: 'login' }"
+            :ripple="false"
+          >
+            <span class="font-weight-black">Login</span>
+          </v-btn>
+          <v-btn
+            v-if="!user"
+            class="signup__signupbutton rounded-lg"
+            depressed
+            color="#828282"
+            :ripple="false"
+            :to="{ name: 'signup' }"
+          >
+            <span class="font-weight-black">Signup</span>
+          </v-btn>
+
+          <!-- <v-btn color="#404142" text rounded large
+            ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
+          > -->
+
+          <!-- <v-btn
+            v-if="user"
+            class="mr-3 ml-3 pr-10 pl-10"
+            large
+            depressed
+            rounded
+            outlined
+            color="white"
+            :ripple="false"
+            @click="logout"
+          >
+            <span class="font-weight-black">Explore</span>
+          </v-btn> -->
+
+          <!-- <v-btn
+            v-if="user"
+            class="mr-3 ml-3"
+            large
+            depressed
+            rounded
+            outlined
+            color="white"
+            :ripple="false"
+            @click="logout"
+          >
+            <span class="font-weight-black">My Portfolio</span>
+          </v-btn> -->
+
+          <!-- <v-btn color="#404142" rounded text
+            ><v-badge
+              class="ml-1 mr-1"
+              :content="10"
+              :value="10"
+              color="purple lighten-2"
+              overlap
+              offset-x="15"
+              offset-y="20"
+              ><v-icon color="white" large>mdi-bell</v-icon>
+            </v-badge></v-btn
+          > -->
+
+          <!-- <v-btn
+        v-if="getUser"
+        class="mr-3 ml-3"
+        large
+        depressed
+        rounded
+        outlined
+        color="white"
+        :ripple="false"
+        @click="logout"
+      >
+        <span class="font-weight-black">Logout</span>
+      </v-btn> -->
+
+          <v-btn text color="#404142"
+            ><v-avatar color="#404142" size="45" outlined>
+              <v-img
+                src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
+              ></v-img> </v-avatar
+          ></v-btn>
+        </div>
+        <!-- </v-toolbar> -->
+      </v-app-bar>
+
+      <!-- APP BAR END -->
       <div class="landing__hero-body">
         <div class="landing__hero-logo">
           <v-img
@@ -18,7 +130,7 @@
         <div class="landing__hero-cta">
           <v-text-field dark rounded outlined label="Signup with email"></v-text-field
           ><v-btn class="landing__hero-cta-button" x-large rounded depressed dark
-            >Build Communities</v-btn
+            >Get Started</v-btn
           >
         </div>
 
@@ -986,7 +1098,24 @@
       </div>
     </v-parallax>
 
-    <v-footer dark height="100"></v-footer>
+    <v-footer dark height="100">
+      <div class="landing__footer">
+        <a
+          href="https://www.iubenda.com/terms-and-conditions/32542296"
+          target="_blank"
+          class="landing__footer-text"
+        >
+          Terms & Conditions
+        </a>
+        <a
+          href="https://www.iubenda.com/privacy-policy/32542296"
+          target="_blank"
+          class="landing__footer-text"
+        >
+          Privacy Policy
+        </a>
+      </div>
+    </v-footer>
   </div>
 </template>
 
@@ -1010,6 +1139,28 @@ export default {
     justify-content: flex-start;
     align-items: flex-start;
     display: block;
+    margin-bottom: auto;
+  }
+
+  &__app-bar {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  &__footer {
+    flex-direction: row;
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__footer-text {
+    font-family: Montserrat;
+    font-weight: 700;
+    color: #ffffff !important;
+    font-size: 12px;
+    margin: 10px;
+    // font-style: none;
+    text-decoration: none;
   }
 
   &__hero-default {
@@ -1057,7 +1208,7 @@ export default {
     width: 65px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
+    padding-top: 70px;
     margin-bottom: 50px;
   }
 
