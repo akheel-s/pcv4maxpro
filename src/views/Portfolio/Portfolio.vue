@@ -104,8 +104,8 @@ import gql from 'graphql-tag';
 import { Token } from '@/generated/graphql';
 import { useAuthGetters, useDbState } from '@/store';
 import LoadingVue from '@/components/Loading.vue';
+import Profile from '@/components/Profile.vue';
 import Portfolio from './views';
-import Profile from './Profile.vue';
 
 export default {
   name: 'Portfolio',
