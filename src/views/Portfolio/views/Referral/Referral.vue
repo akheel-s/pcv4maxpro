@@ -87,14 +87,13 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs, ref, Ref } from '@vue/composition-api';
+import { ref, Ref } from '@vue/composition-api';
 import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import Profile from '@/components/Profile.vue';
 import { AllInvites } from '../../components';
-import { items } from './const';
 
 const {
   getObjectId: { value: getObjectId }

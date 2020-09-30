@@ -32,7 +32,7 @@ export default {
     {
       root: {
         $apolloProvider: {
-          defaultClient: { query, mutate }
+          defaultClient: { query }
         }
       }
     }

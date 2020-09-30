@@ -11,7 +11,7 @@
 import Vue from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import '@/styles/main.scss';
-import { computed, onMounted, ref } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 import { useToolGetters, useAuthGetters } from '@/store';
 // import Profile from 'src/views/Portfolio/Profile.vue';
 

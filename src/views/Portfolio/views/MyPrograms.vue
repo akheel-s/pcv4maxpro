@@ -1,78 +1,77 @@
 <template>
-  <div>
-    <div class="my-program">
-      <div class="my-programs pc-container">
-        <div class="my-programs__wrapper">
-          <h4 class="my-programs__programs-title">My Programs</h4>
-          <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="my-programs__card1 text-h5 font-weight-black"
-              :elevation="hover ? 12 : 2"
-              outlined
-            >
-              <v-dialog v-model="dialog" width="500">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                    <v-icon x-large>mdi-plus</v-icon>
-                  </v-btn>
-                </template>
+  <div class="my-program">
+    <div class="my-programs pc-container">
+      <div class="my-programs__wrapper">
+        <h4 class="my-programs__programs-title">My Programs</h4>
+        <v-hover v-slot:default="{ hover }">
+          <v-card
+            class="my-programs__card1 text-h5 font-weight-black"
+            :elevation="hover ? 12 : 2"
+            outlined
+          >
+            <v-dialog v-model="dialog" width="500">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="gray" v-bind="attrs" v-on="on">
+                  <v-icon x-large>mdi-plus</v-icon>
+                </v-btn>
+              </template>
 
-                <v-card>
-                  <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
+              <v-card>
+                <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
 
-                  <v-divider></v-divider>
+                <v-divider></v-divider>
 
-                  <v-card-text>
-                    The Programs section of the platform is at end of development and will be
-                    released soon.
-                  </v-card-text>
+                <v-card-text>
+                  The Programs section of the platform is at end of development and will be released
+                  soon.
+                </v-card-text>
 
-                  <v-divider></v-divider>
+                <v-divider></v-divider>
 
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card>
-          </v-hover>
-        </div>
-        <div class="my-programs__wrapper">
-          <h4 class="my-programs__programs-title">Manage</h4>
-          <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="my-programs__card1 text-h5 font-weight-black"
-              :elevation="hover ? 12 : 2"
-              outlined
-            >
-              <v-dialog v-model="dialog" width="500">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                    <v-icon x-large>mdi-plus</v-icon>
-                  </v-btn>
-                </template>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-card>
+        </v-hover>
+      </div>
+      <div class="my-programs__wrapper">
+        <h4 class="my-programs__programs-title">Manage</h4>
+        <v-hover v-slot:default="{ hover }">
+          <v-card
+            class="my-programs__card1 text-h5 font-weight-black"
+            :elevation="hover ? 12 : 2"
+            outlined
+          >
+            <v-dialog v-model="dialog" width="500">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="gray" v-bind="attrs" v-on="on">
+                  <v-icon x-large>mdi-plus</v-icon>
+                </v-btn>
+              </template>
 
-                <v-card>
-                  <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
+              <v-card>
+                <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
 
-                  <v-divider></v-divider>
+                <v-divider></v-divider>
 
-                  <v-card-text>
-                    The Programs section of the platform is at end of development and will be
-                    released soon.
-                  </v-card-text>
+                <v-card-text>
+                  The Programs section of the platform is at end of development and will be released
+                  soon.
+                </v-card-text>
 
-                  <v-divider></v-divider>
+                <v-divider></v-divider>
 
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card>
-          </v-hover>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-card>
+        </v-hover>
         <div v-if="role !== 'none'" class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">{{ role }}</h4>
           <program-card />
@@ -184,10 +183,10 @@
 }
 </style>
 <script lang="ts">
-import { ref } from '@vue/composition-api';
-import { computed } from '@vue/composition-api';
+import { ref, computed } from '@vue/composition-api';
+
 import { useDbState } from '@/store';
-import ProgramCard from '../components/PCProgramCard.vue';
+// import ProgramCard from '../components/PCProgramCard.vue';
 
 export default {
   components: {
