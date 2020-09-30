@@ -6,7 +6,6 @@ export const enum MutationTypes {
 }
 export const mutations: MutationTree<typeof dbState> = {
   [MutationTypes.setUser](state, user: typeof dbState.user) {
-    console.log('set user');
     state.user = user;
   }
 };

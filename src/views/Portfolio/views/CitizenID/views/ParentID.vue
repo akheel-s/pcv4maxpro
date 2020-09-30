@@ -12,7 +12,7 @@
             <v-text-field
               v-model="parent.streetAddress"
               :error-messages="errors"
-              label="street Address"
+              label="Street Address"
               outlined
             ></v-text-field>
           </validation-provider>
@@ -42,6 +42,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="parent.zipcode"
+              v-mask="'#####'"
               :error-messages="errors"
               label="Zipcode"
               outlined

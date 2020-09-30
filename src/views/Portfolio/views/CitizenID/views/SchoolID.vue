@@ -74,6 +74,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="district.zipcode"
+              v-mask="'#####'"
               :error-messages="errors"
               label="Zipcode"
               outlined

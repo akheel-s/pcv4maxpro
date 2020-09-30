@@ -1,8 +1,9 @@
 <template>
   <!--  TODO: make the inputs into actual components -->
-  <Loading ref="loader" v-slot="{ loading }" :callback="processQuery">
+  <Loading ref="loader" :callback="processQuery">
     <div class="profile__wrapper">
-      <v-skeleton-loader
+      <!-- v-slot="{ loading }"-->
+      <!-- <v-skeleton-loader
         :loading="loading || !user"
         type="heading, list-item-two-line, list-item-two-line, list-item-three-line"
       >
@@ -45,14 +46,13 @@
           >
         </div>
         <div class="profile__container pc-container">
-          <div v-if="user" align-items="center" class="profile__sub-container text-center mt-12">
+          <div  v-if="(user && getComponent == 'my-programs') || (user && getComponent == 'settings')" align-items="center" class="profile__sub-container text-center mt-12">
             <div>
               <profile :size="150" editable />
             </div>
             <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
 
-            <div v-if="(getComponent == 'my-programs') | (getComponent == 'settings')">
-              <!-- <v-chip
+          <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"
                 outlined
@@ -62,33 +62,27 @@
                 Programs
               </v-chip> -->
 
-              <v-chip
-                v-for="id in user.userTypes"
-                :key="id"
-                class="pl-8 pr-8 ma-2"
-                dark
-                :color="IDs[id]"
-                @click="(currentTab = 'id'), (currentProfile = `${id} id`)"
-              >
-                <v-icon left>mdi-account-outline</v-icon>
-                {{ id }}
-              </v-chip>
+          <v-chip
+            v-for="id in user.userTypes"
+            :key="id"
+            class="pl-8 pr-8 ma-2"
+            dark
+            :color="IDs[id]"
+            @click="(currentTab = 'id'), (currentProfile = `${id} id`)"
+          >
+            <v-icon left>mdi-account-outline</v-icon>
+            {{ id }}
+          </v-chip>
 
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
-            </div>
-          </div>
-
-          <component :is="getComponent" :exp-component="getProfile" />
+          <v-chip class="pl-8 pr-8 ma-2" color="black" outlined @click="currentTab = 'settings'">
+            <v-icon left>mdi-wrench</v-icon>
+            Settings
+          </v-chip>
         </div>
-      </v-skeleton-loader>
+
+        <component :is="getComponent" :exp-component="getProfile" />
+      </div>
+      <!-- </v-skeleton-loader> -->
     </div>
   </Loading>
 </template>
@@ -102,7 +96,7 @@
 }
 </style>
 <script lang="ts">
-import { ref, computed, Ref, onMounted } from '@vue/composition-api';
+import { ref, computed, Ref, watch } from '@vue/composition-api';
 import gql from 'graphql-tag';
 import { Token } from '@/generated/graphql';
 import { useAuthGetters, useDbState } from '@/store';
@@ -168,13 +162,17 @@ export default {
     // Skeleton Loader
     const loader: Ref<ReturnType<typeof LoadingVue['setup']> | null> = ref(null);
 
-    onMounted(() => {
-      const types = user.value?.userTypes;
-      if (types?.includes('School') || types?.includes('Parent')) currentTab.value = 'payment';
-      else if (types?.includes('Teacher')) currentTab.value = 'invite';
-      else currentTab.value = 'my programs';
-      loader.value!.process();
-    });
+    watch(
+      user,
+      newUser => {
+        const types = newUser?.userTypes;
+        if (types?.includes('School') || types?.includes('Parent')) currentTab.value = 'payment';
+        else if (types?.includes('Teacher')) currentTab.value = 'invite';
+        else currentTab.value = 'my programs';
+        loader.value!.process();
+      },
+      { deep: true }
+    );
     return {
       currentTab,
       currentProfile,
