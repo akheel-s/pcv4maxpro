@@ -4,7 +4,7 @@
       <file-pond
         ref="pond"
         name="test"
-        label-idle="<span class='filepond--label-action'>Upload</span>"
+        label-idle="<span class='filepond--label-action'>Upload Picture</span>"
         accepted-file-types="image/jpeg, image/png"
         :files="myFiles"
         :image-preview-height="170"
@@ -17,7 +17,8 @@
         accept="image/png, image/jpeg, image/gif"
         class="filepond"
         :server="server"
-      />
+      >
+      </file-pond>
     </v-img>
     <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
     </v-img>
@@ -204,5 +205,6 @@ html {
 
 .rounded-circle {
   margin: auto;
+  border: 1px solid black;
 }
 </style>
