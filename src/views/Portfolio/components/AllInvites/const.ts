@@ -8,13 +8,13 @@ export const HEADER = [
   },
   { text: 'Contact Info', value: 'contact', width: '20%' },
   { text: 'Date', value: 'date', width: '20%' },
-  { text: 'Status', value: 'status', width: '20%' },
-  {
-    text: 'Pending',
-    value: 'pending',
-    sortable: false,
-    width: '15%'
-  }
+  { text: 'Status', value: 'status', width: '20%' }
+  // {
+  //   text: 'Pending',
+  //   value: 'pending',
+  //   sortable: false,
+  //   width: '15%'
+  // }
 ];
 
 export const items = [

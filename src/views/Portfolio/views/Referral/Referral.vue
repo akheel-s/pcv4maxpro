@@ -82,10 +82,10 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from '@vue/composition-api';
+import { reactive, toRefs, ref, Ref } from '@vue/composition-api';
 import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
-import { SendReferalInput } from '@/generated/graphql';
+import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { AllInvites } from '../../components';
 
@@ -101,14 +101,36 @@ export default {
     {
       root: {
         $apolloProvider: {
-          defaultClient: { mutate }
+          defaultClient: { query, mutate }
         }
       }
     }
   ) {
-    const details = reactive({
-      email: ''
-    });
+    const referral: Ref<{ email: string; timestamp: Date }[]> = ref([]);
+    const email = ref('');
+    const INVITEQUERY = gql`
+      query thisInvite($id: ObjectId) {
+        transaction(query: { _id: $id }) {
+          referral {
+            sentTo
+            timestamp
+          }
+        }
+      }
+    `;
+
+    function processQuery() {
+      return query<{ transaction: Transaction }>({
+        query: INVITEQUERY,
+        variables: { id: getObjectId }
+      }).then(({ data: { transaction } }) => {
+        if (transaction && transaction.referral)
+          referral.value = transaction.referral.map(item => ({
+            email: item!.sentTo!,
+            timestamp: item!.timestamp!
+          }));
+      });
+    }
 
     const processTransfer = async () => {
       console.log(
@@ -123,7 +145,7 @@ export default {
           variables: {
             input: {
               id: getObjectId,
-              email: details.email,
+              email: email.value,
               name: useDbState(['user']).user.value!.firstName
             } as SendReferalInput
           }
@@ -131,7 +153,7 @@ export default {
       );
     };
 
-    return { ...toRefs(details), processTransfer };
+    return { referral, processTransfer, processQuery, email };
   }
 };
 </script>
