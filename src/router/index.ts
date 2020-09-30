@@ -50,10 +50,8 @@ const routes: Array<RouteConfig> = [
   {
     path: '*',
     component: Error404,
-    redirect: to => {
-      setTimeout(() => {
-        return { name: 'portfolio' };
-      }, 2000);
+    redirect: () => {
+      return { name: 'portfolio' };
     }
   },
   {
