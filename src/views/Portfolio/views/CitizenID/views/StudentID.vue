@@ -149,10 +149,11 @@
             :disabled="invalid"
             :loading="saving"
             :dark="!invalid"
+            block
             large
             depressed
             @click="save"
-            >Save and Continue</v-btn
+            >Save</v-btn
           >
         </Loading>
       </div>

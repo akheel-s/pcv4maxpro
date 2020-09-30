@@ -61,10 +61,11 @@
             :loading="saving"
             :dark="!invalid"
             large
+            block
             depressed
             @click="save"
           >
-            Save and Continue
+            Save
           </v-btn>
         </Loading>
       </div>
