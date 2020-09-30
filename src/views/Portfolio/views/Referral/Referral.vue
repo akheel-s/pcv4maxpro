@@ -6,7 +6,7 @@
           src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
         ></v-img>
       </v-avatar>
-      <div class="refer__title-main">Make your invites</div>
+      <div class="refer__title-main">Make and manage your invites</div>
 
       <div class="refer__body1">
         <validation-provider v-slot="{ errors }" rules="required">
@@ -69,13 +69,22 @@
         <!-- <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
           ><v-icon left>mdi-clock-time-two-outline</v-icon>Pending</v-btn
         >
-        <v-btn small class="refer__manage1-buttons" depressed color="grey" outlined
+          <v-icon left>mdi-clock-time-two-outline</v-icon>Pending
+        </v-btn>
+
+        <v-btn
+          small
+          class="refer__manage1-buttons"
+          depressed
+          color="grey"
+          outlined
+          @click="sortByAccepted()"
           ><v-icon left>mdi-emoticon-excited-outline</v-icon>Accepted</v-btn
         > -->
       </div>
 
       <div class="refer__all_invite">
-        <AllInvites />
+        <AllInvites :ref="count" :items="sortedData" />
       </div>
     </div>
   </ValidationObserver>
@@ -88,6 +97,7 @@ import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { AllInvites } from '../../components';
+import { items } from './const';
 
 const {
   getObjectId: { value: getObjectId }
@@ -204,6 +214,7 @@ export default {
   &__body-email {
     font-size: 20px;
     margin: 20px;
+    width: 100%;
   }
 
   &__body-email-button {

@@ -37,8 +37,20 @@
 </template>
 
 <script lang="ts">
-import { ref, Ref, computed } from '@vue/composition-api';
+import { ref, Ref, computed, watch } from '@vue/composition-api';
 import { breakpoints } from '@/utils';
+import { useAuthGetters, useDbState } from '@/store';
+import apolloProvider from '@/vue-apollo';
+import {
+  UserQueryInput,
+  User,
+  EmployerPortfolio,
+  ParentPortfolio,
+  SchoolPortfolio,
+  StudentPortfolio,
+  TeacherPortfolio
+} from '@/generated/graphql';
+import gql from 'graphql-tag';
 import {
   GeneralID,
   EmployerID,
@@ -58,6 +70,65 @@ export default {
     'school-id': SchoolID,
     'parent-id': ParentID
   },
+  async beforeRouteEnter(to, from, next) {
+    const { getId } = useAuthGetters(['getId']);
+    await apolloProvider.defaultClient
+      .query<{ user: User }>({
+        query: gql`
+          query setupRouteUser($query: UserQueryInput!) {
+            user(query: $query) {
+              userTypes
+            }
+          }
+        `,
+        variables: {
+          query: { _id: getId.value } as UserQueryInput
+        }
+      })
+      .then(({ data: { user } }) => {
+        if (user)
+          apolloProvider.defaultClient
+            .query<{
+              employerPortfolio: EmployerPortfolio;
+              parentPortfolio: ParentPortfolio;
+              schoolPortfolio: SchoolPortfolio;
+              studentPortfolio: StudentPortfolio;
+              teacherPortfolio: TeacherPortfolio;
+            }>({
+              query: gql`
+                query allPortfolios($id: ObjectId!) {
+                  Employer: employerPortfolio(query: { _id: $id }) {
+                    _id
+                  }
+                  Parent: parentPortfolio(query: { _id: $id }) {
+                    _id
+                  }
+                  School: schoolPortfolio(query: { _id: $id }) {
+                    _id
+                  }
+                  Student: studentPortfolio(query: { _id: $id }) {
+                    _id
+                  }
+                  Teacher: teacherPortfolio(query: { _id: $id }) {
+                    _id
+                  }
+                }
+              `,
+              variables: {
+                id: getId.value
+              }
+            })
+            .then(({ data }) => {
+              if (user.userTypes?.every(type => data[type!])) {
+                console.log('working');
+                next({
+                  name: 'portfolio'
+                });
+              } else next();
+            });
+      });
+    next(() => {});
+  },
   setup(_props, ctx) {
     // stepper setup
     const step = ref(0);
@@ -70,11 +141,11 @@ export default {
         ? ['profile__container', 'pc-container']
         : []
     );
-    function finish() {
-      step.value = 0;
-      console.log('I am finished onboarding myself');
-    }
-    return { step, selectedTypes, idSections, computedClasses, finish };
+    // eslint-disable-next-line no-shadow
+    watch(step, step => {
+      if (step > selectedTypes.value.length) ctx.root.$router.push({ name: 'portfolio' });
+    });
+    return { step, selectedTypes, idSections, computedClasses };
   }
 };
 </script>

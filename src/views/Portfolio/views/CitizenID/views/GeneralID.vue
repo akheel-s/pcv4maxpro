@@ -35,6 +35,15 @@
           </validation-provider>
 
           <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              v-model="phoneNumber"
+              :error-messages="errors"
+              label="Phone Number"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <validation-provider v-slot="{ errors }" slim rules="required">
             <v-select
               v-model="userTypes"
               :error-messages="errors"
@@ -69,6 +78,7 @@ import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
 import { GetterTypes } from '@/store/modules/auth/getters';
 // import { ObjectId } from 'bson';
+import { ActionTypes } from '@/store/modules/db/actions';
 import gql from 'graphql-tag';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
@@ -96,12 +106,12 @@ export default {
     }
   ) {
     const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
-    console.log('loading page', getObjectId.value);
     // Page Setup
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
     const user = reactive({
       firstName: '',
       lastName: '',
+      phoneNumber: '',
       userTypes: []
     });
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -111,6 +121,7 @@ export default {
         user(query: { _id: $id }) {
           firstName
           lastName
+          phoneNumber
           userTypes
         }
       }
@@ -129,7 +140,7 @@ export default {
     }
 
     // Upload Functionality
-    const { update } = useDbActions(['update']);
+    const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'User',
@@ -137,6 +148,7 @@ export default {
           _id: getObjectId.value,
           firstName: user.firstName,
           lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
           userTypes: user.userTypes
         } as User,
         filter: { _id: getObjectId.value },

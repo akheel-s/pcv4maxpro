@@ -1,10 +1,10 @@
 <template>
-  <div v-if="user">
+  <div v-if="user" class="filepond-container">
     <v-img v-if="editable" class="rounded-circle" :width="size" :height="size">
       <file-pond
         ref="pond"
         name="test"
-        label-idle="Drag & Drop your picture or <span class='filepond--label-action'>Browse</span>"
+        label-idle="<span class='filepond--label-action'>Upload Picture</span>"
         accepted-file-types="image/jpeg, image/png"
         :files="myFiles"
         :image-preview-height="170"
@@ -17,12 +17,13 @@
         accept="image/png, image/jpeg, image/gif"
         class="filepond"
         :server="server"
-      />
+      >
+      </file-pond>
     </v-img>
     <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
     </v-img>
     <v-avatar v-else color="accent" boredered :width="size" :height="size"
-      >{{ `${user.firstName.charAt(0)} ${user.lastName.charAt(0)}` }}
+      >{{ initials }}
     </v-avatar>
   </div>
 </template>
@@ -156,12 +157,15 @@ export default {
           // });
         });
     });
-
+    const initials = computed(
+      () => `${user.value?.firstName?.charAt(0)} ${user.value?.lastName?.charAt(0)}`
+    );
     return {
       myFiles,
       server,
       user,
-      src
+      src,
+      initials
     };
   }
 };
@@ -191,5 +195,21 @@ html {
 .filepond--root {
   width: 170px;
   margin: 0 auto;
+}
+
+.filepond-container {
+  // margin: auto !important;
+  // justify-content: center !important;
+  // align-items: center !important;
+  // padding: auto;
+  // margin-left: auto !important;
+  // margin-right: auto !important;
+  // padding-left: auto !important;
+  // padding-right: auto !important;
+}
+
+.rounded-circle {
+  margin: auto;
+  border: 1px solid black;
 }
 </style>

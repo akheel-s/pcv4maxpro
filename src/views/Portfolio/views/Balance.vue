@@ -12,7 +12,7 @@
 
             <div class="balance__main-left-title">BALANCE</div>
 
-            <div class="balance__main-left-header">{{ tokens.length }} Tickets</div>
+            <div class="balance__main-left-header">{{ tokens.length }} Tokens</div>
 
             <div>
               <v-icon class="balance__main-left-icon" color="grey" large
@@ -59,7 +59,19 @@
           </div>
         </div>
       </div>
+      <div class="balance__transfer-title">Transfer Tokens</div>
       <div class="balance__transfer">
+        <div class="balance__email">
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="transferEmail"
+              :error-messages="errors"
+              outlined
+              label="Enter recipient's email"
+            ></v-text-field>
+          </validation-provider>
+        </div>
+
         <div class="balance__tickets">
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
@@ -67,19 +79,8 @@
               :error-messages="errors"
               type="number"
               min="1"
-              placeholder="tickets"
               outlined
-            ></v-text-field>
-          </validation-provider>
-        </div>
-
-        <div class="balance__email">
-          <validation-provider v-slot="{ errors }" rules="required">
-            <v-text-field
-              v-model="transferEmail"
-              :error-messages="errors"
-              placeholder="Email"
-              outlined
+              label="# of Tokens"
             ></v-text-field>
           </validation-provider>
         </div>
@@ -301,17 +302,27 @@ export default {
     width: 100%;
   }
 
+  &__transfer-title {
+    text-align: center;
+    margin-top: 75px;
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+  }
+
   &__tickets {
-    width: 75px;
-    margin-right: 10px;
+    width: 15%;
+    margin: 10px;
   }
 
   &__email {
-    width: 50%;
+    width: 30%;
+    margin: 10px;
   }
 
   &__transfer-button {
-    margin-left: 10px;
+    margin: 10px;
   }
 }
 .v-btn:not(.v-btn--round).v-size--default {

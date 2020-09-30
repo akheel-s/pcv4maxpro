@@ -73,6 +73,9 @@
               </v-dialog>
             </v-card>
           </v-hover>
+        <div v-if="role !== 'none'" class="my-programs__wrapper">
+          <h4 class="my-programs__programs-title">{{ role }}</h4>
+          <program-card />
         </div>
         <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">Completed</h4>
@@ -182,6 +185,8 @@
 </style>
 <script lang="ts">
 import { ref } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
+import { useDbState } from '@/store';
 import ProgramCard from '../components/PCProgramCard.vue';
 
 export default {
@@ -190,7 +195,18 @@ export default {
   },
   setup() {
     const dialog = ref(false);
-    return { dialog };
+    const { user } = useDbState(['user']);
+    const role = computed(() => {
+      const types = user.value?.userTypes;
+      if (types?.includes('School') || types?.includes('Parent') || types?.includes('Teacher'))
+        return 'Monitor';
+      if (types?.includes('Employer')) return 'Manage';
+      return 'none';
+    });
+    return {
+      role,
+      dialog
+    };
   }
 };
 </script>

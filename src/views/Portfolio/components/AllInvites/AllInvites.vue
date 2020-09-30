@@ -32,6 +32,13 @@ export default {
   components: {
     IndexTable
   },
+  props: {
+    items: {
+      type: Array as PropType<InviteItem[]>,
+      default: () => [],
+      required: true
+    }
+  },
 
   setup(
     _props,
@@ -61,7 +68,6 @@ export default {
         } as TransactionQueryInput
       }
     }).then(({ data: { transaction } }) => {
-      console.log(transaction);
       if (transaction?.referral)
         query<{ users: User[] }>({
           query: gql`

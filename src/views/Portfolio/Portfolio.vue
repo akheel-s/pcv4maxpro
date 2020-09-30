@@ -8,7 +8,7 @@
       >
         <div class="profile__mode-container pc-container">
           <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>View</v-btn> -->
-          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn>
+          <!-- <v-btn class="profile__mode" depressed outlined color="grey" small>Public</v-btn> -->
           <v-btn
             class="profile__mode"
             depressed
@@ -16,8 +16,8 @@
             dark
             small
             @click="currentTab = 'my-programs'"
-            >Manage</v-btn
-          > -->
+            >My Portfolio</v-btn
+          >
           <div class="profile__spacer"></div>
           <v-btn
             class="profile__mode font-weight-bold"
@@ -25,7 +25,7 @@
             color="grey"
             small
             @click="currentTab = 'balance'"
-            >{{ tickets }} Tickets</v-btn
+            >{{ tickets }} Tokens</v-btn
           >
           <v-btn
             class="profile__mode white--text font-weight-bold"
@@ -45,14 +45,14 @@
           >
         </div>
         <div class="profile__container pc-container">
-          <div v-if="user" class="profile__sub-container text-center mt-12">
-            <div class="profile__name">
+          <div v-if="user" align-items="center" class="profile__sub-container text-center mt-12">
+            <div>
               <profile :size="150" editable />
             </div>
             <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
 
-            <div>
-              <v-chip
+            <div v-if="(getComponent == 'my-programs') | (getComponent == 'settings')">
+              <!-- <v-chip
                 class="pl-8 pr-8 ma-2"
                 color="black"
                 outlined
@@ -60,17 +60,7 @@
               >
                 <v-icon left>mdi-server-plus</v-icon>
                 Programs
-              </v-chip>
-
-              <v-chip
-                class="pl-8 pr-8 ma-2"
-                color="black"
-                outlined
-                @click="currentTab = 'settings'"
-              >
-                <v-icon left>mdi-wrench</v-icon>
-                Settings
-              </v-chip>
+              </v-chip> -->
 
               <v-chip
                 v-for="id in user.userTypes"
@@ -82,6 +72,16 @@
               >
                 <v-icon left>mdi-account-outline</v-icon>
                 {{ id }}
+              </v-chip>
+
+              <v-chip
+                class="pl-8 pr-8 ma-2"
+                color="black"
+                outlined
+                @click="currentTab = 'settings'"
+              >
+                <v-icon left>mdi-wrench</v-icon>
+                Settings
               </v-chip>
             </div>
           </div>

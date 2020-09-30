@@ -32,9 +32,9 @@
         <span class="font-weight-black">Signup</span>
       </v-btn>
 
-      <v-btn color="#404142" text rounded large
+      <!-- <v-btn color="#404142" text rounded large
         ><v-icon color="white" size="40">mdi-plus</v-icon></v-btn
-      >
+      > -->
 
       <!-- <v-btn
         v-if="user"
@@ -90,7 +90,7 @@
       </v-btn> -->
       <v-menu offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark depressed v-bind="attrs" v-on="on">
+          <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
             <Profile :size="45" />
           </v-btn>
         </template>
