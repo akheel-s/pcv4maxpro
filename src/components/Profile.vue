@@ -1,21 +1,30 @@
 <template>
-  <file-pond
-    ref="pond"
-    name="test"
-    label-idle="Drag & Drop your picture or <span class='filepond--label-action'>Browse</span>"
-    accepted-file-types="image/jpeg, image/png"
-    :files="myFiles"
-    :image-preview-height="170"
-    image-crop-aspect-ratio="1:1"
-    :image-resize-target-width="200"
-    :image-resize-target-height="200"
-    style-panel-layout="compact circle"
-    style-load-indicator-position="center bottom"
-    style-button-remove-item-position="center bottom"
-    accept="image/png, image/jpeg, image/gif"
-    class="filepond"
-    :server="server"
-  />
+  <div v-if="user">
+    <v-img v-if="editable" class="rounded-circle" :width="size" :height="size">
+      <file-pond
+        ref="pond"
+        name="test"
+        label-idle="Drag & Drop your picture or <span class='filepond--label-action'>Browse</span>"
+        accepted-file-types="image/jpeg, image/png"
+        :files="myFiles"
+        :image-preview-height="170"
+        image-crop-aspect-ratio="1:1"
+        :image-resize-target-width="200"
+        :image-resize-target-height="200"
+        style-panel-layout="compact circle"
+        style-load-indicator-position="center bottom"
+        style-button-remove-item-position="center bottom"
+        accept="image/png, image/jpeg, image/gif"
+        class="filepond"
+        :server="server"
+      />
+    </v-img>
+    <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
+    </v-img>
+    <v-avatar v-else color="accent" boredered :width="size" :height="size"
+      >{{ `${user.firstName.charAt(0)} ${user.lastName.charAt(0)}` }}
+    </v-avatar>
+  </div>
 </template>
 <script lang="ts">
 import vueFilePond from 'vue-filepond';
@@ -28,8 +37,8 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
-import { useFileStorageState, useAuthGetters, useDbActions } from '@/store';
-import { computed, ref } from '@vue/composition-api';
+import { useFileStorageState, useAuthGetters, useDbActions, useDbState } from '@/store';
+import { computed, ref, watchEffect } from '@vue/composition-api';
 import { User } from '@/generated/graphql';
 
 const FilePond = vueFilePond(
@@ -53,19 +62,24 @@ export default {
     FilePond
   },
   props: {
-    value: {
-      type: String,
-      default: undefined
+    editable: {
+      default: false,
+      type: Boolean
+    },
+    size: {
+      required: true,
+      type: Number
     }
   },
   setup(props) {
     // init data
     // const pond = ref(null);
+    const { user } = useDbState(['user']);
     const myFiles = computed(() => {
       const files: FileType[] = [];
-      if (props.value)
+      if (user.value?.profileImg)
         files.push({
-          source: props.value as string,
+          source: user.value?.profileImg,
           options: {
             type: 'local'
           }
@@ -123,8 +137,27 @@ export default {
         };
       }
     });
-    // handlersf
-    return { myFiles, server };
+    const src = ref('');
+    watchEffect(() => {
+      if (user.value?.profileImg)
+        fetch(new Request(user.value.profileImg), {
+          method: 'GET'
+        }).then(response => {
+          src.value = `https://pilotcity.s3.us-west-1.amazonaws.com/${user.value!.profileImg}`;
+          // response.blob().then(blob => {
+          //   const url = URL.createObjectURL(blob);
+          //   src.value = url.substring(5);
+          //   console.log(src.value);
+          // });
+        });
+    });
+
+    return {
+      myFiles,
+      server,
+      user,
+      src
+    };
   }
 };
 </script>
