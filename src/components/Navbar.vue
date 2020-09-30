@@ -90,13 +90,7 @@
       >
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
-
-      <v-btn text color="#404142"
-        ><v-avatar color="#404142" size="45" outlined>
-          <v-img
-            src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
-          ></v-img> </v-avatar
-      ></v-btn>
+      <v-img class="border-circle" width="45" height="45"><Profile /></v-img>
     </div>
   </v-toolbar>
 </template>
@@ -143,8 +137,12 @@
 <script lang="ts">
 import { useAuthActions } from '@/store';
 import { onLogout } from '@/vue-apollo';
+import Profile from '@/components/Profile.vue';
 
 export default {
+  components: {
+    Profile
+  },
   props: {
     user: {
       type: Object,
