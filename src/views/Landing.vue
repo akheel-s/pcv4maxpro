@@ -388,6 +388,93 @@
       </div>
     </v-parallax>
 
+    <v-parallax
+      src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink-1.svg"
+      dark
+      height="100%"
+      class="landing__hero-default"
+    >
+      <div class="landing__primary-title">Engage</div>
+
+      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+        >Engage your students to develop real-world projects to win internships</v-btn
+      >
+
+      <div class="landing__benefits">
+        <div>
+          <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="pink" large class="landing__benefits-card-icon"
+                >mdi-cursor-pointer</v-icon
+              >Student choice of employer</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body">
+              Students choose their employer project. This drives engagement and motivation,
+              resulting in higher quality learning and project development. They will be guided
+              through activities and completion of deliverables to auto-qualify for our internship
+              program.
+            </v-card-text>
+          </v-card>
+        </div>
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="pink" large class="landing__benefits-card-icon"
+                >mdi-account-supervisor-circle</v-icon
+              >Teacher as coach and advisor</v-card-title
+            >
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text class="landing__benefits-card-body">
+              Sit back, relax and do the fun part: coach and advise student projects. Students will
+              learn directly from employer-driven content, driving higher absorption of information
+              and relieving you of training and facilitation.
+            </v-card-text>
+          </v-card>
+        </div>
+
+        <div>
+          <v-card
+            max-width="375px"
+            min-width="250px"
+            class="landing__benefits-card"
+            rounded
+            elevation="0"
+          >
+            <v-card-title class="landing__benefits-card-title">
+              <v-icon color="pink" large class="landing__benefits-card-icon"
+                >mdi-monitor-dashboard</v-icon
+              >Monitor and track progress</v-card-title
+            >
+
+            <v-divider class="mx-4"></v-divider>
+
+            <v-card-text class="landing__benefits-card-body">
+              Track progress, and support your students through a dashboard. Enjoy a hands-off,
+              asynchronous approach to your student's learning by targeting your support so you can
+              get back to planning, scaffolding and teaching what you know best.
+            </v-card-text>
+          </v-card>
+        </div>
+        <!-- <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Project-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Work-based Learning
+        </div>
+        <div class="landing__content-grid-combo">
+          <v-icon dark x-large>mdi-telegram</v-icon>Service-based Learning
+        </div> -->
+      </div>
+    </v-parallax>
+
     <!-- <v-parallax
       src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink.svg"
       dark
@@ -527,7 +614,7 @@
 
       <div class="landing__benefits">
         <div>
-          <v-card elevation="0" max-width="300px" min-width="250px" class="landing__benefits-card">
+          <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
             <v-card-title class="landing__benefits-card-title">
               <v-icon color="blue" large class="landing__benefits-card-icon"
                 >mdi-book-account-outline</v-icon
@@ -544,7 +631,7 @@
         </div>
         <div>
           <v-card
-            max-width="300px"
+            max-width="375px"
             min-width="250px"
             class="landing__benefits-card"
             rounded
@@ -567,7 +654,7 @@
 
         <div>
           <v-card
-            max-width="300px"
+            max-width="375px"
             min-width="250px"
             class="landing__benefits-card"
             rounded
@@ -641,7 +728,7 @@
           <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
             <v-card-title class="landing__benefits-card-title">
               <v-icon color="purple" large class="landing__benefits-card-icon"
-                >mdi-book-account-outline</v-icon
+                >mdi-rocket-launch</v-icon
               >Present problems, get solutions</v-card-title
             >
 
@@ -664,7 +751,7 @@
           >
             <v-card-title class="landing__benefits-card-title">
               <v-icon color="purple" large class="landing__benefits-card-icon"
-                >mdi-ruler-square-compass</v-icon
+                >mdi-ab-testing</v-icon
               >Test drive, then hire to execute</v-card-title
             >
             <v-divider class="mx-4"></v-divider>
@@ -687,7 +774,7 @@
           >
             <v-card-title class="landing__benefits-card-title">
               <v-icon color="purple" large class="landing__benefits-card-icon"
-                >mdi-account-heart-outline</v-icon
+                >mdi-content-copy</v-icon
               >Setup for scale, manage easier</v-card-title
             >
 
@@ -768,8 +855,7 @@
         <div>
           <v-card elevation="0" max-width="375px" min-width="250px" class="landing__benefits-card">
             <v-card-title class="landing__benefits-card-title">
-              <v-icon color="red" large class="landing__benefits-card-icon"
-                >mdi-book-account-outline</v-icon
+              <v-icon color="red" large class="landing__benefits-card-icon">mdi-rotate-orbit</v-icon
               >Fund participants, transform lives</v-card-title
             >
 
@@ -792,7 +878,7 @@
           >
             <v-card-title class="landing__benefits-card-title">
               <v-icon color="red" large class="landing__benefits-card-icon"
-                >mdi-ruler-square-compass</v-icon
+                >mdi-desktop-mac-dashboard</v-icon
               >Monitor your sponsorsees</v-card-title
             >
             <v-divider class="mx-4"></v-divider>
@@ -813,8 +899,7 @@
             elevation="0"
           >
             <v-card-title class="landing__benefits-card-title">
-              <v-icon color="red" large class="landing__benefits-card-icon"
-                >mdi-account-heart-outline</v-icon
+              <v-icon color="red" large class="landing__benefits-card-icon">mdi-billboard</v-icon
               >Ads and acknowledgements</v-card-title
             >
 
