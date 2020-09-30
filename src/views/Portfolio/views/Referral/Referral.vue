@@ -6,7 +6,7 @@
           src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/91356050_3160034130674652_4990180745826795520_o.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=wHg8nkrEmDAAX_l8bBN&_nc_ht=scontent-sjc3-1.xx&oh=2280183a7bf702fd605883a9dacd3984&oe=5F75E2E0"
         ></v-img>
       </v-avatar>
-      <div class="refer__title-main">Make your invites</div>
+      <div class="refer__title-main">Make and manage your invites</div>
 
       <div class="refer__body1">
         <validation-provider v-slot="{ errors }" rules="required">
@@ -182,6 +182,7 @@ export default {
   &__body-email {
     font-size: 20px;
     margin: 20px;
+    width: 100%;
   }
 
   &__body-email-button {
