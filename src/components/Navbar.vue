@@ -90,7 +90,7 @@
       >
         <span class="font-weight-black">Logout</span>
       </v-btn> -->
-      <v-img class="border-circle" width="45" height="45"><Profile /></v-img>
+      <Profile :size="45" />
     </div>
   </v-toolbar>
 </template>

@@ -1,3 +1,4 @@
+import { VueApollo } from 'vue-apollo';
 import { useRealmAppState } from '@/store';
 import { setContext } from 'apollo-link-context';
 import { ApolloClient } from 'apollo-boost';

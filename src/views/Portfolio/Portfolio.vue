@@ -47,11 +47,7 @@
         <div class="profile__container pc-container">
           <div v-if="user" class="profile__sub-container text-center mt-12">
             <div>
-              <v-badge bordered color="orange" offset-x="32" offset-y="32">
-                <v-img class="rounded-circle" width="150px" height="150px">
-                  <profile v-model="user.profileImg"
-                /></v-img>
-              </v-badge>
+              <profile :size="150" editable />
               <span class="profile__name">{{ user.firstName }} {{ user.lastName }}</span>
             </div>
 
