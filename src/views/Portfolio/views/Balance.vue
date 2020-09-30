@@ -105,7 +105,7 @@ import { useAuthGetters, useDbState } from '@/store';
 import { BalanceView } from '../components';
 
 export default {
-  name: 'Referral',
+  name: 'Balance',
   components: { BalanceView },
   setup(
     _props,
