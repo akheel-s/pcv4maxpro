@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -533,11 +534,9 @@ export type QueryTransactionsArgs = {
   sortBy?: Maybe<TransactionSortByInput>;
 };
 
-
 export type QueryUserArgs = {
   query?: Maybe<UserQueryInput>;
 };
-
 
 export type QueryUsersArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -2129,22 +2128,20 @@ export type StudentPortfolio = {
   school?: Maybe<StudentPortfolioSchool>;
 };
 
-
-      export interface IntrospectionResultData {
-        __schema: {
-          types: {
-            kind: string;
-            name: string;
-            possibleTypes: {
-              name: string;
-            }[];
-          }[];
-        };
-      }
-      const result: IntrospectionResultData = {
-  "__schema": {
-    "types": []
+export interface IntrospectionResultData {
+  __schema: {
+    types: {
+      kind: string;
+      name: string;
+      possibleTypes: {
+        name: string;
+      }[];
+    }[];
+  };
+}
+const result: IntrospectionResultData = {
+  __schema: {
+    types: []
   }
 };
-      export default result;
-    
+export default result;

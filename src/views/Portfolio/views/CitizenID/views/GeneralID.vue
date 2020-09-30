@@ -69,6 +69,7 @@ import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
 import { GetterTypes } from '@/store/modules/auth/getters';
 // import { ObjectId } from 'bson';
+import { ActionTypes } from '@/store/modules/db/actions';
 import gql from 'graphql-tag';
 import { User } from '@/generated/graphql';
 import { CITIZEN_TYPES } from '../../../const';
@@ -128,7 +129,7 @@ export default {
     }
 
     // Upload Functionality
-    const { update } = useDbActions(['update']);
+    const { update } = useDbActions([ActionTypes.update]);
     async function save() {
       await update({
         collection: 'User',

@@ -11,6 +11,7 @@ import Error404 from '@/views/Error404.vue';
 import { useAuthGetters } from '@/store';
 import ErrorLogin from '@/views/ErrorLogin.vue';
 import apolloProvider from '@/vue-apollo';
+import Landing from '@/views/Landing.vue';
 import { UserQueryInput, User } from '../generated/graphql';
 
 Vue.use(VueRouter);
