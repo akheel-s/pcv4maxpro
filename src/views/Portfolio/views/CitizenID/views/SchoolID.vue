@@ -41,7 +41,7 @@
           </validation-provider>
 
           <!-- Request Stakeholder Access -->
-          <div class="d-flex flex-row">
+          <!-- <div class="d-flex flex-row">
             <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="stakeholderAccess"
@@ -52,10 +52,10 @@
               ></v-text-field>
             </validation-provider>
             <v-btn class="mb-7 my-id__button--append" depressed outlined x-large>Request</v-btn>
-          </div>
+          </div> -->
 
           <!-- Refer Stakeholder -->
-          <div class="d-flex flex-row">
+          <!-- <div class="d-flex flex-row">
             <validation-provider v-slot="{ errors }" rules="required|email">
               <v-text-field
                 v-model="stakeholder"
@@ -66,7 +66,7 @@
               ></v-text-field>
             </validation-provider>
             <v-btn class="mb-7 my-id__button--append" depressed outlined x-large>Refer</v-btn>
-          </div>
+          </div> -->
         </v-skeleton-loader>
 
         <Loading v-slot="{ loading: saving, process: save }" :callback="save">
@@ -121,9 +121,9 @@ export default {
     const details = reactive({
       staffType: [],
       schoolDistrict: '',
-      districtAddress: '',
-      stakeholderAccess: '',
-      stakeholder: ''
+      districtAddress: ''
+      // stakeholderAccess: '',
+      // stakeholder: ''
     });
 
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -134,8 +134,8 @@ export default {
           staffType
           schoolDistrict
           districtAddress
-          stakeholderAccess
-          stakeholder
+          # stakeholderAccess
+          # stakeholder
         }
       }
     `;
@@ -165,9 +165,9 @@ export default {
           _id: getObjectId,
           staffType: details.staffType,
           schoolDistrict: details.schoolDistrict,
-          districtAddress: details.districtAddress,
-          stakeholderAccess: details.stakeholderAccess,
-          stakeholder: details.stakeholder
+          districtAddress: details.districtAddress
+          // stakeholderAccess: details.stakeholderAccess,
+          // stakeholder: details.stakeholder
         } as SchoolPortfolio,
         filter: { _id: getObjectId },
         options: { upsert: true }
