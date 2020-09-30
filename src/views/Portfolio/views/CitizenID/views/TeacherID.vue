@@ -27,13 +27,55 @@
             ></v-text-field>
           </validation-provider>
 
-          <!-- School Address. Google Maps Integration from above-->
+          <!-- School District -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
-              v-model="schoolAddress"
+              v-model="subjects"
               :error-messages="errors"
-              label="School Address"
+              label="List subject areas you teach"
               outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- Street Address -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="schools.streetAddress"
+              :error-messages="errors"
+              label="street Address"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- City -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="schools.city"
+              :error-messages="errors"
+              label="City"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- State -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-select
+              v-model="schools.state"
+              :error-messages="errors"
+              :items="stateOpts"
+              label="State"
+              outlined
+            ></v-select>
+          </validation-provider>
+
+          <!-- Zipcode  -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="schools.zipcode"
+              :error-messages="errors"
+              label="Zipcode"
+              outlined
+              maxlength="5"
             ></v-text-field>
           </validation-provider>
         </v-skeleton-loader>
@@ -62,6 +104,7 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import gql from 'graphql-tag';
 import { TeacherPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
+import { STATE } from '../../../const';
 
 const {
   getObjectId: { value: getObjectId }
@@ -83,10 +126,17 @@ export default {
       }
     }
   ) {
+    const formOpt = reactive({ stateOpts: STATE });
     const details = reactive({
       schoolDistrict: '',
       schoolName: '',
-      schoolAddress: ''
+      subjects: '',
+      schools: {
+        streetAddress: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }
     });
 
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
@@ -96,7 +146,13 @@ export default {
         teacherPortfolio(query: { _id: $id }) {
           schoolDistrict
           schoolName
-          schoolAddress
+          subjects
+          schools {
+            streetAddress
+            city
+            state
+            zipcode
+          }
         }
       }
     `;
@@ -126,7 +182,8 @@ export default {
           _id: getObjectId,
           schoolDistrict: details.schoolDistrict,
           schoolName: details.schoolName,
-          schoolAddress: details.schoolAddress
+          subjects: details.subjects,
+          schools: details.schools
         } as TeacherPortfolio,
         filter: { _id: getObjectId },
         options: { upsert: true }
@@ -134,7 +191,7 @@ export default {
       emit('input');
     }
 
-    return { save, ...toRefs(details), processQuery, loader };
+    return { save, ...toRefs(details), processQuery, loader, ...toRefs(formOpt) };
   }
 };
 </script>

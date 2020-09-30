@@ -12,7 +12,7 @@
           <validation-provider v-slot="{ errors }" rules="required">
             <v-select
               v-model="staffType"
-              :items="schoolStaffType"
+              :items="schoolrole"
               :error-messages="errors"
               multiple
               label="Staff Type"
@@ -21,22 +21,63 @@
           </validation-provider>
 
           <!-- School District -->
+
+          <v-text-field
+            v-model="position"
+            label="Position Title"
+            placeholder="If Not Listed Above"
+            outlined
+          ></v-text-field>
+
+          <!-- School District -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
               v-model="schoolDistrict"
               :error-messages="errors"
-              label="School District"
+              label="School or School District"
               outlined
             ></v-text-field>
           </validation-provider>
 
-          <!-- School District Address. Google Maps Integration from above-->
+          <!-- Street Address -->
           <validation-provider v-slot="{ errors }" rules="required">
             <v-text-field
-              v-model="districtAddress"
+              v-model="district.streetAddress"
               :error-messages="errors"
-              label="School District Address"
+              label="School or School District Address"
               outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- City -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="district.city"
+              :error-messages="errors"
+              label="City"
+              outlined
+            ></v-text-field>
+          </validation-provider>
+
+          <!-- State -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-select
+              v-model="district.state"
+              :error-messages="errors"
+              :items="stateOpts"
+              label="State"
+              outlined
+            ></v-select>
+          </validation-provider>
+
+          <!-- Zipcode  -->
+          <validation-provider v-slot="{ errors }" rules="required">
+            <v-text-field
+              v-model="district.zipcode"
+              :error-messages="errors"
+              label="Zipcode"
+              outlined
+              maxlength="5"
             ></v-text-field>
           </validation-provider>
 
@@ -95,7 +136,7 @@ import { GetterTypes } from '@/store/modules/auth/getters';
 import gql from 'graphql-tag';
 import { SchoolPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
-import { SCHOOL_ROLE } from '../../../const';
+import { SCHOOL_ROLE, STATE } from '../../../const';
 
 const {
   getObjectId: { value: getObjectId }
@@ -117,11 +158,17 @@ export default {
       }
     }
   ) {
-    const schoolStaffType = ref(SCHOOL_ROLE);
+    const schoolStaffType = reactive({ schoolrole: SCHOOL_ROLE, stateOpts: STATE });
     const details = reactive({
       staffType: [],
+      position: '',
       schoolDistrict: '',
-      districtAddress: ''
+      district: {
+        streetAddress: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      }
       // stakeholderAccess: '',
       // stakeholder: ''
     });
@@ -132,8 +179,14 @@ export default {
       query thisSchool($id: ObjectId) {
         schoolPortfolio(query: { _id: $id }) {
           staffType
+          position
           schoolDistrict
-          districtAddress
+          district {
+            streetAddress
+            city
+            state
+            zipcode
+          }
           # stakeholderAccess
           # stakeholder
         }
@@ -164,8 +217,9 @@ export default {
         payload: {
           _id: getObjectId,
           staffType: details.staffType,
+          position: details.position,
           schoolDistrict: details.schoolDistrict,
-          districtAddress: details.districtAddress
+          district: details.district
           // stakeholderAccess: details.stakeholderAccess,
           // stakeholder: details.stakeholder
         } as SchoolPortfolio,
@@ -175,7 +229,7 @@ export default {
       emit('input');
     }
 
-    return { save, schoolStaffType, ...toRefs(details), processQuery, loader };
+    return { save, ...toRefs(schoolStaffType), ...toRefs(details), processQuery, loader };
   }
 };
 </script>
