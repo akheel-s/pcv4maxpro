@@ -125,7 +125,7 @@
             <v-text-field
               v-model="guardian.firstName"
               :error-messages="errors"
-              label="Gaurdian First Name"
+              label="Guardian First Name"
               outlined
             ></v-text-field>
           </validation-provider>

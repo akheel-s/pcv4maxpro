@@ -12,17 +12,19 @@
             >
               <v-dialog v-model="dialog" width="500">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                    <v-icon x-large>mdi-plus</v-icon>
-                  </v-btn>
+                  <div class="my-programs__card2">
+                    <v-btn icon color="gray" v-bind="attrs" v-on="on">
+                      <v-icon x-large>mdi-plus</v-icon>
+                    </v-btn>
+                  </div>
                 </template>
 
                 <v-card>
-                  <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
+                  <v-card-title class="text-h4 accent font-weight-bold"> Coming Soon </v-card-title>
 
                   <v-divider></v-divider>
 
-                  <v-card-text>
+                  <v-card-text class="text-subtitle-2 font-weight-bold">
                     The Programs section of the platform is at the end of development and will be
                     released soon.
                   </v-card-text>
@@ -48,17 +50,19 @@
             >
               <v-dialog v-model="dialog" width="500">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                    <v-icon x-large>mdi-plus</v-icon>
-                  </v-btn>
+                  <div class="my-programs__card2">
+                    <v-btn icon color="gray" v-bind="attrs" v-on="on">
+                      <v-icon x-large>mdi-plus</v-icon>
+                    </v-btn>
+                  </div>
                 </template>
 
                 <v-card>
-                  <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
+                  <v-card-title class="text-h4 accent font-weight-bold"> Coming Soon </v-card-title>
 
                   <v-divider></v-divider>
 
-                  <v-card-text>
+                  <v-card-text class="text-subtitle-2 font-weight-bold">
                     The Programs section of the platform is at the end of development and will be
                     released soon.
                   </v-card-text>
@@ -181,8 +185,17 @@
     background-color: white;
     text-align: center;
     color: gray;
-    padding-top: 10%;
     border: 2px dashed #dbdbdb;
+    transition: opacity 0.4s ease-in-out;
+  }
+  &__card2 {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+  &__popup {
+    font-family: Raleway !important;
   }
 }
 .my-program {
