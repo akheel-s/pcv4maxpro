@@ -111,11 +111,11 @@ export default {
     const sponsorName = ref('');
     const { getProductInfos } = useDbActions(['getProductInfos']);
     const PRICE_IDS = [
-      'price_1HXAFALnkQGEgDQnGsjqbuuM',
-      'price_1HXABLLnkQGEgDQnwzzt63Np',
-      'price_1HXA9ZLnkQGEgDQn9uaE7Hm2',
-      'price_1HXAD3LnkQGEgDQnqxQabHZO',
-      'price_1HXACELnkQGEgDQnWpGByUE0'
+      'price_1HXEkkLnkQGEgDQnedtEFh3p',
+      'price_1HXEkcLnkQGEgDQnVKGG37Yj',
+      'price_1HXEkVLnkQGEgDQnY65rauZj',
+      'price_1HXEkhLnkQGEgDQnI5LGwaoR',
+      'price_1HXEkfLnkQGEgDQntVYb3iFX'
     ];
     const ColorCode = {
       'Per Student': 'green',
