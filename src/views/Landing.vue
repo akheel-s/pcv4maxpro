@@ -293,7 +293,15 @@
         ></v-img>
       </div>
       <div class="landing__banner-cta">
-        <v-btn x-large depressed dark rounded color="blue">Signup and Invite</v-btn>
+        <v-btn
+          x-large
+          depressed
+          dark
+          rounded
+          color="blue"
+          @click="$router.push({ name: 'signup', query: { email: starterEmail } })"
+          >Signup and Invite</v-btn
+        >
       </div>
     </v-parallax>
 
@@ -353,7 +361,15 @@
       ></v-img>
 
       <div class="landing__banner-cta">
-        <v-btn x-large depressed dark rounded color="green">Sponsor Students</v-btn>
+        <v-btn
+          x-large
+          depressed
+          dark
+          rounded
+          color="green"
+          @click="$router.push({ name: 'signup', query: { email: starterEmail } })"
+          >Sponsor Students</v-btn
+        >
       </div>
     </v-parallax>
 
@@ -416,7 +432,9 @@
           </div>
 
           <a href="signup"
-            ><v-btn rounded outlined depressed dark large>Sign-up to get sponsored</v-btn></a
+            ><v-btn style="color: white !important" disabled rounded outlined depressed dark large
+              >Sign-up to get sponsored</v-btn
+            ></a
           >
         </div>
       </div>
@@ -478,7 +496,9 @@
             Accept stakeholder invitation, and monitor programs
           </div>
           <a href="portfolio">
-            <v-btn rounded outlined depressed dark large>Invite Schools, Students and Peers</v-btn>
+            <v-btn style="color: white !important" disabled rounded outlined depressed dark large
+              >Invite Schools, Students and Peers</v-btn
+            >
           </a>
         </div>
       </div>
