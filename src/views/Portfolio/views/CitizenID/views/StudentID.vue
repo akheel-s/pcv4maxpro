@@ -235,7 +235,6 @@ import { SendReferalInput, StudentPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
 import { GRADE_LEVEL, SUPER_GENDER, ETHNICITY, GUARDIAN, HOME_LANG, STATE } from '../../../const';
 
-const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
 export default {
   name: 'StudentID',
   components: {
@@ -252,6 +251,8 @@ export default {
       }
     }
   ) {
+    const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
+
     const formOpt = reactive({
       gradeLevel: GRADE_LEVEL,
       superGender: SUPER_GENDER,
