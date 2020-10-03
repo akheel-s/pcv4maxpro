@@ -211,6 +211,6 @@ html {
 
 .rounded-circle {
   margin: auto;
-  border: 1px solid black;
+  background-color: #dedede;
 }
 </style>

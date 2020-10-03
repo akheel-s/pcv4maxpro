@@ -37,9 +37,9 @@
           <validation-provider v-slot="{ errors }" slim rules="required">
             <v-text-field
               v-model="phoneNumber"
-              v-mask="'(###)###-####'"
+              v-mask="'(###) ###-####'"
               :error-messages="errors"
-              label="Phone Number"
+              label="Mobile Phone Number"
               outlined
             ></v-text-field>
           </validation-provider>

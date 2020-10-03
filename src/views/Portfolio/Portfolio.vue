@@ -35,7 +35,7 @@
           color="purple"
           small
           @click="currentTab = 'payment'"
-          ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+          ><v-icon left>mdi-cash-usd</v-icon>Sponsor</v-btn
         >
         <v-btn
           class="profile__mode white--text font-weight-bold"

@@ -5,77 +5,74 @@
         <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">My Programs</h4>
           <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="my-programs__card1 text-h5 font-weight-black"
-              :elevation="hover ? 12 : 2"
-              outlined
-            >
-              <v-dialog v-model="dialog" width="500">
-                <template v-slot:activator="{ on, attrs }">
-                  <div class="my-programs__card2">
-                    <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                      <v-icon x-large>mdi-plus</v-icon>
-                    </v-btn>
-                  </div>
-                </template>
-
-                <v-card>
-                  <v-card-title class="text-h4 accent font-weight-bold"> Coming Soon </v-card-title>
-
-                  <v-divider></v-divider>
-
-                  <v-card-text class="text-subtitle-2 font-weight-bold">
-                    The Programs section of the platform is at the end of development and will be
-                    released soon.
-                  </v-card-text>
-
-                  <v-divider></v-divider>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card>
+            <div class="my-programs__card1-border">
+              <v-card
+                class="my-programs__card1 text-h5 font-weight-black"
+                :elevation="hover ? 6 : 0"
+              >
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <div class="my-programs__card2">
+                      <v-btn x-large icon color="gray" v-bind="attrs" v-on="on">
+                        <v-icon x-large>mdi-plus</v-icon>
+                      </v-btn>
+                    </div>
+                  </template>
+                  <v-card class="my-programs__dialog">
+                    <v-icon x-large>mdi-rocket-outline</v-icon>
+                    <v-card-title class="my-programs__dialog-title">
+                      Programs launching January 2021.<br />Get your rockets ready.</v-card-title
+                    >
+                    <v-btn
+                      class="my-programs__dialog-button"
+                      rounded
+                      outlined
+                      large
+                      color="primary lighten-3"
+                      @click="dialog = false"
+                      >Back to Portfolio</v-btn
+                    >
+                  </v-card>
+                </v-dialog>
+              </v-card>
+            </div>
           </v-hover>
         </div>
         <div v-if="role !== 'none'" class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">{{ role }}</h4>
           <v-hover v-slot:default="{ hover }">
-            <v-card
-              class="my-programs__card1 text-h5 font-weight-black"
-              :elevation="hover ? 12 : 2"
-              outlined
-            >
-              <v-dialog v-model="dialog" width="500">
-                <template v-slot:activator="{ on, attrs }">
-                  <div class="my-programs__card2">
-                    <v-btn icon color="gray" v-bind="attrs" v-on="on">
-                      <v-icon x-large>mdi-plus</v-icon>
-                    </v-btn>
-                  </div>
-                </template>
+            <div class="my-programs__card1-border">
+              <v-card
+                class="my-programs__card1 text-h5 font-weight-black"
+                :elevation="hover ? 6 : 0"
+              >
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <div class="my-programs__card2">
+                      <v-btn x-large icon color="gray" v-bind="attrs" v-on="on">
+                        <v-icon x-large>mdi-plus</v-icon>
+                      </v-btn>
+                    </div>
+                  </template>
 
-                <v-card>
-                  <v-card-title class="text-h4 accent font-weight-bold"> Coming Soon </v-card-title>
-
-                  <v-divider></v-divider>
-
-                  <v-card-text class="text-subtitle-2 font-weight-bold">
-                    The Programs section of the platform is at the end of development and will be
-                    released soon.
-                  </v-card-text>
-
-                  <v-divider></v-divider>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card>
+                  <v-card class="my-programs__dialog">
+                    <v-icon x-large>mdi-rocket-outline</v-icon>
+                    <v-card-title class="my-programs__dialog-title">
+                      Programs launching January 2021.<br />Get your rockets ready.</v-card-title
+                    >
+                    <v-btn
+                      class="my-programs__dialog-button"
+                      rounded
+                      outlined
+                      large
+                      color="primary lighten-3"
+                      @click="dialog = false"
+                      >Back to Portfolio</v-btn
+                    >
+                  </v-card>
+                </v-dialog>
+              </v-card>
+            </div>
           </v-hover>
         </div>
         <!-- <div class="my-programs__wrapper">
@@ -185,8 +182,12 @@
     background-color: white;
     text-align: center;
     color: gray;
-    border: 2px dashed #dbdbdb;
-    transition: opacity 0.4s ease-in-out;
+
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  &__card1-border {
+    border: 1px dashed #c7c8ca;
   }
   &__card2 {
     display: flex;
@@ -194,8 +195,27 @@
     height: 100%;
     align-items: center;
   }
+
+  &__card2-border {
+    border: 1px dashed #c7c8ca;
+  }
   &__popup {
     font-family: Raleway !important;
+  }
+
+  &__dialog {
+    text-align: center;
+    padding: 25px;
+  }
+
+  &__dialog-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dialog-button {
+    margin: 20px;
   }
 }
 .my-program {

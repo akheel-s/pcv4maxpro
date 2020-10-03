@@ -36,7 +36,7 @@
                 x-large
                 @click="$emit('changeTab', 'payment')"
               >
-                <v-icon left>mdi-shield-star</v-icon>Sponsor
+                <v-icon left>mdi-cash-usd</v-icon>Sponsor
               </v-btn>
             </div>
 

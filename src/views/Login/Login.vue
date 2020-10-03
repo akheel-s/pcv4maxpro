@@ -37,16 +37,16 @@
               outlined
               full-width
               dark
-              @keyup.enter="process"
               :error-messagees="errors"
+              @keyup.enter="process"
             >
             </v-text-field>
 
-            <div class="login__forgotpassword">
+            <!-- <div class="login__forgotpassword">
               <i>
                 <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
               </i>
-            </div>
+            </div> -->
           </validation-provider>
 
           <v-btn
