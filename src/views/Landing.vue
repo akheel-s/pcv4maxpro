@@ -23,6 +23,8 @@
             depressed
             color="white"
             outlined
+            large
+            rounded
             :to="{ name: 'login' }"
             :ripple="false"
           >
@@ -30,9 +32,11 @@
           </v-btn>
           <v-btn
             v-if="!user"
-            class="signup__signupbutton rounded-lg"
+            class="signup__signupbutton"
             depressed
-            color="#828282"
+            large
+            rounded
+            color="green"
             :ripple="false"
             :to="{ name: 'signup' }"
           >
@@ -87,6 +91,7 @@
               rounded
               depressed
               dark
+              large
               color="green"
               class="landing__hero-citizenchips-group1"
               ><v-icon left>mdi-clover</v-icon>Students</v-btn
@@ -99,6 +104,7 @@
               rounded
               depressed
               dark
+              large
               color="purple"
               class="landing__hero-citizenchips-group"
               ><v-icon left>mdi-graph-outline</v-icon>Employers</v-btn
@@ -110,6 +116,7 @@
               rounded
               depressed
               dark
+              large
               color="pink"
               class="landing__hero-citizenchips-group"
               ><v-icon left>mdi-head-heart</v-icon>Teachers</v-btn
@@ -122,6 +129,7 @@
               rounded
               depressed
               dark
+              large
               color="blue"
               class="landing__hero-citizenchips-group"
               ><v-icon left>mdi-airballoon</v-icon>Schools</v-btn
@@ -134,6 +142,7 @@
               rounded
               depressed
               dark
+              large
               color="yellow"
               class="landing__hero-citizenchips-group"
               ><v-icon left>mdi-sign-direction</v-icon>Parents</v-btn
@@ -146,6 +155,7 @@
               rounded
               depressed
               dark
+              large
               color="red"
               class="landing__hero-citizenchips-group"
               ><v-icon left>mdi-currency-usd-circle</v-icon>Sponsors</v-btn
@@ -282,7 +292,7 @@
     >
       <div class="landing__primary-title">Activities</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle"
         >Key events and program activities</v-btn
       >
       <div class="">
@@ -351,7 +361,7 @@
     >
       <div class="landing__primary-title">People</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle">
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle">
         Students are the protagonist, the community is their village</v-btn
       >
       <v-img
@@ -528,7 +538,7 @@
     >
       <div class="landing__primary-title">Engage</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle"
         >Engage your students to develop real-world projects to win internships</v-btn
       >
 
@@ -742,7 +752,7 @@
     >
       <div class="landing__primary-title">Outcomes</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle"
         >What our program delivers to our student participants</v-btn
       >
 
@@ -853,7 +863,7 @@
     >
       <div class="landing__primary-title">Benefits</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle"
         >Enable students to build projects to win internships with you</v-btn
       >
 
@@ -983,7 +993,7 @@
     >
       <div class="landing__primary-title">Impact</div>
 
-      <v-btn outlined color="white" rounded class="landing__primary-subtitle"
+      <v-btn outlined small color="white" rounded class="landing__primary-subtitle"
         >Sponsor participants to advance outcome goals</v-btn
       >
 
