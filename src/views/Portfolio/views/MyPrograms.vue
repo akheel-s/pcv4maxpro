@@ -19,7 +19,7 @@
                     </div>
                   </template>
                   <v-card class="my-programs__dialog">
-                    <v-icon x-large>mdi-rocket-outline</v-icon>
+                    <v-icon color="yellow" x-large>mdi-rocket-outline</v-icon>
                     <v-card-title class="my-programs__dialog-title">
                       Programs launching January 2021.<br />Get your rockets ready.</v-card-title
                     >

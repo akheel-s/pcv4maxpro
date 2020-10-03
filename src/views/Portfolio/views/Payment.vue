@@ -19,7 +19,7 @@
               rounded
               label="Sponsor"
               class="sponsor__details-name font-weight-bold"
-              hint="This will be your public display name"
+              hint="Choose your public display name"
               :placeholder="`${user.firstName} ${user.lastName}`"
             ></v-text-field>
           </validation-provider>

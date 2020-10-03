@@ -16,6 +16,8 @@
           depressed
           color="grey"
           dark
+          outlined
+          rounded
           small
           @click="currentTab = 'my-programs'"
           >My Portfolio</v-btn
@@ -25,6 +27,7 @@
           class="profile__mode font-weight-bold"
           text
           color="grey"
+          outlined
           small
           @click="currentTab = 'balance'"
           >{{ tickets }} Tokens</v-btn
