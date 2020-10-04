@@ -103,11 +103,20 @@
       </v-btn> -->
       <v-menu v-if="user" offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
+          <v-btn
+            v-if="user"
+            rounded
+            large
+            class="navbar__avatar"
+            color="primary"
+            dark
+            depressed
+            v-bind="attrs"
+            v-on="on"
+          >
             <Profile :size="45" />
           </v-btn>
         </template>
-
         <v-btn class="navbar__logout" color="primary" dark depressed @click="logout">Logout</v-btn>
       </v-menu>
     </div>
@@ -120,6 +129,9 @@
   width: 40px;
   height: 50px;
   margin-left: 20px;
+}
+
+.navbar__avatar {
 }
 
 .nav__profile {
