@@ -5,26 +5,42 @@
     </div>
     <div class="manage__second-body">
       <div class="manage__title">Manage Program</div>
-      <manage-filter class="manage__profile-btn"></manage-filter>
+      <!-- <manage-filter class="manage__profile-btn"></manage-filter> -->
 
       <v-row class="manage__order-button">
         <!-- Turn "Grid View" on when user clicks on "List View" -->
-        <v-btn class="ma-1" dark x-small color="grey" depressed @click="gridList = !gridList">
+        <v-btn class="ma-1" dark rounded small color="grey" depressed @click="gridList = !gridList">
           <v-icon left>mdi-view-grid</v-icon>
           Grid View
         </v-btn>
 
-        <v-btn class="ma-1" x-small color="grey" depressed outlined @click="gridList = !gridList">
+        <v-btn
+          class="ma-1"
+          rounded
+          small
+          color="grey"
+          depressed
+          outlined
+          @click="gridList = !gridList"
+        >
           <v-icon left>mdi-format-list-bulleted</v-icon>
           List View
         </v-btn>
 
-        <v-btn class="ma-1" x-small color="grey" depressed outlined
+        <v-btn class="ma-1" rounded small color="grey" depressed outlined
           ><v-icon left>mdi-drag-variant</v-icon>Edit Order</v-btn
         >
         <!-- Turn "Save Order" on when user clicks on "Edit ORder" -->
-        <v-btn class="ma-1" dark x-small color="green" depressed
+        <v-btn class="ma-1" dark rounded small color="green" depressed
           ><v-icon left>mdi-check-bold</v-icon>Save Order</v-btn
+        >
+
+        <v-btn class="ma-1 ml-auto" dark outlined rounded small color="grey" depressed
+          ><v-icon left>mdi-plus-box-multiple</v-icon>Add Activity</v-btn
+        >
+
+        <v-btn class="ma-1" dark rounded small color="grey" outlined depressed
+          ><v-icon left>mdi-content-copy</v-icon>Copy to new program</v-btn
         >
       </v-row>
 
@@ -73,7 +89,7 @@ export default {
     'pc-card': PCCard,
     Nav,
     draggable,
-    ManageFilter,
+    // ManageFilter,
     ListView
   },
 
@@ -208,7 +224,7 @@ export default {
     margin-top: 25px;
     display: grid;
     grid-template-columns: repeat(3, 350px);
-    grid-template-rows: repeat(2, 250px);
+    grid-template-rows: repeat(2, 275px);
     grid-column-gap: 17px;
     grid-row-gap: 42px;
   }

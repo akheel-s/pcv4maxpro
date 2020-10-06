@@ -31,6 +31,9 @@
         {{ endDate }}
       </v-chip>
     </div>
+    <!-- <v-btn class="manage-program__publish-button" small depressed outlined dark
+      >Setup Incomplete</v-btn
+    > -->
     <div class="manage-program__body">
       <v-list-item-group class="manage-program__navigation" width="100%" permanent color="accent">
         <div v-for="item in items" :key="item.title">
@@ -49,6 +52,9 @@
           </v-list-item>
         </div>
         <hr />
+        <v-btn class="manage-program__publish-button" rounded depressed dark color="blue" large
+          >Publish</v-btn
+        >
       </v-list-item-group>
     </div>
   </div>
@@ -192,6 +198,12 @@ export default {
     font-family: Raleway;
     font-weight: 800;
     // margin: 4px 10px;
+  }
+
+  &__publish-button {
+    width: 100%;
+    font-weight: 900;
+    margin-top: 25px;
   }
 }
 </style>
