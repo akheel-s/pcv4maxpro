@@ -35,17 +35,22 @@
 
       <v-divider></v-divider>
       <v-card-text class="pc-select__title-head">
-        <div class="pc-select__title-head-left pc-select__price-tag">$0</div>
+        <div class="pc-select__title-head-left pc-select__price-tag">
+          $50
+          <span class="pc-select__price-tag-unit">per month</span>
+        </div>
+
         <div class="pc-select__title-head-right">
-          <v-btn class="" large outlined color="grey" rounded depressed>Choose</v-btn>
+          <v-btn class="" x-large outlined color="grey" rounded depressed>License</v-btn>
         </div>
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-subtitle class="pc-select__template-description"
-        >Enables students to build projects for you and to win an internship</v-card-subtitle
-      >
+        >Challenge students to build project solutions to your organization's key problems to win
+        internships to further execute on the project
+      </v-card-subtitle>
 
       <!-- <div class="pc-select__title-head"></div> -->
 
@@ -58,7 +63,9 @@
       <v-card-text>
         <v-chip color="#6eba80" depressed dark class="pc-select__spacing">Students</v-chip>
       </v-card-text>
-      <v-card-subtitle class="pc-select__user-type-title">Stakeholders</v-card-subtitle>
+      <v-card-subtitle class="pc-select__user-type-title"
+        >Sponsors and Stakeholders</v-card-subtitle
+      >
       <v-card-text>
         <v-chip color="#eda1bf" depressed dark class="pc-select__spacing">Teachers</v-chip>
         <v-chip color="#3c9dcd" depressed dark class="pc-select__spacing">Schools</v-chip>
@@ -66,7 +73,19 @@
         <v-chip color="#fec34b" depressed dark class="pc-select__spacing">Parents</v-chip>
       </v-card-text>
 
-      <v-card-subtitle class="pc-select__user-type-title">Creator</v-card-subtitle>
+      <v-card-subtitle class="pc-select__user-type-title">Setup Required</v-card-subtitle>
+      <v-card-text>
+        <v-chip color="#grey" x-small depressed dark class="pc-select__spacing">Use Cases</v-chip>
+        <v-chip color="#grey" x-small depressed dark class="pc-select__spacing">Podcast</v-chip>
+        <v-chip color="#grey" x-small depressed dark class="pc-select__spacing"
+          >Screenshare Training</v-chip
+        >
+        <v-chip color="#grey" x-small depressed dark class="pc-select__spacing"
+          >VideoAsk Account</v-chip
+        >
+      </v-card-text>
+
+      <v-card-subtitle class="pc-select__user-type-title">Licensed By</v-card-subtitle>
       <v-card-text>
         <v-avatar color="blue" size="42"
           ><v-img
@@ -158,6 +177,11 @@ export default {
     // margin-top: 2vh;
     margin-top: auto;
     margin-bottom: auto;
+  }
+
+  &__price-tag-unit {
+    font-size: 18px;
+    font-weight: 800;
   }
 
   &__spacing {
