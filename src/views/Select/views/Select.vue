@@ -17,7 +17,7 @@
     </div>
 
     <div class="select__toplabels" stepper-elevation="0"></div>
-    <div class="select__title">Choose template</div>
+    <div class="select__title">Choose Template</div>
     <div class="select__cards">
       <pc-select-card v-for="item in items" :key="item.title">
         <template v-slot:title>{{ item.title }}</template>
@@ -51,13 +51,14 @@ export default {
 
 <style lang="scss">
 .v-stepper--alt-labels .v-stepper__header .v-divider {
-  margin-top: 75px !important;
-  margin-left: 12px !important;
-  margin-right: 12px !important;
+  margin-top: 45px !important;
+  // margin-left: 6px !important;
+  // margin-right: 6px !important;
 }
 
 .v-divider {
   // border: 3px solid #e0e0e0;
+  // border: 1px dashed #e0e0e0;
 }
 
 //need to figure out how to change from imp
@@ -69,14 +70,17 @@ export default {
 
 .v-stepper__step.v-stepper__step {
   .v-stepper__step__step {
-    // border: 3px dashed #e0e0e0;
-    width: 50px;
-    height: 50px;
+    border: 2px solid #e0e0e0;
+    // background: #e0e0e0;
+    width: 42px;
+    height: 42px;
   }
 }
 .select {
   &__entire-body {
     height: 100%;
+    // margin-left: auto;
+    // margin-right: auto;
   }
 
   &__title {
@@ -84,7 +88,7 @@ export default {
     font-weight: 800;
     color: black;
     font-size: 35px;
-    margin-top: 162px;
+    margin-top: 10vh;
     margin-left: 220px;
     max-width: 500px;
   }
@@ -97,18 +101,19 @@ export default {
 
   &__stepper {
     width: 50%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    // margin-left:auto;
-    // margin-right:auto;
+    // align-items: center;
+    // justify-content: center;
+    // text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
   }
 
   &__cards {
     margin-left: 220px;
     margin-top: 11px;
     display: grid;
-    grid-template-columns: repeat(3, 475px);
+    grid-template-columns: repeat(1, 475px);
     grid-template-rows: repeat(2, 375px);
     grid-column-gap: 47px;
     grid-row-gap: 43px;
@@ -119,7 +124,7 @@ export default {
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
   .select {
     &__cards {
-      margin-top: 76px;
+      margin-top: 50px;
       display: grid;
       grid-template-columns: repeat(2, 475px);
       grid-template-rows: repeat(2, 1000px);
@@ -134,7 +139,7 @@ export default {
   .select {
     &__cards {
       margin-left: 10px;
-      margin-top: 76px;
+      margin-top: 50px;
       display: grid;
       grid-template-columns: repeat(1, 475px);
       grid-template-rows: repeat(2, 375px);
