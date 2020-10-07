@@ -3,23 +3,21 @@
     <div class="select__stepper">
       <v-stepper class="select__timeline" alt-labels>
         <v-stepper-header>
-          <v-stepper-step color="#FDD35A" step="1" non-linear style="border-color: black"
-            >Select</v-stepper-step
-          >
+          <v-stepper-step step="1" non-linear>Choose Template</v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step color="#F79960" step="2" non-linear>Ad sizes</v-stepper-step>
+          <v-stepper-step color="#F79960" step="2" non-linear>Enter Details</v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step step="">Ad templates</v-stepper-step>
+          <v-stepper-step step="">Setup Program</v-stepper-step>
         </v-stepper-header>
       </v-stepper>
     </div>
 
     <div class="select__toplabels" stepper-elevation="0"></div>
-    <div class="select__title">Select Program Template</div>
+    <div class="select__title">Choose template</div>
     <div class="select__cards">
       <pc-select-card v-for="item in items" :key="item.title">
         <template v-slot:title>{{ item.title }}</template>
@@ -59,7 +57,7 @@ export default {
 }
 
 .v-divider {
-  border: 3px solid #e0e0e0;
+  // border: 3px solid #e0e0e0;
 }
 
 //need to figure out how to change from imp
@@ -71,9 +69,9 @@ export default {
 
 .v-stepper__step.v-stepper__step {
   .v-stepper__step__step {
-    border: 3px dashed #e0e0e0;
-    width: 100px;
-    height: 100px;
+    // border: 3px dashed #e0e0e0;
+    width: 50px;
+    height: 50px;
   }
 }
 .select {
@@ -88,7 +86,7 @@ export default {
     font-size: 35px;
     margin-top: 162px;
     margin-left: 220px;
-    max-width: 170px;
+    max-width: 500px;
   }
 
   &__timeline {
@@ -98,8 +96,12 @@ export default {
   }
 
   &__stepper {
-    margin-left: 180px;
-    margin-right: 130px;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    // margin-left:auto;
+    // margin-right:auto;
   }
 
   &__cards {
@@ -120,7 +122,7 @@ export default {
       margin-top: 76px;
       display: grid;
       grid-template-columns: repeat(2, 475px);
-      grid-template-rows: repeat(2, 375px);
+      grid-template-rows: repeat(2, 1000px);
       grid-column-gap: 47px;
       grid-row-gap: 43px;
     }
