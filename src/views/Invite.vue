@@ -59,7 +59,7 @@ export default {
       default: ''
     }
   },
-  setup(props, { root: { $route, $router } }) {
+  setup(props, { root: { $router } }) {
     const invitePages = {
       'Arroyo High School': {
         password: '123',
