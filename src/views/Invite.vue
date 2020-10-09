@@ -49,7 +49,7 @@
 }
 </style>
 <script lang="ts">
-import { computed } from '@vue/composition-api';
+import { computed, onMounted } from '@vue/composition-api';
 
 export default {
   name: 'Invite',
@@ -59,7 +59,7 @@ export default {
       default: ''
     }
   },
-  setup(props) {
+  setup(props, { root: { $route, $router } }) {
     const invitePages = {
       'Arroyo High School': {
         password: '123',
@@ -73,12 +73,21 @@ export default {
     const pass = '';
     const inputPassword = '';
     const getSchool = computed(() =>
-      props.schoolName
+      (props.schoolName as string)
         .split('-')
         .map(word => word[0].toUpperCase() + word.substring(1))
         .join(' ')
     );
-
+    onMounted(() => {
+      const valid =
+        typeof invitePages[
+          (props.schoolName as string)
+            .split('-')
+            .map(word => word[0].toUpperCase() + word.substring(1))
+            .join(' ')
+        ] !== 'undefined';
+      if (!valid) $router.push({ name: '404' });
+    });
     return {
       pass,
       inputPassword,

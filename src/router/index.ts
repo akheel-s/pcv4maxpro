@@ -71,6 +71,7 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '*',
+    name: '404',
     component: Error404,
     redirect: () => {
       return { name: 'portfolio' };
