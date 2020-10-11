@@ -1,11 +1,48 @@
 <template>
   <div class="invite__container">
-    <div v-if="pass !== invitePages[getSchool].password" class="invite__wrapper-password">
-      <div class="invite__password-title">
+    <div v-if="pass !== invitePages[getInvitee].password" class="invite__wrapper-password">
+      <!-- <div class="invite__password-title">
         <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getSchool }}</v-btn
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div> -->
+
+      <div v-if="invitePages[getInvitee].user == 'school'" class="invite__password-title">
+        <v-btn color="blue" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
         >
       </div>
+
+      <div v-if="invitePages[getInvitee].user == 'employer'">
+        <v-btn color="employer" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <div v-if="invitePages[getInvitee].user == 'parent'">
+        <v-btn color="yellow" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <div v-if="invitePages[getInvitee].user == 'teacher'">
+        <v-btn color="pink" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <div v-if="invitePages[getInvitee].user == 'student'">
+        <v-btn color="green" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <div v-if="invitePages[getInvitee].user == 'sponsor'">
+        <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
       <div class="invite__password">
         <v-text-field
           v-model="inputPassword"
@@ -13,6 +50,7 @@
           depressed
           label="Password"
           outlined
+          required
           @keyup.enter="pass = inputPassword"
         />
         <v-btn
@@ -29,10 +67,10 @@
     <!-- START OF PRIMARY PAGE   -->
     <div v-else class="invite__wrapper">
       <div class="invite__wrapper-column-left">
-        <div>
+        <div v-if="invitePages[getInvitee].user == 'school'">
           <v-btn
             rounded
-            color="grey"
+            color="blue"
             class="invite__password-title-button"
             x-small
             outlined
@@ -40,17 +78,78 @@
             >School Invite</v-btn
           >
         </div>
+
+        <div v-if="invitePages[getInvitee].user == 'employer'">
+          <v-btn
+            rounded
+            color="employer"
+            class="invite__password-title-button"
+            x-small
+            outlined
+            depressed
+            >Employer Invite</v-btn
+          >
+        </div>
+
+        <div v-if="invitePages[getInvitee].user == 'parent'">
+          <v-btn
+            rounded
+            color="yellow"
+            class="invite__password-title-button"
+            x-small
+            outlined
+            depressed
+            >Parent Invite</v-btn
+          >
+        </div>
+
+        <div v-if="invitePages[getInvitee].user == 'teacher'">
+          <v-btn
+            rounded
+            color="pink"
+            class="invite__password-title-button"
+            x-small
+            outlined
+            depressed
+            >Teacher Invite</v-btn
+          >
+        </div>
+
+        <div v-if="invitePages[getInvitee].user == 'student'">
+          <v-btn
+            rounded
+            color="green"
+            class="invite__password-title-button"
+            x-small
+            outlined
+            depressed
+            >Student Invite</v-btn
+          >
+        </div>
+
+        <div v-if="invitePages[getInvitee].user == 'sponsor'">
+          <v-btn
+            rounded
+            color="red"
+            class="invite__password-title-button"
+            x-small
+            outlined
+            depressed
+            >Sponsor Invite</v-btn
+          >
+        </div>
+
         <div>
           <span class="invite__title text-center"
             ><v-icon color="blue" class="invite__title-icon" x-large>mdi-telegram</v-icon>Invite for
-            <span class="invite__title-entity">{{ getSchool }}</span></span
+            <span class="invite__title-entity">{{ getInvitee }}</span></span
           >
         </div>
 
         <div>
           <iframe
             class="invite__video"
-            :src="`https://www.youtube.com/embed/${invitePages[getSchool].video}`"
+            :src="`https://www.youtube.com/embed/${invitePages[getInvitee].video}`"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -58,35 +157,32 @@
         </div>
       </div>
       <div class="invite__wrapper-column-right">
-        <div class="invite__recommendations-title">RECOMMENDED</div>
-        <div><v-btn class="invite__cta" x-large rounded outlined depressed>Sign-up</v-btn></div>
+        <!-- <div class="invite__recommendations-title">NEXT STEP</div>
+        <div><v-btn class="invite__cta" x-large outlined depressed>Schedule Meeting</v-btn></div> -->
 
-        <div class="invite__resources-title">RESOURCES</div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Schedule Meeting</v-btn
+        <div class="invite__resources-title">NEXT STEP</div>
+        <div><v-btn class="invite__cta2" x-large outlined depressed>Schedule Meeting</v-btn></div>
+        <!-- <div class="invite__accept-decline">
+          <v-btn class="invite__cta-accept-decline" color="green" large dark depressed
+            >Accept</v-btn
           >
-        </div>
+          <v-btn class="invite__cta-accept-decline" color="red" large dark depressed>Decline</v-btn>
+        </div> -->
 
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
+        <!-- <div>
+          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
             >Watch Presentation</v-btn
           >
-        </div>
+        </div> -->
+        <!-- <div class="invite__resources-title">MAKE ACTIONS</div> -->
 
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Ask Video Question</v-btn
-          >
-        </div>
-
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
+        <!-- <div>
+          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
             >Pricing & Sponsorship</v-btn
           >
-        </div>
+        </div> -->
 
-        <div>
+        <!-- <div>
           <v-btn class="invite__cta" color="blue" small rounded dark depressed
             >Sponsor & Transfer</v-btn
           >
@@ -103,7 +199,54 @@
           <v-btn class="invite__cta" color="blue" small rounded dark depressed
             >Watch Introduction Video</v-btn
           >
+        </div> -->
+
+        <div class="invite__resources">
+          <div class="invite__resources-title2">EXPLORE RESOURCES</div>
+          <div>
+            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+              >Testimonials</v-btn
+            >
+          </div>
+
+          <div>
+            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+              >Survey Data</v-btn
+            >
+          </div>
+
+          <div>
+            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+              >Program Videos</v-btn
+            >
+          </div>
+
+          <!-- <div>
+            <v-btn class="invite__cta" color="blue" small rounded dark depressed
+              >Employer Examples</v-btn
+            >
+          </div> -->
+
+          <div>
+            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+              >FAQ</v-btn
+            >
+          </div>
+
+          <div class="invite__resources-title3">NEED HELP?</div>
+          <div>
+            <v-btn
+              class="invite__cta-ask-question"
+              color="grey darken-3"
+              small
+              rounded
+              outlined
+              depressed
+              >Ask Video Question</v-btn
+            >
+          </div>
         </div>
+
         <!-- <div class="invite__resources">hi</div> -->
       </div>
 
@@ -126,21 +269,39 @@ export default {
   setup(props, { root: { $router } }) {
     const invitePages = {
       'Arroyo High School': {
-        password: '123',
-        video: 'dQw4w9WgXcQ'
+        user: 'school',
+        password: '321',
+        video: 'df0ZmKkzuWY'
       },
-      'San Mateo High School': {
+      'Terri Griffin': {
+        user: 'teacher',
         password: '321',
         video: 'L_jWHffIx5E'
       },
-      'San Leandro High School': {
+      'Adit Garg': {
+        user: 'student',
+        password: '321',
+        video: 'L_jWHffIx5E'
+      },
+      'Anthony Crecy': {
+        user: 'parent',
+        password: '321',
+        video: 'L_jWHffIx5E'
+      },
+      'Office of Supervisor Nate Miley': {
+        user: 'employer',
+        password: '321',
+        video: 'L_jWHffIx5E'
+      },
+      'Verizon 5G Labs': {
+        user: 'sponsor',
         password: '321',
         video: 'L_jWHffIx5E'
       }
     };
     const pass = '';
     const inputPassword = '';
-    const getSchool = computed(() =>
+    const getInvitee = computed(() =>
       (props.schoolName as string)
         .split('-')
         .map(word => word[0].toUpperCase() + word.substring(1))
@@ -160,7 +321,7 @@ export default {
       pass,
       inputPassword,
       invitePages,
-      getSchool
+      getInvitee
     };
   }
 };
@@ -220,7 +381,8 @@ export default {
     display: flex;
     margin-bottom: auto;
     width: 100%;
-    margin: 25px;
+    // margin: 25px;
+    margin-left: 45px;
     height: 100%;
 
     // justify-content: flex-start;
@@ -254,7 +416,7 @@ export default {
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 1px;
-    color: #3c9dcd;
+    color: #404142;
     text-align: center;
   }
 
@@ -263,9 +425,30 @@ export default {
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 1px;
-    color: #3c9dcd;
+    color: #404142;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 10%;
+  }
+
+  &__resources-title2 {
+    font-family: Raleway;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #404142;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  &__resources-title3 {
+    font-family: Raleway;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #404142;
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 12%;
   }
 
   &__title-entity {
@@ -285,26 +468,58 @@ export default {
   &__password-title-button {
     // margin-top: 20px;
     margin-bottom: 20px;
+    font-weight: 800;
   }
 
   &__resources {
     // width: 200px;
     // height: 200px;
-    background-color: #dededd;
-    border-radius: 25px;
-    background-color: #dedede;
+    // background-color: #dedede;
+    border: 1px solid #d5d5d5;
+    border-radius: 7px;
     width: 100%;
     // height: 100%;
     padding: 25px;
-    margin-top: 25px;
+    // margin-top: auto;
+    margin-top: 50px;
     // margin-bottom: 25px;
-    margin-bottom: auto;
+    // margin-bottom: auto;
+    margin-bottom: 25px;
   }
 
   &__cta {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+
+  &__cta2 {
+    width: 100%;
+    margin-top: 10px;
+    // margin-bottom: 10px;
+  }
+
+  &__cta-accept-decline {
+    width: 49%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__cta-ask-question {
+    width: 100%;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+  }
+
+  &__accept-decline {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
   }
 }
 </style>
