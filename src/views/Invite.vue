@@ -319,7 +319,11 @@
 
           <div class="invite__resources-title3">NEED HELP?</div>
           <div>
-            <a href="https://www.videoask.com" target="_blank" style="text-decoration: none">
+            <a
+              href="https://www.videoask.com/fntxxoz2y"
+              target="_blank"
+              style="text-decoration: none"
+            >
               <v-btn
                 class="invite__cta-ask-question"
                 color="grey darken-3"
