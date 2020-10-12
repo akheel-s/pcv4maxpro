@@ -346,9 +346,7 @@
 </template>
 
 <script lang="ts">
-// type="text/javascript" src="https://www.videoask.com/embed/embed.js"
-
-import { computed, onMounted } from '@vue/composition-api';
+import { computed, onMounted, ref } from '@vue/composition-api';
 
 export default {
   name: 'Invite',
@@ -377,18 +375,16 @@ export default {
 
   setup(props, { root: { $router } }) {
     // video ask setup
-    (window as any).VIDEOASK_EMBED_CONFIG = {
+    (window as any).videoask.loadModal({
       kind: 'widget',
-      url: 'https://www.videoask.com/f660qqiry',
+      url: 'https://www.videoask.com/fntxxoz2y',
       options: {
         widgetType: 'VideoThumbnailExtraLarge',
-        text: 'Talk to me',
-        backgroundColor: '#E26D5A',
-        position: 'bottom-right',
-        dismissable: false
+        text: '',
+        backgroundColor: '#7D00FE',
+        position: 'bottom-right'
       }
-    };
-
+    });
     const invitePages = {
       'Antioch High School': {
         user: 'school',
@@ -450,7 +446,8 @@ export default {
       pass,
       inputPassword,
       invitePages,
-      getInvitee
+      getInvitee,
+      show1: ref(false)
     };
   }
 };

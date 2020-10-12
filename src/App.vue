@@ -22,7 +22,6 @@ export default Vue.extend({
     Navbar
     // Profile
   },
-
   setup(props, { root }) {
     document.title = 'PilotCity  |  Digital programs, for digital cities';
     const { getLinearLoading: loading } = useToolGetters(['getLinearLoading']);
