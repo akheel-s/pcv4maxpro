@@ -14,7 +14,7 @@
       </div>
 
       <div v-if="invitePages[getInvitee].user == 'employer'">
-        <v-btn color="employer" class="invite__password-title-button" x-small outlined depressed
+        <v-btn color="purple" class="invite__password-title-button" x-small outlined depressed
           >Invite for {{ getInvitee }}</v-btn
         >
       </div>
@@ -63,9 +63,24 @@
         >
       </div>
     </div>
+    <!-- 
+    <div
+      :class="[{invitePages[getInvitee].type == 'school' ? teacherbutton-css : '' }, {invitePages[getInvitee].type == 'employer' ? employerbutton-css : '' }]"
+    ></div> -->
 
     <!-- START OF PRIMARY PAGE   -->
-    <div v-else class="invite__wrapper">
+
+    <div
+      v-else
+      :class="[
+        invitePages[getInvitee].user == 'school' ? schoolContainer : '',
+        invitePages[getInvitee].user == 'employer' ? employerContainer : '',
+        invitePages[getInvitee].user == 'teacher' ? teacherContainer : '',
+        invitePages[getInvitee].user == 'parent' ? parentContainer : '',
+        invitePages[getInvitee].user == 'student' ? studentContainer : '',
+        invitePages[getInvitee].user == 'sponsor' ? sponsorContainer : ''
+      ]"
+    >
       <div class="invite__wrapper-column-left">
         <div v-if="invitePages[getInvitee].user == 'school'">
           <v-btn
@@ -82,7 +97,7 @@
         <div v-if="invitePages[getInvitee].user == 'employer'">
           <v-btn
             rounded
-            color="employer"
+            color="purple"
             class="invite__password-title-button"
             x-small
             outlined
@@ -140,9 +155,62 @@
         </div>
 
         <div>
-          <span class="invite__title text-center"
-            ><v-icon color="blue" class="invite__title-icon" x-large>mdi-telegram</v-icon>Invite for
-            <span class="invite__title-entity">{{ getInvitee }}</span></span
+          <span class="invite__title text-center">
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'school'"
+              color="blue"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'employer'"
+              color="purple"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'teacher'"
+              color="pink"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'parent'"
+              color="yellow"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'student'"
+              color="green"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+            <v-icon
+              v-if="invitePages[getInvitee].user == 'sponsor'"
+              color="red"
+              class="invite__title-icon"
+              x-large
+              >mdi-telegram</v-icon
+            >
+
+            Invite for
+            <span
+              :class="[
+                invitePages[getInvitee].user == 'school' ? schoolTitleEntity : '',
+                invitePages[getInvitee].user == 'employer' ? employerTitleEntity : '',
+                invitePages[getInvitee].user == 'teacher' ? teacherTitleEntity : '',
+                invitePages[getInvitee].user == 'parent' ? parentTitleEntity : '',
+                invitePages[getInvitee].user == 'student' ? studentTitleEntity : '',
+                invitePages[getInvitee].user == 'sponsor' ? sponsorTitleEntity : ''
+              ]"
+              >{{ getInvitee }}</span
+            ></span
           >
         </div>
 
@@ -161,7 +229,15 @@
         <div><v-btn class="invite__cta" x-large outlined depressed>Schedule Meeting</v-btn></div> -->
 
         <div class="invite__resources-title">NEXT STEP</div>
-        <div><v-btn class="invite__cta2" x-large outlined depressed>Schedule Meeting</v-btn></div>
+        <div>
+          <a
+            href="https://www.calendly.com/dericklee/30min"
+            target="_blank"
+            style="text-decoration: none"
+            ><v-btn class="invite__cta2" x-large outlined depressed>Schedule Meeting</v-btn>
+          </a>
+        </div>
+
         <!-- <div class="invite__accept-decline">
           <v-btn class="invite__cta-accept-decline" color="green" large dark depressed
             >Accept</v-btn
@@ -204,20 +280,26 @@
         <div class="invite__resources">
           <div class="invite__resources-title2">EXPLORE RESOURCES</div>
           <div>
-            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-              >Testimonials</v-btn
+            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
+              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+                >Testimonials</v-btn
+              ></a
             >
           </div>
 
           <div>
-            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-              >Survey Data</v-btn
+            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
+              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+                >Survey Data</v-btn
+              ></a
             >
           </div>
 
           <div>
-            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-              >Program Videos</v-btn
+            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
+              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+                >Program Videos</v-btn
+              ></a
             >
           </div>
 
@@ -228,21 +310,25 @@
           </div> -->
 
           <div>
-            <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-              >FAQ</v-btn
+            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none"
+              ><v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+                >FAQ</v-btn
+              ></a
             >
           </div>
 
           <div class="invite__resources-title3">NEED HELP?</div>
           <div>
-            <v-btn
-              class="invite__cta-ask-question"
-              color="grey darken-3"
-              small
-              rounded
-              outlined
-              depressed
-              >Ask Video Question</v-btn
+            <a href="https://www.videoask.com" target="_blank" style="text-decoration: none">
+              <v-btn
+                class="invite__cta-ask-question"
+                color="grey darken-3"
+                small
+                rounded
+                outlined
+                depressed
+                >Ask Video Question</v-btn
+              ></a
             >
           </div>
         </div>
@@ -256,7 +342,22 @@
 </template>
 
 <script lang="ts">
+// src="https://www.videoask.com/embed/embed.js"
+// type="text/javascript" src="https://www.videoask.com/embed/embed.js"
+
 import { computed, onMounted } from '@vue/composition-api';
+
+// window.VIDEOASK_EMBED_CONFIG = {
+//   "kind": "widget",
+//   "url": "https://www.videoask.com/f660qqiry",
+//   "options": {
+//     "widgetType": "VideoThumbnailExtraLarge",
+//     "text": "Talk to me",
+//     "backgroundColor": "#E26D5A",
+//     "position": "bottom-right",
+//     "dismissable": false
+//   }
+// }
 
 export default {
   name: 'Invite',
@@ -266,6 +367,23 @@ export default {
       default: ''
     }
   },
+  data() {
+    return {
+      schoolContainer: 'invite__wrapper-school',
+      employerContainer: 'invite__wrapper-employer',
+      teacherContainer: 'invite__wrapper-teacher',
+      parentContainer: 'invite__wrapper-parent',
+      studentContainer: 'invite__wrapper-student',
+      sponsorContainer: 'invite__wrapper-sponsor',
+      schoolTitleEntity: 'invite__title-entity-school',
+      employerTitleEntity: 'invite__title-entity-employer',
+      teacherTitleEntity: 'invite__title-entity-teacher',
+      parentTitleEntity: 'invite__title-entity-parent',
+      studentTitleEntity: 'invite__title-entity-student',
+      sponsorTitleEntity: 'invite__title-entity-sponsor'
+    };
+  },
+
   setup(props, { root: { $router } }) {
     const invitePages = {
       'Arroyo High School': {
@@ -275,6 +393,11 @@ export default {
       },
       'Terri Griffin': {
         user: 'teacher',
+        password: '321',
+        video: 'L_jWHffIx5E'
+      },
+      'Office Of Supervisor Nate Miley': {
+        user: 'employer',
         password: '321',
         video: 'L_jWHffIx5E'
       },
@@ -288,11 +411,7 @@ export default {
         password: '321',
         video: 'L_jWHffIx5E'
       },
-      'Office of Supervisor Nate Miley': {
-        user: 'employer',
-        password: '321',
-        video: 'L_jWHffIx5E'
-      },
+
       'Verizon 5G Labs': {
         user: 'sponsor',
         password: '321',
@@ -356,7 +475,9 @@ export default {
     flex-direction: column;
   }
 
-  &__wrapper {
+  // COLOR V-BIND
+
+  &__wrapper-school {
     width: 100%;
     max-width: 80%;
     display: flex;
@@ -366,6 +487,98 @@ export default {
     border-radius: 50px;
     padding: 45px;
     // background-color: #dddddd;
+  }
+
+  &__wrapper-employer {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 15px solid #ae90b0;
+    border-radius: 50px;
+    padding: 45px;
+    // background-color: #dddddd;
+  }
+
+  &__wrapper-teacher {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 15px solid #eda1bf;
+    border-radius: 50px;
+    padding: 45px;
+    // background-color: #dddddd;
+  }
+
+  &__wrapper-parent {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 15px solid #fec34b;
+    border-radius: 50px;
+    padding: 45px;
+    // background-color: #dddddd;
+  }
+
+  &__wrapper-student {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 15px solid #6eba80;
+    border-radius: 50px;
+    padding: 45px;
+    // background-color: #dddddd;
+  }
+
+  &__wrapper-sponsor {
+    width: 100%;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 15px solid #ea6764;
+    border-radius: 50px;
+    padding: 45px;
+    // background-color: #dddddd;
+  }
+
+  // COLOR V-BIND
+
+  &__title-entity-school {
+    color: #3c9dcd;
+  }
+
+  &__title-entity-employer {
+    color: #ae90b0;
+  }
+
+  &__title-entity-teacher {
+    color: #eda1bf;
+  }
+
+  &__title-entity-parent {
+    color: #fec34b;
+  }
+
+  &__title-entity-student {
+    color: #6eba80;
+  }
+
+  &__title-entity-sponsor {
+    color: #ea6764;
+  }
+
+  // COLOR V-BIND
+
+  &__title-icon {
+    margin-right: 12px;
   }
 
   &__wrapper-column-left {
@@ -449,14 +662,6 @@ export default {
     text-align: center;
     margin-bottom: 5%;
     margin-top: 12%;
-  }
-
-  &__title-entity {
-    color: #3c9dcd;
-  }
-
-  &__title-icon {
-    margin-right: 12px;
   }
 
   &__password-title {
