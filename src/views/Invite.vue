@@ -386,6 +386,12 @@ export default {
 
   setup(props, { root: { $router } }) {
     const invitePages = {
+      'Antioch High School': {
+        user: 'school',
+        password: 'antiochrocks',
+        video: '_ic0VQUY4pA'
+      },
+
       'Arroyo High School': {
         user: 'school',
         password: '321',
