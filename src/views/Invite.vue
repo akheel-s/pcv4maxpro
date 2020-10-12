@@ -234,7 +234,9 @@
             href="https://app.hubspot.com/meetings/dericklee/programinvite"
             target="_blank"
             style="text-decoration: none"
-            ><v-btn class="invite__cta2" x-large outlined depressed>Schedule Meeting</v-btn>
+            ><v-btn class="invite__cta2" x-large outlined depressed
+              >Schedule 30-Minute Meeting</v-btn
+            >
           </a>
         </div>
 
@@ -279,29 +281,38 @@
 
         <div class="invite__resources">
           <div class="invite__resources-title2">EXPLORE RESOURCES</div>
+
           <div>
+            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
+              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
+                >Sign-up on homepage</v-btn
+              ></a
+            >
+          </div>
+
+          <!-- <div>
             <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
               <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
                 >Testimonials</v-btn
               ></a
             >
-          </div>
+          </div> -->
 
-          <div>
+          <!-- <div>
             <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
               <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
                 >Survey Data</v-btn
               ></a
             >
-          </div>
+          </div> -->
 
-          <div>
+          <!-- <div>
             <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
               <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
                 >Program Videos</v-btn
               ></a
             >
-          </div>
+          </div> -->
 
           <!-- <div>
             <v-btn class="invite__cta" color="blue" small rounded dark depressed
@@ -309,15 +320,16 @@
             >
           </div> -->
 
-          <div>
+          <!-- <div>
             <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none"
               ><v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
                 >FAQ</v-btn
               ></a
             >
-          </div>
+          </div> -->
 
-          <div class="invite__resources-title3">NEED HELP?</div>
+          <!-- VIDEOASK BUTTON -->
+          <!-- <div class="invite__resources-title3">NEED HELP?</div>
           <div>
             <a
               href="https://www.videoask.com/fntxxoz2y"
@@ -334,7 +346,7 @@
                 >Ask Video Question</v-btn
               ></a
             >
-          </div>
+          </div> -->
         </div>
 
         <!-- <div class="invite__resources">hi</div> -->
@@ -377,6 +389,12 @@ export default {
     // video ask setup
 
     const invitePages = {
+      'Alameda County': {
+        user: 'employer',
+        password: 'digitaltransformation',
+        video: '4LJOPWtwf3c'
+      },
+
       'Antioch High School': {
         user: 'school',
         password: 'antiochrocks',
@@ -430,9 +448,9 @@ export default {
           kind: 'widget',
           url: 'https://www.videoask.com/fntxxoz2y',
           options: {
-            widgetType: 'VideoThumbnailExtraLarge',
-            text: '',
-            backgroundColor: '#7D00FE',
+            widgetType: 'VideoThumbnailSmall',
+            text: 'Questions? Will video reply within 24 hours',
+            backgroundColor: '#3c9dcd',
             position: 'bottom-right'
           }
         });
@@ -465,6 +483,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    // margin-top: 50px;
     align-items: center;
     height: 100%;
     // background-color: #404142;
@@ -615,8 +634,10 @@ export default {
     // align-items: flex-start;
   }
   &__video {
-    width: 720px;
-    height: 405px;
+    // width: 720px;
+    // height: 405px;
+    width: 577px;
+    height: 325px;
     // width: 100%;
     // min-width: 360px;
     // max-height: 240px;
