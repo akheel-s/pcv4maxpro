@@ -346,7 +346,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref } from '@vue/composition-api';
+import { computed, onMounted, ref, watch, watchEffect } from '@vue/composition-api';
 
 export default {
   name: 'Invite',
@@ -375,16 +375,7 @@ export default {
 
   setup(props, { root: { $router } }) {
     // video ask setup
-    (window as any).videoask.loadModal({
-      kind: 'widget',
-      url: 'https://www.videoask.com/fntxxoz2y',
-      options: {
-        widgetType: 'VideoThumbnailExtraLarge',
-        text: '',
-        backgroundColor: '#7D00FE',
-        position: 'bottom-right'
-      }
-    });
+
     const invitePages = {
       'Antioch High School': {
         user: 'school',
@@ -424,14 +415,29 @@ export default {
         video: 'L_jWHffIx5E'
       }
     };
-    const pass = '';
-    const inputPassword = '';
+    const pass = ref('');
+    const inputPassword = ref('');
     const getInvitee = computed(() =>
       (props.schoolName as string)
         .split('-')
         .map(word => word[0].toUpperCase() + word.substring(1))
         .join(' ')
     );
+    watch(pass, newpass => {
+      if (newpass === invitePages[getInvitee.value].password) {
+        console.log('mounting');
+        (window as any).videoask.loadEmbed({
+          kind: 'widget',
+          url: 'https://www.videoask.com/fntxxoz2y',
+          options: {
+            widgetType: 'VideoThumbnailExtraLarge',
+            text: '',
+            backgroundColor: '#7D00FE',
+            position: 'bottom-right'
+          }
+        });
+      }
+    });
     onMounted(() => {
       const valid =
         typeof invitePages[
