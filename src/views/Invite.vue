@@ -231,7 +231,7 @@
         <div class="invite__resources-title">NEXT STEP</div>
         <div>
           <a
-            href="https://www.calendly.com/dericklee/30min"
+            href="https://app.hubspot.com/meetings/dericklee/programinvite"
             target="_blank"
             style="text-decoration: none"
             ><v-btn class="invite__cta2" x-large outlined depressed>Schedule Meeting</v-btn>
@@ -609,7 +609,7 @@ export default {
   }
   &__video {
     width: 720px;
-    height: 480px;
+    height: 405px;
     // width: 100%;
     // min-width: 360px;
     // max-height: 240px;
