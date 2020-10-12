@@ -63,7 +63,7 @@
         >
       </div>
     </div>
-    <!-- 
+    <!--
     <div
       :class="[{invitePages[getInvitee].type == 'school' ? teacherbutton-css : '' }, {invitePages[getInvitee].type == 'employer' ? employerbutton-css : '' }]"
     ></div> -->
@@ -346,22 +346,9 @@
 </template>
 
 <script lang="ts">
-// src="https://www.videoask.com/embed/embed.js"
 // type="text/javascript" src="https://www.videoask.com/embed/embed.js"
 
 import { computed, onMounted } from '@vue/composition-api';
-
-// window.VIDEOASK_EMBED_CONFIG = {
-//   "kind": "widget",
-//   "url": "https://www.videoask.com/f660qqiry",
-//   "options": {
-//     "widgetType": "VideoThumbnailExtraLarge",
-//     "text": "Talk to me",
-//     "backgroundColor": "#E26D5A",
-//     "position": "bottom-right",
-//     "dismissable": false
-//   }
-// }
 
 export default {
   name: 'Invite',
@@ -389,6 +376,19 @@ export default {
   },
 
   setup(props, { root: { $router } }) {
+    // video ask setup
+    (window as any).VIDEOASK_EMBED_CONFIG = {
+      kind: 'widget',
+      url: 'https://www.videoask.com/f660qqiry',
+      options: {
+        widgetType: 'VideoThumbnailExtraLarge',
+        text: 'Talk to me',
+        backgroundColor: '#E26D5A',
+        position: 'bottom-right',
+        dismissable: false
+      }
+    };
+
     const invitePages = {
       'Antioch High School': {
         user: 'school',
