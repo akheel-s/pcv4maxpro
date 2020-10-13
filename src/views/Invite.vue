@@ -1,67 +1,66 @@
 <template>
   <div class="invite__container">
     <div v-if="pass !== invitePages[getInvitee].password" class="invite__wrapper-password">
-      <!-- <div class="invite__password-title">
-        <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div> -->
-
-      <div v-if="invitePages[getInvitee].user == 'school'" class="invite__password-title">
-        <v-btn color="blue" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'employer'">
-        <v-btn color="purple" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'parent'">
-        <v-btn color="yellow" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'teacher'">
-        <v-btn color="pink" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'student'">
-        <v-btn color="green" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'sponsor'">
-        <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div class="invite__password">
-        <v-text-field
-          v-model="inputPassword"
-          :type="show1 ? 'text' : 'password'"
-          depressed
-          label="Password"
+      <div class="invite__password-title">
+        <v-btn
+          :color="
+            invitePages[getInvitee].user == 'school'
+              ? 'blue'
+              : invitePages[getInvitee].user == 'employer'
+              ? 'purple'
+              : invitePages[getInvitee].user == 'parent'
+              ? 'yellow'
+              : invitePages[getInvitee].user == 'teacher'
+              ? 'pink'
+              : invitePages[getInvitee].user == 'student'
+              ? 'green'
+              : invitePages[getInvitee].user == 'sponsor'
+              ? 'red'
+              : ''
+          "
+          class="invite__password-title-button"
+          x-small
           outlined
-          required
-          @keyup.enter="pass = inputPassword"
-        />
+          depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <validation-observer v-slot="{ invalid, handleSubmit }" class="invite__password">
+        <validation-provider
+          v-slot="{ errors }"
+          slim
+          :rules="`password:${invitePages[getInvitee].password}`"
+        >
+          <v-text-field
+            v-model="inputPassword"
+            :error-messages="errors"
+            :type="show1 ? 'text' : 'password'"
+            depressed
+            label="Password"
+            outlined
+            required
+            @keyup.enter="
+              handleSubmit(() => {
+                pass = inputPassword;
+              })
+            "
+          />
+        </validation-provider>
         <v-btn
           class="invite__password-button text-uppercase"
           outlined
+          :disabled="invalid"
           hide-details
           depressed
-          @click="pass = inputPassword"
+          @click="
+            handleSubmit(() => {
+              pass = inputPassword;
+            })
+          "
           >View Invite</v-btn
         >
-      </div>
+      </validation-observer>
     </div>
     <!--
     <div
@@ -158,42 +157,21 @@
           <span class="invite__title text-center">
             <v-icon
               v-if="invitePages[getInvitee].user == 'school'"
-              color="blue"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'employer'"
-              color="purple"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'teacher'"
-              color="pink"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'parent'"
-              color="yellow"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'student'"
-              color="green"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'sponsor'"
-              color="red"
+              :color="
+                invitePages[getInvitee].user == 'school'
+                  ? 'blue'
+                  : invitePages[getInvitee].user == 'employer'
+                  ? 'purple'
+                  : invitePages[getInvitee].user == 'parent'
+                  ? 'yellow'
+                  : invitePages[getInvitee].user == 'teacher'
+                  ? 'pink'
+                  : invitePages[getInvitee].user == 'student'
+                  ? 'green'
+                  : invitePages[getInvitee].user == 'sponsor'
+                  ? 'red'
+                  : ''
+              "
               class="invite__title-icon"
               x-large
               >mdi-telegram</v-icon
@@ -1269,6 +1247,72 @@ export default {
     flex-direction: column;
     display: flex;
     align-items: flex-start;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 540px;
+    }
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 275px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .invite {
+    &__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      // margin-top: 50px;
+      align-items: center;
+      // background-color: #404142;
+    }
+    &__wrapper-school {
+      max-width: none;
+      align-items: center;
+      border: none;
+      border-radius: none;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 275px;
+    }
   }
 }
 </style>
