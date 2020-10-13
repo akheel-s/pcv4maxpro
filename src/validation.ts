@@ -14,7 +14,7 @@ extend('password', {
   validate(value, params: Record<string, any>) {
     return value === params.target;
   },
-  message: 'Keep trekkin, you got this.'
+  message: 'Keep trekkin, almost there.'
 });
 extend('min', {
   ...min,

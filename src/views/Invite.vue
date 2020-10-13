@@ -670,8 +670,10 @@
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
-                            <div class="landing__text-testimonial-position">Rashmi K.</div>
+                            <div class="landing__text-testimonial-name-black">Rashmi K.</div>
+                            <div class="landing__text-testimonial-position">
+                              PilotCity Parent & Guardian
+                            </div>
                           </div>
                         </div>
                       </div>
