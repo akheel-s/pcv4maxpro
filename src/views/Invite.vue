@@ -761,4 +761,70 @@ export default {
     width: 100%;
   }
 }
+@media screen and (max-width: 1440px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 540px;
+    }
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .invite {
+    &__wrapper-school {
+      display: block;
+      padding: 20px;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 275px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .invite {
+    &__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      // margin-top: 50px;
+      align-items: center;
+      // background-color: #404142;
+    }
+    &__wrapper-school {
+      max-width: none;
+      align-items: center;
+      border: none;
+      border-radius: none;
+    }
+    &__wrapper-column-right {
+      margin-left: 0px;
+    }
+    &__video {
+      width: 275px;
+    }
+  }
+}
 </style>
