@@ -14,7 +14,7 @@ extend('password', {
   validate(value, params: Record<string, any>) {
     return value === params.target;
   },
-  message: 'Password confirmation does not match'
+  message: 'Keep trekkin, you got this.'
 });
 extend('min', {
   ...min,

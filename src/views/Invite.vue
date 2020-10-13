@@ -331,7 +331,7 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/Final_19500_Background.svg"
                     dark
                     height="50%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__primary-title">Activities</div>
 
@@ -385,7 +385,7 @@
 
           <template>
             <div class="text-center">
-              <v-dialog v-model="testimonialsDialog" width="70%">
+              <v-dialog v-model="testimonialsDialog" width="90%">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                     v-bind="attrs"
@@ -399,13 +399,19 @@
                     >Student & Parent Testimonials</v-btn
                   >
                 </template>
+
                 <v-card>
+                  <!-- <div class="invite__close-dialog">
+                    <v-btn icon @click="testimonialsDialog = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </div> -->
                   <!-- <v-card>
                   <v-parallax
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-background4.png"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
@@ -437,7 +443,7 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-backgroundB.png"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
@@ -475,27 +481,27 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_green_darkgreenstripes.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          PilotCity was a fresh breath of air. It was a new program that was
+                          offering a mind-blowing and unique experience.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.33.36%20AM.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Amratha R.</div>
                             <div class="landing__text-testimonial-position">
-                              PilotCity Parent & Guardian
+                              Healthtech Entrepreneur, PilotCity
                             </div>
                           </div>
                         </div>
@@ -507,25 +513,25 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink-1.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          My child has grown right before my eyes. She has matured into a young
+                          woman who can achieve what she sets her mind to thanks to this program.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.33.11%20AM.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Vanesa C.</div>
                             <div class="landing__text-testimonial-position">
                               PilotCity Parent & Guardian
                             </div>
@@ -539,27 +545,29 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_blue-3.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          Most employers wouldn’t want high schoolers to work for them since there’s
+                          a stigma that we aren’t prepared and under-qualified. PilotCity pushes
+                          that stigma away and recognizes the capability of high schoolers to do
+                          something that isn’t normally seen among us.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/_DSC4843_small.jpg"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Rosa S.</div>
                             <div class="landing__text-testimonial-position">
-                              PilotCity Parent & Guardian
+                              Intern, San Leandro Library
                             </div>
                           </div>
                         </div>
@@ -571,25 +579,27 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_purple-2.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          PilotCity is an excellent program for high school kids as it gives them
+                          invaluable experience in entrepreneurship, confidence, and team building
+                          as it pushes kids to the limits. It teaches them real-life experiences. A
+                          program must for all high school kids.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/3_SeeProjectExamples-1-1.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Shuchita G.</div>
                             <div class="landing__text-testimonial-position">
                               PilotCity Parent & Guardian
                             </div>
@@ -603,27 +613,30 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_red-2.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          Being with PilotCity has allowed me to transform and grow in so many ways.
+                          Thanks to this experience, I'm going to be working with my employer to
+                          implement my service past this internship. The PilotCity team is full of
+                          supportive, hard-working people, and I'm lucky to have been able to join
+                          this experience this summer. Thank you PilotCity!
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.09.15%20AM-1.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Allyson L.</div>
                             <div class="landing__text-testimonial-position">
-                              PilotCity Parent & Guardian
+                              Intern, City of East Palo Alto
                             </div>
                           </div>
                         </div>
@@ -635,28 +648,30 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_yellow_darkyellowstripes.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          Through PilotCity, my incoming 10th-grade daughter got internships with
+                          two different companies during the Summer of 2020. PilotCity encouraged
+                          her to accept both the offers, which helped her realize her own capacity
+                          and learn how to manage her time well. That exposure helped her improve
+                          her technical, presentation, and collaboration skills, as well as boosted
+                          her confidence.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.32.52%20AM.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
                             <div class="landing__text-testimonial-name-black">Nina S.</div>
-                            <div class="landing__text-testimonial-position">
-                              PilotCity Parent & Guardian
-                            </div>
+                            <div class="landing__text-testimonial-position">Rashmi K.</div>
                           </div>
                         </div>
                       </div>
@@ -667,27 +682,96 @@
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_orange_darkorangestripes.svg"
                     dark
                     height="100%"
-                    class="landing__hero-default"
+                    class="invite__hero-default"
                   >
                     <div class="landing__2-column">
                       <div class="landing__left">
                         <div class="invite__text-testimonial-white">
                           <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity is 'too good to be true' for people of all ages who would like
-                          to rediscover themselves.
+                          The second time around with PilotCity was amazing. Even though I didn't
+                          have a main project this year, I got to work under someone and learn about
+                          the workforce. I got to improve my skill level. And I really enjoyed
+                          learning something different every week.
                         </div>
                         <div class="landing__text-testimonial-body">
                           <div>
                             <v-avatar size="75">
                               <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/flipped2019_panel.png"
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.31.51%20AM.png"
                               ></v-img>
                             </v-avatar>
                           </div>
                           <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-black">Nina S.</div>
+                            <div class="landing__text-testimonial-name-black">Kyara G.</div>
+                            <div class="landing__text-testimonial-position">
+                              Intern, Shannon Leigh
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </v-parallax>
+
+                  <v-parallax
+                    src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_green_darkgreenstripes.svg"
+                    dark
+                    height="100%"
+                    class="invite__hero-default"
+                  >
+                    <div class="landing__2-column">
+                      <div class="landing__left">
+                        <div class="invite__text-testimonial-white">
+                          <v-icon left dark>mdi-comment-quote</v-icon>
+                          What a great experience. My daughter, a rising Sophomore, signed up for a
+                          weekend hackathon program. A weekend turned out to be the entire summer.
+                          She loved the experience so much that she made a proposal to her employer
+                          to continue through the school year. Besides the obvious benefits of this
+                          work experience for her college resume, she built up her self confidence
+                          and leadership skills.
+                        </div>
+                        <div class="landing__text-testimonial-body">
+                          <div>
+                            <v-avatar size="75">
+                              <v-img
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.33.56%20AM.png"
+                              ></v-img>
+                            </v-avatar>
+                          </div>
+                          <div class="landing__text-testimonial-title">
+                            <div class="landing__text-testimonial-name-black">Jeff L.</div>
                             <div class="landing__text-testimonial-position">
                               PilotCity Parent & Guardian
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </v-parallax>
+
+                  <v-parallax
+                    src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_pink-1.svg"
+                    dark
+                    height="100%"
+                    class="invite__hero-default"
+                  >
+                    <div class="landing__2-column">
+                      <div class="landing__left">
+                        <div class="invite__text-testimonial-white">
+                          <v-icon left dark>mdi-comment-quote</v-icon>
+                          "PilotCity is more than just a program... it's a family"
+                        </div>
+                        <div class="landing__text-testimonial-body">
+                          <div>
+                            <v-avatar size="75">
+                              <v-img
+                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.34.07%20AM.png"
+                              ></v-img>
+                            </v-avatar>
+                          </div>
+                          <div class="landing__text-testimonial-title">
+                            <div class="landing__text-testimonial-name-black">Pranav P.</div>
+                            <div class="landing__text-testimonial-position">
+                              MESH Fellow, Takeoff Point
                             </div>
                           </div>
                         </div>
@@ -956,8 +1040,8 @@ export default {
   // COLOR V-BIND
 
   &__wrapper-school {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -968,8 +1052,8 @@ export default {
   }
 
   &__wrapper-employer {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -980,8 +1064,8 @@ export default {
   }
 
   &__wrapper-teacher {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -992,8 +1076,8 @@ export default {
   }
 
   &__wrapper-parent {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -1004,8 +1088,8 @@ export default {
   }
 
   &__wrapper-student {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -1016,8 +1100,8 @@ export default {
   }
 
   &__wrapper-sponsor {
-    width: 100%;
-    max-width: 80%;
+    // width: 100%;
+    // max-width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -1177,10 +1261,10 @@ export default {
     // height: 100%;
     padding: 25px;
     // margin-top: auto;
-    margin-top: 5%;
+    margin-top: 8%;
     // margin-bottom: 25px;
     // margin-bottom: auto;
-    margin-bottom: 5%;
+    margin-bottom: 8%;
   }
 
   &__cta {
@@ -1248,8 +1332,22 @@ export default {
     display: flex;
     align-items: flex-start;
   }
+
+  &__close-dialog {
+    text-align: right;
+    background-color: transparent;
+    position: fixed;
+    // position: absolute;
+  }
+
+  &__hero-default {
+    background-color: #404142;
+    // object-fit: cover;
+    // height: 100%;
+    // height: 100%;
+  }
 }
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1280px) {
   .invite {
     &__wrapper-school {
       display: block;
@@ -1257,6 +1355,11 @@ export default {
     }
     &__wrapper-column-right {
       margin-left: 0px;
+      // padding-right: 50px;
+    }
+
+    &__container {
+      // max-width: 100%;
     }
   }
 }
@@ -1271,7 +1374,7 @@ export default {
       margin-left: 0px;
     }
     &__video {
-      width: 540px;
+      // width: 540px;
     }
   }
 }
@@ -1286,7 +1389,7 @@ export default {
       margin-left: 0px;
     }
     &__video {
-      width: 275px;
+      // width: 275px;
     }
   }
 }
@@ -1311,7 +1414,7 @@ export default {
       margin-left: 0px;
     }
     &__video {
-      width: 275px;
+      // width: 275px;
     }
   }
 }
