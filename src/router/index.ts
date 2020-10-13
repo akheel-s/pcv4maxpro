@@ -4,6 +4,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import { routes as PortfolioRoutes } from '@/views/Portfolio';
 import Signup from '@/views/Signup';
+import Invite from '@/views/Invite.vue';
 import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
 import Timeline from '@/components/Timeline.vue';
@@ -42,6 +43,15 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
+    path: '/invite/:schoolName',
+    name: 'invite',
+    component: Invite,
+    props: true,
+    meta: {
+      layout: 'no-nav'
+    }
+  },
+  {
     path: '/emailconfirmation',
     name: 'confirmEmail',
     component: ConfirmEmail,
@@ -61,6 +71,7 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '*',
+    name: '404',
     component: Error404,
     redirect: () => {
       return { name: 'portfolio' };
