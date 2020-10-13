@@ -50,7 +50,7 @@
         <v-btn
           class="invite__password-button text-uppercase"
           outlined
-          :disabled="invalid"
+          :disabled="invalid || pass == ''"
           hide-details
           depressed
           @click="
