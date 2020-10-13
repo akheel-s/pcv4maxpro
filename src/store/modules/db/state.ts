@@ -2,7 +2,11 @@ import { Stitch, RemoteMongoClient, RemoteMongoDatabase } from 'mongodb-stitch-b
 import Database from '@/@types/database';
 import { User } from '../../../generated/graphql';
 
-const client = Stitch.initializeDefaultAppClient(process.env.VUE_APP_REALM_ID);
+const client = Stitch.initializeDefaultAppClient(
+  process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_REALM_ID
+    : process.env.VUE_APP_REALM_ID_DEV
+);
 
 const state: {
   user: User | null;
