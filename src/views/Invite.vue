@@ -50,7 +50,6 @@
         <v-btn
           class="invite__password-button text-uppercase"
           outlined
-          :disabled="invalid || pass == ''"
           hide-details
           depressed
           @click="
@@ -62,6 +61,8 @@
         >
       </validation-observer>
     </div>
+
+    <!-- :disabled="invalid || pass == ''" -->
     <!--
     <div
       :class="[{invitePages[getInvitee].type == 'school' ? teacherbutton-css : '' }, {invitePages[getInvitee].type == 'employer' ? employerbutton-css : '' }]"
@@ -910,6 +911,12 @@ export default {
 
     const invitePages = {
       // SCHOOLS
+
+      'West Contra Costa Unified': {
+        user: 'school',
+        password: 'wccusd',
+        video: 'L6-wGa-Kkmk'
+      },
 
       'Antioch High School': {
         user: 'school',
