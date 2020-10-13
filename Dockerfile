@@ -1,4 +1,4 @@
-FROM node:12.18.2
+FROM node:12.19.0
 RUN apt-get update -y && apt-get upgrade -y 
 RUN apt-get install rsync -y
 # Create and define the node_modules's cache directory.

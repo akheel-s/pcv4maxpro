@@ -19,9 +19,7 @@ export interface DbGetters extends GetterTree<typeof dbState, RootState> {
 export const getters: DbGetters = {
   collection: (_state, _gets, rootState, rootGetters) => {
     return rootGetters[`auth/${AuthGetters.getUser}`]
-      ? rootState.realmApp.app.services
-          .mongodb(process.env.VUE_APP_ATLAS_SERVICE_NAME)
-          .db(process.env.VUE_APP_DB).collection
+      ? rootState.realmApp.app.services.mongodb('mongodb-atlas').db('Primary').collection
       : null;
   },
   functions: (_state, _gets, rootState) => {
