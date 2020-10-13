@@ -1,67 +1,66 @@
 <template>
   <div class="invite__container">
     <div v-if="pass !== invitePages[getInvitee].password" class="invite__wrapper-password">
-      <!-- <div class="invite__password-title">
-        <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div> -->
-
-      <div v-if="invitePages[getInvitee].user == 'school'" class="invite__password-title">
-        <v-btn color="blue" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'employer'">
-        <v-btn color="purple" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'parent'">
-        <v-btn color="yellow" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'teacher'">
-        <v-btn color="pink" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'student'">
-        <v-btn color="green" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div v-if="invitePages[getInvitee].user == 'sponsor'">
-        <v-btn color="red" class="invite__password-title-button" x-small outlined depressed
-          >Invite for {{ getInvitee }}</v-btn
-        >
-      </div>
-
-      <div class="invite__password">
-        <v-text-field
-          v-model="inputPassword"
-          :type="show1 ? 'text' : 'password'"
-          depressed
-          label="Password"
+      <div class="invite__password-title">
+        <v-btn
+          :color="
+            invitePages[getInvitee].user == 'school'
+              ? 'blue'
+              : invitePages[getInvitee].user == 'employer'
+              ? 'purple'
+              : invitePages[getInvitee].user == 'parent'
+              ? 'yellow'
+              : invitePages[getInvitee].user == 'teacher'
+              ? 'pink'
+              : invitePages[getInvitee].user == 'student'
+              ? 'green'
+              : invitePages[getInvitee].user == 'sponsor'
+              ? 'red'
+              : ''
+          "
+          class="invite__password-title-button"
+          x-small
           outlined
-          required
-          @keyup.enter="pass = inputPassword"
-        />
+          depressed
+          >Invite for {{ getInvitee }}</v-btn
+        >
+      </div>
+
+      <validation-observer v-slot="{ invalid, handleSubmit }" class="invite__password">
+        <validation-provider
+          v-slot="{ errors }"
+          slim
+          :rules="`password:${invitePages[getInvitee].password}`"
+        >
+          <v-text-field
+            v-model="inputPassword"
+            :error-messages="errors"
+            :type="show1 ? 'text' : 'password'"
+            depressed
+            label="Password"
+            outlined
+            required
+            @keyup.enter="
+              handleSubmit(() => {
+                pass = inputPassword;
+              })
+            "
+          />
+        </validation-provider>
         <v-btn
           class="invite__password-button text-uppercase"
           outlined
+          :disabled="invalid"
           hide-details
           depressed
-          @click="pass = inputPassword"
+          @click="
+            handleSubmit(() => {
+              pass = inputPassword;
+            })
+          "
           >View Invite</v-btn
         >
-      </div>
+      </validation-observer>
     </div>
     <!--
     <div
@@ -158,42 +157,21 @@
           <span class="invite__title text-center">
             <v-icon
               v-if="invitePages[getInvitee].user == 'school'"
-              color="blue"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'employer'"
-              color="purple"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'teacher'"
-              color="pink"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'parent'"
-              color="yellow"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'student'"
-              color="green"
-              class="invite__title-icon"
-              x-large
-              >mdi-telegram</v-icon
-            >
-            <v-icon
-              v-if="invitePages[getInvitee].user == 'sponsor'"
-              color="red"
+              :color="
+                invitePages[getInvitee].user == 'school'
+                  ? 'blue'
+                  : invitePages[getInvitee].user == 'employer'
+                  ? 'purple'
+                  : invitePages[getInvitee].user == 'parent'
+                  ? 'yellow'
+                  : invitePages[getInvitee].user == 'teacher'
+                  ? 'pink'
+                  : invitePages[getInvitee].user == 'student'
+                  ? 'green'
+                  : invitePages[getInvitee].user == 'sponsor'
+                  ? 'red'
+                  : ''
+              "
               class="invite__title-icon"
               x-large
               >mdi-telegram</v-icon
@@ -239,46 +217,6 @@
             >
           </a>
         </div>
-
-        <!-- <div class="invite__accept-decline">
-          <v-btn class="invite__cta-accept-decline" color="green" large dark depressed
-            >Accept</v-btn
-          >
-          <v-btn class="invite__cta-accept-decline" color="red" large dark depressed>Decline</v-btn>
-        </div> -->
-
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
-            >Watch Presentation</v-btn
-          >
-        </div> -->
-        <!-- <div class="invite__resources-title">MAKE ACTIONS</div> -->
-
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
-            >Pricing & Sponsorship</v-btn
-          >
-        </div> -->
-
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Sponsor & Transfer</v-btn
-          >
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed>View Balance</v-btn>
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Explore Programs</v-btn
-          >
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Watch Introduction Video</v-btn
-          >
-        </div> -->
-
         <div class="invite__resources">
           <div class="invite__resources-title2">EXPLORE RESOURCES</div>
 
@@ -289,64 +227,6 @@
               ></a
             >
           </div>
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Testimonials</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Survey Data</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Program Videos</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <v-btn class="invite__cta" color="blue" small rounded dark depressed
-              >Employer Examples</v-btn
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none"
-              ><v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >FAQ</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- VIDEOASK BUTTON -->
-          <!-- <div class="invite__resources-title3">NEED HELP?</div>
-          <div>
-            <a
-              href="https://www.videoask.com/fntxxoz2y"
-              target="_blank"
-              style="text-decoration: none"
-            >
-              <v-btn
-                class="invite__cta-ask-question"
-                color="grey darken-3"
-                small
-                rounded
-                outlined
-                depressed
-                >Ask Video Question</v-btn
-              ></a
-            >
-          </div> -->
         </div>
 
         <!-- <div class="invite__resources">hi</div> -->
