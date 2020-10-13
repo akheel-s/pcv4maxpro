@@ -1,53 +1,54 @@
 <template>
   <div class="login__background">
-    <div class="login__body">
-      <div class="login__title text-h4 font-weight-black">
-        <span>Welcome back.</span>
+    <Loading v-slot="{ loading, process }" :callback="login" linear-loader>
+      <div class="login__body">
+        <div class="login__title text-h4 font-weight-black">
+          <span>Welcome back.</span>
+        </div>
       </div>
-    </div>
-    <div class="login__inputs">
-      <validation-observer v-slot="{ invalid }" ref="observer" slim class="login__emailalign">
-        <div class="login__email text-subtitle-2">Email</div>
-        <validation-provider v-slot="{ errors }" ref="provider" rules="required|email">
-          <v-text-field
-            ref="emailInput"
-            v-model="email"
-            class="login__input"
-            single-line
-            outlined
-            full-width
-            label="Email"
-            color="white"
-            dark
-            :error-messages="errors"
-          ></v-text-field>
-        </validation-provider>
+      <div class="login__inputs">
+        <validation-observer v-slot="{ invalid }" ref="observer" slim class="login__emailalign">
+          <div class="login__email text-subtitle-2">Email</div>
+          <validation-provider v-slot="{ errors }" ref="provider" rules="required|email">
+            <v-text-field
+              ref="emailInput"
+              v-model="email"
+              class="login__input"
+              single-line
+              outlined
+              full-width
+              label="Email"
+              color="white"
+              dark
+              :error-messages="errors"
+            ></v-text-field>
+          </validation-provider>
 
-        <div class="login__password text-subtitle-2">Password</div>
-        <validation-provider v-slot="{ errors }" slim rules="required">
-          <v-text-field
-            ref="passwordInput"
-            v-model="password"
-            class="login__input"
-            type="password"
-            label="Password"
-            toggle
-            single-line
-            outlined
-            full-width
-            dark
-            :error-messagees="errors"
-          >
-          </v-text-field>
+          <div class="login__password text-subtitle-2">Password</div>
+          <validation-provider v-slot="{ errors }" slim rules="required">
+            <v-text-field
+              ref="passwordInput"
+              v-model="password"
+              class="login__input"
+              type="password"
+              label="Password"
+              toggle
+              single-line
+              outlined
+              full-width
+              dark
+              :error-messagees="errors"
+              @keyup.enter="process"
+            >
+            </v-text-field>
 
-          <div class="login__forgotpassword">
-            <i>
-              <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
-            </i>
-          </div>
-        </validation-provider>
+            <!-- <div class="login__forgotpassword">
+              <i>
+                <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
+              </i>
+            </div> -->
+          </validation-provider>
 
-        <Loading v-slot="{ loading, process }" :callback="login" linear-loader>
           <v-btn
             ref="loginBtn"
             class="login__next text-h5 font-weight-black"
@@ -60,15 +61,15 @@
             @click="process"
             >Login</v-btn
           >
-        </Loading>
-        <v-alert v-if="error" class="login__alert" type="error">{{ error }}</v-alert>
-        <div class="login__newaccount">
-          <i>
-            <a class="login__signuplink" href="signup"> No account yet? Signup.</a>
-          </i>
-        </div>
-      </validation-observer>
-    </div>
+          <v-alert v-if="error" class="login__alert" type="error">{{ error }}</v-alert>
+          <div class="login__newaccount">
+            <i>
+              <a class="login__signuplink" href="signup"> No account yet? Signup.</a>
+            </i>
+          </div>
+        </validation-observer>
+      </div>
+    </Loading>
   </div>
 </template>
 

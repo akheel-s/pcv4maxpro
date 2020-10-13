@@ -4,21 +4,115 @@
       <div class="my-programs pc-container">
         <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">My Programs</h4>
-          <program-card />
-          <program-card class="mt-10" />
+          <v-hover v-slot:default="{ hover }">
+            <div class="my-programs__card1-border">
+              <v-card
+                class="my-programs__card1 text-h5 font-weight-black"
+                :elevation="hover ? 6 : 0"
+              >
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <div class="my-programs__card2">
+                      <v-btn x-large icon color="gray" v-bind="attrs" v-on="on">
+                        <v-icon x-large>mdi-plus</v-icon>
+                      </v-btn>
+                    </div>
+                  </template>
+                  <v-card class="my-programs__dialog">
+                    <v-icon color="yellow" x-large>mdi-rocket-outline</v-icon>
+                    <v-card-title class="my-programs__dialog-title">
+                      Programs launching January 2021.<br />Get your rockets ready.</v-card-title
+                    >
+                    <v-btn
+                      class="my-programs__dialog-button"
+                      rounded
+                      outlined
+                      large
+                      color="primary lighten-3"
+                      @click="dialog = false"
+                      >Back to Portfolio</v-btn
+                    >
+                  </v-card>
+                </v-dialog>
+              </v-card>
+            </div>
+          </v-hover>
         </div>
         <div v-if="role !== 'none'" class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">{{ role }}</h4>
-          <program-card />
+          <v-hover v-slot:default="{ hover }">
+            <div class="my-programs__card1-border">
+              <v-card
+                class="my-programs__card1 text-h5 font-weight-black"
+                :elevation="hover ? 6 : 0"
+              >
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <div class="my-programs__card2">
+                      <v-btn x-large icon color="gray" v-bind="attrs" v-on="on">
+                        <v-icon x-large>mdi-plus</v-icon>
+                      </v-btn>
+                    </div>
+                  </template>
+
+                  <v-card class="my-programs__dialog">
+                    <v-icon x-large>mdi-rocket-outline</v-icon>
+                    <v-card-title class="my-programs__dialog-title">
+                      Programs launching January 2021.<br />Get your rockets ready.</v-card-title
+                    >
+                    <v-btn
+                      class="my-programs__dialog-button"
+                      rounded
+                      outlined
+                      large
+                      color="primary lighten-3"
+                      @click="dialog = false"
+                      >Back to Portfolio</v-btn
+                    >
+                  </v-card>
+                </v-dialog>
+              </v-card>
+            </div>
+          </v-hover>
         </div>
-        <div class="my-programs__wrapper">
+        <!-- <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">Completed</h4>
           <div class="my-programs__wrapper-col">
-            <program-card :tile="true" />
-            <program-card :tile="true" />
-            <program-card :tile="true" />
+            <v-hover v-slot:default="{ hover }">
+              <v-card
+                class="my-programs__card1 text-h5 font-weight-black"
+                :elevation="hover ? 12 : 2"
+                outlined
+              >
+                <v-dialog v-model="dialog" width="500">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon color="gray" v-bind="attrs" v-on="on">
+                      <v-icon x-large>mdi-plus</v-icon>
+                    </v-btn>
+                  </template>
+
+                  <v-card>
+                    <v-card-title class="headline grey lighten-2"> Coming Soon </v-card-title>
+
+                    <v-divider></v-divider>
+
+                    <v-card-text>
+                      The Programs section of the platform is at the end of development and will be
+                      released soon.
+                    </v-card-text>
+
+                    <v-divider></v-divider>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="primary" text @click="dialog = false"> Close </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </v-card>
+            </v-hover>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -82,6 +176,47 @@
     -ms-grid-rows: auto 16px auto;
     grid-template-rows: auto auto;
   }
+  &__card1 {
+    width: 100%;
+    height: 200px;
+    background-color: white;
+    text-align: center;
+    color: gray;
+
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  &__card1-border {
+    border: 1px dashed #c7c8ca;
+  }
+  &__card2 {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+
+  &__card2-border {
+    border: 1px dashed #c7c8ca;
+  }
+  &__popup {
+    font-family: Raleway !important;
+  }
+
+  &__dialog {
+    text-align: center;
+    padding: 25px;
+  }
+
+  &__dialog-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dialog-button {
+    margin: 20px;
+  }
 }
 .my-program {
   display: block;
@@ -103,7 +238,6 @@
     grid-template-columns: 1fr;
   }
 }
-
 @media screen and (max-width: 767px) {
   .my-programs__container {
     margin-top: 213px;
@@ -111,15 +245,16 @@
 }
 </style>
 <script lang="ts">
-import { computed } from '@vue/composition-api';
+import { computed, ref } from '@vue/composition-api';
 import { useDbState } from '@/store';
-import ProgramCard from '../components/PCProgramCard.vue';
+// import ProgramCard from '../components/PCProgramCard.vue';
 
 export default {
   components: {
-    'program-card': ProgramCard
+    // 'program-card': ProgramCard
   },
   setup() {
+    const dialog = ref(false);
     const { user } = useDbState(['user']);
     const role = computed(() => {
       const types = user.value?.userTypes;
@@ -129,7 +264,8 @@ export default {
       return 'none';
     });
     return {
-      role
+      role,
+      dialog
     };
   }
 };

@@ -2,7 +2,75 @@
   <ValidationObserver v-slot="{ invalid }">
     <div class="refer__container">
       <profile :size="75"></profile>
-      <div class="refer__title-main">Make and manage your invites</div>
+      <div class="refer__title-main">Invite friends to join the program</div>
+
+      <div class="refer__title-main-citizens">
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="green"
+          class="landing__hero-citizenchips-group1"
+          >Students</v-btn
+        >
+
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="purple"
+          class="landing__hero-citizenchips-group"
+          >Employers</v-btn
+        >
+
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="pink"
+          class="landing__hero-citizenchips-group"
+          >Teachers</v-btn
+        >
+
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="blue"
+          class="landing__hero-citizenchips-group"
+          >Schools</v-btn
+        >
+
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="yellow"
+          class="landing__hero-citizenchips-group"
+          >Parents</v-btn
+        >
+
+        <v-btn
+          center
+          rounded
+          depressed
+          dark
+          x-small
+          color="red"
+          class="landing__hero-citizenchips-group"
+          >Sponsors</v-btn
+        >
+      </div>
 
       <div class="refer__body1">
         <validation-provider v-slot="{ errors }" rules="required">
@@ -178,7 +246,11 @@ export default {
     font-size: 32px;
     font-weight: 800;
     margin-top: 15px;
-    margin-bottom: 15px;
+  }
+
+  &__title-main-citizens {
+    margin-top: 15px;
+    margin-bottom: 30px;
   }
 
   &__title-secondary {
@@ -220,7 +292,7 @@ export default {
   }
 
   &__manage1 {
-    margin-top: 25px;
+    margin-top: 50px;
     margin-bottom: 25px;
   }
 

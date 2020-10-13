@@ -1,6 +1,8 @@
 <template>
   <v-toolbar depressed flat color="primary" height="75">
-    <img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
+    <a href="https://www.pilotcity.com/"
+      ><img src="@/assets/Pilotcity_logo.png" class="nav__logo" />
+    </a>
 
     <v-toolbar-title
       ><span class="text-h5 signup__header font-weight-black text-sm-h4"></span
@@ -18,13 +20,24 @@
     <v-spacer></v-spacer>
 
     <div class="nav__actions">
-      <v-btn v-if="!user" depressed color="white" outlined :to="{ name: 'login' }" :ripple="false">
+      <v-btn
+        v-if="!user"
+        depressed
+        large
+        rounded
+        color="white"
+        outlined
+        :to="{ name: 'login' }"
+        :ripple="false"
+      >
         <span class="font-weight-black">Login</span>
       </v-btn>
       <v-btn
         v-if="!user"
-        class="signup__signupbutton rounded-lg"
+        class="signup__signupbutton"
         depressed
+        large
+        rounded
         color="#828282"
         :ripple="false"
         :to="{ name: 'signup' }"
@@ -90,21 +103,35 @@
       </v-btn> -->
       <v-menu v-if="user" offset-y :ripple="false">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn v-if="user" color="primary" dark depressed v-bind="attrs" v-on="on">
+          <v-btn
+            v-if="user"
+            rounded
+            large
+            class="navbar__avatar"
+            color="primary"
+            dark
+            depressed
+            v-bind="attrs"
+            v-on="on"
+          >
             <Profile :size="45" />
           </v-btn>
         </template>
-
-        <v-btn color="primary" dark depressed @click="logout">Sign Out</v-btn>
+        <v-btn class="navbar__logout" color="primary" dark depressed @click="logout">Logout</v-btn>
       </v-menu>
     </div>
   </v-toolbar>
 </template>
 <style lang="scss">
+.navbar__logout {
+}
 .nav__logo {
   width: 40px;
   height: 50px;
   margin-left: 20px;
+}
+
+.navbar__avatar {
 }
 
 .nav__profile {

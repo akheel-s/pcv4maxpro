@@ -16,6 +16,8 @@
           depressed
           color="grey"
           dark
+          outlined
+          rounded
           small
           @click="currentTab = 'my-programs'"
           >My Portfolio</v-btn
@@ -25,6 +27,7 @@
           class="profile__mode font-weight-bold"
           text
           color="grey"
+          outlined
           small
           @click="currentTab = 'balance'"
           >{{ tickets }} Tokens</v-btn
@@ -35,7 +38,7 @@
           color="purple"
           small
           @click="currentTab = 'payment'"
-          ><v-icon left>mdi-shield-star</v-icon>Sponsor</v-btn
+          ><v-icon left>mdi-cash-usd</v-icon>Sponsor</v-btn
         >
         <v-btn
           class="profile__mode white--text font-weight-bold"
@@ -48,7 +51,11 @@
       </div>
       <div class="profile__container pc-container">
         <div
-          v-if="(user && getComponent == 'my-programs') || (user && getComponent == 'settings')"
+          v-if="
+            (user && getComponent == 'my-programs') ||
+            (user && getComponent == 'settings') ||
+            (user && getComponent == 'id')
+          "
           align-items="center"
           class="profile__sub-container text-center mt-12"
         >

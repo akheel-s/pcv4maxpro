@@ -22,7 +22,7 @@
     </v-img>
     <v-img v-else-if="src.length" class="rounded-circle" :width="size" :height="size" :src="src">
     </v-img>
-    <v-avatar v-else color="accent" boredered :width="size" :height="size"
+    <v-avatar v-else class="navbar__initials" color="accent" bordered :width="size" :height="size"
       >{{ initials }}
     </v-avatar>
   </div>
@@ -211,6 +211,12 @@ html {
 
 .rounded-circle {
   margin: auto;
-  border: 1px solid black;
+  background-color: #dedede;
+}
+
+.navbar__initials {
+  font-family: Raleway;
+  font-weight: 900;
+  letter-spacing: 0px;
 }
 </style>

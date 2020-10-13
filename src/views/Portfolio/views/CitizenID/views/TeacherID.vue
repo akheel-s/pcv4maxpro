@@ -123,10 +123,6 @@ import { TeacherPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
 import { STATE } from '../../../const';
 
-const {
-  getObjectId: { value: getObjectId }
-} = useAuthGetters([GetterTypes.getObjectId]);
-
 export default {
   name: 'TeacherID',
   components: {
@@ -143,6 +139,7 @@ export default {
       }
     }
   ) {
+    const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
     const formOpt = reactive({ stateOpts: STATE });
     const details = reactive({
       schoolDistrict: '',
@@ -184,7 +181,7 @@ export default {
     function processQuery() {
       return query<{ teacherPortfolio: TeacherPortfolio }>({
         query: TEACHERIDQUERY,
-        variables: { id: getObjectId }
+        variables: { id: getObjectId.value }
       }).then(({ data: { teacherPortfolio: res } }) => {
         if (res)
           Object.keys(details).forEach(key => {
@@ -199,7 +196,7 @@ export default {
       await update({
         collection: 'TeacherPortfolio',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           schoolDistrict: details.schoolDistrict,
           schoolName: details.schoolName,
           subjects: details.subjects,

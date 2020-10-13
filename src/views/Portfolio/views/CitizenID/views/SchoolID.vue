@@ -139,10 +139,6 @@ import { SchoolPortfolio } from '@/generated/graphql';
 import Loading from '@/components/Loading.vue';
 import { SCHOOL_ROLE, STATE } from '../../../const';
 
-const {
-  getObjectId: { value: getObjectId }
-} = useAuthGetters([GetterTypes.getObjectId]);
-
 export default {
   name: 'SchoolID',
   components: {
@@ -173,7 +169,7 @@ export default {
       // stakeholderAccess: '',
       // stakeholder: ''
     });
-
+    const { getObjectId } = useAuthGetters([GetterTypes.getObjectId]);
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
 
     const SCHOOLIDQUERY = gql`
@@ -201,7 +197,7 @@ export default {
     function processQuery() {
       return query<{ schoolPortfolio: SchoolPortfolio }>({
         query: SCHOOLIDQUERY,
-        variables: { id: getObjectId }
+        variables: { id: getObjectId.value }
       }).then(({ data: { schoolPortfolio: res } }) => {
         if (res)
           Object.keys(details).forEach(key => {
@@ -216,7 +212,7 @@ export default {
       await update({
         collection: 'SchoolPortfolio',
         payload: {
-          _id: getObjectId,
+          _id: getObjectId.value,
           staffType: details.staffType,
           position: details.position,
           schoolDistrict: details.schoolDistrict,
@@ -224,7 +220,7 @@ export default {
           // stakeholderAccess: details.stakeholderAccess,
           // stakeholder: details.stakeholder
         } as SchoolPortfolio,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input');

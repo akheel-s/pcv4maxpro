@@ -12,9 +12,7 @@
             <div class="balance__main-left-title">BALANCE</div>
             <div class="balance__main-left-header">{{ tokens.length }} Tokens</div>
             <div>
-              <v-icon class="balance__main-left-icon" color="grey" large
-                >mdi-ticket-confirmation</v-icon
-              >
+              <v-icon class="balance__main-left-icon" color="grey" x-large>mdi-set-right</v-icon>
             </div>
             <div class="balance__main-left-chippers">
               <v-chip
@@ -36,7 +34,7 @@
                 x-large
                 @click="$emit('changeTab', 'payment')"
               >
-                <v-icon left>mdi-shield-star</v-icon>Sponsor
+                <v-icon left>mdi-cash-usd</v-icon>Sponsor
               </v-btn>
             </div>
 
