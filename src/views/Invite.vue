@@ -910,66 +910,442 @@ export default {
     // video ask setup
 
     const invitePages = {
-      // SCHOOLS
-
-      'West Contra Costa Unified': {
-        user: 'school',
-        password: 'wccusd',
-        video: 'L6-wGa-Kkmk'
+      Affirm: {
+        user: 'employer',
+        password: 'affirm',
+        video: 'cLQOfJJWeis'
       },
 
-      'Antioch High School': {
-        user: 'school',
-        password: 'antiochhighschool',
-        video: '_ic0VQUY4pA'
+      'Alameda Chamber Of Commerce': {
+        user: 'employer',
+        password: 'alamedachamber',
+        video: 'h4h2l84ZNLw'
       },
-
-      // EMPLOYERS
 
       'Alameda County': {
         user: 'employer',
         password: 'alamedacounty',
-        video: '4LJOPWtwf3c'
+        video: '_eqGuDQpOE4'
+      },
+
+      'Alan AI': {
+        user: 'employer',
+        password: 'alan',
+        video: 'edDmkzlc3nA'
       },
 
       'AP Racing': {
         user: 'employer',
         password: 'apracing',
-        video: '18YDhUToetw'
+        video: '5puXzjBn62Y'
       },
 
-      // TESTS
+      BART: {
+        user: 'employer',
+        password: 'bart',
+        video: 'W5JFjfKRLEg'
+      },
+
+      'City Of Antioch': {
+        user: 'employer',
+        password: 'antioch',
+        video: 'FjnqWo17FW8'
+      },
+
+      'City Of San Leandro Engineering': {
+        user: 'employer',
+        password: 'sanleandro',
+        video: 'c-mMXLwTpTg'
+      },
+
+      'Councilmember Holland White': {
+        user: 'employer',
+        password: 'holland',
+        video: 'uGuq-lMUOL8'
+      },
+
+      'Councilmember Sara Lamnin': {
+        user: 'employer',
+        password: 'hayward',
+        video: 'AzLA_CPXgVE'
+      },
+
+      Glydways: {
+        user: 'employer',
+        password: 'glydways',
+        video: '4PxAlYaaOKI'
+      },
+
+      'James Gardner': {
+        user: 'employer',
+        password: 'gardner',
+        video: 'df70W1HrjBI'
+      },
+
+      'Kengo Yoshii': {
+        user: 'employer',
+        password: 'kengo',
+        video: 'c3VbyF3wRqo'
+      },
+
+      'Lawrence Berkeley National Lab': {
+        user: 'employer',
+        password: 'berkeleylab',
+        video: ''
+      },
+
+      'Office Of Congresswoman Barbara Lee': {
+        user: 'employer',
+        password: 'barbaralee',
+        video: 'LnI7bMDc2_I'
+      },
+
+      'One Workplace': {
+        user: 'employer',
+        password: 'oneworkplace',
+        video: 'd4dXzlcXhNw'
+      },
+
+      'Phase Space': {
+        user: 'employer',
+        password: 'phasespace',
+        video: 'Ppze1eQQJD0'
+      },
+
+      'Raconteur Animation': {
+        user: 'employer',
+        password: 'raconteur',
+        video: 'zMon-0lIIbE'
+      },
+
+      'San Francisco Fire Department': {
+        user: 'employer',
+        password: 'sffd',
+        video: 'a-eF7wXn5GU'
+      },
+
+      'San Mateo County Labs': {
+        user: 'employer',
+        password: 'smclabs',
+        video: 'm3Bn1TxOv8s'
+      },
+
+      Seeed: {
+        user: 'employer',
+        password: 'seeed',
+        video: 'ueObATSbs0k'
+      },
+
+      'Takeoff Point': {
+        user: 'employer',
+        password: 'takeoff',
+        video: 'roxTlCTYkow'
+      },
+
+      // ROUND 1 SCHOOLS
+
+      'Antioch High School': {
+        user: 'school',
+        password: 'antiochhigh',
+        video: 'd5a4CINz_Ns'
+      },
+
+      'Basis Independent Fremont': {
+        user: 'school',
+        password: 'basis',
+        video: 'DlvJuX0D26w'
+      },
+
+      'Berkeley Technology Academy': {
+        user: 'school',
+        password: 'bta',
+        video: '9VoP6uPmODQ'
+      },
+
+      'Berkeley Unified School District': {
+        user: 'school',
+        password: 'busd',
+        video: 'Sd4ykJny6eo'
+      },
+
+      'Carla Ng': {
+        user: 'school',
+        password: 'carla',
+        video: 'pUzJ-OWTXHw'
+      },
+
+      'Cece Adams': {
+        user: 'school',
+        password: 'cece',
+        video: 'qulvPCNo6jY'
+      },
+
+      'Daniel Spinka': {
+        user: 'school',
+        password: 'spinka',
+        video: '85iRhdtjkAE'
+      },
+
+      'Design Tech High School': {
+        user: 'school',
+        password: 'dtech',
+        video: 'HWffCteneCU'
+      },
+
+      'Eastside College Prep School': {
+        user: 'school',
+        password: 'eastside',
+        video: 'Zmf2UVgzzwI'
+      },
+
+      'Emiliano Sanchez': {
+        user: 'school',
+        password: 'emiliano',
+        video: 'mQ_K1TG-MaI'
+      },
+
+      'Fremont Unified School District': {
+        user: 'school',
+        password: 'fusd',
+        video: 'dkXG7FouHRg'
+      },
+
+      'Google Code Next': {
+        user: 'school',
+        password: 'codenext',
+        video: 'mAbYaERVy8I'
+      },
+
+      'Janevette Cole': {
+        user: 'school',
+        password: 'janevette',
+        video: 'in8C1LwGMi4'
+      },
+
+      'Jefferson Union High School District': {
+        user: 'school',
+        password: 'juhsd',
+        video: '__CXM3bbreQ'
+      },
+
+      KIPP: {
+        user: 'school',
+        password: 'kipp',
+        video: '88-cI45-d30'
+      },
+
+      'Leadership Public Schools': {
+        user: 'school',
+        password: 'lps',
+        video: 'M3s9Y-8-Ftw'
+      },
+
+      'Lehigh University': {
+        user: 'school',
+        password: 'lehigh',
+        video: '6m1R5if22bo'
+      },
+
+      'Madison Park Academy': {
+        user: 'school',
+        password: 'mpa',
+        video: 'fRh9Q0e3ECY'
+      },
+
+      'Marin County Office Of Education': {
+        user: 'school',
+        password: 'mcoe',
+        video: 'LnfGrxU2hjQ'
+      },
+
+      'Menlo School': {
+        user: 'school',
+        password: 'menlo',
+        video: 'xhXrnH7WR54'
+      },
+
+      'Mills High School': {
+        user: 'school',
+        password: 'mills',
+        video: 'H82iAm_ezFI'
+      },
+
+      'Oakland Tech High School': {
+        user: 'school',
+        password: 'tech',
+        video: 'xDQPjKDtL9M'
+      },
+
+      'Principal James Gray': {
+        user: 'school',
+        password: 'gray',
+        video: 'XGd5fZHg2W0'
+      },
+
+      'San Leandro Unified School District': {
+        user: 'school',
+        password: 'slusd',
+        video: 'Ucs8ARqlp4U'
+      },
+
+      'San Mateo County Office Of Ed': {
+        user: 'school',
+        password: 'smcoe',
+        video: 'bxvH7hFCFU8'
+      },
+
+      'Sequoia Union High School District': {
+        user: 'school',
+        password: 'seq',
+        video: 'Y3sGGkwEKD4'
+      },
+
+      'South San Francisco Unified School District': {
+        user: 'school',
+        password: 'ssfusd',
+        video: 'W8W9WEKUIHU'
+      },
+
+      // ROUND 1 SPONSORS
+
+      AFCEA: {
+        user: 'sponsor',
+        password: 'afcea',
+        video: 'FUcM-lDFaj8'
+      },
+
+      'East Bay Leadership Council': {
+        user: 'sponsor',
+        password: 'eblc',
+        video: 'lddMI6cf4qs'
+      },
+
+      'Oakland Workforce Development Board': {
+        user: 'sponsor',
+        password: 'owdb',
+        video: 'B9QaGRIp7MY'
+      },
+
+      // ROUND 1 TEACHERS
 
       'Arroyo High School': {
         user: 'school',
-        password: '321',
-        video: 'df0ZmKkzuWY'
-      },
-      'Terri Griffin': {
-        user: 'teacher',
-        password: '321',
-        video: 'L_jWHffIx5E'
-      },
-      'Office Of Supervisor Nate Miley': {
-        user: 'employer',
-        password: '321',
-        video: 'L_jWHffIx5E'
-      },
-      'Adit Garg': {
-        user: 'student',
-        password: '321',
-        video: 'L_jWHffIx5E'
-      },
-      'Anthony Crecy': {
-        user: 'parent',
-        password: '321',
-        video: 'L_jWHffIx5E'
+        password: 'arroyo',
+        video: '56dbFDK0VmA'
       },
 
-      'Verizon 5G Labs': {
-        user: 'sponsor',
-        password: '321',
-        video: 'L_jWHffIx5E'
+      'Brian Hsieh': {
+        user: 'teacher',
+        password: 'hsieh',
+        video: '8EsUy5B_PX0'
+      },
+
+      'Christina Charlton': {
+        user: 'teacher',
+        password: 'charlton',
+        video: 'dEatXU-uJSo'
+      },
+
+      'Colegio Nueva Granada': {
+        user: 'school',
+        password: 'colegio',
+        video: 'CrF0oRyvnx8'
+      },
+
+      'Darryl Starr': {
+        user: 'teacher',
+        password: 'starr',
+        video: 'ZrH7RepuDxk'
+      },
+
+      'Eden Youth Family Center': {
+        user: 'teacher',
+        password: 'eyfc',
+        video: 'JJBZeIeusZ8'
+      },
+
+      'Irvington High School': {
+        user: 'school',
+        password: 'irvington',
+        video: 'Oa9ZaBUXer4'
+      },
+
+      'Jadie Sun': {
+        user: 'teacher',
+        password: 'sun',
+        video: 'URBq2YIGzHc'
+      },
+
+      'Kam O Horo': {
+        user: 'teacher',
+        password: 'ohoro',
+        video: '3oFAtyZF-2A'
+      },
+
+      'Kent Mc Cutcheon': {
+        user: 'teacher',
+        password: 'kent',
+        video: '8Giu1Em6jxs'
+      },
+
+      'Kyra Wheaton': {
+        user: 'teacher',
+        password: 'wheaton',
+        video: 'NtY-6_GyGoc'
+      },
+
+      'Lance Brookner': {
+        user: 'teacher',
+        password: 'brookner',
+        video: 'gIreAGITWMo'
+      },
+
+      'Larry Lavendel': {
+        user: 'teacher',
+        password: 'lavendel',
+        video: 'yDkqAbDqFkc'
+      },
+
+      'Marc Gordon': {
+        user: 'teacher',
+        password: 'gordon',
+        video: 'ySKRTuuWTXY'
+      },
+
+      'Melissa Hale': {
+        user: 'teacher',
+        password: 'hale',
+        video: 'o2d4ckYBwLI'
+      },
+
+      'Rebecca Lee': {
+        user: 'teacher',
+        password: 'lee',
+        video: 'lVPGD3Whbvw'
+      },
+
+      'Rick Charles': {
+        user: 'teacher',
+        password: 'charles',
+        video: 'StBqHggBQXg'
+      },
+
+      'Thalia Mc Neil Smith': {
+        user: 'teacher',
+        password: 'smith',
+        video: 'Ckx_eDYOpfM'
+      },
+
+      'Yvie Raij': {
+        user: 'teacher',
+        password: 'raij',
+        video: '45lRCdi88wA'
+      },
+
+      'West Contra Costa Unified': {
+        user: 'school',
+        password: 'wccusd',
+        video: 'L6-wGa-Kkmk'
       }
     };
     const pass = ref('');
