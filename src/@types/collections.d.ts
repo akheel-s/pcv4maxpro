@@ -11,7 +11,8 @@ export enum Collection {
   Program = 'Program',
   Team = 'Team',
   Participant = 'Participant',
-  Transaction = 'Transaction'
+  Transaction = 'Transaction',
+  CustomerInvite = 'CustomerInvite'
 }
 export type getCollectionType<T extends keyof typeof Collection> = T extends 'User'
   ? UserType

@@ -877,8 +877,17 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref, watch, watchEffect } from '@vue/composition-api';
+import { computed, onMounted, ref, watch, Ref } from '@vue/composition-api';
+import { useDbActions } from '@/store';
+import gql from 'graphql-tag';
 
+interface InvitePage {
+  [key: string]: {
+    user: string;
+    password: string;
+    video: string;
+  };
+}
 export default {
   name: 'Invite',
   props: {
@@ -906,9 +915,41 @@ export default {
     };
   },
 
-  setup(props, { root: { $router } }) {
+  setup(props, { root: { $router, $apolloProvider } }) {
     // video ask setup
-
+    const getInvitee = computed(() =>
+      (props.schoolName as string)
+        .split('-')
+        .map(word => word[0].toUpperCase() + word.substring(1))
+        .join(' ')
+    );
+    const INVITEQUERY = gql`
+      query thisPage($invitee: string!) {
+        CustomerInvite(query: { invitee: $initee }) {
+          customer
+          user
+          password
+          video
+        }
+      }
+    `;
+    const invitePage: Ref<InvitePage> = ref({});
+    $apolloProvider.defaultClient
+      .query({
+        query: INVITEQUERY,
+        variables: {
+          invitee: getInvitee
+        }
+      })
+      .then(({ data: { CustomerInvite: res } }) => {
+        invitePage.value = {
+          [res.customer]: {
+            user: res.user,
+            password: res.password,
+            video: res.video
+          }
+        };
+      });
     const invitePages = {
       Affirm: {
         user: 'employer',
@@ -1348,14 +1389,23 @@ export default {
         video: 'L6-wGa-Kkmk'
       }
     };
+    const { update } = useDbActions(['update']);
+    Object.keys(invitePages).forEach(async key => {
+      console.log(`updating collection with: ${key}`);
+      await update({
+        collection: 'CustomerInvite',
+        payload: {
+          customer: key,
+          user: invitePages[key].user,
+          password: invitePages[key].password,
+          video: invitePages[key].video
+        },
+        filter: { customer: key },
+        options: { upsert: true }
+      });
+    });
     const pass = ref('');
     const inputPassword = ref('');
-    const getInvitee = computed(() =>
-      (props.schoolName as string)
-        .split('-')
-        .map(word => word[0].toUpperCase() + word.substring(1))
-        .join(' ')
-    );
     watch(pass, newpass => {
       if (newpass === invitePages[getInvitee.value].password) {
         console.log('mounting');
