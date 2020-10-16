@@ -19,6 +19,8 @@ declare global {
       VUE_APP_STRIPE_CHECKOUT_PROD: string;
       VUE_APP_STRIPE_INVOICE_DEV: string;
       VUE_APP_STRIPE_INVOICE_PROD: string;
+      VUE_APP_GRAPHQL_HTTP: string;
+      VUE_APP_GRAPHQL_HTTP_DEV: string;
     }
   }
   namespace Realm {

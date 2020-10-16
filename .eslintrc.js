@@ -12,7 +12,6 @@ module.exports = {
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser', // the typescript-parser for eslint, instead of tslint
-    sourceType: 'module', // allow the use of imports statements
     ecmaVersion: 2020
   },
   rules: {

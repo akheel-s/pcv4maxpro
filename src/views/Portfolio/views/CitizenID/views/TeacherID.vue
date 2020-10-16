@@ -202,7 +202,7 @@ export default {
           subjects: details.subjects,
           schools: details.schools
         } as TeacherPortfolio,
-        filter: { _id: getObjectId },
+        filter: { _id: getObjectId.value },
         options: { upsert: true }
       });
       emit('input');
