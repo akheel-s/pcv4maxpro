@@ -14,7 +14,10 @@ const AUTH_TOKEN = 'apollo-token';
 //  Mongo App Setup
 
 // Creates needed headers
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP;
+const httpEndpoint =
+  process.env.NODE_ENV === 'production'
+    ? process.env.VUE_APP_GRAPHQL_HTTP
+    : process.env.VUE_APP_GRAPHQL_HTTP_DEV;
 const httpLink = createHttpLink({ uri: httpEndpoint });
 
 const authorizationHeaderLink = () =>

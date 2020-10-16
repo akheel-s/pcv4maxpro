@@ -14,6 +14,8 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import '@mdi/font/css/materialdesignicons.css';
 
+Vue.use(VueApollo);
+
 Vue.config.productionTip = false;
 
 Vue.component('default-layout', Layouts.Default);
