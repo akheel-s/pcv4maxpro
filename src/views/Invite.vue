@@ -1346,6 +1346,152 @@ export default {
         user: 'school',
         password: 'wccusd',
         video: 'L6-wGa-Kkmk'
+      },
+
+      // ROUND 2222222222222222222 EMPLOYERS
+
+      Bexi: {
+        user: 'employer',
+        password: 'roomies',
+        video: 's9-0MRuL19M'
+      },
+
+      'Office Of Supervisor Nate Miley': {
+        user: 'employer',
+        password: 'miley',
+        video: 'J-Vy7HTJzQE'
+      },
+
+      'Menlo Park Fire District': {
+        user: 'employer',
+        password: 'mpfd',
+        video: 'on1EZIY5WTM'
+      },
+
+      'Orange Silicon Valley': {
+        user: 'employer',
+        password: 'orange',
+        video: 'Eb8TDpSPjp8'
+      },
+
+      'Rising Sun Center For Opportunity': {
+        user: 'employer',
+        password: 'rising',
+        video: 'OijHWsHUJcA'
+      },
+
+      NVDIA: {
+        user: 'employer',
+        password: 'autonomous',
+        video: 'DvjySKDjQ7g'
+      },
+
+      'Google Wing': {
+        user: 'employer',
+        password: 'delivery',
+        video: '3dac6tS3zIk'
+      },
+
+      // ROUND 2222222222222222222 SCHOOLS
+
+      'Hillsdale High School': {
+        user: 'school',
+        password: 'hillsdale',
+        video: 'GV6dvhT0Ql0'
+      },
+
+      'Dane Lancaster': {
+        user: 'school',
+        password: 'dane',
+        video: 'lGalBo5EoPo'
+      },
+
+      'Camp Sweeney': {
+        user: 'school',
+        password: 'sweeney',
+        video: '4Dh9aads3hg'
+      },
+
+      'TIDE Academy': {
+        user: 'school',
+        password: 'tide',
+        video: 'KcUBCmjCPpo'
+      },
+
+      'California Crosspoint Academy': {
+        user: 'school',
+        password: 'crosspoint',
+        video: 'h-hlrP0V6Gg'
+      },
+
+      'Emery High School': {
+        user: 'school',
+        password: 'emeryhigh',
+        video: 'kJMbhGFFFRo'
+      },
+
+      // ROUND 2222222222222222222 TEACHERS
+
+      'Erin Susoev': {
+        user: 'teacher',
+        password: 'erin',
+        video: 'c4pLPjfLKf0'
+      },
+
+      'John Lavine': {
+        user: 'teacher',
+        password: 'lavine',
+        video: 'G2fhr3sSQj4'
+      },
+
+      'Royal Sunset High School': {
+        user: 'teacher',
+        password: 'sunset',
+        video: 'kkoLT7R7dzI'
+      },
+
+      'Danny Tan': {
+        user: 'teacher',
+        password: 'danny',
+        video: 'Z9kfZIa5XOg'
+      },
+
+      'Nina Arnberg': {
+        user: 'teacher',
+        password: 'nina',
+        video: 'hEX5B71-wPg'
+      },
+
+      'Ramal Llamar': {
+        user: 'teacher',
+        password: 'llamar',
+        video: 'mtG_5BpKII4'
+      },
+
+      'Rebekah Kotlar': {
+        user: 'teacher',
+        password: 'kotlar',
+        video: 'ZFyUrrKsrFI'
+      },
+
+      // ROUND 2222222222222222222.5
+
+      'Diablo Valley College': {
+        user: 'school',
+        password: 'dvc',
+        video: 'mUpNfTyPnHg'
+      },
+
+      'Oakland Tech PTSA': {
+        user: 'school',
+        password: 'internships',
+        video: 'o2lIs6pDKw8'
+      },
+
+      'Oakland Tech Students': {
+        user: 'student',
+        password: 'getinternships',
+        video: 'vAYHQc_9k9Y'
       }
     };
     const pass = ref('');
