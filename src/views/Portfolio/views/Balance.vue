@@ -117,8 +117,6 @@ export default {
     // Token Management
     const tokens: Ref<Token[]> = ref([]);
     const originalOwners: Ref<Pick<User, 'firstName' | 'lastName'>[]> = ref([]);
-    const balanceTable: Ref<ReturnType<typeof BalanceView['setup']>> = ref(null);
-    const process = computed(() => balanceTable.value?.process);
     const id = useAuthGetters(['getId']).getId;
     query<{ tokens: Token[] }>({
       query: gql`
@@ -131,22 +129,21 @@ export default {
       `,
       variables: { id: id.value }
     }).then(async ({ data }) => {
-      tokens.value = data.tokens;
-      data.tokens.map(token => ({ _id: token.customer_id }));
-      const {
-        data: { users }
-      } = await query<{ users: User[] }>({
-        query: gql`
-          query Users($userQueryInputs: [UserQueryInput!]) {
-            users(query: { OR: $userQueryInputs }) {
-              firstName
-              lastName
-            }
-          }
-        `,
-        variables: { userQueryInputs: data.tokens.map(token => ({ _id: token.owner_id })) }
-      });
-      originalOwners.value = users;
+      const tokenOwners = data.tokens.map(token => ({ _id: token.owner_id }));
+      if (tokenOwners.length)
+        originalOwners.value = (
+          await query<{ users: User[] }>({
+            query: gql`
+              query Users($userQueryInputs: [UserQueryInput!]) {
+                users(query: { OR: $userQueryInputs }) {
+                  firstName
+                  lastName
+                }
+              }
+            `,
+            variables: { userQueryInputs: tokenOwners }
+          })
+        ).data.users;
     });
     // UI Management
     const colors = ['red', 'orange', 'blue', 'purple', 'pink', 'yellow'];
@@ -191,7 +188,6 @@ export default {
           }
         })
       );
-      process();
     };
     return {
       transferState,

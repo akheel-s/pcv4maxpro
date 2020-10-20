@@ -62,12 +62,6 @@
       </validation-observer>
     </div>
 
-    <!-- :disabled="invalid || pass == ''" -->
-    <!--
-    <div
-      :class="[{invitePages[getInvitee].type == 'school' ? teacherbutton-css : '' }, {invitePages[getInvitee].type == 'employer' ? employerbutton-css : '' }]"
-    ></div> -->
-
     <!-- START OF PRIMARY PAGE   -->
 
     <div
@@ -204,9 +198,6 @@
         </div>
       </div>
       <div class="invite__wrapper-column-right">
-        <!-- <div class="invite__recommendations-title">NEXT STEP</div>
-        <div><v-btn class="invite__cta" x-large outlined depressed>Schedule Meeting</v-btn></div> -->
-
         <div class="invite__resources-title">NEXT STEP</div>
         <div>
           <a
@@ -266,38 +257,6 @@
           </v-tooltip>
         </div>
 
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
-            >Watch Presentation</v-btn
-          >
-        </div> -->
-        <!-- <div class="invite__resources-title">MAKE ACTIONS</div> -->
-
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded outlined dark depressed
-            >Pricing & Sponsorship</v-btn
-          >
-        </div> -->
-
-        <!-- <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Sponsor & Transfer</v-btn
-          >
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed>View Balance</v-btn>
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Explore Programs</v-btn
-          >
-        </div>
-        <div>
-          <v-btn class="invite__cta" color="blue" small rounded dark depressed
-            >Watch Introduction Video</v-btn
-          >
-        </div> -->
-
         <div class="invite__resources">
           <div class="invite__resources-title2">EXPLORE RESOURCES</div>
 
@@ -350,35 +309,8 @@
                       <v-btn icon dark @click="activitiesDialog = false">
                         <v-icon>mdi-close</v-icon>
                       </v-btn>
-
-                      <!-- <v-btn
-                        x-large
-                        depressed
-                        dark
-                        rounded
-                        color="blue"
-                        @click="$router.push({ name: 'signup', query: { email: starterEmail } })"
-                        >Signup and Invite</v-btn
-                      > -->
                     </div>
                   </v-parallax>
-                  <!-- <v-card-title class="headline grey lighten-2"> Privacy Policy </v-card-title>
-
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </v-card-text>
-
-                  <v-divider></v-divider>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> I accept </v-btn>
-                  </v-card-actions> -->
                 </v-card>
               </v-dialog>
             </div>
@@ -402,82 +334,6 @@
                 </template>
 
                 <v-card>
-                  <!-- <div class="invite__close-dialog">
-                    <v-btn icon @click="testimonialsDialog = false">
-                      <v-icon>mdi-close</v-icon>
-                    </v-btn>
-                  </div> -->
-                  <!-- <v-card>
-                  <v-parallax
-                    src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-background4.png"
-                    dark
-                    height="100%"
-                    class="invite__hero-default"
-                  >
-                    <div class="landing__2-column">
-                      <div class="landing__left">
-                        <div class="landing__text-testimonial-green">
-                          <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity kicks the idea of 'coffee fetching and document copying'
-                          internships to the curb
-                        </div>
-                        <div class="landing__text-testimonial-body">
-                          <div>
-                            <v-avatar size="75">
-                              <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/_DSC4843_small.jpg"
-                              ></v-img>
-                            </v-avatar>
-                          </div>
-                          <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-green">Kevin C.</div>
-                            <div class="landing__text-testimonial-position">
-                              Intern, Strategy of Things
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </v-parallax>
-
-                  <v-parallax
-                    src="https://f.hubspotusercontent00.net/hubfs/2480959/testimonial-backgroundB.png"
-                    dark
-                    height="100%"
-                    class="invite__hero-default"
-                  >
-                    <div class="landing__2-column">
-                      <div class="landing__left">
-                        <div class="landing__text-testimonial-green">
-                          <v-icon left dark>mdi-comment-quote</v-icon>
-                          PilotCity was a fresh breath of air. It was a new program that offered a
-                          mind-blowing and unique experience.
-                        </div>
-                        <div class="landing__text-testimonial-body">
-                          <div>
-                            <v-avatar size="75">
-                              <v-img
-                                src="https://f.hubspotusercontent00.net/hubfs/2480959/Screen%20Shot%202020-08-31%20at%2012.33.36%20AM.png"
-                              ></v-img>
-                            </v-avatar>
-                          </div>
-                          <div class="landing__text-testimonial-title">
-                            <div class="landing__text-testimonial-name-green">Amratha R.</div>
-                            <div class="landing__text-testimonial-position">
-                              Healthtech Entrepreneur, PilotCity
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="landing__right landing__testimonial-logo"> -->
-                  <!-- <v-img
-            max-width="75"
-            src="https://f.hubspotusercontent00.net/hubfs/2480959/WI_P_Wireframe-1.png"
-          ></v-img> -->
-                  <!-- </div>
-                    </div>
-                  </v-parallax> -->
-
                   <v-parallax
                     src="https://f.hubspotusercontent00.net/hubfs/2480959/19500_green_darkgreenstripes.svg"
                     dark
@@ -781,86 +637,10 @@
                       </div>
                     </div>
                   </v-parallax>
-
-                  <!-- <v-card-title class="headline grey lighten-2"> Privacy Policy </v-card-title>
-
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                  </v-card-text>
-
-                  <v-divider></v-divider>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" text @click="dialog = false"> I accept </v-btn>
-                  </v-card-actions> -->
                 </v-card>
               </v-dialog>
             </div>
           </template>
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Testimonials</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Survey Data</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none">
-              <v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >Program Videos</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- <div>
-            <v-btn class="invite__cta" color="blue" small rounded dark depressed
-              >Employer Examples</v-btn
-            >
-          </div> -->
-
-          <!-- <div>
-            <a href="https://www.pilotcity.com" target="_blank" style="text-decoration: none"
-              ><v-btn class="invite__cta" color="grey darken-3" small rounded dark depressed
-                >FAQ</v-btn
-              ></a
-            >
-          </div> -->
-
-          <!-- VIDEOASK BUTTON -->
-          <!-- <div class="invite__resources-title3">NEED HELP?</div>
-          <div>
-            <a
-              href="https://www.videoask.com/fntxxoz2y"
-              target="_blank"
-              style="text-decoration: none"
-            >
-              <v-btn
-                class="invite__cta-ask-question"
-                color="grey darken-3"
-                small
-                rounded
-                outlined
-                depressed
-                >Ask Video Question</v-btn
-              ></a
-            >
-          </div> -->
         </div>
 
         <div class="invite__questions-tip">
@@ -877,7 +657,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref, watch, watchEffect } from '@vue/composition-api';
+import { computed, onMounted, ref, watch } from '@vue/composition-api';
 
 export default {
   name: 'Invite',
