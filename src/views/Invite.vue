@@ -1472,6 +1472,26 @@ export default {
         user: 'teacher',
         password: 'kotlar',
         video: 'ZFyUrrKsrFI'
+      },
+
+      // ROUND 2222222222222222222.5
+
+      'Diablo Valley College': {
+        user: 'school',
+        password: 'dvc',
+        video: 'mUpNfTyPnHg'
+      },
+
+      'Oakland Tech PTSA': {
+        user: 'school',
+        password: 'internships',
+        video: 'o2lIs6pDKw8'
+      },
+
+      'Oakland Tech Students': {
+        user: 'student',
+        password: 'getinternships',
+        video: 'vAYHQc_9k9Y'
       }
     };
     const pass = ref('');
