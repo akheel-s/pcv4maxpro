@@ -16,9 +16,7 @@
           </v-stepper-header>
         </v-stepper>
       </div>
-      <div class="setupprogram__title">
-        Setup Program
-      </div>
+      <div class="setupprogram__title">Setup Program</div>
       <div class="setupprogram__uploadbox text-center" color="gray">
         <v-btn class="setupprogram__icon" size="large" text icon color="gray lighten-2">
           <v-icon x-large="5">mdi-arrow-up-bold-circle</v-icon>
@@ -95,8 +93,6 @@
 </template>
 
 <script>
-import { ref, reactive } from '@vue/composition-api';
-
 export default {
   name: 'Setupprogram'
 };
