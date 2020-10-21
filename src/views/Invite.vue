@@ -1492,6 +1492,170 @@ export default {
         user: 'student',
         password: 'getinternships',
         video: 'vAYHQc_9k9Y'
+      },
+
+      // ROUND 3 - ONLY EMPLOYERS AND SPONSORS
+
+      'Marin Clean Energy': {
+        user: 'sponsor',
+        password: 'action',
+        video: 'SGkrd18YyQY'
+      },
+
+      AnaSpec: {
+        user: 'employer',
+        password: 'biotech',
+        video: 'dm0pWI7De-M'
+      },
+
+      'Shannon Leigh': {
+        user: 'employer',
+        password: 'designers',
+        video: '8WoxxdP6y-c'
+      },
+
+      'Common Networks': {
+        user: 'employer',
+        password: 'digitalequity',
+        video: ''
+      },
+
+      'Tech Exchange': {
+        user: 'employer',
+        password: 'digitalequity',
+        video: 'xbskOnz4uuo'
+      },
+
+      'Fab City Oakland': {
+        user: 'employer',
+        password: 'distribute',
+        video: 'bRw3FJucb64'
+      },
+
+      'City Of San Leandro Sustainability': {
+        user: 'employer',
+        password: 'ecosystem',
+        video: 'TbGmKbVbYiI'
+      },
+
+      'City Of East Palo Alto': {
+        user: 'employer',
+        password: 'epa',
+        video: '/_6Nmh0eoawY'
+      },
+
+      NIST: {
+        user: 'employer',
+        password: 'forensics',
+        video: 'IV9FDJO_UU4'
+      },
+
+      'Alameda Health System': {
+        user: 'employer',
+        password: 'futureofhealth',
+        video: 'o2ge_5-a7mQ'
+      },
+
+      'AC Transit': {
+        user: 'employer',
+        password: 'futuretransit',
+        video: 'wgZyg_uQOwU'
+      },
+
+      'San Leandro Library': {
+        user: 'employer',
+        password: 'goingdigital',
+        video: '9HD1FmFHZVA'
+      },
+
+      Climatec: {
+        user: 'sponsor',
+        password: 'impact',
+        video: 'HFmu0MjY2kk'
+      },
+
+      EBMUD: {
+        user: 'employer',
+        password: 'innovatewater',
+        video: 'I6L74gjAoxU'
+      },
+
+      Typeform: {
+        user: 'employer',
+        password: 'interact',
+        video: 'rlQNqOyvOPk'
+      },
+
+      'Tom Eppenberger': {
+        user: 'employer',
+        password: 'kp',
+        video: 'TMhKYdmK_ZU'
+      },
+
+      Ivaldi: {
+        user: 'employer',
+        password: 'mfg',
+        video: 'tvFzPQMIzoM'
+      },
+
+      'Contra Costa County Sheriffs': {
+        user: 'employer',
+        password: 'nextgen',
+        video: 'WMQsIs7XyK0'
+      },
+
+      'City Of Pittsburg': {
+        user: 'employer',
+        password: 'pittsburg',
+        video: 'pittsburg'
+      },
+
+      'City Of San Leandro Public Works': {
+        user: 'employer',
+        password: 'publicworks',
+        video: 'eD_We1UaT2k'
+      },
+
+      'Currie Lee MD': {
+        user: 'employer',
+        password: 'raiders',
+        video: 'wZFS-RbnNaY'
+      },
+
+      'Carlton Senior Living': {
+        user: 'employer',
+        password: 'seniors',
+        video: 'MvKrRykRMWA'
+      },
+
+      FLIR: {
+        user: 'employer',
+        password: 'sensors',
+        video: 'Ozi2vMOkq_s'
+      },
+
+      'City Of Hayward': {
+        user: 'employer',
+        password: 'smartcity',
+        video: 'FXxzMd-W5DU'
+      },
+
+      'Dew Mobility': {
+        user: 'employer',
+        password: 'smartcity',
+        video: 'lenIt3Mv6Lc'
+      },
+
+      'Port Of Oakland': {
+        user: 'employer',
+        password: 'theport',
+        video: 'C0bH-XI57h0'
+      },
+
+      'Vantage Robotics': {
+        user: 'employer',
+        password: 'uav',
+        video: 'sOVzFTLHySc'
       }
     };
     const pass = ref('');
