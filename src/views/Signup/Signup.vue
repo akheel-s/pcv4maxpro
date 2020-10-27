@@ -18,6 +18,7 @@
             single-line
             outlined
             full-width
+            dark
           ></v-text-field>
         </validation-provider>
         <div class="signup__confirmpassword text-subtitle-2">Password</div>
@@ -32,23 +33,31 @@
             single-line
             outlined
             full-width
+            dark
           ></v-text-field>
         </validation-provider>
 
         <v-checkbox
           v-model="terms"
           class="signup__conditions"
-          color="green"
+          color="white"
           single-line
           outlined
           full-width
+          dark
         >
           <template v-slot:label>
-            <div>
+            <div class="signup__conditions-text">
               I agree to the following
-              <a href="https://www.iubenda.com/terms-and-conditions/32542296">Terms & Conditions</a>
+              <a
+                class="login__forgotlink"
+                href="https://www.iubenda.com/terms-and-conditions/32542296"
+                >Terms & Conditions</a
+              >
               and
-              <a href="https://www.iubenda.com/privacy-policy/32542296">Privacy Policy.</a>
+              <a class="login__forgotlink" href="https://www.iubenda.com/privacy-policy/32542296"
+                >Privacy Policy.</a
+              >
             </div>
           </template>
         </v-checkbox>
@@ -57,13 +66,14 @@
           class="signup__signupbuttons text-h6 font-weight-black"
           depressed
           color="green"
+          x-large
           :disabled="invalid || !terms"
           :loading="loading"
           @click="submit"
         >
           Signup
         </v-btn>
-        <v-alert v-if="msg" :type="type">{{ msg }}</v-alert>
+        <v-alert v-if="msg" class="signup__alert" :type="type">{{ msg }}</v-alert>
       </validation-observer>
     </div>
   </div>
@@ -71,26 +81,32 @@
 
 <script lang="ts">
 import { reactive, toRefs } from '@vue/composition-api';
-import { useActions } from '@/store/modules/auth';
+import { useAuthActions, useDbState } from '@/store';
 
 export default {
   name: 'Signup',
   components: {},
-
-  setup() {
+  beforeRouteEnter(to, from, next) {
+    const { user } = useDbState(['user']);
+    if (!user.value) next();
+    else next({ name: 'portfolio' });
+  },
+  setup(props, { root }) {
     // * Signup main
+    const param = root.$route.query.email ? (root.$route.query.email as string) : '';
     const state = reactive({
       email: '',
       password: '',
       terms: false
     });
+    state.email = param;
     // * UI handling
     const ui = reactive({
       msg: '',
       type: 'success',
       loading: false
     });
-    const { signup } = useActions(['signup']);
+    const { signup } = useAuthActions(['signup']);
     async function submit() {
       ui.loading = true;
       try {
@@ -105,7 +121,6 @@ export default {
       }
       ui.loading = false;
     }
-
     return { ...toRefs(state), submit, ...toRefs(ui) };
   },
   methods: {}
@@ -166,11 +181,13 @@ export default {
   &__body {
     display: flex;
     justify-content: center;
+    font-family: Raleway;
   }
   &__title {
     color: #6eba7f;
     margin-top: 144px;
     margin-bottom: 56.5px;
+    font-family: Raleway;
   }
 }
 
@@ -191,9 +208,6 @@ export default {
     margin-top: 10px;
     margin-bottom: 4.5px;
     color: #ffffff;
-  }
-  &__input {
-    color: #d4d4d4;
   }
   &__lastname {
     margin-bottom: 4.5px;
@@ -217,6 +231,14 @@ export default {
     }
   }
 
+  &__conditions-text {
+    font-size: 11px;
+    color: #ffffff;
+    & a.login__forgotlink {
+      color: #ffffff;
+    }
+  }
+
   &__signupbuttons {
     width: 100%;
     &.theme--light.v-btn {
@@ -225,6 +247,11 @@ export default {
     & .v-btn__content {
       margin-bottom: 0px 0px, 100px;
     }
+  }
+
+  &__alert {
+    margin-top: 25px;
+    font-size: 11.5px !important;
   }
 }
 
