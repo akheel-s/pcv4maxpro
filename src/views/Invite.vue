@@ -1656,6 +1656,67 @@ export default {
         user: 'employer',
         password: 'uav',
         video: 'sOVzFTLHySc'
+      },
+
+      // ROUND 4
+      'Amethod Public Schools': {
+        user: 'school',
+        password: 'oakland',
+        video: 'PnadTDEXZkE'
+      },
+
+      'Averroes High School': {
+        user: 'school',
+        password: 'averroes',
+        video: 'NhvLfeNUpwc'
+      },
+
+      'Berkeley High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'Roj6fPRwXxQ'
+      },
+
+      'Cabrillo Unified School District': {
+        user: 'school',
+        password: 'internships',
+        video: 'OCKgn6mZA5U'
+      },
+
+      'Clayton Valley Charter High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'CznYbrlX1xE'
+      },
+
+      'Code For Fun': {
+        user: 'school',
+        password: 'coders',
+        video: '8QzMXsRdk3M'
+      },
+
+      'Emery Unified School District': {
+        user: 'school',
+        password: 'wins',
+        video: 'YetY9RP4sq0'
+      },
+
+      'Envision Schools': {
+        user: 'school',
+        password: 'internships',
+        video: 'GWui3UBcFfk'
+      },
+
+      'Brenkwitz High School': {
+        user: 'school',
+        password: 'transform',
+        video: 'p1vVeASpNyA'
+      },
+
+      'Hayward Unified School District': {
+        user: 'school',
+        password: 'grow',
+        video: 'OYU8xNJFYKo'
       }
     };
     const pass = ref('');
