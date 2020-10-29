@@ -1717,6 +1717,138 @@ export default {
         user: 'school',
         password: 'grow',
         video: 'OYU8xNJFYKo'
+      },
+
+      'Thornton High School': {
+        user: 'school',
+        password: 'internships',
+        video: '7s0ZO1SGJzg'
+      },
+
+      'Latitude High School': {
+        user: 'school',
+        password: 'internships',
+        video: '47x5gHoLv6Q'
+      },
+
+      'Lighthouse Charter High School': {
+        user: 'school',
+        password: 'internships',
+        video: '9t2hMmBdZR8'
+      },
+
+      'Mission Valley ROP': {
+        user: 'school',
+        password: 'internships',
+        video: 'wZByC-9JFhA'
+      },
+
+      'Moreau Catholic High School': {
+        user: 'school',
+        password: 'internships',
+        video: '_eVRl-g1-9A'
+      },
+
+      'Mount Eden High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'zigZR0bcBYU'
+      },
+
+      'MW Academy': {
+        user: 'school',
+        password: 'internships',
+        video: '3t_jSSkRuBE'
+      },
+
+      'Novato High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'sogSf6j8Ngk'
+      },
+
+      Civicorps: {
+        user: 'school',
+        password: 'internships',
+        video: 'lUZbUIov1U4'
+      },
+
+      'Oakland Unified School District': {
+        user: 'school',
+        password: 'scalingwbl',
+        video: 'D6OyxPExEwM'
+      },
+
+      'Pittsburg Unified School District': {
+        user: 'school',
+        password: 'round2',
+        video: 'tmMIT789ZSc'
+      },
+
+      'Quarry Lane School': {
+        user: 'school',
+        password: 'internships',
+        video: 'klA4D8L6Dr0'
+      },
+
+      'San Francisco Unified School District': {
+        user: 'school',
+        password: 'scalingwbl',
+        video: '44bvakCmjA4'
+      },
+
+      'Olga Pineda': {
+        user: 'school',
+        password: 'thanks',
+        video: 'bB8LotCdbvU'
+      },
+
+      'Nancy Kane': {
+        user: 'school',
+        password: 'internships',
+        video: 'MoupGpegTBs'
+      },
+
+      'San Mateo High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'A_CV5PRua9E'
+      },
+
+      'Aragon High School': {
+        user: 'school',
+        password: 'wbl',
+        video: 'wJ3atRlgWsE'
+      },
+
+      'San Mateo Union High School District': {
+        user: 'school',
+        password: 'smuhsd',
+        video: 'CpX4IBbhxVU'
+      },
+
+      'Alton Lee': {
+        user: 'teacher',
+        password: 'alton',
+        video: 't57JJ3Db8I8'
+      },
+
+      'Carlmont High School': {
+        user: 'school',
+        password: 'internships',
+        video: 'Gn6rdAYK4qA'
+      },
+
+      'Summit Public Schools': {
+        user: 'school',
+        password: 'internships',
+        video: 'X95d3eaL6l0'
+      },
+
+      'Dawn Fregosa': {
+        user: 'teacher',
+        password: 'og',
+        video: 'p38ZUEwc2GQ'
       }
     };
     const pass = ref('');
