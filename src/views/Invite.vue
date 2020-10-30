@@ -1849,6 +1849,254 @@ export default {
         user: 'teacher',
         password: 'og',
         video: 'p38ZUEwc2GQ'
+      },
+
+      // ROUND 5 (45 qty)
+
+      'Chris Rose': {
+        user: 'teacher',
+        password: 'rose',
+        video: 'O-mLGTgrmco'
+      },
+
+      'Jeff Adkins': {
+        user: 'teacher',
+        password: 'adkins',
+        video: 'jqpiRT8w16c'
+      },
+
+      'Terry Palmer': {
+        user: 'teacher',
+        password: 'palmer',
+        video: 'KSCl_QETjtM'
+      },
+
+      'Jessica Govoni': {
+        user: 'teacher',
+        password: 'govoni',
+        video: 'ATwgctjevrw'
+      },
+
+      'Courtney Peterson': {
+        user: 'teacher',
+        password: 'peterson',
+        video: 't3fB_5BUYAM'
+      },
+
+      'Joseph Centoni': {
+        user: 'teacher',
+        password: 'centoni',
+        video: 'ljmMCg2IniY'
+      },
+
+      'Hannah Carney': {
+        user: 'teacher',
+        password: 'carney',
+        video: '1mxu5Z231ls'
+      },
+
+      'The Andersons': {
+        user: 'teacher',
+        password: 'internships',
+        video: '32ttTSBIxmQ'
+      },
+
+      'Michelle Kerr': {
+        user: 'teacher',
+        password: 'kerr',
+        video: '7Q6obkSmzis'
+      },
+
+      'Kennedy High School': {
+        user: 'teacher',
+        password: 'internships',
+        video: '0OkVzooXoaE'
+      },
+
+      'Hunter Lower': {
+        user: 'teacher',
+        password: 'lower',
+        video: '6BsQp9MyB-E'
+      },
+
+      'Deborah Jackson': {
+        user: 'teacher',
+        password: 'jackson',
+        video: 'keV1PJ8Livs'
+      },
+
+      'David Gurley': {
+        user: 'teacher',
+        password: 'gurley',
+        video: 'MhTIV5Kc3Sc'
+      },
+
+      'Joshua Moran': {
+        user: 'teacher',
+        password: 'moran',
+        video: 'AXamg6RvEqw'
+      },
+
+      'TK Pryor Knell': {
+        user: 'teacher',
+        password: 'tk',
+        video: 'My5iC5Q0k7w'
+      },
+
+      'Richard Baugh': {
+        user: 'teacher',
+        password: 'baugh',
+        video: 'Zz1k4puaoV4'
+      },
+
+      'Michael Rodriguez': {
+        user: 'teacher',
+        password: 'rodriguez',
+        video: 'r4_cBinCWKg'
+      },
+
+      'Edward Lopez': {
+        user: 'teacher',
+        password: 'lopez',
+        video: '5PlPqNdB4pI'
+      },
+
+      'Kirk Sands': {
+        user: 'teacher',
+        password: 'sands',
+        video: 'HjPO2n4M6sc'
+      },
+
+      'Steve Walker': {
+        user: 'teacher',
+        password: 'walker',
+        video: '1GWZ2JU75AM'
+      },
+
+      'Rachel Chou': {
+        user: 'teacher',
+        password: 'chou',
+        video: 'oFns1QZkYK8'
+      },
+
+      'Matt Redmond': {
+        user: 'teacher',
+        password: 'redmond',
+        video: 'QTdDa0RZSSg'
+      },
+
+      'Christina Ong': {
+        user: 'teacher',
+        password: 'ong',
+        video: '0e5SRPdfg7s'
+      },
+
+      'Jasmene Miranda': {
+        user: 'teacher',
+        password: 'miranda',
+        video: 'FNthbpKIxfo'
+      },
+
+      'Chloe Erskine': {
+        user: 'teacher',
+        password: 'erskine',
+        video: 'IW9fSUSf2F8'
+      },
+
+      'James Shapiro': {
+        user: 'teacher',
+        password: 'shapiro',
+        video: 'UQOlZx7oIz8'
+      },
+
+      'Meghan Johnston': {
+        user: 'teacher',
+        password: 'johnston',
+        video: 'SM9rWti4Isk'
+      },
+
+      'Anthony Pena': {
+        user: 'teacher',
+        password: 'pena',
+        video: 'DjJq-d03EQ0'
+      },
+
+      'Hank Machtay': {
+        user: 'teacher',
+        password: 'machtay',
+        video: 'IXt_vYkynK0'
+      },
+
+      'Holger Michaelis': {
+        user: 'teacher',
+        password: 'michaelis',
+        video: 'nDndBhNFyNE'
+      },
+
+      'George Lee': {
+        user: 'teacher',
+        password: 'lee',
+        video: 'ZaETGWdRZhM'
+      },
+
+      'Eddie Nava': {
+        user: 'teacher',
+        password: 'nava',
+        video: 'YLIGmPJMuoU'
+      },
+
+      'Tony Farley': {
+        user: 'teacher',
+        password: 'farley',
+        video: 'L_WK--FM3Kw'
+      },
+
+      'Laura Jagroop': {
+        user: 'teacher',
+        password: 'jagroop',
+        video: '6naxan3o9Bk'
+      },
+
+      'Juanita Abundiz Henderson': {
+        user: 'teacher',
+        password: 'abundiz',
+        video: 'GzGCkJSs__4'
+      },
+
+      'Deborah Reinerio': {
+        user: 'teacher',
+        password: 'reinerio',
+        video: 'p4UiNeds2wU'
+      },
+
+      'Tom Grace': {
+        user: 'teacher',
+        password: 'grace',
+        video: 'puemZUC4eOk'
+      },
+
+      'Chris Rubin': {
+        user: 'teacher',
+        password: 'rubin',
+        video: 'e2-LV0SEDWY'
+      },
+
+      'John Rowe': {
+        user: 'teacher',
+        password: 'rowe',
+        video: 'WQxTVrilulg'
+      },
+
+      'Shannon Couch': {
+        user: 'teacher',
+        password: 'couch',
+        video: '2BJ0dYeWieY'
+      },
+
+      'Aaron Boyd': {
+        user: 'teacher',
+        password: 'boyd',
+        video: '7872-MXbjVQ'
       }
     };
     const pass = ref('');
