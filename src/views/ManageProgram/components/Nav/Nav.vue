@@ -42,7 +42,7 @@
             link
             :ripple="false"
             :active-class="`${item.color}`"
-            @click="setActive(item)"
+            @click="compId = item.title"
           >
             <v-list-item-content class="manage-program__items text-h5 font-weight-bold">
               <v-list-item-title>
@@ -61,10 +61,11 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { computed, ref, set, defineComponent } from '@vue/composition-api';
+import { Computed } from 'vuex';
 import items from './const';
 
-export default {
+export default defineComponent({
   name: 'Nav',
   props: {
     startDate: {
@@ -74,20 +75,29 @@ export default {
     endDate: {
       type: String,
       default: 'DAY, MON 1'
+    },
+    value: {
+      type: String,
+      required: true
     }
   },
-  setup() {
+  setup(props, { emit }) {
     const activeTab = ref(items.value[0]);
-    function setActive(item) {
-      activeTab.value = item;
-    }
+
+    const compId = computed({
+      get: () => props.value,
+      set: newVal => {
+        emit('input', newVal);
+      }
+    });
+
     return {
       items,
       activeTab,
-      setActive
+      compId
     };
   }
-};
+});
 </script>
 
 <style lang="scss">

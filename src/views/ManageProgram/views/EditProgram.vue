@@ -1,8 +1,5 @@
 <template>
   <div class="editprogram__entire-body">
-    <div class="editprogram__first-part">
-      <Nav></Nav>
-    </div>
     <div class="editprogram__second-part">
       <div class="editprogram__title text-h4 font-weight-black">Edit Program</div>
       <div class="editprogram__body">
@@ -80,13 +77,8 @@
 </template>
 
 <script lang="ts">
-import { Nav } from '../components';
-
 export default {
-  name: 'Editprogram',
-  components: {
-    Nav
-  }
+  name: 'Editprogram'
 };
 </script>
 

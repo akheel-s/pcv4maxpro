@@ -4,9 +4,9 @@
       <div class="my-programs pc-container">
         <div class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">My Programs</h4>
-                    <program-card />
+          <program-card />
           <program-card class="mt-10" />
-          <v-          v-slot:default="{ hover }" hover>
+          <v-hover slot:default="{ hover }">
             <div class="my-programs__card1-border">
               <v-card
                 class="my-programs__card1 text-h5 font-weight-black"
@@ -40,7 +40,7 @@
             </div>
           </v-hover>
         </div>
-                  <div v-if="role !== 'none'" class="my-programs__wrapper">
+        <div v-if="role !== 'none'" class="my-programs__wrapper">
           <h4 class="my-programs__programs-title">{{ role }}</h4>
           <v-hover v-slot:default="{ hover }">
             <div class="my-programs__card1-border">

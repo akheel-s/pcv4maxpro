@@ -1,6 +1,7 @@
 import { RouteConfig } from 'vue-router';
 import * as Program from './views';
 import { Nav, ListView } from './components';
+import ProgramManage from './ProgramManage.vue';
 
 const routes: Array<RouteConfig> = [
   {
@@ -23,7 +24,12 @@ const routes: Array<RouteConfig> = [
     name: 'ManageStakeholder',
     component: Program.ManageStakeholder
   },
-  { path: '/ListView', name: 'Listview', component: ListView }
+  { path: '/ListView', name: 'Listview', component: ListView },
+  {
+    path: '/manage/program',
+    name: 'ProgramManage',
+    component: ProgramManage
+  }
 ];
 if (process.env.node_env === 'development') {
   routes.push({

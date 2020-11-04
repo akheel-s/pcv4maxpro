@@ -1,8 +1,8 @@
 <template>
   <div class="manage__entire-body">
-    <div class="manage__first-part">
+    <!-- <div class="manage__first-part">
       <Nav></Nav>
-    </div>
+    </div> -->
     <div class="manage__second-body">
       <div class="manage__title">Manage Program</div>
       <!-- <manage-filter class="manage__profile-btn"></manage-filter> -->
@@ -87,7 +87,7 @@ export default {
   name: 'Manage',
   components: {
     'pc-card': PCCard,
-    Nav,
+    // Nav,
     draggable,
     // ManageFilter,
     ListView
