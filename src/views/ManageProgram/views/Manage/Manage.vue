@@ -49,48 +49,50 @@
       </div>
 
       <div v-else>
-        <draggable
-          v-model="keyedCollection"
-          class="manage__graph"
-          v-bind="dragOptions"
-          @start="isDragging = true"
-          @end="isDragging = false"
-        >
-          <transition-group
-            v-for="{ title, image, id } in keyedCollection"
-            :key="id"
-            type="transition"
-            name="bounce"
+        <IndexTable v-slot="{ indexedItems }" :items="items">
+          <draggable
+            v-model="items"
+            class="manage__graph"
+            v-bind="dragOptions"
+            :list="indexedItems"
+            @start="isDragging = true"
+            @end="isDragging = false"
           >
-            <pc-card :key="`pc+${id}`" class="list-group-item">
-              <template v-slot:title>{{ id + 1 }}</template>
-              <template v-slot:actions> </template>
-              <template v-slot:graph>
-                <v-img :src="image" class="pc-card__image"></v-img>
-              </template>
-            </pc-card>
-          </transition-group>
-        </draggable>
+            <transition-group
+              v-for="{ title, image, index } in indexedItems"
+              :key="index"
+              type="transition"
+              name="bounce"
+            >
+              <pc-card :key="index" class="list-group-item">
+                <template v-slot:title>{{ index }}</template>
+                <template v-slot:actions> </template>
+                <template v-slot:graph>
+                  <v-img :src="image" class="pc-card__image"></v-img>
+                </template>
+              </pc-card>
+            </transition-group>
+          </draggable>
+        </IndexTable>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { generateId } from '@/components/IdGen';
 import draggable from 'vuedraggable';
 import { ref } from '@vue/composition-api';
-import { PCCard, Nav, ManageFilter, ListView } from '../../components';
+import IndexTable from '@/components/IndexTable.vue';
+import { PCCard, ListView } from '../../components';
 import tableItems from './const';
 
 export default {
   name: 'Manage',
   components: {
     'pc-card': PCCard,
-    // Nav,
     draggable,
-    // ManageFilter,
-    ListView
+    ListView,
+    IndexTable
   },
 
   computed: {
@@ -107,7 +109,8 @@ export default {
   },
   setup() {
     const gridList = ref(false);
-    return { keyedCollection: ref(generateId(tableItems.value, 'simple')), gridList };
+    const listViewcheck = ref(true);
+    return { items: ref(tableItems), listViewcheck, gridList };
   }
 };
 </script>
@@ -157,10 +160,7 @@ export default {
     display: flex;
     height: 100%;
   }
-  &__second-body {
-    width: 100%;
-    padding-right: 56px;
-  }
+
   &__title {
     margin-left: 56px;
     margin-top: 44px;

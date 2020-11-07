@@ -7,7 +7,7 @@
       </div>
       <div class="pc-card__main_settings">
         <slot name="actions">
-          <v-menu v-model="menu" left :close-on-content-click="false" offset-y>
+          <v-menu left :close-on-content-click="false" offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-btn v-bind="attrs" small icon v-on="on"
                 ><v-icon color="grey lighten-1">mdi-cog</v-icon></v-btn
@@ -48,7 +48,7 @@
       <div class="pc-card__setup-required-button">
         <!-- <v-menu v-model="menu" top :close-on-content-click="false" offset-y>
           <template v-slot:activator="{ on, attrs }"> -->
-        <v-btn color="blue" depressed dark rounded v-bind="attrs" x-small v-on="on">Research</v-btn>
+        <v-btn color="blue" depressed dark rounded x-small>Research</v-btn>
         <!-- </template>
           <v-card>
             <v-btn x-small rounded color="white" class="pc-card__settings-menu" tile depressed

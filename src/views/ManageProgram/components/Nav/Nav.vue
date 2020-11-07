@@ -42,7 +42,10 @@
             link
             :ripple="false"
             :active-class="`${item.color}`"
-            @click="compId = item.title"
+            @click="
+              compId = item.title;
+              setActive(item);
+            "
           >
             <v-list-item-content class="manage-program__items text-h5 font-weight-bold">
               <v-list-item-title>
@@ -61,8 +64,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, set, defineComponent } from '@vue/composition-api';
-import { Computed } from 'vuex';
+import { computed, ref, defineComponent } from '@vue/composition-api';
 import items from './const';
 
 export default defineComponent({
@@ -90,11 +92,15 @@ export default defineComponent({
         emit('input', newVal);
       }
     });
+    function setActive(item) {
+      activeTab.value = item;
+    }
 
     return {
-      items,
+      items: ref(items),
       activeTab,
-      compId
+      compId,
+      setActive
     };
   }
 });

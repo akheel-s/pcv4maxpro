@@ -5,7 +5,7 @@
       <div class="editprogram__body">
         <div class="editprogram__uploadbox text-center" color="gray">
           <v-btn class="editprogram__icon" size="large" text icon color="gray lighten-2">
-            <v-icon x-large="5">mdi-arrow-up-bold-circle</v-icon>
+            <v-icon x-large>mdi-arrow-up-bold-circle</v-icon>
           </v-btn>
         </div>
         <div class="editprogram__pname font-weight-black">Program Name</div>
@@ -23,13 +23,13 @@
         </div>
         <div class="editprogram__calendarinputs">
           <div class="editprogram__finput">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
           <div class="editprogram__cinput">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
           <div class="editprogram__cinput1">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
         </div>
 
@@ -45,21 +45,21 @@
         <div class="editprogram__qualification">
           <div class="editprogram__q1 font-weight-black">Qualification #1</div>
           <div class="editprogram__q1input">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
         </div>
 
         <div class="editprogram__qualification2">
           <div class="editprogram__q2 font-weight-black">Qualification #2</div>
           <div class="editprogram__q2input">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
         </div>
 
         <div class="editprogram__qualification3">
           <div class="editprogram__q3 font-weight-black">Qualification #3</div>
           <div class="editprogram__q3input">
-            <v-combobox v-model="select" :items="items" outlined dense></v-combobox>
+            <v-combobox outlined dense></v-combobox>
           </div>
         </div>
 
@@ -93,6 +93,11 @@ export default {
   &__entire-body {
     display: flex;
     height: 100%;
+    width: 100%;
+    margin-left: 21.5%;
+  }
+  &__second-part {
+    width: 100%;
   }
   &__body {
     display: flex;

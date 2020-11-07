@@ -5,7 +5,6 @@
         :headers="header"
         :items="indexedItems"
         sort-by="index"
-        :loading="loading"
         item-key="id"
         :show-select="false"
         :disable-pagination="true"

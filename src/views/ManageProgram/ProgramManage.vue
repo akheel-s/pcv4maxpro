@@ -20,6 +20,7 @@ export default defineComponent({
     Nav,
     'manage-id': Manage,
     'detail-id': EditProgram,
+    // 'setup-id': Participants,
     'participants-id': Participants,
     'stakeholders-id': ManageStakeholder
   },
@@ -41,6 +42,9 @@ export default defineComponent({
   &__main-body {
     display: flex;
     height: 100%;
+  }
+  &__Manage {
+    width: 100%;
   }
 }
 </style>
