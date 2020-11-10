@@ -2097,6 +2097,50 @@ export default {
         user: 'teacher',
         password: 'boyd',
         video: '7872-MXbjVQ'
+      },
+
+      // ROUND 6
+
+      'Boys And Girls Club San Leandro': {
+        user: 'school',
+        password: 'internships',
+        video: 'lmbNLmKs8fM'
+      },
+
+      'Brian Ortiz Classroom': {
+        user: 'student',
+        password: 'internships',
+        video: '9AmlBLybWsg'
+      },
+      'Shop Talk': {
+        user: 'teacher',
+        password: 'internships',
+        video: 'hZ2QUtc0S_c'
+      },
+      'East Bay Regional Park District': {
+        user: 'employer',
+        password: 'ebrpd',
+        video: 'r9mRysvPHwg'
+      },
+      'Arroyo Parents': {
+        user: 'parents',
+        password: 'internships',
+        video: 'fOYapMYCfQo'
+      },
+      'Fremont Moms': {
+        user: 'parent',
+        password: 'internships',
+        video: 'kTavoCXHYFM'
+      },
+      AAMAA: {
+        user: 'employer',
+        password: 'localimpact',
+        video: '1K_FGIW0kYk'
+      },
+      Bill: {
+        user: 'employer',
+        password: 'fintech',
+        video: 'YwsUz-COPsI'
       }
     };
     const pass = ref('');
