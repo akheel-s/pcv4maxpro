@@ -2123,7 +2123,7 @@ export default {
         video: 'r9mRysvPHwg'
       },
       'Arroyo Parents': {
-        user: 'parents',
+        user: 'parent',
         password: 'internships',
         video: 'fOYapMYCfQo'
       },
