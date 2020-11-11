@@ -2141,6 +2141,87 @@ export default {
         user: 'employer',
         password: 'fintech',
         video: 'YwsUz-COPsI'
+      },
+      // ROUND 7
+      IBM: {
+        user: 'employer',
+        password: 'impact',
+        video: 'XzRR2FC0ltw'
+      },
+      Boostalgo: {
+        user: 'employer',
+        password: 'impact',
+        video: 'Givf4L_T5sw'
+      },
+      UCT: {
+        user: 'employer',
+        password: 'impact',
+        video: 'YIPJuiXeqE0'
+      },
+      'Lam Research': {
+        user: 'employer',
+        password: 'impact',
+        video: 'R2eG-cB_pm8'
+      },
+      'Palo Alto Networks': {
+        user: 'employer',
+        password: 'impact',
+        video: 'oNXyBlLByE8'
+      },
+      Visa: {
+        user: 'employer',
+        password: 'impact',
+        video: 'vDCYbf08GwY'
+      },
+      Droisys: {
+        user: 'employer',
+        password: 'impact',
+        video: 'o-yp8MRVEwU'
+      },
+      'Sutter Health': {
+        user: 'employer',
+        password: 'impact',
+        video: 'FWbhou-EQKM'
+      },
+      'Cisco Global Infrastructure Services': {
+        user: 'employer',
+        password: 'impact',
+        video: 'qAcz1kFtFiE'
+      },
+      Workday: {
+        user: 'employer',
+        password: 'impact',
+        video: 'ZS6VmOhoMFE'
+      },
+      Uber: {
+        user: 'employer',
+        password: 'impact',
+        video: 'gd_OvNyj6bI'
+      },
+      Cognizant: {
+        user: 'employer',
+        password: 'impact',
+        video: 'jBpKtmO57gg'
+      },
+      'Amazon Prime Video': {
+        user: 'employer',
+        password: 'impact',
+        video: 'osGkNzhgPQ4'
+      },
+      Salesforce: {
+        user: 'employer',
+        password: 'impact',
+        video: '3FuKcCfHI4I'
+      },
+      'Cisco Corporate Development Technology': {
+        user: 'employer',
+        password: 'impact',
+        video: 'lb8J5wVkW-I'
+      },
+      KLA: {
+        user: 'employer',
+        password: 'impact',
+        video: '_e3tKfeNfVs'
       }
     };
     const pass = ref('');
