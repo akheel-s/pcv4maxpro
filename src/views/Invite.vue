@@ -2222,6 +2222,114 @@ export default {
         user: 'employer',
         password: 'impact',
         video: '_e3tKfeNfVs'
+      },
+
+      // ROUND 8
+      Dyndrite: {
+        user: 'employer',
+        password: 'digitalmfg',
+        video: 'FTfKosemOmc'
+      },
+      'Urban Bloc': {
+        user: 'employer',
+        password: 'outdoor',
+        video: '2_eqsQI-IPw'
+      },
+
+      'Velodyne Lidar': {
+        user: 'employer',
+        password: 'av',
+        video: 'N6VgXWYvJXg'
+      },
+
+      'Strategy Of Things': {
+        user: 'employer',
+        password: 'iot',
+        video: 'HjZrIm3Wjnw'
+      },
+
+      Picterra: {
+        user: 'employer',
+        password: 'ai',
+        video: 'ml8-OBbFNy0'
+      },
+
+      Literrati: {
+        user: 'employer',
+        password: 'smarttrash',
+        video: 'QstlJilqDd0'
+      },
+
+      Agritecture: {
+        user: 'employer',
+        password: 'iot',
+        video: 'EHGubw2N68Q'
+      },
+
+      'Scandic Springs': {
+        user: 'employer',
+        password: 'mfg',
+        video: 'xD2aHpi-nlA'
+      },
+
+      'Applied Fusion': {
+        user: 'employer',
+        password: 'mfg',
+        video: 'qh_xRleVziM'
+      },
+
+      Fathom: {
+        user: 'employer',
+        password: 'nextlevel',
+        video: 'lJ1ELFDK3Lc'
+      },
+
+      Matson: {
+        user: 'employer',
+        password: 'logistics',
+        video: 'w-kIJ1WrA6c'
+      },
+
+      'Surplus Service': {
+        user: 'employer',
+        password: 'upcycle',
+        video: '4ptWSYYHJ64'
+      },
+
+      'George Mark Childrens House': {
+        user: 'employer',
+        password: 'empathy',
+        video: 'AuODwtpUjnc'
+      },
+
+      'East Bay Community Energy': {
+        user: 'employer',
+        password: 'mobilization',
+        video: 'KkHegb3gmI0'
+      },
+
+      'Contra Costa Transportation Authority': {
+        user: 'employer',
+        password: 'transport',
+        video: '-_MKVhDStrI'
+      },
+
+      'Prime Roots': {
+        user: 'employer',
+        password: 'shrooms',
+        video: 'sHzbvsYnC6E'
+      },
+
+      'Symbio Robotics': {
+        user: 'employer',
+        password: 'mfg',
+        video: 'V9u5pyPiJa0'
+      },
+
+      '6x7': {
+        user: 'employer',
+        password: 'sales',
+        video: 'Ou9UaBdR-k0'
       }
     };
     const pass = ref('');
