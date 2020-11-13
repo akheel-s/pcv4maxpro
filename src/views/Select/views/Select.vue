@@ -3,15 +3,15 @@
     <div class="select__stepper">
       <v-stepper class="select__timeline" alt-labels>
         <v-stepper-header>
-          <v-stepper-step step="1" non-linear>Choose Template</v-stepper-step>
+          <v-stepper-step step="1" non-linear>Select</v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step color="#F79960" step="2" non-linear>Enter Details</v-stepper-step>
+          <v-stepper-step color="#F79960" step="2" non-linear>Setup</v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step step="">Setup Program</v-stepper-step>
+          <v-stepper-step step="">Publish</v-stepper-step>
         </v-stepper-header>
       </v-stepper>
     </div>
