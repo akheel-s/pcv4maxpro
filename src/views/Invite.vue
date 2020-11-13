@@ -2330,6 +2330,73 @@ export default {
         user: 'employer',
         password: 'sales',
         video: 'Ou9UaBdR-k0'
+      },
+
+      // ROUND 9
+      'Councilmember Victor Aguilar': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: 'OG3xkXWEhWM'
+      },
+
+      'Congressman Eric Swalwell': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: 'cOfSqsCmLmQ'
+      },
+
+      'Assembly Member Rob Bonta': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: 'jwkhp7fAsCc'
+      },
+
+      Bayer: {
+        user: 'employer',
+        password: 'biotech',
+        video: 'He1owAKz0L8'
+      },
+
+      'Chris Chin': {
+        user: 'employer',
+        password: 'immersive',
+        video: 'CfzciwdpJes'
+      },
+
+      Manex: {
+        user: 'employer',
+        password: 'mfg',
+        video: '2WVjgMN5ipw'
+      },
+
+      'San Leandro Police Department': {
+        user: 'employer',
+        password: 'resilience',
+        video: '8oCDIoPW_3Q'
+      },
+
+      'Mayor Pauline Cutter': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: '9chm5NS7tf0'
+      },
+
+      'Councilmember Deborah Cox': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: '-dxo1mLhEGw'
+      },
+
+      'Councilmember Pete Ballew': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: 'aiCdO3ADsnE'
+      },
+
+      'Councilmember Corina Lopez': {
+        user: 'employer',
+        password: 'sideprojects',
+        video: 'NTHst6NUnag'
       }
     };
     const pass = ref('');
