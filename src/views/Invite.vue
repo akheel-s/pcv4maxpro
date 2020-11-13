@@ -2117,7 +2117,7 @@ export default {
         password: 'internships',
         video: 'hZ2QUtc0S_c'
       },
-      'East Bay Regional Park District': {
+      'East Bay Regional Parks District': {
         user: 'employer',
         password: 'ebrpd',
         video: 'r9mRysvPHwg'
