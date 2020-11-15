@@ -1,11 +1,12 @@
 <template>
   <div class="home">
-    <span class="text-h1 font-weight-black"> THIS IS AN EMPTY PAGE</span>
+    <!-- <span class="text-h1 font-weight-black"> THIS IS AN EMPTY PAGE</span> -->
   </div>
 </template>
 <style lang="scss">
 .home {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   & span {
