@@ -6,11 +6,16 @@
     <div class="guide__page">
       <div class="guide__locks guide__locks--left unlocked">
         <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-left</v-icon>
-        <v-icon large color="green" class="guide__lock">mdi-lock-open</v-icon>
+        <!-- STUDENT VIEW -->
+        <!-- <v-icon large color="green" class="guide__lock">mdi-lock-open</v-icon> -->
+        <v-icon large color="green" class="guide__lock">mdi-check-circle</v-icon>
       </div>
       <component :is="currentUnit" />
       <div class="guide__locks guide__locks--right locked">
-        <v-icon large color="red" class="guide__lock">mdi-lock</v-icon>
+        <!-- STUDENT VIEW -->
+        <!-- <v-icon large color="red" class="guide__lock">mdi-lock</v-icon> -->
+        <v-icon large color="orange" class="guide__lock">mdi-progress-wrench</v-icon>
+
         <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-right</v-icon>
       </div>
     </div>
@@ -22,24 +27,29 @@
     width: 100%;
     height: 100vh;
     display: flex;
+    // border: 12px solid #000000;
+    background-color: transparent;
   }
   &bar {
-    max-width: 30vw; //325/1440
-    height: 100vh;
+    // max-width: fit-content;
+    // min-width: fit-content;
+    width: fit-content;
+    height: fit-content;
   }
   &page {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     position: relative;
   }
   &locks {
-    height: 100vh;
+    height: 95vh;
     width: 70px;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px;
     &--left {
       left: 0;
       top: 0;
