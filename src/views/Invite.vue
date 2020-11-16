@@ -2397,6 +2397,14 @@ export default {
         user: 'employer',
         password: 'sideprojects',
         video: 'NTHst6NUnag'
+      },
+
+      // ROUND 10
+
+      'ACOE SWP Partners': {
+        user: 'school',
+        password: 'internships',
+        video: 'PQlA1kPSYBU'
       }
     };
     const pass = ref('');
