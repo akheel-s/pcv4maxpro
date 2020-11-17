@@ -2405,6 +2405,54 @@ export default {
         user: 'school',
         password: 'internships',
         video: 'PQlA1kPSYBU'
+      },
+
+      'Adaptable Security': {
+        user: 'employer',
+        password: 'cybersecurity',
+        video: '-mNNcjtyGC0'
+      },
+
+      'City Of San Leandro IT': {
+        user: 'employer',
+        password: 'tech',
+        video: 'JZdbgoITGso'
+      },
+
+      'Zocalo Coffee': {
+        user: 'employer',
+        password: 'roast',
+        video: 'LJy3n7uuz7U'
+      },
+
+      'UCSF CSEO': {
+        user: 'school',
+        password: 'internships',
+        video: 'mbw50ewGOQw'
+      },
+
+      'Amazon Managed Blockchain': {
+        user: 'employer',
+        password: 'blockchain',
+        video: '2Fq3yFFOdVQ'
+      },
+
+      'Alameda Unified School District': {
+        user: 'school',
+        password: 'internships',
+        video: 'q4FqoQMGFgk'
+      },
+
+      'FUJIFILM Irvine Scientific': {
+        user: 'employer',
+        password: 'biotech',
+        video: 'Hb7WCGmYnkg'
+      },
+
+      'Main Street Property Services': {
+        user: 'employer',
+        password: 'retailers',
+        video: '4WrpuWprWbI'
       }
     };
     const pass = ref('');
