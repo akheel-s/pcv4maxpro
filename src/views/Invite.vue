@@ -2459,6 +2459,50 @@ export default {
         user: 'teacher',
         password: '23',
         video: 'tXHmGohjb-E'
+      },
+
+      // ROUND 11 HODGEPODGE
+
+      'Wild Earth': {
+        user: 'employer',
+        password: 'biotech',
+        video: 'H29U7ColrwA'
+      },
+
+      'Pinx Catering': {
+        user: 'employer',
+        password: 'rebuild',
+        video: '88FaCyLuDFI'
+      },
+
+      'True West Ventures': {
+        user: 'employer',
+        password: 'foodie',
+        video: 'UuRAATKYvuo'
+      },
+
+      'Fremont Fire Department': {
+        user: 'employer',
+        password: 'mutualaid',
+        video: 'FcqbTsLnC5c'
+      },
+
+      'College Of Alameda': {
+        user: 'school',
+        password: 'internships',
+        video: 'QXix72SKtbA'
+      },
+
+      'Mark Martin': {
+        user: 'school',
+        password: 'updateformark',
+        video: 'SDVk7Svie5o'
+      },
+
+      'BATS Members': {
+        user: 'school',
+        password: 'internships',
+        video: '_Td6mG6wFsQ'
       }
     };
     const pass = ref('');
