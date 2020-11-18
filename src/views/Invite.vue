@@ -2503,6 +2503,12 @@ export default {
         user: 'school',
         password: 'internships',
         video: '_Td6mG6wFsQ'
+      },
+
+      'Berkeley High School Teachers': {
+        user: 'teacher',
+        password: 'internships',
+        video: 'csc7w54Gu5k'
       }
     };
     const pass = ref('');
