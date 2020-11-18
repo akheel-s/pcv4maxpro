@@ -2453,6 +2453,12 @@ export default {
         user: 'employer',
         password: 'retailers',
         video: '4WrpuWprWbI'
+      },
+
+      'Herrick Fang': {
+        user: 'teacher',
+        password: '23',
+        video: 'tXHmGohjb-E'
       }
     };
     const pass = ref('');
