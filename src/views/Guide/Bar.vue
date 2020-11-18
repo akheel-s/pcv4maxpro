@@ -107,61 +107,28 @@
     <v-card class="program-card">
       <v-expand-x-transition>
         <div v-show="expand" class="guide-bar__container">
-          <!-- <div class="guide-bar__highlight" /> -->
-          <div class="guide-bar__title">Lawrence Berkeley National Laboratory</div>
-          <!-- <v-avatar color="grey"></v-avatar> -->
-          <!-- ORGANIZER SETUP MODE -->
-          <div class="guide-bar__cta2">
-            <v-btn rounded class="guide-bar__cta-button" x-small outlined depressed color="grey"
-              ><v-icon x-small left>mdi-file-document-edit</v-icon>Edit Program</v-btn
-            >
-          </div>
-          <!-- ORGANIZER SETUP MODE -->
-          <div class="guide-bar__stepper">
-            <div class="guide-bar__stepper-content">
-              <v-stepper vertical>
-                <template v-for="n in steps">
-                  <v-stepper-step
-                    :key="`${n}-step`"
-                    color="green"
-                    :step="''"
-                    :complete="activeStep > n"
-                    @click="activeStep = n + 1"
-                  >
-                    <div class="guide-bar__timeline-item">
-                      Research
-                      <div>
-                        <v-btn
-                          class="guide-bar__timeline-item-setup"
-                          color="orange"
-                          outlined
-                          x-small
-                          depressed
-                          >Setup</v-btn
-                        >
-                      </div>
-                    </div>
-                  </v-stepper-step>
-                  <v-stepper-content :key="`${n}-content`" :step="n" />
-                </template>
-              </v-stepper>
-            </div>
-          </div>
-          <!-- STUDENT VIEW -->
-          <!-- <div class="guide-bar__actions">
-            <div class="guide-bar__actions-list">
-              <v-icon v-for="action in actions" :key="action.icon" dark @click="logThis(action.fn)">
-                {{ 'mdi-' + action.icon }}
-              </v-icon>
-            </div>
-          </div> -->
-          <!-- STUDENT VIEW -->
-
-          <!-- ORGANIZER SETUP MODE -->
-          <div class="guide-bar__cta1">
-            <v-btn rounded depressed outlined color="grey">Finish Setup to Publish</v-btn>
-          </div>
-          <!-- ORGANIZER SETUP MODE -->
+          <v-list class="guide-bar__list">
+            <v-subheader>Monitor Programs</v-subheader>
+            <v-list-item-group>
+              <v-divider />
+              <v-list-item outlined color="pink" class="guide-bar__list-item"
+                >All Programs</v-list-item
+              >
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Alan AI</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item"
+                >Lawrence Berkeley National Laboratory</v-list-item
+              >
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">City of San Leandro</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Congresswoman Barbara Lee</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Google Wing</v-list-item>
+              <v-divider />
+            </v-list-item-group>
+          </v-list>
         </div>
       </v-expand-x-transition>
     </v-card>
@@ -264,6 +231,8 @@ $stepper-step-step-height: 50px;
 .program-card {
   // height: 100%;
   // height: 100vh;
+  // width: 25vw;
+  max-width: 25vw;
 }
 .v-application--is-ltr .guide-bar .v-stepper--vertical .v-stepper__content {
   margin: -16px -12px -24px 12px;
@@ -404,15 +373,28 @@ $stepper-step-step-height: 50px;
     }
   }
   &__container {
-    padding: 22px;
+    // padding: 22px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     max-height: 100vh;
     background-color: transparent;
-    // border: 1px solid black;
+    border-right: 1px solid #dedede;
     // border-right: none;
+  }
+
+  &__list-item {
+    font-family: Raleway;
+    font-size: 12px;
+    font-weight: 700;
+    // letter-spacing: 2px !important;
+    // text-transform: uppercase;
+  }
+
+  &__list {
+    width: 100%;
   }
 }
 
