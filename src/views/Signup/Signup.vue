@@ -80,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from '@vue/composition-api';
+import { reactive, toRefs, ref } from '@vue/composition-api';
 import { useAuthActions, useDbState } from '@/store';
 
 export default {
@@ -92,6 +92,7 @@ export default {
     else next({ name: 'portfolio' });
   },
   setup(props, { root }) {
+    const dialog = ref(false);
     // * Signup main
     const param = root.$route.query.email ? (root.$route.query.email as string) : '';
     const state = reactive({
@@ -121,7 +122,7 @@ export default {
       }
       ui.loading = false;
     }
-    return { ...toRefs(state), submit, ...toRefs(ui) };
+    return { ...toRefs(state), submit, ...toRefs(ui), dialog };
   },
   methods: {}
 };
@@ -136,6 +137,21 @@ export default {
 }
 
 .signup {
+  &__dialog {
+    text-align: center;
+    padding: 25px;
+  }
+
+  &__dialog-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dialog-button {
+    margin: 20px;
+  }
+
   &__navbar {
     display: flex;
   }
@@ -253,12 +269,5 @@ export default {
     margin-top: 25px;
     font-size: 11.5px !important;
   }
-}
-
-@media only screen and (max-width: 600px) {
-  // .signup {
-  //   &__header {
-  //   }
-  // }
 }
 </style>
