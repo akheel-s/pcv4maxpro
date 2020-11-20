@@ -1,7 +1,8 @@
 version: "3.8"
 services: 
   program:
-    build: .
+    # build: . #enable this when modifyingh dependencies
+    image: juxsta/pcv4maxpro:latest
     container_name: program
     environment: 
     - NODE_ENV=development
@@ -16,7 +17,7 @@ services:
     - 8080:8080
     stdin_open: true
     tty: true
-    command: sh /usr/src/app/entrypoint.sh
+    command: ["yarn","serve"]
   storybook:
     build: .
     container_name: storybook
