@@ -2509,6 +2509,14 @@ export default {
         user: 'teacher',
         password: 'internships',
         video: 'csc7w54Gu5k'
+      },
+
+      // ANDREW DOOLITTLE
+
+      'Andrew Doolittle': {
+        user: 'teacher',
+        password: 'doolittle',
+        video: 'ioeLlpe07wA'
       }
     };
     const pass = ref('');
