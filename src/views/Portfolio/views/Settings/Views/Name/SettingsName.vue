@@ -20,6 +20,8 @@
             label="Mobile Phone Number"
             outlined
           ></v-text-field>
+
+          
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" slim rules="required">
@@ -43,9 +45,8 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { Ref, reactive, ref, toRefs, onMounted } from '@vue/composition-api';
+import { Ref, reactive, ref, toRefs } from '@vue/composition-api';
 import { useAuthGetters, useDbActions, useDbState } from '@/store';
-import gql from 'graphql-tag';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import { PropType } from 'vue';
 import Loading from '@/components/Loading.vue';
@@ -73,17 +74,7 @@ export default {
       default: () => []
     }
   },
-  setup(
-    props,
-    {
-      emit,
-      root: {
-        $apolloProvider: {
-          defaultClient: { query }
-        }
-      }
-    }
-  ) {
+  setup(props, { emit }) {
     const AVAILABLE_IDS = ref(CITIZEN_TYPES);
 
     const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
