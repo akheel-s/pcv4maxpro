@@ -28,44 +28,11 @@
       <div>
         <v-tooltip right color="black">
           <template v-slot:activator="{ on, attrs }"
-            ><v-icon v-bind="attrs" color="orange" class="guide-bar__sidebar-icon" v-on="on"
-              >mdi-progress-wrench</v-icon
-            >
-          </template>
-          <span>Setup Program</span>
-        </v-tooltip>
-      </div>
-
-      <div>
-        <v-tooltip right color="black">
-          <template v-slot:activator="{ on, attrs }"
-            ><v-icon v-bind="attrs" color="#404142" class="guide-bar__sidebar-icon" v-on="on"
+            ><v-icon v-bind="attrs" color="blue" class="guide-bar__sidebar-icon" v-on="on"
               >mdi-monitor-dashboard</v-icon
             >
           </template>
           <span>Monitor Program</span>
-        </v-tooltip>
-      </div>
-
-      <div>
-        <v-tooltip right color="black">
-          <template v-slot:activator="{ on, attrs }"
-            ><v-icon v-bind="attrs" color="#404142" class="guide-bar__sidebar-icon" v-on="on"
-              >mdi-human-edit</v-icon
-            >
-          </template>
-          <span>Manage Participants</span>
-        </v-tooltip>
-      </div>
-
-      <div>
-        <v-tooltip right color="black">
-          <template v-slot:activator="{ on, attrs }"
-            ><v-icon v-bind="attrs" color="#404142" class="guide-bar__sidebar-icon" v-on="on"
-              >mdi-account-group</v-icon
-            >
-          </template>
-          <span>Manage Stakeholders</span>
         </v-tooltip>
       </div>
 
@@ -108,26 +75,135 @@
       <v-expand-x-transition>
         <div v-show="expand" class="guide-bar__container">
           <v-list class="guide-bar__list">
-            <v-subheader>Monitor Programs</v-subheader>
-            <v-list-item-group>
-              <v-divider />
-              <v-list-item outlined color="pink" class="guide-bar__list-item"
-                >All Programs</v-list-item
+            <v-subheader>Monitor Participants</v-subheader>
+
+            <v-container fluid>
+              <v-combobox
+                v-model="model2"
+                :filter="filter"
+                :hide-no-data="!search"
+                :items="items"
+                :search-input.sync="search"
+                hide-selected
+                label="Filter by programs"
+                multiple
+                small-chips
+                hide-details
+                solo
               >
+                <template v-slot:no-data>
+                  <v-list-item>
+                    <span class="subheading">Create</span>
+                    <v-chip :color="`${colors[nonce - 1]} lighten-3`" label small>
+                      {{ search }}
+                    </v-chip>
+                  </v-list-item>
+                </template>
+                <template v-slot:selection="{ attrs, item, parent, selected }">
+                  <v-chip
+                    v-if="item === Object(item)"
+                    v-bind="attrs"
+                    :color="`${item.color} lighten-3`"
+                    :input-value="selected"
+                    label
+                    small
+                  >
+                    <span class="pr-2">
+                      {{ item.text }}
+                    </span>
+                    <v-icon small @click="parent.selectItem(item)"> mdi-close </v-icon>
+                  </v-chip>
+                </template>
+                <template v-slot:item="{ index, item }">
+                  <v-text-field
+                    v-if="editing === item"
+                    v-model="editing.text"
+                    autofocus
+                    flat
+                    background-color="transparent"
+                    hide-details
+                    solo
+                    @keyup.enter="edit(index, item)"
+                  ></v-text-field>
+                  <v-chip v-else :color="`${item.color} lighten-3`" dark label small>
+                    {{ item.text }}
+                  </v-chip>
+                  <v-spacer></v-spacer>
+                  <v-list-item-action @click.stop>
+                    <v-btn icon @click.stop.prevent="edit(index, item)">
+                      <v-icon>{{ editing !== item ? 'mdi-pencil' : 'mdi-check' }}</v-icon>
+                    </v-btn>
+                  </v-list-item-action>
+                </template>
+              </v-combobox>
+              <div class="mt-5">
+                <v-btn class="mr-3" color="grey" x-small depressed outlined>Name</v-btn
+                ><v-btn class="mr-3" color="grey" x-small depressed outlined>School</v-btn
+                ><v-btn class="mr-3" color="grey" x-small depressed outlined>Grade</v-btn
+                ><v-btn class="mr-3" color="grey" x-small depressed outlined>Team</v-btn>
+                <v-btn class="mr-3" color="grey" x-small depressed outlined>Progress</v-btn>
+              </div>
+            </v-container>
+
+            <v-list-group
+              v-for="item in items2"
+              :key="item.title"
+              v-model="item.active"
+              :prepend-icon="item.action"
+              no-action
+            >
+              <!-- <v-divider /> -->
+              <!-- <v-list-item outlined class="guide-bar__list-item">All Participants</v-list-item>
+              <v-divider /> -->
+              <template v-slot:activator>
+                <v-list-item class="guide-bar__list-item-title">
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                    <!-- <v-chip small>Irvington High School</v-chip> -->
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+
+              <div v-for="child in item.items" :key="child.title" class="guide-bar__sub">
+                <v-chip-group><v-chip small dark v-text="child.title"></v-chip></v-chip-group>
+              </div>
+
+              <!-- <v-divider />
+              <v-list-item class="guide-bar__list-item">Eric Reyes</v-list-item>
               <v-divider />
-              <v-list-item class="guide-bar__list-item">Alan AI</v-list-item>
+              <v-list-item class="guide-bar__list-item">Akheel Shaik</v-list-item>
               <v-divider />
-              <v-list-item class="guide-bar__list-item"
-                >Lawrence Berkeley National Laboratory</v-list-item
-              >
+              <v-list-item class="guide-bar__list-item">Derick Lee</v-list-item>
               <v-divider />
-              <v-list-item class="guide-bar__list-item">City of San Leandro</v-list-item>
+              <v-list-item class="guide-bar__list-item">Monica Willemsz</v-list-item>
               <v-divider />
-              <v-list-item class="guide-bar__list-item">Congresswoman Barbara Lee</v-list-item>
+              <v-list-item class="guide-bar__list-item">Tim Deloney</v-list-item>
               <v-divider />
-              <v-list-item class="guide-bar__list-item">Google Wing</v-list-item>
+              <v-list-item class="guide-bar__list-item">Eric Xie</v-list-item>
               <v-divider />
-            </v-list-item-group>
+              <v-list-item class="guide-bar__list-item">Noah MacLean</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Maya Campos</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Prajit Saravanan</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Eric Reyes</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Akheel Shaik</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Derick Lee</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Monica Willemsz</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Tim Deloney</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Eric Xie</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Noah MacLean</v-list-item>
+              <v-divider />
+              <v-list-item class="guide-bar__list-item">Maya Campos</v-list-item>
+              <v-divider /> -->
+            </v-list-group>
           </v-list>
         </div>
       </v-expand-x-transition>
@@ -140,6 +216,226 @@ import { ref, reactive } from '@vue/composition-api';
 
 export default {
   name: 'Bar',
+
+  data: () => ({
+    activator: null,
+    attach: null,
+    colors: ['green', 'purple', 'indigo', 'cyan', 'teal', 'orange'],
+    editing: null,
+    editingIndex: -1,
+    items2: [
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '9th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Prajit Saravanan'
+      },
+      {
+        items: [{ title: 'Arroyo High School' }, { title: '12th Grade' }, { title: 'Team Drones' }],
+        title: 'Eric Reyes'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Akheel Shaik'
+      },
+      {
+        items: [{ title: 'Hillsdale High School' }, { title: '10th Grade' }, { title: 'Typeform' }],
+        title: 'Noah MacLean'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'Kaiser Permanente' }
+        ],
+        title: 'Eric Xie'
+      },
+      {
+        items: [
+          { title: 'Washington High School' },
+          { title: '11th Grade' },
+          { title: 'Strategy of Things' }
+        ],
+        title: 'Maya Campos'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '9th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Prajit Saravanan'
+      },
+      {
+        items: [{ title: 'Arroyo High School' }, { title: '12th Grade' }, { title: 'Team Drones' }],
+        title: 'Eric Reyes'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Akheel Shaik'
+      },
+      {
+        items: [{ title: 'Hillsdale High School' }, { title: '10th Grade' }, { title: 'Typeform' }],
+        title: 'Noah MacLean'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'Kaiser Permanente' }
+        ],
+        title: 'Eric Xie'
+      },
+      {
+        items: [
+          { title: 'Washington High School' },
+          { title: '11th Grade' },
+          { title: 'Strategy of Things' }
+        ],
+        title: 'Maya Campos'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '9th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Prajit Saravanan'
+      },
+      {
+        items: [{ title: 'Arroyo High School' }, { title: '12th Grade' }, { title: 'Team Drones' }],
+        title: 'Eric Reyes'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'City of Fremont' }
+        ],
+        title: 'Akheel Shaik'
+      },
+      {
+        items: [{ title: 'Hillsdale High School' }, { title: '10th Grade' }, { title: 'Typeform' }],
+        title: 'Noah MacLean'
+      },
+      {
+        items: [
+          { title: 'Irvington High School' },
+          { title: '12th Grade' },
+          { title: 'Kaiser Permanente' }
+        ],
+        title: 'Eric Xie'
+      },
+      {
+        items: [
+          { title: 'Washington High School' },
+          { title: '11th Grade' },
+          { title: 'Strategy of Things' }
+        ],
+        title: 'Maya Campos'
+      }
+    ],
+
+    model2: [
+      {
+        text: 'All Programs',
+        color: 'blue'
+      }
+    ],
+
+    items: [
+      { header: 'Filter by programs' },
+      {
+        text: 'All Programs',
+        color: 'blue'
+      },
+      {
+        text: 'Lawrence Berkeley National Laboratory',
+        color: 'blue'
+      },
+      {
+        text: 'Alan AI',
+        color: 'indigo'
+      },
+      {
+        text: 'Office of Congresswoman Barbara Lee',
+        color: 'teal'
+      },
+      {
+        text: 'Kaiser Permanente',
+        color: 'orange'
+      },
+      {
+        text: 'Typeform',
+        color: 'cyan'
+      }
+    ],
+    nonce: 1,
+    menu: false,
+    model: [
+      // {
+      //   text: 'Foo',
+      //   color: 'blue'
+      // }
+    ],
+    x: 0,
+    search: null,
+    y: 0
+  }),
+
+  // watch: {
+  //   model(val, prev) {
+  //     if (val.length === prev.length) return;
+
+  //     this.model = val.map(v => {
+  //       if (typeof v === 'string') {
+  //         v = {
+  //           text: v,
+  //           color: this.colors[this.nonce - 1]
+  //         };
+
+  //         this.items.push(v);
+
+  //         this.nonce++;
+  //       }
+
+  //       return v;
+  //     });
+  //   }
+  // },
+
+  methods: {
+    edit(index, item) {
+      if (!this.editing) {
+        this.editing = item;
+        this.editingIndex = index;
+      } else {
+        this.editing = null;
+        this.editingIndex = -1;
+      }
+    },
+    filter(item, queryText, itemText) {
+      if (item.header) return false;
+
+      const hasValue = val => (val != null ? val : '');
+
+      const text = hasValue(itemText);
+      const query = hasValue(queryText);
+
+      return text.toString().toLowerCase().indexOf(query.toString().toLowerCase()) > -1;
+    }
+  },
+
   setup() {
     function logThis(val: string) {
       console.log(val);
@@ -393,8 +689,16 @@ $stepper-step-step-height: 50px;
     // text-transform: uppercase;
   }
 
+  &__list-item-title {
+    font-family: Raleway;
+    font-weight: 700;
+    // letter-spacing: 2px !important;
+    // text-transform: uppercase;
+  }
+
   &__list {
-    width: 100%;
+    width: 25vw;
+    overflow-y: auto;
   }
 }
 
@@ -402,6 +706,9 @@ $stepper-step-step-height: 50px;
   // background-color: transparent;
 }
 .guide-bar {
+  &__sub {
+    padding-left: 32px;
+  }
   &__container {
     height: 100vh;
     // background-color: transparent !important;

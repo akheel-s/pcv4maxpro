@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="monitor__activities">
     <v-data-table
+      dense
       :headers="header"
       :items="items"
       sort-by="resource"
@@ -8,9 +9,11 @@
       hide-default-footer="true"
     >
       <template v-slot:item.click>
-        <v-btn depressed color="#FFFFFF" :ripple="false"
-          ><v-icon color="#FF0000"> mdi-delete </v-icon></v-btn
-        >
+        <v-btn outlined depressed x-small :ripple="false">Monitor Activity</v-btn>
+      </template>
+
+      <template v-slot:item.progress>
+        <v-progress-linear color="green" value="90"></v-progress-linear>
       </template>
     </v-data-table>
   </div>
@@ -27,3 +30,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.monitor {
+  &__activities {
+    width: 100%;
+  }
+}
+</style>

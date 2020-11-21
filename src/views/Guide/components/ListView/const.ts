@@ -1,14 +1,28 @@
 export const HEADER = [
-  { text: 'Index', align: 'start', value: 'index', width: '10%' },
-  { text: 'activities', align: 'start', value: 'activity', width: '70%' },
-  { text: 'Progress', align: 'start', value: 'progress', sortable: false, width: '20%' },
-  { text: 'Click', align: 'start', value: 'click', sortable: false, width: '5%' }
+  { text: 'Order', align: 'center', value: 'index', sortable: false, width: '5%' },
+  { text: 'Activity', align: 'start', value: 'activity', sortable: false, width: '25%' },
+  { text: 'Progress', align: 'start', value: 'progress', sortable: false, width: '25%' },
+  { text: 'Completion', align: 'center', value: 'completion', sortable: false, width: '10%' },
+  { text: 'Monitor', align: 'center', value: 'click', sortable: false, width: '20%' }
 ];
 
 export const items = [
-  { index: 'Today at 2:00am', activity: 'Designed the base', progress: 'IMG_3243.jpg' },
-  { index: 'Yesterday at 1:00pm', activity: 'Edited the side', progress: '2343.pdf' },
-  { index: '2 days ago at 3:00pm', activity: 'Finished the design', progress: 'dku3.tif' },
-  { index: '2/2/2018 at 6pm', activity: 'Created the file', progress: '3kek322.png' },
-  { index: '3/22/2018 at 7pm', activity: 'Developed the metal arm', progress: '323_IMG.png' }
+  { index: '1', activity: 'Join', completion: '100%' },
+  { index: '2', activity: 'Request for Projects', completion: '100%' },
+  { index: '3', activity: 'Team', completion: '100%' },
+  { index: '4', activity: 'Discord', completion: '100%' },
+  { index: '5', activity: 'Train', completion: '100%' },
+  { index: '6', activity: 'Research', completion: '100%' },
+  { index: '7', activity: 'Practice', completion: '0%' },
+  { index: '8', activity: 'Ideate', completion: '0%' },
+  { index: '9', activity: 'Pitches', completion: '0%' },
+  { index: '10', activity: 'Interact', completion: '0%' },
+  { index: '11', activity: 'Design & Prototype', completion: '0%' },
+  { index: '12', activity: 'Prospect', completion: '0%' },
+  { index: '13', activity: 'Demonstration', completion: '0%' },
+  { index: '14', activity: 'Present', completion: '0%' },
+  { index: '15', activity: 'Auto-Apply', completion: '0%' },
+  { index: '16', activity: 'Interview', completion: '0%' },
+  { index: '17', activity: 'Offer', completion: '0%' },
+  { index: '18', activity: 'Results', completion: '0%' }
 ];

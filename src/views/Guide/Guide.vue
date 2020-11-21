@@ -4,23 +4,12 @@
       <guide-bar />
     </div>
     <div class="guide__page">
-      <div class="guide__locks guide__locks--left unlocked">
-        <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-left</v-icon>
-        <!-- STUDENT VIEW -->
-        <!-- <v-icon large color="green" class="guide__lock">mdi-lock-open</v-icon> -->
-        <v-icon large color="green" class="guide__lock">mdi-check-circle</v-icon>
+      <div class="guide__activity-title-button">
+        <v-btn rounded small outlined depressed color="blue">Monitor Activities</v-btn>
       </div>
-
+      <div class="guide__activity-title">Prajit Saravanan</div>
       <div class="guide__table">
         <component :is="currentUnit" />
-      </div>
-
-      <div class="guide__locks guide__locks--right locked">
-        <!-- STUDENT VIEW -->
-        <!-- <v-icon large color="red" class="guide__lock">mdi-lock</v-icon> -->
-        <v-icon large color="orange" class="guide__lock">mdi-progress-wrench</v-icon>
-
-        <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-right</v-icon>
       </div>
     </div>
   </div>
@@ -48,27 +37,38 @@ export default {
 </script>
 
 <style lang="scss">
-.guide__ {
-  &container {
+.guide {
+  &__activity-title-button {
+    margin: 25px 25px 0px 25px;
+  }
+
+  &__activity-title {
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 25px;
+  }
+
+  &__container {
     width: 100%;
     height: 100vh;
     display: flex;
     // border: 12px solid #000000;
     background-color: transparent;
   }
-  &bar {
+  &__bar {
     // max-width: fit-content;
     // min-width: fit-content;
     width: fit-content;
     height: fit-content;
   }
-  &page {
+  &__page {
     width: 100%;
     height: fit-content;
     //display: flex;
     position: relative;
   }
-  &locks {
+  &__locks {
     height: 95vh;
     width: 70px;
     position: absolute;
@@ -85,7 +85,7 @@ export default {
       top: 0;
     }
   }
-  &lock {
+  &__lock {
     color: var(--v-accent-base);
     &.unlocked {
       &:hover {
@@ -99,11 +99,11 @@ export default {
       }
     }
   }
-  &table {
+  &__table {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20%;
+    align-items: start;
   }
 }
 </style>
