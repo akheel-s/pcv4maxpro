@@ -11,8 +11,9 @@ services:
     - MAX_THREADS=4
     env_file:
     - .env
-    # volumes: 
-    # - ./:/usr/src/app:cached
+    volumes: 
+    - ./:/usr/src/app:cached
+    - usr/src/app/node_modules
     ports:
     - 8080:8080
     stdin_open: true
