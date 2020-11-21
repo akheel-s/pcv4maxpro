@@ -4,7 +4,7 @@
   </span>
 </template>
 <script lang="ts">
-import { computed, ref } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 import shortid from 'shortid';
 
 export default {
