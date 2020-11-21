@@ -148,6 +148,7 @@ export default {
       if (user.value?.profileImg)
         fetch(new Request(user.value.profileImg), {
           method: 'GET'
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         }).then(response => {
           src.value = `https://pilotcity.s3.us-west-1.amazonaws.com/${user.value!.profileImg}`;
           // response.blob().then(blob => {

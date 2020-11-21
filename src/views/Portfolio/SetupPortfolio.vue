@@ -39,7 +39,7 @@
 <script lang="ts">
 import { ref, Ref, computed, watch } from '@vue/composition-api';
 import { breakpoints } from '@/utils';
-import { useAuthGetters, useDbState } from '@/store';
+import { useAuthGetters } from '@/store';
 import apolloProvider from '@/vue-apollo';
 import {
   UserQueryInput,
