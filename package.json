@@ -10,7 +10,8 @@
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "chromatic": "npx chromatic storybook:build --project-token wj2a7q7bco",
-    "graphql-codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
+    "graphql-codegen": "graphql-codegen --config codegen.yml -r dotenv/config",
+    "mutagen-sync": "mutagen create --name='program' ./  docker://program/usr/src/app"
   },
   "dependencies": {
     "@emotion/styled-base": "^10.0.31",
@@ -24,7 +25,7 @@
     "@storybook/vue": "^6.0.21",
     "@stripe/stripe-js": "^1.9.0",
     "@types/lodash": "^4.14.161",
-    "@types/react": "^16.9.49",
+    "@types/react": "17.0.0",
     "@vue/composition-api": "1.0.0-beta.14",
     "@vue/test-utils": "^1.0.3",
     "apollo-boost": "^0.4.9",

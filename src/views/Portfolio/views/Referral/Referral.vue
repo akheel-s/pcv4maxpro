@@ -181,8 +181,7 @@
 </template>
 
 <script lang="ts">
-import Loading from '@/components/Loading.vue';
-import { reactive, toRefs, ref, Ref, onMounted } from '@vue/composition-api';
+import { ref, Ref } from '@vue/composition-api';
 import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';

@@ -18,7 +18,6 @@ import { useToolGetters, useAuthGetters } from '@/store';
 
 export default Vue.extend({
   name: 'App',
-
   components: {
     Navbar
     // Profile
