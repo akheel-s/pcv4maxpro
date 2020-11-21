@@ -10,7 +10,11 @@
         <!-- <v-icon large color="green" class="guide__lock">mdi-lock-open</v-icon> -->
         <v-icon large color="green" class="guide__lock">mdi-check-circle</v-icon>
       </div>
-      <component :is="currentUnit" />
+
+      <div class="guide__table">
+        <component :is="currentUnit" />
+      </div>
+
       <div class="guide__locks guide__locks--right locked">
         <!-- STUDENT VIEW -->
         <!-- <v-icon large color="red" class="guide__lock">mdi-lock</v-icon> -->
@@ -21,6 +25,28 @@
     </div>
   </div>
 </template>
+
+<script>
+import Test from '@/components/Test.vue';
+import { ref } from '@vue/composition-api';
+import Bar from './Bar.vue';
+import ListView from './components/ListView/TableView.vue';
+
+export default {
+  setup() {
+    const currentUnit = ref(ListView);
+    return {
+      currentUnit
+    };
+  },
+  components: {
+    'guide-bar': Bar,
+    ListView
+    // Test
+  }
+};
+</script>
+
 <style lang="scss">
 .guide__ {
   &container {
@@ -39,7 +65,7 @@
   &page {
     width: 100%;
     height: fit-content;
-    display: flex;
+    //display: flex;
     position: relative;
   }
   &locks {
@@ -73,23 +99,11 @@
       }
     }
   }
+  &table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+  }
 }
 </style>
-<script>
-import Test from '@/components/Test.vue';
-import { ref } from '@vue/composition-api';
-import Bar from './Bar.vue';
-
-export default {
-  setup() {
-    const currentUnit = ref(Test);
-    return {
-      currentUnit
-    };
-  },
-  components: {
-    'guide-bar': Bar,
-    Test
-  }
-};
-</script>
