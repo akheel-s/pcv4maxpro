@@ -20,8 +20,6 @@
             label="Mobile Phone Number"
             outlined
           ></v-text-field>
-
-          
         </validation-provider>
 
         <validation-provider v-slot="{ errors }" slim rules="required">

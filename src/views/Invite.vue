@@ -877,7 +877,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref, watch, watchEffect } from '@vue/composition-api';
+import { computed, onMounted, ref, watch } from '@vue/composition-api';
 
 export default {
   name: 'Invite',
