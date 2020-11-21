@@ -208,7 +208,7 @@ export default defineComponent({
     }
   ) {
     const dialog = ref(false);
-    const loader: Ref<ReturnType<typeof Loading['setup']> | null> = ref(null);
+    const loader: Ref<typeof Loading | null> = ref(null);
     const referral: Ref<{ email: string; timestamp: Date }[]> = ref([]);
     const email = ref('');
     const INVITEQUERY = gql`
@@ -255,8 +255,8 @@ export default defineComponent({
         })
       );
     };
-    onMounted(() => {
-      loader.value!.process();
+    onMounted(async () => {
+      await loader.value?.data?.process();
     });
     return { referral, processTransfer, processQuery, email, loader, dialog };
   }
