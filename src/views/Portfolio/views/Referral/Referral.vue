@@ -181,19 +181,20 @@
 </template>
 
 <script lang="ts">
-import { ref, Ref } from '@vue/composition-api';
+import { ref, Ref, defineComponent, onMounted } from '@vue/composition-api';
 import { useAuthGetters, useDbState } from '@/store';
 import gql from 'graphql-tag';
 import { SendReferalInput, Transaction } from '@/generated/graphql';
 import { GetterTypes } from '@/store/modules/auth/getters';
 import Profile from '@/components/Profile.vue';
+import Loading from '@/components/Loading.vue';
 import { AllInvites } from '../../components';
 
 const {
   getObjectId: { value: getObjectId }
 } = useAuthGetters([GetterTypes.getObjectId]);
 
-export default {
+export default defineComponent({
   name: 'Referral',
   components: { AllInvites, Profile, Loading },
   setup(
@@ -259,7 +260,7 @@ export default {
     });
     return { referral, processTransfer, processQuery, email, loader, dialog };
   }
-};
+});
 </script>
 
 <style lang="scss">
