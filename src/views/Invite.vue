@@ -2254,7 +2254,7 @@ export default {
         video: 'ml8-OBbFNy0'
       },
 
-      Literrati: {
+      Litterati: {
         user: 'employer',
         password: 'smarttrash',
         video: 'QstlJilqDd0'
