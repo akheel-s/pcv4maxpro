@@ -75,9 +75,28 @@
       <v-expand-x-transition>
         <div v-show="expand" class="guide-bar__container">
           <v-list class="guide-bar__list">
-            <v-subheader>Monitor Participants</v-subheader>
+            <!-- <v-subheader class="guide-bar__monitor-participants-title"
+              >Monitor Participants</v-subheader
+            > -->
+
+            <div class="guide-bar__monitor-participants-title">
+              <v-icon large color="black">mdi-monitor-dashboard</v-icon> Monitor Progress
+            </div>
 
             <v-container fluid>
+              <div class="">
+                <v-icon class="mt-1 mb-1" x-small color="black" dark depressed>mdi-gear</v-icon>
+                <!-- <v-subheader>Sort</v-subheader> -->
+                <v-btn class="mt-1 mb-1" x-small color="black" dark depressed
+                  >PilotCity Flagship Program</v-btn
+                >
+
+                <!-- <v-btn class="ma-1" color="grey" x-small depressed outlined>School</v-btn
+                ><v-btn class="ma-1" color="grey" x-small depressed outlined>Grade</v-btn
+                ><v-btn class="ma-1" color="grey" x-small depressed outlined>Team</v-btn>
+                <v-btn class="ma-1" color="grey" x-small depressed outlined>Progress</v-btn> -->
+              </div>
+
               <v-combobox
                 v-model="model2"
                 :filter="filter"
@@ -90,23 +109,26 @@
                 small-chips
                 hide-details
                 solo
+                outlined
+                class="guide-bar__combobox mt-4 mb-4"
               >
-                <template v-slot:no-data>
+                <!-- <template v-slot:no-data>
                   <v-list-item>
                     <span class="subheading">Create</span>
                     <v-chip :color="`${colors[nonce - 1]} lighten-3`" label small>
                       {{ search }}
                     </v-chip>
                   </v-list-item>
-                </template>
+                </template> -->
                 <template v-slot:selection="{ attrs, item, parent, selected }">
                   <v-chip
                     v-if="item === Object(item)"
                     v-bind="attrs"
-                    :color="`${item.color} lighten-3`"
+                    :color="`${item.color} lighten-2`"
                     :input-value="selected"
                     label
                     small
+                    dark
                   >
                     <span class="pr-2">
                       {{ item.text }}
@@ -114,6 +136,7 @@
                     <v-icon small @click="parent.selectItem(item)"> mdi-close </v-icon>
                   </v-chip>
                 </template>
+
                 <template v-slot:item="{ index, item }">
                   <v-text-field
                     v-if="editing === item"
@@ -125,23 +148,48 @@
                     solo
                     @keyup.enter="edit(index, item)"
                   ></v-text-field>
-                  <v-chip v-else :color="`${item.color} lighten-3`" dark label small>
+                  <v-chip v-else :color="`${item.color} lighten-2`" dark label small>
                     {{ item.text }}
                   </v-chip>
                   <v-spacer></v-spacer>
-                  <v-list-item-action @click.stop>
+                  <!-- <v-list-item-action @click.stop>
                     <v-btn icon @click.stop.prevent="edit(index, item)">
                       <v-icon>{{ editing !== item ? 'mdi-pencil' : 'mdi-check' }}</v-icon>
                     </v-btn>
-                  </v-list-item-action>
+                  </v-list-item-action> -->
                 </template>
               </v-combobox>
-              <div class="mt-5">
-                <v-btn class="mr-3" color="grey" x-small depressed outlined>Name</v-btn
-                ><v-btn class="mr-3" color="grey" x-small depressed outlined>School</v-btn
-                ><v-btn class="mr-3" color="grey" x-small depressed outlined>Grade</v-btn
-                ><v-btn class="mr-3" color="grey" x-small depressed outlined>Team</v-btn>
-                <v-btn class="mr-3" color="grey" x-small depressed outlined>Progress</v-btn>
+              <div class="">
+                <!-- <v-subheader>Sort</v-subheader> -->
+                <!-- <v-btn class="mt-1 mb-1" x-small dark depressed>Sort by</v-btn> -->
+
+                <!-- <v-btn class="ma-1" color="grey" x-small depressed outlined>School</v-btn
+                ><v-btn class="ma-1" color="grey" x-small depressed outlined>Grade</v-btn
+                ><v-btn class="ma-1" color="grey" x-small depressed outlined>Team</v-btn>
+                <v-btn class="ma-1" color="grey" x-small depressed outlined>Progress</v-btn> -->
+
+                <template>
+                  <div class="">
+                    <v-menu offset-y>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn class="mt-1 mb-1" x-small outlined depressed v-bind="attrs" v-on="on"
+                          >Sort</v-btn
+                        >
+                      </template>
+                      <v-list>
+                        <v-list-item v-for="(item, index) in sortitems" :key="index" link small>
+                          <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item>
+                      </v-list>
+                    </v-menu>
+                    <!-- <v-btn class="mt-1 mb-1 ml-2" color="blue" x-small outlined depressed
+                      >By School<v-icon small right dark> mdi-close</v-icon></v-btn
+                    > -->
+                    <v-btn class="mt-1 mb-1 ml-2" color="green" x-small outlined depressed
+                      >By Progress<v-icon small right dark> mdi-close</v-icon></v-btn
+                    >
+                  </div>
+                </template>
               </div>
             </v-container>
 
@@ -157,52 +205,43 @@
               <v-divider /> -->
               <template v-slot:activator>
                 <v-list-item class="guide-bar__list-item-title">
+                  <v-list-item-avatar size="36">
+                    <v-img
+                      src="https://media-exp1.licdn.com/dms/image/C5603AQEq9BL9NuOBAQ/profile-displayphoto-shrink_200_200/0?e=1608768000&v=beta&t=XLeDuOV5B9rNOG4CrSQLh1sKeftfzBUwHd3M-y_CRKM"
+                    ></v-img>
+                  </v-list-item-avatar>
                   <v-list-item-content>
-                    <v-list-item-title v-text="item.title"></v-list-item-title>
-                    <!-- <v-chip small>Irvington High School</v-chip> -->
+                    <v-list-item-title
+                      class="guide-bar__list-item-title"
+                      v-text="item.title"
+                    ></v-list-item-title
+                    ><v-progress-linear color="green" class="mt-2" value="50"></v-progress-linear>
+
+                    <!-- SORTABLE CHIP -->
+                    <!-- <v-chip
+                      class="mt-1 mb-1 guide-bar__sortable-chip"
+                      color="blue lighten-2"
+                      label
+                      dark
+                      x-small
+                      >Irvington High School</v-chip
+                    > -->
                   </v-list-item-content>
                 </v-list-item>
               </template>
 
               <div v-for="child in item.items" :key="child.title" class="guide-bar__sub">
-                <v-chip-group><v-chip small dark v-text="child.title"></v-chip></v-chip-group>
+                <v-chip-group
+                  ><v-chip
+                    x-small
+                    disabled
+                    label
+                    color="black"
+                    outlined
+                    v-text="child.title"
+                  ></v-chip
+                ></v-chip-group>
               </div>
-
-              <!-- <v-divider />
-              <v-list-item class="guide-bar__list-item">Eric Reyes</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Akheel Shaik</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Derick Lee</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Monica Willemsz</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Tim Deloney</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Eric Xie</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Noah MacLean</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Maya Campos</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Prajit Saravanan</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Eric Reyes</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Akheel Shaik</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Derick Lee</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Monica Willemsz</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Tim Deloney</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Eric Xie</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Noah MacLean</v-list-item>
-              <v-divider />
-              <v-list-item class="guide-bar__list-item">Maya Campos</v-list-item>
-              <v-divider /> -->
             </v-list-group>
           </v-list>
         </div>
@@ -223,6 +262,12 @@ export default {
     colors: ['green', 'purple', 'indigo', 'cyan', 'teal', 'orange'],
     editing: null,
     editingIndex: -1,
+    sortitems: [
+      { title: 'School' },
+      { title: 'Grade' },
+      { title: 'Team' },
+      { title: 'Completion' }
+    ],
     items2: [
       {
         items: [
@@ -354,7 +399,7 @@ export default {
     ],
 
     items: [
-      { header: 'Filter by programs' },
+      // { header: 'Filter by programs' },
       {
         text: 'All Programs',
         color: 'blue'
@@ -595,11 +640,41 @@ $stepper-step-step-height: 50px;
 //   width: 16px;
 //   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 // }
+
+.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat)
+  > .v-input__control
+  > .v-input__slot {
+  box-shadow: none !important;
+}
+
+.v-text-field.v-text-field--enclosed:not(.v-text-field--rounded)
+  > .v-input__control
+  > .v-input__slot,
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  padding: 10px !important;
+}
+
+.v-list-item__content {
+  display: inline !important;
+}
+
+.v-application .green {
+  margin-left: 0px;
+}
+
 .guide-bar {
   // height: fit-content;
   display: flex;
   height: 95vh;
   // background-color: transparent;
+  &__monitor-participants-title {
+    font-family: Raleway;
+    font-size: 28px;
+    font-weight: 800;
+    padding: 12px;
+  }
+  &__combobox {
+  }
 
   &__cta1 {
     margin-right: auto;
@@ -694,6 +769,12 @@ $stepper-step-step-height: 50px;
     font-weight: 700;
     // letter-spacing: 2px !important;
     // text-transform: uppercase;
+    font-size: 14px !important;
+    padding: 0px !important;
+  }
+
+  &__sortable-chip {
+    // width: 20px !important;
   }
 
   &__list {
@@ -707,7 +788,7 @@ $stepper-step-step-height: 50px;
 }
 .guide-bar {
   &__sub {
-    padding-left: 32px;
+    padding-left: 67px;
   }
   &__container {
     height: 100vh;

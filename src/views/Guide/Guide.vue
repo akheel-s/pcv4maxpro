@@ -5,9 +5,14 @@
     </div>
     <div class="guide__page">
       <div class="guide__activity-title-button">
-        <v-btn rounded small outlined depressed color="blue">Monitor Activities</v-btn>
+        <!-- <v-btn rounded small outlined depressed color="blue">Monitor</v-btn> -->
+        <v-avatar size="50">
+          <v-img
+            src="https://media-exp1.licdn.com/dms/image/C5603AQEq9BL9NuOBAQ/profile-displayphoto-shrink_200_200/0?e=1608768000&v=beta&t=XLeDuOV5B9rNOG4CrSQLh1sKeftfzBUwHd3M-y_CRKM"
+          ></v-img>
+        </v-avatar>
       </div>
-      <div class="guide__activity-title">Prajit Saravanan</div>
+      <div class="guide__activity-title">Prajit Saravanan's Progress</div>
       <div class="guide__table">
         <component :is="currentUnit" />
       </div>
@@ -44,7 +49,7 @@ export default {
 
   &__activity-title {
     font-family: Raleway;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     margin: 25px;
   }
