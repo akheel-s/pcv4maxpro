@@ -169,7 +169,7 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
+import { ref } from '@vue/composition-api';
 
 export default {
   name: 'Bar',
