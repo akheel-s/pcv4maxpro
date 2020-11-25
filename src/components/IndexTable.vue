@@ -4,7 +4,7 @@
   </span>
 </template>
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 import shortid from 'shortid';
 
 export default {
@@ -32,7 +32,9 @@ export default {
       });
       return indexedItems;
     }
-    const indexedItems = ref(addIndex(props.items as Record<string, any>[]));
+    const indexedItems = computed(() => {
+      return addIndex(props.items as Record<string, any>[]);
+    });
     function indexHandler(indexedArgs: IndexedItems) {
       indexedArgs.forEach(({ id }, index) => {
         const itemPos = indexedItems.value.findIndex(item => item.id === id);

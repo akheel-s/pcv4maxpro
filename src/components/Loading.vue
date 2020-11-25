@@ -4,14 +4,13 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from '@vue/composition-api';
-import { PropType } from 'vue';
-import { useActions } from '@/store/modules/tools';
+import { ref, defineComponent } from '@vue/composition-api';
+import { useToolActions } from '@/store';
 
-export default {
+export default defineComponent({
   props: {
     callback: {
-      type: Function as PropType<(...args) => Promise<any>>,
+      type: Function,
       required: true
     },
     linearLoader: {
@@ -19,7 +18,7 @@ export default {
     }
   },
   setup(props) {
-    const { setLinearLoader } = useActions(['setLinearLoader']);
+    const { setLinearLoader } = useToolActions(['setLinearLoader']);
 
     const loading = ref(false);
     const process =
@@ -46,5 +45,5 @@ export default {
         : process
     };
   }
-};
+});
 </script>
