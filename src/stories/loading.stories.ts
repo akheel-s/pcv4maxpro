@@ -20,9 +20,9 @@ const Template: Story = (_args, { argTypes }) => ({
 });
 
 export const useLoader = Template.bind({});
-useLoader.args = {
-  linearLoader: false,
-  callback: () => new Promise((resolve) => {
-    setTimeout(() => resolve(), 2000);
-  })
-};
+// useLoader.args = {
+//   linearLoader: false,
+//   callback: () => new Promise((resolve) => {
+//     setTimeout(() => resolve(), 2000);
+//   })
+// };
