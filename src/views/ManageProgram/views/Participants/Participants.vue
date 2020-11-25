@@ -1,8 +1,5 @@
 <template>
   <div class="participants__entire-body">
-    <div class="participants__first-part">
-      <Nav></Nav>
-    </div>
     <div class="participants__second-body">
       <div class="participants__title">Manage Participants</div>
 
@@ -155,13 +152,11 @@
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import IndexTable from '@/components/IndexTable.vue';
-import Nav from '../../components/Nav/Nav.vue';
 import { items, HEADER } from './const';
 
 export default {
   name: 'Participants',
   components: {
-    Nav,
     IndexTable
   },
   data() {

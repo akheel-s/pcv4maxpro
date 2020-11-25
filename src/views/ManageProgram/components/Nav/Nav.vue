@@ -31,6 +31,9 @@
         {{ endDate }}
       </v-chip>
     </div>
+    <!-- <v-btn class="manage-program__publish-button" small depressed outlined dark
+      >Setup Incomplete</v-btn
+    > -->
     <div class="manage-program__body">
       <v-list-item-group class="manage-program__navigation" width="100%" permanent color="accent">
         <div v-for="item in items" :key="item.title">
@@ -39,7 +42,10 @@
             link
             :ripple="false"
             :active-class="`${item.color}`"
-            @click="setActive(item)"
+            @click="
+              compId = item.title;
+              setActive(item);
+            "
           >
             <v-list-item-content class="manage-program__items text-h5 font-weight-bold">
               <v-list-item-title>
@@ -49,16 +55,19 @@
           </v-list-item>
         </div>
         <hr />
+        <v-btn class="manage-program__publish-button" rounded depressed dark color="blue" large
+          >Publish</v-btn
+        >
       </v-list-item-group>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/composition-api';
+import { computed, ref, defineComponent } from '@vue/composition-api';
 import items from './const';
 
-export default {
+export default defineComponent({
   name: 'Nav',
   props: {
     startDate: {
@@ -68,20 +77,33 @@ export default {
     endDate: {
       type: String,
       default: 'DAY, MON 1'
+    },
+    value: {
+      type: String,
+      required: true
     }
   },
-  setup() {
+  setup(props, { emit }) {
     const activeTab = ref(items.value[0]);
+
+    const compId = computed({
+      get: () => props.value,
+      set: newVal => {
+        emit('input', newVal);
+      }
+    });
     function setActive(item) {
       activeTab.value = item;
     }
+
     return {
-      items,
+      items: ref(items),
       activeTab,
+      compId,
       setActive
     };
   }
-};
+});
 </script>
 
 <style lang="scss">
@@ -192,6 +214,12 @@ export default {
     font-family: Raleway;
     font-weight: 800;
     // margin: 4px 10px;
+  }
+
+  &__publish-button {
+    width: 100%;
+    font-weight: 900;
+    margin-top: 25px;
   }
 }
 </style>

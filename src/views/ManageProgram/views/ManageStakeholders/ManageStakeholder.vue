@@ -1,8 +1,5 @@
 <template>
   <div class="participants__entire-body">
-    <div class="participants__first-part">
-      <Nav></Nav>
-    </div>
     <div class="participants__second-part">
       <div class="participants__title">Manage Stakeholders</div>
       <manage-filter class="participants__profile-btn2"></manage-filter>
@@ -35,13 +32,12 @@
 <script lang="ts">
 import { ref } from '@vue/composition-api';
 import IndexTable from '@/components/IndexTable.vue';
-import { Nav, ManageFilter } from '../../components';
+import { ManageFilter } from '../../components';
 import { items, HEADER } from './const';
 
 export default {
   name: 'Managestakeholder',
   components: {
-    Nav,
     IndexTable,
     ManageFilter
   },
