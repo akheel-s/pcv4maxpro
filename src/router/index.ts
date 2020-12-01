@@ -14,12 +14,14 @@ import { useAuthGetters } from '@/store';
 import ErrorLogin from '@/views/ErrorLogin.vue';
 import apolloProvider from '@/vue-apollo';
 import Landing from '@/views/Landing.vue';
+import { routes as ManageProgramRoutes } from '../views/ManageProgram';
 import { UserQueryInput, User } from '../generated/graphql';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   ...GuideRoutes,
+  ...ManageProgramRoutes,
   ...PortfolioRoutes,
   {
     path: '/timeline',
