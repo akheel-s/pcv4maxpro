@@ -5,7 +5,7 @@ import Loading from '@/components/Loading.vue';
 export default {
   title: 'Loading Utility',
   components: [Loading],
-} as Meta
+}as Meta;
 
 const Template: Story = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
@@ -19,10 +19,10 @@ const Template: Story = (_args, { argTypes }) => ({
   `
 });
 
-export const useLoader = Template.bind({})
+export const useLoader = Template.bind({});
 // useLoader.args = {
 //   linearLoader: false,
 //   callback: () => new Promise((resolve) => {
-//     setTimeout(() => resolve(), 2000)
+//     setTimeout(() => resolve(), 2000);
 //   })
-// }
+// };

@@ -1,8 +1,8 @@
 version: "3.8"
 services: 
   program:
-    # build: . #enable this when modifyingh dependencies
-    image: juxsta/pcv4maxpro:latest
+    build: . #enable this when modifying dependencies
+    # image: juxsta/pcv4maxpro:latest
     container_name: program
     environment: 
     - NODE_ENV=development
