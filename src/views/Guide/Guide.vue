@@ -75,7 +75,7 @@
   }
 }
 </style>
-<script>
+<script lang="ts">
 import Test from '@/components/Test.vue';
 import { ref } from '@vue/composition-api';
 import Bar from './Bar.vue';

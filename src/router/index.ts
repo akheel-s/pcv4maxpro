@@ -1,6 +1,3 @@
-import { routes as GuideRoutes } from '@/views/Guide';
-import gql from 'graphql-tag';
-import Login from '@/views/Login';
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import { routes as GuideRoutes } from '@/views/Guide';
@@ -19,6 +16,7 @@ import Landing from '@/views/Landing.vue';
 import Login from '../views/Login/Login.vue';
 import { routes as ManageProgramRoutes } from '../views/ManageProgram';
 import { UserQueryInput, User } from '../generated/graphql';
+import { routes as SetupProgram } from '../views/SetupProgram';
 
 Vue.use(VueRouter);
 
@@ -26,6 +24,7 @@ const routes: Array<RouteConfig> = [
   ...GuideRoutes,
   ...ManageProgramRoutes,
   ...PortfolioRoutes,
+  ...SetupProgram,
   {
     path: '/timeline',
     name: 'timeline',
