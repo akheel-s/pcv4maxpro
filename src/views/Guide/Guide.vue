@@ -5,11 +5,13 @@
     </div>
     <div class="guide__page">
       <div class="guide__locks guide__locks--left unlocked">
-        <v-icon class="guide__lock">mdi-lock</v-icon>
+        <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-left</v-icon>
+        <v-icon large color="green" class="guide__lock">mdi-lock-open</v-icon>
       </div>
       <component :is="currentUnit" />
       <div class="guide__locks guide__locks--right locked">
-        <v-icon class="guide__lock">mdi-lock-open</v-icon>
+        <v-icon large color="red" class="guide__lock">mdi-lock</v-icon>
+        <v-icon large color="grey lighten-1" class="guide__lock">mdi-chevron-right</v-icon>
       </div>
     </div>
   </div>
@@ -18,19 +20,21 @@
 .guide__ {
   &container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
   }
   &bar {
-    max-width: 23vw; //325/1440
+    max-width: 30vw; //325/1440
+    height: 100vh;
   }
   &page {
     width: 100%;
+    height: 100vh;
     display: flex;
     position: relative;
   }
   &locks {
-    height: 100%;
+    height: 100vh;
     width: 70px;
     position: absolute;
     display: flex;
