@@ -25,15 +25,9 @@
           </div>
           <div class="guide-bar__actions">
             <div class="guide-bar__actions-list">
-              <v-icon
-                v-for="action in actions"
-                :key="action.icon"
-                color="black"
-                @click="logThis(action.fn)"
-              >
+              <v-icon v-for="action in actions" :key="action.icon" color="black">
                 {{ 'mdi-' + action.icon }}
               </v-icon>
-              <!-- <v-icon @click="logThis('opened settings')">mdi-cog</v-icon> -->
             </div>
           </div>
         </div>
@@ -46,14 +40,11 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from '@vue/composition-api';
+import { ref } from '@vue/composition-api';
 
 export default {
   name: 'Bar',
   setup() {
-    function logThis(val: string) {
-      console.log(val);
-    }
     const vertical = ref(true);
     const expand = ref(true); // open or closed sidebar
     const steps = ref(15); // number of lines
@@ -129,7 +120,7 @@ export default {
         ]
       }
     });
-    return { steps, expand, activeStep, sequence, actions, logThis, vertical };
+    return { steps, expand, activeStep, sequence, actions, vertical };
   }
 };
 </script>

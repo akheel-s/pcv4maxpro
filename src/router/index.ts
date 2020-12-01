@@ -7,13 +7,13 @@ import Signup from '@/views/Signup';
 import Invite from '@/views/Invite.vue';
 import ResetPassword from '@/views/ResetPassword.vue';
 import ConfirmEmail from '@/views/ConfirmEmail.vue';
-import Login from '../views/Login/Login.vue';
 import Timeline from '@/components/Timeline.vue';
 import Error404 from '@/views/Error404.vue';
 import { useAuthGetters } from '@/store';
 import ErrorLogin from '@/views/ErrorLogin.vue';
 import apolloProvider from '@/vue-apollo';
 import Landing from '@/views/Landing.vue';
+import Login from '../views/Login/Login.vue';
 import { routes as ManageProgramRoutes } from '../views/ManageProgram';
 import { UserQueryInput, User } from '../generated/graphql';
 
