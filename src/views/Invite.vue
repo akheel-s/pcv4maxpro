@@ -2335,6 +2335,170 @@ export default {
         user: 'employer',
         password: 'hearts',
         video: '-NgD62nDu2A'
+      },
+
+      // ROUND 13
+
+      'Unpossible Cuts': {
+        user: 'employer',
+        password: 'laser',
+        video: 'Kx6JzTcSgZc'
+      },
+
+      'Spring Energy': {
+        user: 'employer',
+        password: 'superfood',
+        video: 'ngRd4u0bX20'
+      },
+
+      'Proyecto Diaz': {
+        user: 'employer',
+        password: 'beans',
+        video: '-X1APeYwsk8'
+      },
+
+      Forust: {
+        user: 'employer',
+        password: 'fdm',
+        video: 'JQ2Mz07ql4c'
+      },
+
+      'Purely Drinks': {
+        user: 'employer',
+        password: 'vinegar',
+        video: 'oJofgFfNBVs'
+      },
+
+      '3E Design': {
+        user: 'employer',
+        password: 'adu',
+        video: 'eER8vdkdD4s'
+      },
+
+      Gantri: {
+        user: 'employer',
+        password: 'digitalmfg',
+        video: 'vrjUwr-TRrM'
+      },
+
+      'Basin Research': {
+        user: 'employer',
+        password: 'dig',
+        video: 'aMWUc2zLSIs'
+      },
+
+      'Magic Fuel Games': {
+        user: 'employer',
+        password: 'gaming',
+        video: 'kx3a2fg9wfQ'
+      },
+
+      'Cyclotron Road': {
+        user: 'employer',
+        password: 'lbnl',
+        video: 'EKpLc4KCfbw'
+      },
+
+      Airspace: {
+        user: 'employer',
+        password: 'drones',
+        video: 'GvFTOF2Nq8w'
+      },
+
+      Sculpteo: {
+        user: 'employer',
+        password: '3dp',
+        video: 'OQvgr0vwphM'
+      },
+
+      'Artemys Foods': {
+        user: 'employer',
+        password: 'burgers',
+        video: 'vz--lFG5P2I'
+      },
+
+      Revivn: {
+        user: 'employer',
+        password: 'community',
+        video: 'KjTyinleUkc'
+      },
+
+      TeckQuest: {
+        user: 'employer',
+        password: 'storage',
+        video: 'jgGrr3aJcLY'
+      },
+
+      Anzode: {
+        user: 'employer',
+        password: 'zinc',
+        video: 'fcJDoq941VQ'
+      },
+
+      'Coreshell Technologies': {
+        user: 'employer',
+        password: 'magiclayer',
+        video: 'udWZmdSDmM'
+      },
+
+      'FreeWire Technologies': {
+        user: 'employer',
+        password: 'ev',
+        video: 'UhgT75k1PLk'
+      },
+
+      Fochon: {
+        user: 'employer',
+        password: 'therapy',
+        video: 'EvEtadr7dQA'
+      },
+
+      'Aralez Bio': {
+        user: 'employer',
+        password: 'enzymes',
+        video: 'B_UyPTnDeBk'
+      },
+
+      'HJ Science And Technology': {
+        user: 'employer',
+        password: 'prototyping',
+        video: '-sIzKcBFDLs'
+      },
+
+      'Ensigna Biosystems': {
+        user: 'employer',
+        password: 'histopathology',
+        video: 'R9v2wfwzttg'
+      },
+
+      'Pace Analytical': {
+        user: 'employer',
+        password: 'impact',
+        video: 'p0LEL1WsiCY'
+      },
+
+      Sartorius: {
+        user: 'employer',
+        password: 'interns',
+        video: 'aLs4E437uIg'
+      },
+
+      'Cinder Bio': {
+        user: 'employer',
+        password: 'interns',
+        video: '333W-Bgc3xU'
+      },
+
+      'Tierra Biosciences': {
+        user: 'employer',
+        password: 'interns',
+        video: 'BWHU5mkBkz4'
+      },
+
+      Geltor: {
+        user: 'employer',
+        password: 'ingredient',
+        video: 'S0EY17EmBQk'
       }
     };
     const pass = ref('');
