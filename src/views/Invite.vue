@@ -2499,6 +2499,11 @@ export default {
         user: 'employer',
         password: 'ingredient',
         video: 'S0EY17EmBQk'
+      },
+      'Quarry Lane School Parents And Students': {
+        user: 'parent',
+        password: 'internships',
+        video: 'BR0LRa2erB0'
       }
     };
     const pass = ref('');
