@@ -2561,6 +2561,38 @@ export default {
         user: 'employer',
         password: 'impact',
         video: '31lELSlY7LU'
+      },
+
+      // ROUND 16
+      Adobe: {
+        user: 'employer',
+        password: 'design',
+        video: '-UF3rg6xEyw'
+      },
+      'Alder Graduate School Of Education': {
+        user: 'employer',
+        password: 'handson',
+        video: 'OW8xcZhjA4s'
+      },
+      '440 Creates': {
+        user: 'employer',
+        password: 'design',
+        video: 'kP0FwsqAHoU'
+      },
+      'Councilmember Bryan Azevedo': {
+        user: 'employer',
+        password: 'aides',
+        video: '9RPd65Iv21U'
+      },
+      'Councilmember Fred Simon': {
+        user: 'employer',
+        password: 'aides',
+        video: 'L8DSXzZP2vQ'
+      },
+      'City Manager Fran Robustelli': {
+        user: 'employer',
+        password: 'intro',
+        video: 'tN0xEf4JhW4'
       }
     };
     const pass = ref('');
