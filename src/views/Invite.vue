@@ -2593,6 +2593,236 @@ export default {
         user: 'employer',
         password: 'intro',
         video: 'tN0xEf4JhW4'
+      },
+
+      // BAYWORK - ROUND 17
+
+      'North San Mateo County Sanitation District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Las Gallinas Valley Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Novato Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Ross Valley Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Tamalpais Community Services District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'West Valley Sanitation District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Fairfield Suisun Sewer District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Napa Sanitation District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Oro Loma Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Delta Diablo Sanitation District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'North Marin Water District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Silicon Valley Clean Water': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'South San Francisco San Bruno Wastewater Treatment Plant': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'City Of San Jose Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'City Of Sunnyvale Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Sonoma Water': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Zone 7 Water Agency': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Central Contra Costa Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Alameda County Water District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Dublin San Ramon Services District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Union Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Marin Municipal Water District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'San Jose Water Company': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'San Francisco Public Utilities Commission': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'Valley Water': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '_tAmNGesjFs'
+      },
+
+      'City Of Pleasanton Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Pittsburg Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Pacifica Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Redwood City Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'Town Of Hillsborough Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Morgan Hill Corporation Yard': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Gilroy Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'Town Of Windsor Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'Castro Valley Sanitary District': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Roseville Corporation Yard': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Hayward Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Livermore Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
+      },
+
+      'City Of Napa Water Utility': {
+        user: 'employer',
+        password: 'futureofwater',
+        video: '3lj2DDafE49'
       }
     };
     const pass = ref('');
