@@ -2823,6 +2823,14 @@ export default {
         user: 'employer',
         password: 'futureofwater',
         video: '3lj2DDafE49'
+      },
+
+      // ROUND 18 EVERIMPACT
+
+      Everimpact: {
+        user: 'employer',
+        password: 'uscities',
+        video: 'ilaPShmEZRA'
       }
     };
     const pass = ref('');
