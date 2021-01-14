@@ -41,7 +41,6 @@
               @keyup.enter="process"
             >
             </v-text-field>
-
             <!-- <div class="login__forgotpassword">
               <i>
                 <a class="login__forgotlink" href="password-reset"> Forgot Password</a>
@@ -68,6 +67,7 @@
             </i>
           </div>
         </validation-observer>
+        <Module />
       </div>
     </Loading>
   </div>
@@ -79,10 +79,12 @@ import { ActionTypes } from '@/store/modules/auth/actions';
 import { useAuthActions, useDbState } from '@/store';
 import Loading from '@/components/Loading.vue';
 import { onLogin } from '@/vue-apollo';
+import Module from '@pilotcityinc/developer-adk-pitches/src/Module/Module.vue';
 
 export default {
   components: {
-    Loading
+    Loading,
+    Module
   },
   beforeRouteEnter(to, from, next) {
     const { user } = useDbState(['user']);
